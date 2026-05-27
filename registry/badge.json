@@ -1,0 +1,15 @@
+{
+  "name": "badge",
+  "type": "registry:ui",
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "description": "Rótulo compacto para status e categorias — 5 variantes semânticas, 2 tamanhos, dot indicator.",
+  "dependencies": ["class-variance-authority"],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/ui/badge.tsx",
+      "type": "registry:ui",
+      "content": "import { cva, type VariantProps } from 'class-variance-authority';\nimport { cn } from '@/lib/utils';\n\nexport const badgeVariants = cva(\n  'inline-flex items-center gap-1.5 font-medium rounded-full',\n  {\n    variants: {\n      variant: {\n        brand: 'bg-brand-500/15 text-brand-300',\n        success: 'bg-success-500/15 text-success-300',\n        warning: 'bg-warning-500/15 text-warning-300',\n        error: 'bg-error-500/15 text-error-300',\n        neutral: 'bg-neutral-700 text-neutral-300',\n      },\n      size: {\n        sm: 'px-2 py-0.5 text-[11px]',\n        md: 'px-2.5 py-1 text-xs',\n      },\n    },\n    defaultVariants: {\n      variant: 'neutral',\n      size: 'md',\n    },\n  }\n);\n\nexport interface BadgeProps extends VariantProps<typeof badgeVariants> {\n  children: React.ReactNode;\n  dot?: boolean;\n  className?: string;\n}\n\nexport function Badge({ children, variant, size, dot, className }: BadgeProps) {\n  return (\n    <span className={cn(badgeVariants({ variant, size }), className)}>\n      {dot && (\n        <span className=\"size-1.5 rounded-full bg-current opacity-70\" aria-hidden />\n      )}\n      {children}\n    </span>\n  );\n}\n"
+    }
+  ]
+}

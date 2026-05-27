@@ -1,0 +1,64 @@
+---
+title: Skeleton
+description: Placeholders animados para estados de carregamento.
+---
+
+Skeletons substituem conteúdo enquanto dados carregam, reduzindo a percepção de latência. Usam `animate-pulse` do Tailwind com `bg-neutral-700/60`.
+
+## Primitivos
+
+`Skeleton`, `SkeletonText` e `SkeletonCard` são compostos para cobrir os casos mais comuns.
+
+<SkeletonPrimitivesDemo />
+
+## SkeletonCard
+
+Card pré-montado com avatar, texto e ações — pronto para listas de dados.
+
+<SkeletonCardDemo />
+
+## Loading → carregado
+
+Exemplo de alternância entre skeleton e conteúdo real.
+
+<SkeletonToggleDemo />
+
+## Props — Skeleton
+
+<TokenTable
+  columns={['Prop', 'Tipo', 'Default', 'Descrição']}
+  rows={[
+    ['height',    'string (classe Tailwind)', "'h-4'",   'Altura via classe Tailwind'],
+    ['width',     'string (classe Tailwind)', "'w-full'", 'Largura via classe Tailwind'],
+    ['circle',    'boolean',                 'false',    'rounded-full para avatars'],
+    ['className', 'string',                  '—',        'Classes extras'],
+  ]}
+/>
+
+## Props — SkeletonText
+
+<TokenTable
+  columns={['Prop', 'Tipo', 'Default', 'Descrição']}
+  rows={[
+    ['lines',         'number',  '3',    'Número de linhas'],
+    ['lastLineShort', 'boolean', 'true', 'Última linha com w-3/5 para simular texto real'],
+  ]}
+/>
+
+## Uso
+
+```tsx
+import { Skeleton, SkeletonText, SkeletonCard } from '@/components/ui/skeleton';
+
+// Linha simples
+<Skeleton height="h-4" width="w-48" />
+
+// Avatar circular
+<Skeleton circle height="h-10" width="w-10" />
+
+// Bloco de texto
+<SkeletonText lines={3} />
+
+// Card completo
+<SkeletonCard />
+```

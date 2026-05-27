@@ -1,0 +1,57 @@
+---
+title: Alert
+description: Banner de feedback com variantes semânticas, título, ícone e dismiss.
+---
+
+Alerts comunicam mensagens contextuais — informações, sucessos, avisos e erros. São estáticos por padrão; use `onClose` para torná-los dismissíveis.
+
+## Variantes
+
+<AlertVariantsDemo />
+
+## Sem título
+
+Para mensagens curtas que não precisam de cabeçalho.
+
+<AlertSimpleDemo />
+
+## Dismissível
+
+Passe `onClose` para exibir o botão de fechar.
+
+<AlertDismissibleDemo />
+
+## Sem ícone
+
+<AlertNoIconDemo />
+
+## Props
+
+<TokenTable
+  columns={['Prop', 'Tipo', 'Default', 'Descrição']}
+  rows={[
+    ['variant', "'info' | 'success' | 'warning' | 'error'", "'info'",  'Cor e ícone semântico'],
+    ['title',   'string',                                    '—',       'Cabeçalho em negrito'],
+    ['icon',    'boolean',                                   'true',    'Exibe ou oculta o ícone'],
+    ['onClose', '() => void',                               '—',       'Callback do botão fechar'],
+    ['...div',  'HTMLAttributes<HTMLDivElement>',            '—',       'Atributos nativos de div'],
+  ]}
+/>
+
+## Uso
+
+```tsx
+import { Alert } from '@/components/ui/alert';
+
+// Simples
+<Alert variant="success">Deploy concluído com sucesso.</Alert>
+
+// Com título e dismiss
+<Alert
+  variant="warning"
+  title="Domínio expirando"
+  onClose={() => setVisible(false)}
+>
+  Seu domínio <strong>umbler.com</strong> expira em 7 dias.
+</Alert>
+```

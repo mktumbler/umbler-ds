@@ -1,0 +1,42 @@
+---
+title: Select
+description: Dropdown nativo estilizado com estados de validação e caret customizado.
+---
+
+Select usa o elemento nativo `<select>` com `appearance-none` para estilização completa via Tailwind, mantendo acessibilidade e comportamento padrão do sistema operacional. Compõe com `InputLabel` e `InputHint` do Input.
+
+## Estados
+
+<SelectStatesDemo />
+
+## Tamanhos
+
+<SelectSizesDemo />
+
+## Uso
+
+```tsx
+import { Select } from '@/components/ui/select';
+import { InputGroup, InputLabel, InputHint } from '@/components/ui/input';
+
+<InputGroup>
+  <InputLabel htmlFor="framework">Framework</InputLabel>
+  <Select id="framework" defaultValue="next">
+    <option value="next">Next.js</option>
+    <option value="nuxt">Nuxt</option>
+    <option value="astro">Astro</option>
+  </Select>
+</InputGroup>
+```
+
+## Props
+
+<TokenTable
+  columns={['Prop', 'Tipo', 'Default', 'Descrição']}
+  rows={[
+    ['state',    "'default' | 'error' | 'success'", "'default'", 'Estado de validação visual'],
+    ['size',     "'sm' | 'md' | 'lg'",              "'md'",      'Altura do campo'],
+    ['disabled', 'boolean',                          'false',     'Desabilita o select'],
+    ['...select','SelectHTMLAttributes',             '—',         'Atributos nativos de select'],
+  ]}
+/>

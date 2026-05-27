@@ -1,0 +1,50 @@
+---
+title: Spinner
+description: Indicador de carregamento animado — SVG arc com animate-spin, herdando a cor do contexto.
+---
+
+import { SpinnerSizesDemo, SpinnerColorsDemo } from '@/components/demos/spinner-variants';
+
+O `Spinner` é usado para indicar estados de carregamento. Herda a cor do elemento pai via `currentColor`, tornando-o facilmente adaptável a qualquer contexto.
+
+## Tamanhos
+
+<ComponentPreview title="Sizes">
+  <SpinnerSizesDemo />
+</ComponentPreview>
+
+## Cores
+
+A cor é controlada pela propriedade `color` do elemento pai (ex.: `text-brand-300`).
+
+<ComponentPreview title="Colors">
+  <SpinnerColorsDemo />
+</ComponentPreview>
+
+## Props
+
+<TokenTable
+  columns={['Prop', 'Tipo', 'Default', 'Descrição']}
+  rows={[
+    ['size', '"sm" | "md" | "lg" | "xl"', '"md"', 'Tamanho do ícone: 14 / 16 / 20 / 24px'],
+    ['className', 'string', '—', 'Classes extras (incluindo cor via text-*)'],
+  ]}
+/>
+
+## Uso
+
+```tsx
+import { Spinner } from '@/components/ui/spinner';
+
+// Padrão
+<Spinner />
+
+// Tamanho grande, cor de erro
+<Spinner size="lg" className="text-error-500" />
+
+// Em um botão customizado
+<button className="text-brand-300">
+  <Spinner size="sm" />
+  Carregando...
+</button>
+```

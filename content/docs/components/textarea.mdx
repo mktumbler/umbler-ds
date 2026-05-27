@@ -1,0 +1,45 @@
+---
+title: Textarea
+description: Campo de texto multilinha com estados de validação e controle de resize.
+---
+
+Textarea segue as mesmas convenções visuais do `Input` — tokens de cor idênticos, estados de validação e sub-componentes de composição (`InputLabel`, `InputHint`, `InputGroup`) importados diretamente.
+
+## Estados
+
+<TextareaStatesDemo />
+
+## Resize e linhas
+
+Use `rows` para definir a altura inicial e `className="resize-none"` para desabilitar o redimensionamento manual.
+
+<TextareaResizeDemo />
+
+## Composição
+
+```tsx
+import { Textarea, InputGroup, InputLabel, InputHint } from '@/components/ui/textarea';
+
+<InputGroup>
+  <InputLabel htmlFor="bio">Biografia</InputLabel>
+  <Textarea
+    id="bio"
+    rows={4}
+    placeholder="Conte um pouco sobre você..."
+    state="error"
+  />
+  <InputHint state="error">A biografia não pode estar vazia.</InputHint>
+</InputGroup>
+```
+
+## Props — Textarea
+
+<TokenTable
+  columns={['Prop', 'Tipo', 'Default', 'Descrição']}
+  rows={[
+    ['state',    "'default' | 'error' | 'success'", "'default'", 'Estado de validação visual'],
+    ['rows',     'number',                           '—',         'Número de linhas visíveis'],
+    ['disabled', 'boolean',                          'false',     'Desabilita o campo'],
+    ['...textarea', 'TextareaHTMLAttributes',        '—',         'Todos os atributos nativos de textarea'],
+  ]}
+/>

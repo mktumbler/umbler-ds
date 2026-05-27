@@ -1,0 +1,67 @@
+---
+title: Input
+description: Campo de texto com estados de validação e slots para ícones.
+---
+
+Input é o bloco fundamental de formulários. Compõe-se com `InputLabel`, `InputHint` e `InputGroup` para criar campos completos com validação visual.
+
+## Estados
+
+<InputStatesDemo />
+
+## Tamanhos
+
+<InputSizesDemo />
+
+## Com ícones e ações
+
+O `rightElement` aceita elementos interativos — o exemplo abaixo implementa um toggle de visibilidade de senha.
+
+<InputSlotsDemo />
+
+## Composição
+
+```tsx
+import {
+  Input,
+  InputGroup,
+  InputLabel,
+  InputHint,
+} from '@/components/ui/input';
+import { Envelope } from '@phosphor-icons/react';
+
+<InputGroup>
+  <InputLabel htmlFor="email">E-mail</InputLabel>
+  <Input
+    id="email"
+    type="email"
+    placeholder="seu@email.com"
+    leftElement={<Envelope size={16} />}
+    state="error"
+  />
+  <InputHint state="error">E-mail inválido.</InputHint>
+</InputGroup>
+```
+
+## Props — Input
+
+<TokenTable
+  columns={['Prop', 'Tipo', 'Default', 'Descrição']}
+  rows={[
+    ['state',        "'default' | 'error' | 'success'", "'default'", 'Estado de validação visual'],
+    ['size',         "'sm' | 'md' | 'lg'",              "'md'",      'Altura do campo'],
+    ['leftElement',  'ReactNode',                        '—',         'Ícone ou elemento à esquerda'],
+    ['rightElement', 'ReactNode',                        '—',         'Ícone ou botão à direita'],
+    ['disabled',     'boolean',                          'false',     'Desabilita o campo'],
+    ['...input',     'InputHTMLAttributes',              '—',         'Todos os atributos nativos de input'],
+  ]}
+/>
+
+## Props — InputHint
+
+<TokenTable
+  columns={['Prop', 'Tipo', 'Default', 'Descrição']}
+  rows={[
+    ['state', "'default' | 'error' | 'success'", "'default'", 'Cor do texto auxiliar'],
+  ]}
+/>

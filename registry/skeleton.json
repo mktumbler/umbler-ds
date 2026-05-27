@@ -1,0 +1,9 @@
+{
+  "name": "skeleton",
+  "type": "registry:ui",
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "description": "Placeholders animados para estados de carregamento. Inclui Skeleton, SkeletonText e SkeletonCard.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [{ "path": "components/ui/skeleton.tsx", "type": "registry:ui" }]
+}

@@ -1,0 +1,104 @@
+---
+title: Card
+description: Container de conteúdo com variantes de elevação e composição flexível.
+---
+
+Cards organizam informações em unidades discretas e auto-contidas. São compostos por sub-componentes que podem ser combinados livremente — header, content e footer são todos opcionais.
+
+## Variantes
+
+<CardVariantsDemo />
+
+| Variante | Quando usar |
+|---|---|
+| `default` | Uso geral — dashboards, listas de itens |
+| `elevated` | Destaques e features com maior hierarquia visual |
+| `ghost` | Agrupamento sutil sem peso visual excessivo |
+| `outline` | Borda explícita com fundo transparente |
+
+## Composição
+
+<CardCompositionDemo />
+
+Cards seguem um padrão de composição com sub-componentes encaixáveis:
+
+```tsx
+<Card>
+  <CardHeader>
+    <CardTitle>Título</CardTitle>
+    <CardDescription>Descrição complementar</CardDescription>
+  </CardHeader>
+  <CardContent>
+    {/* conteúdo livre */}
+  </CardContent>
+  <CardFooter>
+    <Button size="sm">Ação</Button>
+  </CardFooter>
+</Card>
+```
+
+## Exemplo de produto
+
+Cards com ícone, badge e CTA — padrão de catálogo de serviços.
+
+<CardProductsDemo />
+
+## Card horizontal
+
+Para listas compactas com dados estruturados.
+
+<CardHorizontalDemo />
+
+## Props — Card
+
+<TokenTable
+  columns={['Prop', 'Tipo', 'Default', 'Descrição']}
+  rows={[
+    ['variant', "'default' | 'elevated' | 'ghost' | 'outline'", "'default'", 'Estilo visual do container'],
+    ['className', 'string', '—', 'Classes extras via cn()'],
+    ['...div', 'HTMLAttributes<HTMLDivElement>', '—', 'Todos os atributos nativos de div'],
+  ]}
+/>
+
+## Sub-componentes
+
+| Componente | Comportamento padrão |
+|---|---|
+| `CardHeader` | `px-6 pt-6 pb-4` — cabeçalho sem divisor |
+| `CardTitle` | `font-heading`, medium, `text-neutral-50` |
+| `CardDescription` | `text-sm text-neutral-400` |
+| `CardContent` | `px-6 py-4 flex-1` — cresce para ocupar espaço disponível |
+| `CardFooter` | `px-6 pt-4 pb-6` com `border-t` automático |
+
+## Uso
+
+```tsx
+import {
+  Card,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+  CardContent,
+  CardFooter,
+} from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+
+export function PlanCard() {
+  return (
+    <Card variant="elevated" className="max-w-xs">
+      <CardHeader>
+        <CardTitle>Plano Pro</CardTitle>
+        <CardDescription>Para agências que precisam de escala.</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <p className="text-3xl font-semibold text-neutral-50">
+          R$ 99<span className="text-sm font-normal text-neutral-400">/mês</span>
+        </p>
+      </CardContent>
+      <CardFooter>
+        <Button className="w-full">Assinar agora</Button>
+      </CardFooter>
+    </Card>
+  );
+}
+```

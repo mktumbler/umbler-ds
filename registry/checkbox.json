@@ -1,0 +1,9 @@
+{
+  "name": "checkbox",
+  "type": "registry:ui",
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "description": "Controle de seleção binária com aparência personalizada via Tailwind, suporte a indeterminate, estado de erro e grupos com labels e descriptions.",
+  "dependencies": ["@phosphor-icons/react"],
+  "registryDependencies": [],
+  "files": [{ "path": "components/ui/checkbox.tsx", "type": "registry:ui" }]
+}

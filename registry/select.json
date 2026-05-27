@@ -1,0 +1,9 @@
+{
+  "name": "select",
+  "type": "registry:ui",
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "description": "Dropdown nativo estilizado com appearance-none, caret customizado e estados default/error/success.",
+  "dependencies": ["class-variance-authority", "@phosphor-icons/react"],
+  "registryDependencies": ["input"],
+  "files": [{ "path": "components/ui/select.tsx", "type": "registry:ui" }]
+}

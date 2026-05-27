@@ -1,0 +1,78 @@
+---
+title: Avatar
+description: Representação visual do usuário — foto, iniciais ou ícone de fallback, com suporte a grupos sobrepostos.
+---
+
+import { AvatarSizesDemo, AvatarFallbacksDemo, AvatarGroupDemo } from '@/components/demos/avatar-variants';
+
+O `Avatar` exibe a identidade do usuário em três níveis de fallback: foto → iniciais → ícone. Use `AvatarGroup` para representar múltiplos participantes de forma compacta.
+
+## Tamanhos
+
+<ComponentPreview title="Sizes">
+  <AvatarSizesDemo />
+</ComponentPreview>
+
+## Fallbacks
+
+<ComponentPreview title="Foto / Iniciais / Ícone">
+  <AvatarFallbacksDemo />
+</ComponentPreview>
+
+## Avatar Group
+
+<ComponentPreview title="Avatar Group (max=3)">
+  <AvatarGroupDemo />
+</ComponentPreview>
+
+## Props — Avatar
+
+<TokenTable
+  columns={['Prop', 'Tipo', 'Default', 'Descrição']}
+  rows={[
+    ['src', 'string', '—', 'URL da imagem. Ao falhar, usa o fallback'],
+    ['alt', 'string', '—', 'Texto alternativo da imagem'],
+    ['name', 'string', '—', 'Nome completo — gera até 2 iniciais'],
+    ['size', '"xs" | "sm" | "md" | "lg" | "xl"', '"md"', 'Tamanho: 24 / 32 / 40 / 48 / 64px'],
+    ['className', 'string', '—', 'Classes extras'],
+  ]}
+/>
+
+## Props — AvatarGroup
+
+<TokenTable
+  columns={['Prop', 'Tipo', 'Default', 'Descrição']}
+  rows={[
+    ['avatars', 'AvatarProps[]', '—', 'Lista de avatars'],
+    ['max', 'number', '—', 'Máximo de avatars visíveis; o resto vira "+N"'],
+    ['size', 'AvatarProps["size"]', '"md"', 'Tamanho aplicado a todos os avatars do grupo'],
+    ['className', 'string', '—', 'Classes extras no wrapper'],
+  ]}
+/>
+
+## Uso
+
+```tsx
+import { Avatar, AvatarGroup } from '@/components/ui/avatar';
+
+// Com foto
+<Avatar src="/foto.jpg" name="Ana Lima" size="md" />
+
+// Apenas iniciais
+<Avatar name="Bruno Costa" size="lg" />
+
+// Sem dados (ícone)
+<Avatar size="sm" />
+
+// Grupo com overflow
+<AvatarGroup
+  avatars={[
+    { name: 'Ana Lima', src: '/a.jpg' },
+    { name: 'Bruno Costa' },
+    { name: 'Carla Dias' },
+    { name: 'Diego Melo' },
+  ]}
+  max={3}
+  size="sm"
+/>
+```

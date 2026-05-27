@@ -1,0 +1,49 @@
+---
+title: Radio
+description: Controle de seleção exclusiva em grupos, com orientação vertical ou horizontal.
+---
+
+Radio usa a API nativa `<input type="radio">` com `appearance-none` e um dot central animado via classes `peer-*` do Tailwind. Use `RadioGroup` para agrupar opções semanticamente.
+
+## Grupo vertical com descriptions
+
+<RadioGroupDemo />
+
+## Orientação horizontal
+
+<RadioOrientationDemo />
+
+## Composição
+
+```tsx
+import { Radio, RadioGroup } from '@/components/ui/radio';
+
+<RadioGroup label="Plano" orientation="vertical">
+  <Radio name="plan" value="starter" label="Starter" description="Para projetos pessoais." />
+  <Radio name="plan" value="pro" label="Pro" description="Para agências e times." defaultChecked />
+  <Radio name="plan" value="enterprise" label="Enterprise" disabled />
+</RadioGroup>
+```
+
+## Props — Radio
+
+<TokenTable
+  columns={['Prop', 'Tipo', 'Default', 'Descrição']}
+  rows={[
+    ['label',       'string',              '—',     'Texto principal ao lado do radio'],
+    ['description', 'string',              '—',     'Texto auxiliar abaixo do label'],
+    ['disabled',    'boolean',             'false', 'Desabilita o radio'],
+    ['...input',    'InputHTMLAttributes', '—',     'Todos os atributos nativos de input'],
+  ]}
+/>
+
+## Props — RadioGroup
+
+<TokenTable
+  columns={['Prop', 'Tipo', 'Default', 'Descrição']}
+  rows={[
+    ['label',       'string',                        '—',          'Título do grupo'],
+    ['orientation', "'horizontal' | 'vertical'",    "'vertical'", 'Direção de layout dos itens'],
+    ['...div',      'HTMLAttributes<HTMLDivElement>', '—',          'Atributos nativos de div'],
+  ]}
+/>

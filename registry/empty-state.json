@@ -1,0 +1,9 @@
+{
+  "name": "empty-state",
+  "type": "registry:ui",
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "description": "Estado vazio com ícone, título, descrição e ação — tamanho card ou page.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [{ "path": "components/ui/empty-state.tsx", "type": "registry:ui" }]
+}

@@ -1,0 +1,62 @@
+---
+title: Motion
+description: Durações e curvas de easing para transições intencionais.
+---
+
+Motion no Umbler DS é discreto e funcional. Toda transição deve ter um propósito — feedback de ação, mudança de estado, orientação de fluxo.
+
+## Durations
+
+<DurationDemo />
+
+<TokenTable
+  columns={['Nome', 'Valor', 'Token']}
+  rows={[
+    ['Fast',   '150ms', '--duration-fast'],
+    ['Normal', '250ms', '--duration-normal'],
+    ['Slow',   '400ms', '--duration-slow'],
+    ['Slower', '600ms', '--duration-slower'],
+  ]}
+/>
+
+## Easing curves
+
+Todas as curvas abaixo rodam com `600ms` para facilitar a comparação visual.
+
+<EasingDemo />
+
+<TokenTable
+  columns={['Curva', 'Valor', 'Uso']}
+  rows={[
+    ['ease-out',     'cubic-bezier(0.22, 1, 0.36, 1)',    'Entradas — modais abrindo, elementos aparecendo'],
+    ['ease-in-out',  'cubic-bezier(0.45, 0, 0.55, 1)',    'Transições contínuas — toggles, slides'],
+    ['ease-spring',  'cubic-bezier(0.34, 1.56, 0.64, 1)', 'Bounce sutil — confirmações, sucessos'],
+  ]}
+/>
+
+## Guidelines
+
+<TokenTable
+  columns={['Caso de uso', 'Duração', 'Token']}
+  rows={[
+    ['Hover feedback, tooltips',                   '150ms', '--duration-fast'],
+    ['Button press, focus rings, dropdowns',       '250ms', '--duration-normal'],
+    ['Modal open, drawer slide, page transitions', '400ms', '--duration-slow'],
+    ['Onboarding animations, splash screens',      '600ms', '--duration-slower'],
+  ]}
+/>
+
+## Princípios
+
+1. **Nunca acima de 600ms** em UI funcional. Animações longas frustram usuários repetidos.
+2. **Sempre `ease-out` para entradas** — sensação de chegada natural.
+3. **Use `prefers-reduced-motion`** para respeitar acessibilidade:
+
+```css
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+```

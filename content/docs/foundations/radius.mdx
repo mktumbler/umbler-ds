@@ -1,0 +1,26 @@
+---
+title: Border Radius
+description: Cantos arredondados — do sutil ao totalmente circular.
+---
+
+O Umbler DS usa cinco níveis de radius. **MD (10px)** é o padrão da maioria dos componentes de UI (inputs, botões, cards).
+
+<RadiusShowcase
+  items={[
+    { name: 'SM',   value: '0.375rem', token: '--radius-sm' },
+    { name: 'MD',   value: '0.625rem', token: '--radius-md' },
+    { name: 'LG',   value: '1rem',     token: '--radius-lg' },
+    { name: 'XL',   value: '1.5rem',   token: '--radius-xl' },
+    { name: 'Full', value: '9999px',   token: '--radius-full' },
+  ]}
+/>
+
+## Guideline de uso
+
+| Token | Uso recomendado |
+|---|---|
+| `rounded-sm` | Tags inline, badges pequenas, indicadores |
+| `rounded-md` | **Padrão** — botões, inputs, cards, modais |
+| `rounded-lg` | Cards de destaque, hero containers |
+| `rounded-xl` | Containers grandes, painéis de marketing |
+| `rounded-full` | Avatares, pills, dots, círculos |

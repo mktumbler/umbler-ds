@@ -1,0 +1,65 @@
+---
+title: Checkbox
+description: Controle de seleção binária com suporte a estados indeterminate, erro e grupos.
+---
+
+Checkbox usa a API nativa `<input type="checkbox">` com `appearance-none` e classes `peer-*` do Tailwind para a aparência personalizada. Suporta os estados `checked`, `indeterminate` e `disabled` sem JavaScript extra (exceto `indeterminate`, que requer uma ref no cliente).
+
+## Estados
+
+<CheckboxStatesDemo />
+
+## Indeterminate
+
+O estado `indeterminate` requer uma ref em um client component — use `CheckboxIndeterminateDemo` como referência.
+
+<CheckboxIndeterminateDemo />
+
+## Grupo com labels e descriptions
+
+<CheckboxGroupDemo />
+
+## Estado de erro
+
+<CheckboxErrorDemo />
+
+## Composição
+
+```tsx
+import { Checkbox } from '@/components/ui/checkbox';
+
+// Simples
+<Checkbox label="Aceito os termos de uso" />
+
+// Com description e estado de erro
+<Checkbox
+  state="error"
+  label="Aceito os termos de uso"
+  description="Você precisa aceitar os termos para continuar."
+/>
+
+// Indeterminate (client component)
+'use client';
+import { useEffect, useRef } from 'react';
+
+function IndeterminateExample() {
+  const ref = useRef<HTMLInputElement>(null);
+  useEffect(() => {
+    if (ref.current) ref.current.indeterminate = true;
+  }, []);
+  return <input ref={ref} type="checkbox" />;
+}
+```
+
+## Props — Checkbox
+
+<TokenTable
+  columns={['Prop', 'Tipo', 'Default', 'Descrição']}
+  rows={[
+    ['label',       'string',                  '—',         'Texto principal ao lado do checkbox'],
+    ['description', 'string',                  '—',         'Texto auxiliar abaixo do label'],
+    ['state',       "'default' | 'error'",     "'default'", 'Estado de validação visual'],
+    ['disabled',    'boolean',                 'false',     'Desabilita o checkbox'],
+    ['...input',    'InputHTMLAttributes',     '—',         'Todos os atributos nativos de input'],
+  ]}
+/>

@@ -1,0 +1,29 @@
+interface RadiusItem {
+  name: string;
+  value: string;
+  token: string;
+}
+
+interface RadiusShowcaseProps {
+  items: RadiusItem[];
+}
+
+export function RadiusShowcase({ items }: RadiusShowcaseProps) {
+  return (
+    <div className="not-prose grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 my-6">
+      {items.map((i) => (
+        <div key={i.name} className="flex flex-col items-center gap-2 text-sm">
+          <div
+            className="w-20 h-20 bg-[#1a5cff]/15 border border-[#1a5cff]/40"
+            style={{ borderRadius: i.value }}
+          />
+          <div className="flex flex-col items-center">
+            <span className="font-medium">{i.name}</span>
+            <code className="text-xs opacity-60">{i.value}</code>
+            <code className="text-xs opacity-50 mt-0.5">{i.token}</code>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}

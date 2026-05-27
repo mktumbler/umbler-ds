@@ -1,0 +1,48 @@
+---
+title: Empty State
+description: Estado vazio com ícone, título, descrição e ação opcional.
+---
+
+Empty States comunicam ausência de dados de forma clara e orientam o usuário para a próxima ação. Use dentro de cards, tabelas, painéis ou como tela cheia (`size="page"`).
+
+## Exemplos
+
+<EmptyStateExamplesDemo />
+
+## Sem ícone
+
+<EmptyStateSimpleDemo />
+
+## Uso
+
+```tsx
+import { EmptyState } from '@/components/ui/empty-state';
+import { Button } from '@/components/ui/button';
+import { FolderOpen, Plus } from '@phosphor-icons/react/dist/ssr';
+
+<EmptyState
+  icon={<FolderOpen size={24} />}
+  title="Nenhum site ainda"
+  description="Crie seu primeiro site e comece a publicar em minutos."
+  action={
+    <Button size="sm">
+      <Plus size={16} />
+      Criar site
+    </Button>
+  }
+/>
+```
+
+## Props
+
+<TokenTable
+  columns={['Prop', 'Tipo', 'Default', 'Descrição']}
+  rows={[
+    ['title',       'string',    '—',        'Título principal (obrigatório)'],
+    ['description', 'string',    '—',        'Texto explicativo'],
+    ['icon',        'ReactNode', '—',        'Ícone — recomendado 24px de Phosphor'],
+    ['action',      'ReactNode', '—',        'Botão ou link de CTA'],
+    ['size',        "'card' | 'page'", "'card'", 'page = tela cheia, card = dentro de container'],
+    ['className',   'string',    '—',        'Classes extras'],
+  ]}
+/>

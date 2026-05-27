@@ -1,0 +1,9 @@
+{
+  "name": "toggle",
+  "type": "registry:ui",
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "description": "Switch acessível com button role=switch, track e thumb animados. Suporta controlled e uncontrolled, dois tamanhos (sm, md) e estado desabilitado.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [{ "path": "components/ui/toggle.tsx", "type": "registry:ui" }]
+}

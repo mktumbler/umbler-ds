@@ -1,0 +1,91 @@
+---
+title: Button
+description: Elemento de ação primária do Umbler DS — 5 variantes, 4 tamanhos, suporte a ícones e estado de loading.
+---
+
+import {
+  ButtonVariantsDemo,
+  ButtonSizesDemo,
+  ButtonIconsDemo,
+  ButtonStatesDemo,
+} from '@/components/demos/button-variants';
+
+O `Button` cobre todas as ações do produto: confirmação, cancelamento, ações destrutivas e navegação. Sem dependência de Radix — React + Tailwind puro.
+
+## Variantes
+
+<ComponentPreview title="Variants">
+  <ButtonVariantsDemo />
+</ComponentPreview>
+
+| Variante    | Uso                                      |
+| ----------- | ---------------------------------------- |
+| `primary`   | Ação principal da tela (CTA)             |
+| `secondary` | Ação secundária, cancelamento            |
+| `ghost`     | Ação terciária, toolbars, ícones inline  |
+| `outline`   | Alternativa ao secondary em fundos claros |
+| `danger`    | Ações destrutivas (excluir, revogar)     |
+
+## Tamanhos
+
+<ComponentPreview title="Sizes">
+  <ButtonSizesDemo />
+</ComponentPreview>
+
+| Prop       | Altura | Padding H | Uso típico             |
+| ---------- | ------ | --------- | ---------------------- |
+| `size="sm"` | 32px  | 12px      | Tabelas, inline        |
+| `size="md"` | 40px  | 16px      | Padrão (default)       |
+| `size="lg"` | 48px  | 20px      | Formulários, modais    |
+| `size="xl"` | 56px  | 24px      | Hero, onboarding       |
+
+## Com ícones
+
+Use os ícones do `@phosphor-icons/react`. Para botão só com ícone, passe `iconOnly` e um `aria-label`.
+
+<ComponentPreview title="With Icons">
+  <ButtonIconsDemo />
+</ComponentPreview>
+
+## Estados
+
+<ComponentPreview title="States">
+  <ButtonStatesDemo />
+</ComponentPreview>
+
+| Prop / Estado | Comportamento                                 |
+| ------------- | --------------------------------------------- |
+| `loading`     | Mostra spinner, desabilita o botão            |
+| `disabled`    | Opacity 50%, pointer-events desativado        |
+
+## Uso
+
+```tsx
+import { Button } from '@/components/ui/button';
+
+// Básico
+<Button>Salvar</Button>
+
+// Variante e tamanho
+<Button variant="danger" size="lg">Excluir conta</Button>
+
+// Com loading
+<Button loading>Salvando...</Button>
+
+// Icon only
+<Button variant="ghost" iconOnly aria-label="Configurações">
+  <Gear size={20} />
+</Button>
+```
+
+## Props
+
+| Prop       | Tipo                                                  | Padrão      |
+| ---------- | ----------------------------------------------------- | ----------- |
+| `variant`  | `primary \| secondary \| ghost \| outline \| danger`  | `primary`   |
+| `size`     | `sm \| md \| lg \| xl`                                | `md`        |
+| `loading`  | `boolean`                                             | `false`     |
+| `iconOnly` | `boolean`                                             | `false`     |
+| `disabled` | `boolean`                                             | `false`     |
+
+Aceita todos os atributos nativos de `<button>`.

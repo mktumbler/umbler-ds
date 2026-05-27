@@ -1,0 +1,9 @@
+{
+  "name": "separator",
+  "type": "registry:ui",
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "description": "Divisor visual horizontal, vertical ou com label central.",
+  "dependencies": ["class-variance-authority"],
+  "registryDependencies": [],
+  "files": [{ "path": "components/ui/separator.tsx", "type": "registry:ui" }]
+}

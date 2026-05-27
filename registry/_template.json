@@ -1,0 +1,15 @@
+{
+  "name": "_template",
+  "type": "registry:ui",
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "description": "Template for registry items. Cada componente da Onda 2+ entra aqui como <component>.json.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/ui/_template.tsx",
+      "type": "registry:ui",
+      "content": "// Component source vai aqui — inline como string."
+    }
+  ]
+}

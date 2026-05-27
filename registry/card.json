@@ -1,0 +1,14 @@
+{
+  "name": "card",
+  "type": "registry:ui",
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "description": "Container de conteúdo com 4 variantes (default, elevated, ghost, outline) e sub-componentes CardHeader, CardTitle, CardDescription, CardContent e CardFooter.",
+  "dependencies": ["class-variance-authority"],
+  "registryDependencies": [],
+  "files": [
+    {
+      "path": "components/ui/card.tsx",
+      "type": "registry:ui"
+    }
+  ]
+}

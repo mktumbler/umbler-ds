@@ -1,0 +1,9 @@
+{
+  "name": "alert",
+  "type": "registry:ui",
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "description": "Banner de feedback com 4 variantes semânticas (info, success, warning, error), título, ícone e suporte a dismiss.",
+  "dependencies": ["class-variance-authority", "@phosphor-icons/react"],
+  "registryDependencies": [],
+  "files": [{ "path": "components/ui/alert.tsx", "type": "registry:ui" }]
+}

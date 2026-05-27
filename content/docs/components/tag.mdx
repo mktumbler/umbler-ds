@@ -1,0 +1,52 @@
+---
+title: Tag
+description: Badge removível para seleções múltiplas, filtros e campos de entrada de tags.
+---
+
+import { TagVariantsDemo, TagInputDemo } from '@/components/demos/tag-variants';
+
+A `Tag` é como um Badge, mas inclui um botão de remoção. Use em campos de multi-seleção, filtros ativos e listas de palavras-chave editáveis pelo usuário.
+
+## Variantes com remoção
+
+<ComponentPreview title="Removable Tags">
+  <TagVariantsDemo />
+</ComponentPreview>
+
+## Campo de tags (TagInput)
+
+<ComponentPreview title="Tag Input">
+  <TagInputDemo />
+</ComponentPreview>
+
+## Props
+
+<TokenTable
+  columns={['Prop', 'Tipo', 'Default', 'Descrição']}
+  rows={[
+    ['variant', '"brand" | "success" | "warning" | "error" | "neutral"', '"neutral"', 'Cor semântica da tag'],
+    ['size', '"sm" | "md"', '"md"', 'Tamanho: sm = 11px, md = 12px'],
+    ['onRemove', '() => void', '—', 'Callback ao clicar no botão ×. Se ausente, o botão não é renderizado'],
+    ['disabled', 'boolean', 'false', 'Desabilita o botão de remoção'],
+    ['className', 'string', '—', 'Classes extras'],
+  ]}
+/>
+
+## Uso
+
+```tsx
+import { Tag } from '@/components/ui/tag';
+
+// Tag simples (sem remoção)
+<Tag variant="brand">Next.js</Tag>
+
+// Tag removível
+<Tag variant="brand" onRemove={() => removeTag('Next.js')}>
+  Next.js
+</Tag>
+
+// Desabilitada
+<Tag variant="neutral" onRemove={() => {}} disabled>
+  Locked
+</Tag>
+```

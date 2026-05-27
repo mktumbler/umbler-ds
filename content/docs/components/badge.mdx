@@ -1,0 +1,54 @@
+---
+title: Badge
+description: Rótulo compacto para status, categorias e contadores — 5 variantes semânticas e suporte a dot indicator.
+---
+
+import { BadgeVariantsDemo, BadgeSizesDemo, BadgeDotsDemo } from '@/components/demos/badge-variants';
+
+O `Badge` é usado para classificar ou indicar o status de um item. Use variantes semânticas (`success`, `error`, `warning`) para estados do sistema e `brand` ou `neutral` para categorização.
+
+## Variantes
+
+<ComponentPreview title="Variants">
+  <BadgeVariantsDemo />
+</ComponentPreview>
+
+## Tamanhos
+
+<ComponentPreview title="Sizes — sm e md por variante">
+  <BadgeSizesDemo />
+</ComponentPreview>
+
+## Com dot indicator
+
+<ComponentPreview title="Dot Indicator">
+  <BadgeDotsDemo />
+</ComponentPreview>
+
+## Props
+
+<TokenTable
+  columns={['Prop', 'Tipo', 'Default', 'Descrição']}
+  rows={[
+    ['variant', '"brand" | "success" | "warning" | "error" | "neutral"', '"neutral"', 'Cor semântica do badge'],
+    ['size', '"sm" | "md"', '"md"', 'Tamanho: sm = 11px, md = 12px'],
+    ['dot', 'boolean', 'false', 'Exibe um círculo colorido antes do texto'],
+    ['className', 'string', '—', 'Classes extras'],
+  ]}
+/>
+
+## Uso
+
+```tsx
+import { Badge } from '@/components/ui/badge';
+
+// Status
+<Badge variant="success">Ativo</Badge>
+<Badge variant="error">Cancelado</Badge>
+
+// Com dot
+<Badge variant="warning" dot>Em revisão</Badge>
+
+// Tamanho pequeno
+<Badge variant="brand" size="sm">Novo</Badge>
+```

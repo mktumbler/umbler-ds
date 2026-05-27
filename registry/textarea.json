@@ -1,0 +1,9 @@
+{
+  "name": "textarea",
+  "type": "registry:ui",
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "description": "Campo de texto multilinha com estados de validação (default, error, success) e controle de resize. Reutiliza InputLabel, InputHint e InputGroup do componente Input.",
+  "dependencies": ["class-variance-authority"],
+  "registryDependencies": ["input"],
+  "files": [{ "path": "components/ui/textarea.tsx", "type": "registry:ui" }]
+}

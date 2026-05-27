@@ -1,0 +1,9 @@
+{
+  "name": "radio",
+  "type": "registry:ui",
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "description": "Controle de seleção exclusiva com dot central animado. Inclui RadioGroup para agrupamento com orientação vertical ou horizontal.",
+  "dependencies": [],
+  "registryDependencies": [],
+  "files": [{ "path": "components/ui/radio.tsx", "type": "registry:ui" }]
+}

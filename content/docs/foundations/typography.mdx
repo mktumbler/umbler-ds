@@ -1,0 +1,107 @@
+---
+title: Typography
+description: Inter como tipografia primária, JetBrains Mono para código.
+---
+
+A tipografia Umbler usa **P22 Mackinac** para títulos — uma serifada com personalidade editorial — **Inter** para textos de UI e corpo, e **JetBrains Mono** para código.
+
+## Type Scale
+
+A escala é projetada para hierarquia clara em dashboards e páginas de marketing.
+
+<TypeScale
+  rows={[
+    {
+      name: 'Display',
+      size: '4.5rem',
+      weight: 500,
+      font: 'heading',
+      sample: 'Umbler Premium',
+    },
+    {
+      name: 'H1',
+      size: '3rem',
+      weight: 500,
+      font: 'heading',
+      sample: 'Build something great',
+    },
+    {
+      name: 'H2',
+      size: '2.25rem',
+      weight: 500,
+      font: 'heading',
+      sample: 'Designed for scale',
+    },
+    {
+      name: 'H3',
+      size: '1.75rem',
+      weight: 500,
+      font: 'heading',
+      sample: 'Cloud hosting made simple',
+    },
+    {
+      name: 'H4',
+      size: '1.375rem',
+      weight: 500,
+      font: 'heading',
+      sample: 'Professional email for your business',
+    },
+    {
+      name: 'Body Large',
+      size: '1.125rem',
+      weight: 400,
+      sample:
+        'Infraestrutura confiável para agências e empresas que precisam de performance real.',
+    },
+    {
+      name: 'Body',
+      size: '1rem',
+      weight: 400,
+      sample:
+        'Somos perfeitos para as necessidades atuais da sua agência. Hospedagem WordPress com deploy fácil e suporte de verdade.',
+    },
+    {
+      name: 'Body Small',
+      size: '0.875rem',
+      weight: 400,
+      sample: 'Configuração completa em minutos. Sem surpresas na cobrança.',
+    },
+    {
+      name: 'Caption',
+      size: '0.75rem',
+      weight: 500,
+      sample: 'PLANO RECOMENDADO · MAIS POPULAR',
+    },
+    {
+      name: 'Code',
+      size: '0.875rem',
+      weight: 400,
+      font: 'mono',
+      sample: "const deploy = await umbler.createSite({ framework: 'next' })",
+    },
+  ]}
+/>
+
+## Famílias
+
+| Família | Uso | Token |
+|---|---|---|
+| P22 Mackinac | Títulos (Display, H1–H4) | `--font-heading` |
+| Inter | UI, body, labels | `--font-sans` |
+| JetBrains Mono | Código, terminais, dados estruturados | `--font-mono` |
+
+## Tokens
+
+Cada step da escala tem um token semântico Tailwind v4:
+
+```css
+text-display   /* 72px / 700 */
+text-h1        /* 48px / 700 */
+text-h2        /* 36px / 600 */
+text-h3        /* 28px / 600 */
+text-h4        /* 22px / 600 */
+text-body-lg   /* 18px / 400 */
+text-body      /* 16px / 400 */
+text-body-sm   /* 14px / 400 */
+text-caption   /* 12px / 500 */
+```

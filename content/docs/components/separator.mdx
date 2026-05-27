@@ -1,0 +1,38 @@
+---
+title: Separator
+description: Divisor visual horizontal, vertical ou com label central.
+---
+
+Separa seções de conteúdo com uma linha discreta. Suporta orientação horizontal e vertical, além de um label central para divisores textuais.
+
+## Exemplos
+
+<SeparatorDemo />
+
+```tsx
+import { Separator } from '@/components/ui/separator';
+
+// Horizontal
+<Separator />
+
+// Com label
+<Separator label="ou continue com" />
+
+// Vertical (dentro de um flex container com altura definida)
+<div className="flex items-center h-8">
+  <span>Esquerda</span>
+  <Separator orientation="vertical" />
+  <span>Direita</span>
+</div>
+```
+
+## Props
+
+<TokenTable
+  columns={['Prop', 'Tipo', 'Default', 'Descrição']}
+  rows={[
+    ['orientation', "'horizontal' | 'vertical'", "'horizontal'", 'Direção do separador'],
+    ['label',       'string',                    '—',            'Texto central (só horizontal)'],
+    ['className',   'string',                    '—',            'Classes extras'],
+  ]}
+/>

@@ -1,0 +1,126 @@
+---
+title: Colors
+description: Paleta de cores Umbler — primárias, neutras e semânticas.
+---
+
+A paleta Umbler é ancorada no **azul profundo** e em uma escala neutra densa, pensada para experiências digitais premium em dark mode (modo padrão).
+
+Todos os tokens são exportados como CSS custom properties (`--color-*`) e ficam disponíveis como classes utilitárias do Tailwind (`bg-brand-500`, `text-neutral-100`, etc.).
+
+## Primary — Umbler Blue
+
+O azul é a cor de marca. Use **500** como cor principal (botões primários, links, focus rings) e **400** para hover states.
+
+<ColorPalette
+  title="Brand / Primary"
+  description="A escala completa do azul Umbler."
+  prefix="brand"
+  scale={[
+    { step: '50',  value: '#EBF1FF' },
+    { step: '100', value: '#D0DFFF' },
+    { step: '200', value: '#A3C0FF' },
+    { step: '300', value: '#6B99FF' },
+    { step: '400', value: '#3D74FF' },
+    { step: '500', value: '#1A5CFF', emphasis: true },
+    { step: '600', value: '#0044D9' },
+    { step: '700', value: '#0033B0' },
+    { step: '800', value: '#002488' },
+    { step: '900', value: '#001866' },
+  ]}
+/>
+
+## Neutral — Surface & Background
+
+A escala neutra é projetada para dark mode. **950** é o fundo principal; **900** e **800** são surfaces; **100** e **50** são texto sobre dark.
+
+<ColorPalette
+  title="Neutral"
+  description="Escala de surface — do fundo mais profundo ao texto mais claro."
+  prefix="neutral"
+  scale={[
+    { step: '950', value: '#030614' },
+    { step: '900', value: '#0A0F20' },
+    { step: '800', value: '#111733' },
+    { step: '700', value: '#1A2240' },
+    { step: '600', value: '#2A3356' },
+    { step: '500', value: '#4A5278' },
+    { step: '400', value: '#6E7799' },
+    { step: '300', value: '#959FBF' },
+    { step: '200', value: '#C4CAE0' },
+    { step: '100', value: '#E8EAF2' },
+    { step: '50',  value: '#F4F5FA' },
+  ]}
+/>
+
+## Semantic Colors
+
+Cores semânticas seguem o padrão oficial da Umbler (Frontify). Use **500** como cor padrão de cada estado.
+
+<ColorPalette
+  title="Success"
+  prefix="success"
+  scale={[
+    { step: '50',  value: '#E8FCE8' },
+    { step: '100', value: '#D0F5D0' },
+    { step: '300', value: '#9CD99C' },
+    { step: '500', value: '#5CB85C', emphasis: true },
+    { step: '600', value: '#438C43' },
+    { step: '900', value: '#316631' },
+  ]}
+/>
+
+<ColorPalette
+  title="Warning"
+  prefix="warning"
+  scale={[
+    { step: '50',  value: '#FFFAEB' },
+    { step: '100', value: '#FAF1D4' },
+    { step: '300', value: '#F5DF9F' },
+    { step: '500', value: '#F2C94E', emphasis: true },
+    { step: '600', value: '#BF9D36' },
+    { step: '900', value: '#A6882E' },
+  ]}
+/>
+
+<ColorPalette
+  title="Error / Danger"
+  prefix="error"
+  scale={[
+    { step: '50',  value: '#FFF1F0' },
+    { step: '100', value: '#FAD7D4' },
+    { step: '300', value: '#F29C96' },
+    { step: '500', value: '#F2594E', emphasis: true },
+    { step: '600', value: '#C24036' },
+    { step: '900', value: '#9C2F27' },
+  ]}
+/>
+
+## Brand Gradient
+
+O gradient de marca é usado em hero sections, destaques e elementos decorativos pontuais.
+
+<ComponentPreview title="Brand gradient" background="dark">
+  <div
+    style={{
+      width: '100%',
+      maxWidth: '480px',
+      height: '120px',
+      borderRadius: '0.625rem',
+      background: 'linear-gradient(90deg, #8BBCF8 0%, #F8C4B8 100%)',
+    }}
+  />
+</ComponentPreview>
+
+```css
+--gradient-brand: linear-gradient(90deg, #8BBCF8 0%, #F8C4B8 100%);
+```
+
+## Usando no código
+
+```tsx
+// Como classe utilitária Tailwind
+<div className="bg-brand-500 text-neutral-50">Hello Umbler</div>
+
+// Como CSS variable
+<div style={{ background: 'var(--color-brand-500)' }}>Hello Umbler</div>
+```

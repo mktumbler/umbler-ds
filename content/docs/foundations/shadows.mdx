@@ -1,0 +1,28 @@
+---
+title: Elevation & Shadows
+description: Sombras em camadas para elevação sutil em dark mode.
+---
+
+As sombras Umbler são otimizadas para superfícies escuras — opacidade alta, dispersão controlada, sem o "halo cinza" típico de shadows light mode aplicados em dark.
+
+<ShadowShowcase
+  items={[
+    { name: 'XS',   token: '--shadow-xs',   value: '0 1px 2px 0 rgb(0 0 0 / 0.3)' },
+    { name: 'SM',   token: '--shadow-sm',   value: '0 1px 3px 0 rgb(0 0 0 / 0.35), 0 1px 2px -1px rgb(0 0 0 / 0.3)' },
+    { name: 'MD',   token: '--shadow-md',   value: '0 4px 6px -1px rgb(0 0 0 / 0.4), 0 2px 4px -2px rgb(0 0 0 / 0.35)' },
+    { name: 'LG',   token: '--shadow-lg',   value: '0 10px 15px -3px rgb(0 0 0 / 0.45), 0 4px 6px -4px rgb(0 0 0 / 0.4)' },
+    { name: 'XL',   token: '--shadow-xl',   value: '0 20px 25px -5px rgb(0 0 0 / 0.5), 0 8px 10px -6px rgb(0 0 0 / 0.4)' },
+    { name: 'Glow', token: '--shadow-glow', value: '0 0 32px 0 rgb(26 92 255 / 0.35)' },
+  ]}
+/>
+
+## Quando usar cada um
+
+| Token | Uso |
+|---|---|
+| `shadow-xs` | Hover sutil em itens de lista |
+| `shadow-sm` | Cards estáticos, botões em repouso |
+| `shadow-md` | Dropdowns, popovers, tooltips |
+| `shadow-lg` | Modals, sheets, command palette |
+| `shadow-xl` | Elementos elevados máximos (alert dialogs) |
+| `shadow-glow` | Estados de foco, CTAs primários, destaque de marca |

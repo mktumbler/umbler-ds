@@ -1,0 +1,64 @@
+---
+title: Spacing
+description: Escala de espaçamento baseada em unidade de 4px.
+---
+
+Todo espaçamento no Umbler DS deriva de múltiplos de **4px**. Isso garante alinhamento visual consistente em qualquer composição.
+
+## Escala
+
+<SpacingScale
+  items={[
+    { name: '0.5', px: 2,   token: '--spacing-0-5' },
+    { name: '1',   px: 4,   token: '--spacing-1' },
+    { name: '1.5', px: 6,   token: '--spacing-1-5' },
+    { name: '2',   px: 8,   token: '--spacing-2' },
+    { name: '2.5', px: 10,  token: '--spacing-2-5' },
+    { name: '3',   px: 12,  token: '--spacing-3' },
+    { name: '4',   px: 16,  token: '--spacing-4' },
+    { name: '5',   px: 20,  token: '--spacing-5' },
+    { name: '6',   px: 24,  token: '--spacing-6' },
+    { name: '8',   px: 32,  token: '--spacing-8' },
+    { name: '10',  px: 40,  token: '--spacing-10' },
+    { name: '12',  px: 48,  token: '--spacing-12' },
+    { name: '16',  px: 64,  token: '--spacing-16' },
+    { name: '20',  px: 80,  token: '--spacing-20' },
+    { name: '24',  px: 96,  token: '--spacing-24' },
+    { name: '32',  px: 128, token: '--spacing-32' },
+  ]}
+/>
+
+## Grid & Layout
+
+| Token | Valor | Uso |
+|---|---|---|
+| `--container-max` | 1200px | Largura máxima do container principal |
+| `--grid-gutter` | 24px | Espaço entre colunas |
+| `--grid-margin` | 32px | Margem externa do grid |
+
+## Breakpoints
+
+| Nome | Min-width | Uso típico |
+|---|---|---|
+| xs | 0px | Mobile portrait |
+| sm | 640px | Mobile landscape |
+| md | 768px | Tablet |
+| lg | 1024px | Desktop (sidebar visível) |
+| xl | 1280px | Wide desktop |
+
+## Como usar
+
+Tailwind v4 expõe a escala automaticamente:
+
+```tsx
+<div className="p-4 gap-6 mt-12" />
+// p-4  → 16px padding
+// gap-6 → 24px gap
+// mt-12 → 48px margin-top
+```
+
+Para valores customizados com tokens semânticos, use CSS variables:
+
+```tsx
+<div style={{ padding: 'var(--spacing-6)' }} />
+```

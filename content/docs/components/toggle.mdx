@@ -1,0 +1,47 @@
+---
+title: Toggle
+description: Switch acessível com track animado, suporte a controlled e uncontrolled, e dois tamanhos.
+---
+
+Toggle renderiza um `<button role="switch">` semântico — não um input — com track e thumb animados via Tailwind. Suporta modo **controlled** (`checked` + `onChange`) e **uncontrolled** (`defaultChecked`).
+
+## Tamanhos
+
+<ToggleSizesDemo />
+
+## Com label e description
+
+<ToggleWithLabelDemo />
+
+## Estados
+
+<ToggleStatesDemo />
+
+## Composição
+
+```tsx
+import { Toggle } from '@/components/ui/toggle';
+
+// Uncontrolled
+<Toggle defaultChecked label="Notificações" description="Receba alertas por e-mail." />
+
+// Controlled
+const [enabled, setEnabled] = useState(false);
+<Toggle checked={enabled} onChange={setEnabled} label="Tema escuro" />
+```
+
+## Props — Toggle
+
+<TokenTable
+  columns={['Prop', 'Tipo', 'Default', 'Descrição']}
+  rows={[
+    ['checked',        'boolean',                  '—',      'Valor controlado (controlled mode)'],
+    ['defaultChecked', 'boolean',                  'false',  'Valor inicial (uncontrolled mode)'],
+    ['onChange',       '(checked: boolean) => void', '—',   'Callback ao alternar'],
+    ['disabled',       'boolean',                  'false',  'Desabilita o toggle'],
+    ['size',           "'sm' | 'md'",              "'md'",   'Tamanho do track e thumb'],
+    ['label',          'string',                   '—',      'Texto principal ao lado do toggle'],
+    ['description',    'string',                   '—',      'Texto auxiliar abaixo do label'],
+    ['className',      'string',                   '—',      'Classes extras no wrapper ou button'],
+  ]}
+/>

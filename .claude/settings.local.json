@@ -1,0 +1,28 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run *)",
+      "PowerShell(Get-Command py -ErrorAction SilentlyContinue)",
+      "Bash(node -e \"const m = require\\('./node_modules/fumadocs-mdx/dist/runtime/next/index.js'\\); console.log\\(Object.keys\\(m\\)\\)\")",
+      "Bash(npx fumadocs-mdx *)",
+      "Bash(npx tsc *)",
+      "Skill(update-config)",
+      "Skill(update-config:*)",
+      "Bash(node -e \"const m = require\\('./node_modules/fumadocs-mdx/dist/runtime/next/index.js'\\); const r = m._runtime; console.log\\('runtime keys:', Object.keys\\(r\\)\\); console.log\\('doc:', r.doc?.toString\\(\\).slice\\(0,200\\)\\); console.log\\('docs:', r.docs?.toString\\(\\).slice\\(0,200\\)\\)\")",
+      "Bash(node -e \"const src = require\\('fs'\\).readFileSync\\('./node_modules/fumadocs-core/dist/source/index.js', 'utf8'\\); const idx = src.indexOf\\('createOutput'\\); console.log\\(src.slice\\(idx, idx+1200\\)\\)\")",
+      "Bash(curl -s http://localhost:3000/docs)",
+      "Bash(curl -s http://localhost:3000/docs/foundations/colors)",
+      "Bash(python -c \"import sys,json; d=json.load\\(sys.stdin\\); deps={**d.get\\('dependencies',{}\\), **d.get\\('devDependencies',{}\\)}; [print\\(k\\) for k in sorted\\(deps\\) if 'radix' in k or 'phosphor' in k or 'cva' in k or 'class-variance' in k]\")",
+      "Bash(curl -s http://localhost:3000)",
+      "Bash(curl -s \"http://localhost:3000/docs/components/empty-state\")",
+      "Bash(findstr /i \"ModuleBuild\\\\|acorn\\\\|SyntaxError\\\\|Cannot\\\\|Error\")",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000/docs/components/empty-state)",
+      "Bash(curl -s -o /dev/null -w '%{http_code}' http://localhost:3000/__TRACKED_VAR__)",
+      "mcp__Claude_in_Chrome__tabs_context_mcp",
+      "Bash(git init *)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git checkout *)"
+    ]
+  }
+}
