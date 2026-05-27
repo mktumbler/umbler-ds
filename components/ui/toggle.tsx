@@ -66,9 +66,9 @@ export function Toggle({
       disabled={disabled}
       onClick={handleClick}
       className={cn(
-        'relative shrink-0 rounded-full transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950',
+        'relative shrink-0 rounded-full transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 focus-visible:ring-offset-surface',
         track,
-        isChecked ? 'bg-brand-500' : 'bg-neutral-700',
+        isChecked ? 'bg-brand-500' : 'bg-control-track',
         disabled && 'opacity-50 cursor-not-allowed',
         !disabled && 'cursor-pointer',
         !label && !description && className,
@@ -88,18 +88,16 @@ export function Toggle({
   if (!label && !description) return switchButton;
 
   return (
-    <div className={cn('flex items-start gap-3', className)}>
+    <div className={cn('flex items-center gap-3', className)}>
       {switchButton}
-      {/* pt-1.5 compensa a diferença entre o centro do switch (12 px) e
-          o centro visual do cap-height do label (~7 px) ≈ 5 px de offset */}
-      <div className="pt-1.5">
+      <div>
         {label && (
-          <p className="text-sm font-medium text-neutral-200 leading-none">{label}</p>
+          <span className="block text-sm font-medium text-foreground-secondary leading-none">{label}</span>
         )}
         {description && (
-          <p className={cn('text-xs text-neutral-500 leading-snug', label && 'mt-1')}>
+          <span className={cn('block text-xs text-foreground-muted leading-snug', label && 'mt-0.5')}>
             {description}
-          </p>
+          </span>
         )}
       </div>
     </div>

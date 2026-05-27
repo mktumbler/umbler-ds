@@ -12,33 +12,33 @@ import {
 /* ── Variações de rotação com blob sweep ─────────────────────── */
 export function CardAuroraRotationsDemo() {
   return (
-    <div className="flex flex-wrap gap-5">
+    <div className="grid grid-cols-3 gap-5">
       <CardAurora
         icon={<Lightning size={22} />}
-        label="Automação"
-        title="Agentes IA no WhatsApp"
-        description="Atendimento 24h sem parar, treinado com o seu negócio."
+        label="Agentes de IA"
+        title="IA com contexto, não com hype"
+        description="Treinado com o seu negócio. Opera no WhatsApp enquanto você escala."
         blob="sweep"
         rotation="default"
-        className="w-[300px] h-[260px]"
+        className="h-[260px]"
       />
       <CardAurora
         icon={<Globe size={22} />}
-        label="Domínios"
-        title="Registro e gestão"
-        description="Todos os TLDs com DNS gerenciado na Umbler."
+        label="Infraestrutura"
+        title="Sua operação à altura da ambição"
+        description="CRM, atendimento e automação conectados — sem fragmentação."
         blob="sweep"
         rotation="diagonal"
-        className="w-[300px] h-[260px]"
+        className="h-[260px]"
       />
       <CardAurora
         icon={<Sparkle size={22} />}
-        label="Animado"
-        title="Aurora contínuo"
-        description="SVG girando 360° com blur — efeito aurora perpétuo."
+        label="Crescimento"
+        title="Estrutura que sustenta quem não para"
+        description="A Umbler equipa. O crescimento é seu."
         blob="sweep"
         rotation="spin"
-        className="w-[300px] h-[260px]"
+        className="h-[260px]"
       />
     </div>
   );
@@ -47,24 +47,24 @@ export function CardAuroraRotationsDemo() {
 /* ── Blob prism ───────────────────────────────────────────────── */
 export function CardAuroraPrismDemo() {
   return (
-    <div className="flex flex-wrap gap-5">
+    <div className="grid grid-cols-2 gap-5">
       <CardAurora
         icon={<MapPin size={22} />}
         label="Hospedagem"
-        title="Infraestrutura global"
-        description="Servidores no Brasil e no mundo para sua aplicação voar."
+        title="Onde empresas ambiciosas sustentam crescimento"
+        description="Servidores no Brasil. Performance real, sem esperar a infraestrutura alcançar."
         blob="prism"
         rotation="default"
-        className="w-[300px] h-[260px]"
+        className="h-[260px]"
       />
       <CardAurora
         icon={<ShieldCheck size={22} />}
-        label="Segurança"
-        title="SSL e DMARC inclusos"
-        description="Proteção completa para seu domínio e reputação de envio."
+        label="Domínios & Email"
+        title="Reputação que a operação não pode perder"
+        description="SSL, DMARC e DNS gerenciados — a base que protege quem cresce."
         blob="prism"
         rotation="spin"
-        className="w-[300px] h-[260px]"
+        className="h-[260px]"
       />
     </div>
   );
@@ -85,9 +85,9 @@ export function CardAuroraBentoDemo() {
       {/* wide — col 1-2, row 1 */}
       <CardAurora
         icon={<RocketLaunch size={22} />}
-        label="Plataforma"
-        title="Tudo que sua empresa precisa para crescer online"
-        description="Hospedagem, email, domínios e agentes IA em um só lugar."
+        label="Infraestrutura"
+        title="Estrutura à altura de quem não para de crescer"
+        description="Hospedagem, email, domínios e agentes IA — conectados, não fragmentados."
         blob="sweep"
         rotation="default"
         style={{ gridColumn: 'span 2' }}
@@ -96,9 +96,9 @@ export function CardAuroraBentoDemo() {
       {/* tall — col 3, rows 1-2 */}
       <CardAurora
         icon={<ShieldCheck size={22} />}
-        label="Segurança"
-        title="SSL e DMARC inclusos"
-        description="Proteção completa para seu domínio e reputação de envio."
+        label="Domínios & Email"
+        title="Reputação que sustenta a operação"
+        description="SSL, DMARC e DNS — a base que protege quem cresce."
         blob="prism"
         rotation="default"
         style={{ gridRow: 'span 2' }}
@@ -107,8 +107,8 @@ export function CardAuroraBentoDemo() {
       {/* col 1, row 2 */}
       <CardAurora
         icon={<Lightning size={22} />}
-        label="Automação"
-        title="Agentes IA 24h"
+        label="Agentes de IA"
+        title="IA com contexto real"
         description="Treinado com o seu negócio."
         blob="sweep"
         rotation="diagonal"
@@ -118,8 +118,8 @@ export function CardAuroraBentoDemo() {
       <CardAurora
         icon={<Envelope size={22} />}
         label="Email"
-        title="Entrega garantida"
-        description="Alta reputação de envio."
+        title="Reputação que não se perde"
+        description="Alta entregabilidade. Sem surpresas."
         blob="sweep"
         rotation="spin"
       />

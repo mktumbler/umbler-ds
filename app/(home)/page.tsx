@@ -1,4 +1,7 @@
 import Link from 'next/link';
+import { ArrowRight } from '@phosphor-icons/react/dist/ssr';
+import { buttonVariants } from '@/components/ui/button-variants';
+import { cn } from '@/lib/utils';
 
 export default function HomePage() {
   return (
@@ -28,15 +31,15 @@ export default function HomePage() {
             marginBottom: '2rem',
           }}
         >
-          Design System v2.0
+          Design System · Infraestrutura visual
         </div>
 
         <h1
           style={{
-            fontSize: 'clamp(2.5rem, 5vw, 4rem)',
-            fontWeight: 700,
-            letterSpacing: '-0.03em',
-            lineHeight: 1.05,
+            fontSize: 'var(--text-display-lg)',
+            fontWeight: 'var(--text-display-lg--font-weight)',
+            letterSpacing: 'var(--text-display-lg--letter-spacing)',
+            lineHeight: 'var(--text-display-lg--line-height)',
             marginBottom: '1.5rem',
             background:
               'linear-gradient(180deg, currentColor 0%, color-mix(in oklch, currentColor 60%, transparent) 100%)',
@@ -56,8 +59,8 @@ export default function HomePage() {
             marginBottom: '2.5rem',
           }}
         >
-          Diretrizes de marca, tokens, componentes e padrões — fonte única
-          de verdade para construir produtos Umbler.
+          Tokens, componentes e padrões — a infraestrutura visual que equipa
+          times a construir produtos à altura da ambição.
         </p>
 
         <div
@@ -70,36 +73,14 @@ export default function HomePage() {
         >
           <Link
             href="/docs"
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              padding: '0.75rem 1.5rem',
-              fontSize: '0.9375rem',
-              fontWeight: 500,
-              borderRadius: '0.625rem',
-              background: '#1a5cff',
-              color: 'white',
-              textDecoration: 'none',
-              transition: 'all 250ms cubic-bezier(0.22, 1, 0.36, 1)',
-            }}
+            className={cn(buttonVariants({ variant: 'primary', size: 'lg' }), 'no-underline')}
           >
-            Abrir documentação →
+            Abrir documentação <ArrowRight size={16} weight="bold" />
           </Link>
 
           <Link
             href="/docs/foundations/colors"
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              padding: '0.75rem 1.5rem',
-              fontSize: '0.9375rem',
-              fontWeight: 500,
-              borderRadius: '0.625rem',
-              border: '1px solid color-mix(in oklch, currentColor 20%, transparent)',
-              color: 'inherit',
-              textDecoration: 'none',
-              transition: 'all 250ms cubic-bezier(0.22, 1, 0.36, 1)',
-            }}
+            className={cn(buttonVariants({ variant: 'outline', size: 'lg' }), 'no-underline')}
           >
             Ver tokens
           </Link>

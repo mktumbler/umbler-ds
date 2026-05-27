@@ -12,65 +12,92 @@ A escala é projetada para hierarquia clara em dashboards e páginas de marketin
 <TypeScale
   rows={[
     {
-      name: 'Display',
+      name: 'Display 2XL',
+      size: '8rem',
+      weight: 500,
+      font: 'heading',
+      letterSpacing: '-0.4rem',
+      sample: 'Umbler',
+    },
+    {
+      name: 'Display XL',
+      size: '6rem',
+      weight: 500,
+      font: 'heading',
+      letterSpacing: '-0.2rem',
+      sample: 'Opere em alta',
+    },
+    {
+      name: 'Display LG',
       size: '4.5rem',
       weight: 500,
       font: 'heading',
-      sample: 'Umbler Premium',
+      letterSpacing: '-0.15rem',
+      sample: 'À altura da ambição',
+    },
+    {
+      name: 'Display',
+      size: '3.5rem',
+      weight: 500,
+      font: 'heading',
+      letterSpacing: '-0.1rem',
+      sample: 'Infraestrutura que sustenta crescimento',
     },
     {
       name: 'H1',
       size: '3rem',
       weight: 500,
       font: 'heading',
-      sample: 'Build something great',
+      letterSpacing: '-0.1rem',
+      sample: 'Sua operação no ritmo da sua ambição',
     },
     {
       name: 'H2',
       size: '2.25rem',
       weight: 500,
       font: 'heading',
-      sample: 'Designed for scale',
+      letterSpacing: '-0.05rem',
+      sample: 'Estrutura para quem não para de crescer',
     },
     {
       name: 'H3',
       size: '1.75rem',
       weight: 500,
       font: 'heading',
-      sample: 'Cloud hosting made simple',
+      sample: 'IA com contexto real, não com hype',
     },
     {
       name: 'H4',
       size: '1.375rem',
       weight: 500,
       font: 'heading',
-      sample: 'Professional email for your business',
+      sample: 'Atendimento 24h no WhatsApp com agentes treinados',
     },
     {
       name: 'Body Large',
       size: '1.125rem',
       weight: 400,
       sample:
-        'Infraestrutura confiável para agências e empresas que precisam de performance real.',
+        'Empresas ambiciosas não crescem sobre processos fragmentados. A Umbler é a estrutura que sustenta quem não pode esperar.',
     },
     {
       name: 'Body',
       size: '1rem',
       weight: 400,
       sample:
-        'Somos perfeitos para as necessidades atuais da sua agência. Hospedagem WordPress com deploy fácil e suporte de verdade.',
+        'CRM, agentes de IA, automação e atendimento conectados — para você operar em alta, não apagar incêndios. Sua operação à altura do que você aspira ser.',
     },
     {
       name: 'Body Small',
       size: '0.875rem',
       weight: 400,
-      sample: 'Configuração completa em minutos. Sem surpresas na cobrança.',
+      sample: 'Contexto que a IA aprende. Resultado que aparece na operação.',
     },
     {
       name: 'Caption',
       size: '0.75rem',
       weight: 500,
-      sample: 'PLANO RECOMENDADO · MAIS POPULAR',
+      sample: 'INFRAESTRUTURA · CRESCIMENTO · AMBIÇÃO',
     },
     {
       name: 'Code',
@@ -95,13 +122,21 @@ A escala é projetada para hierarquia clara em dashboards e páginas de marketin
 Cada step da escala tem um token semântico Tailwind v4:
 
 ```css
-text-display   /* 72px / 700 */
-text-h1        /* 48px / 700 */
-text-h2        /* 36px / 600 */
-text-h3        /* 28px / 600 */
-text-h4        /* 22px / 600 */
-text-body-lg   /* 18px / 400 */
-text-body      /* 16px / 400 */
-text-body-sm   /* 14px / 400 */
-text-caption   /* 12px / 500 */
+/* ── Display — impacto e marketing ── */
+text-display-2xl  /* 128px  lh 0.95  ls -0.40rem */
+text-display-xl   /*  96px  lh 1.00  ls -0.20rem */
+text-display-lg   /*  72px  lh 1.05  ls -0.15rem */
+text-display      /*  56px  lh 1.05  ls -0.10rem */
+
+/* ── Headings — conteúdo estruturado ── */
+text-h1           /*  48px  lh 1.10  ls -0.10rem */
+text-h2           /*  36px  lh 1.20  ls -0.05rem */
+text-h3           /*  28px  lh 1.25 */
+text-h4           /*  22px  lh 1.35 */
+
+/* ── Body ── */
+text-body-lg      /*  18px  lh 1.60 */
+text-body         /*  16px  lh 1.60 */
+text-body-sm      /*  14px  lh 1.50 */
+text-caption      /*  12px  lh 1.40 */
 ```

@@ -28,9 +28,9 @@ export const EmptyState = forwardRef<HTMLDivElement, EmptyStateProps>(
           {icon}
         </div>
       )}
-      <h3 className="font-heading text-[1.125rem] font-medium text-neutral-100">{title}</h3>
+      <h3 className="font-heading text-[1.375rem] font-medium text-neutral-100 leading-snug">{title}</h3>
       {description && (
-        <p className="mt-2 max-w-sm text-sm text-neutral-400 leading-relaxed">{description}</p>
+        <p className="mt-1 max-w-sm text-sm text-neutral-400 leading-relaxed">{description}</p>
       )}
       {action && <div className="mt-6">{action}</div>}
     </div>

@@ -17,17 +17,20 @@ export interface RadioGroupProps extends HTMLAttributes<HTMLDivElement> {
 
 export function Radio({ className, label, description, ...props }: RadioProps) {
   return (
-    <label className="group inline-flex items-start gap-2.5 cursor-pointer has-[:disabled]:opacity-50 has-[:disabled]:cursor-not-allowed">
-      <div className="relative mt-0.5 flex shrink-0 items-center justify-center">
+    <label className={cn(
+      'group inline-flex gap-2.5 cursor-pointer has-[:disabled]:opacity-50 has-[:disabled]:cursor-not-allowed',
+      description ? 'items-start' : 'items-center',
+    )}>
+      <div className="relative flex shrink-0 items-center justify-center">
         <input
           type="radio"
           className={cn(
-            'peer h-4 w-4 cursor-pointer appearance-none rounded-full border border-neutral-600 bg-neutral-900',
+            'peer h-4 w-4 cursor-pointer appearance-none rounded-full border border-border bg-surface',
             'checked:border-brand-500',
-            'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950',
+            'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 focus-visible:ring-offset-surface',
             'disabled:cursor-not-allowed',
             'transition-colors duration-150',
-            'hover:border-neutral-400',
+            'hover:border-border-strong',
             className,
           )}
           {...props}
@@ -38,10 +41,10 @@ export function Radio({ className, label, description, ...props }: RadioProps) {
       {(label || description) && (
         <div>
           {label && (
-            <p className="text-sm font-medium leading-none text-neutral-200">{label}</p>
+            <span className="block text-sm font-medium leading-none text-foreground-secondary">{label}</span>
           )}
           {description && (
-            <p className="mt-1 text-xs text-neutral-500 leading-snug">{description}</p>
+            <span className="block mt-1 text-xs text-foreground-muted leading-snug">{description}</span>
           )}
         </div>
       )}
@@ -61,7 +64,7 @@ export function RadioGroup({
   return (
     <div {...props}>
       {label && (
-        <p className="text-sm font-medium text-neutral-200 mb-2">{label}</p>
+        <span className="block text-sm font-medium text-foreground-secondary mb-2">{label}</span>
       )}
       <div
         role="radiogroup"

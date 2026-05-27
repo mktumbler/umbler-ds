@@ -1,22 +1,7 @@
 ---
-title: Umbler Design System
-description: Diretrizes de marca, tokens, componentes e padrões.
+title: Início
+description: Como consumir os componentes em outros projetos.
 ---
-
-Bem-vindo ao **Umbler Design System** — a fonte única de verdade para a identidade visual e os componentes da Umbler.
-
-Este sistema serve a dois propósitos:
-
-1. **Referência humana** — documentar decisões de marca, tokens, componentes e padrões para a equipe de produto.
-2. **Referência para IA** — servir como contexto curado para agentes de IA (Claude Code, principalmente) construírem novos produtos Umbler com consistência.
-
-## Como navegar
-
-- **Foundations** — tokens, cores, tipografia, espaçamento, motion. A base de tudo.
-- **Components** — componentes React reutilizáveis, com variantes, estados e API.
-- **Patterns** — composições prontas (login, dashboard, pricing, onboarding).
-
-## Como consumir os componentes em outros projetos
 
 Cada componente é distribuído via registry compatível com `shadcn`. Em qualquer projeto Next.js:
 
@@ -25,7 +10,3 @@ npx shadcn@latest add https://<seu-deploy>/r/button
 ```
 
 O código fonte é copiado para `/components/ui/` do projeto consumidor — sem dependência runtime, totalmente customizável.
-
-## Status
-
-Este é o ambiente de migração. Os componentes estão sendo construídos progressivamente a partir do [protótipo HTML original](https://umbler-design-system.vercel.app/).

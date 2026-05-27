@@ -146,7 +146,7 @@ export function CardAurora({
       </span>
 
       {/* Conteúdo — ícone no topo, texto no rodapé */}
-      <div className="relative z-10 flex h-full flex-col p-9">
+      <div className="relative z-10 flex h-full flex-col p-6">
         {icon && (
           <div className="mb-auto w-fit rounded-xl bg-neutral-950 p-3 text-brand-200 shadow-[5px_5px_60px_var(--color-neutral-800)]">
             {icon}

@@ -14,9 +14,9 @@ import { cn } from '@/lib/utils';
 
 const inputVariants = cva(
   [
-    'w-full rounded-md bg-neutral-900 text-neutral-100 placeholder:text-neutral-500',
+    'w-full rounded-md bg-surface text-foreground placeholder:text-foreground-subtle',
     'border transition-[border-color,box-shadow] duration-150',
-    'focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-neutral-950',
+    'focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-surface',
     'disabled:opacity-50 disabled:cursor-not-allowed',
   ].join(' '),
   {
@@ -27,7 +27,7 @@ const inputVariants = cva(
         lg: 'h-12 px-4 text-base',
       },
       state: {
-        default: 'border-neutral-600/70 hover:border-neutral-500 focus:border-brand-500 focus:ring-brand-500/30',
+        default: 'border-border hover:border-border-strong focus:border-brand-500 focus:ring-brand-500/30',
         error:   'border-error-500 focus:border-error-500 focus:ring-error-500/30',
         success: 'border-success-500 focus:border-success-500 focus:ring-success-500/30',
       },
@@ -47,13 +47,13 @@ const InputRoot = forwardRef<HTMLDivElement, InputRootProps>(
   ({ className, leftElement, rightElement, children, ...props }, ref) => (
     <div ref={ref} className={cn('relative flex items-center', className)} {...props}>
       {leftElement && (
-        <span className="pointer-events-none absolute left-3 flex items-center text-neutral-400">
+        <span className="pointer-events-none absolute left-3 flex items-center text-foreground-muted">
           {leftElement}
         </span>
       )}
       {children}
       {rightElement && (
-        <span className="pointer-events-none absolute right-3 flex items-center text-neutral-400">
+        <span className="pointer-events-none absolute right-3 flex items-center text-foreground-muted">
           {rightElement}
         </span>
       )}
@@ -101,7 +101,7 @@ export const InputLabel = forwardRef<HTMLLabelElement, LabelHTMLAttributes<HTMLL
   ({ className, ...props }, ref) => (
     <label
       ref={ref}
-      className={cn('text-sm font-medium text-neutral-200 mb-1.5 block', className)}
+      className={cn('text-sm font-medium text-foreground-secondary mb-1.5 block', className)}
       {...props}
     />
   ),
@@ -122,7 +122,7 @@ export const InputHint = forwardRef<HTMLParagraphElement, InputHintProps>(
         'mt-1.5 text-xs leading-snug',
         state === 'error'   && 'text-error-400',
         state === 'success' && 'text-success-400',
-        state === 'default' && 'text-neutral-500',
+        state === 'default' && 'text-foreground-muted',
         className,
       )}
       {...props}

@@ -3,6 +3,7 @@ interface TypeRow {
   size: string;
   weight: number | string;
   sample: string;
+  letterSpacing?: string;
   className?: string;
   font?: 'sans' | 'mono' | 'heading';
 }
@@ -35,7 +36,8 @@ export function TypeScale({ rows }: TypeScaleProps) {
                   : r.font === 'heading'
                   ? 'var(--font-heading)'
                   : 'var(--font-sans-inter), var(--font-sans)',
-              lineHeight: 1.2,
+              lineHeight: 1.1,
+              letterSpacing: r.letterSpacing,
             }}
           >
             {r.sample}

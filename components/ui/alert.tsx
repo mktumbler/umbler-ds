@@ -16,10 +16,10 @@ const alertVariants = cva(
   {
     variants: {
       variant: {
-        info:    'bg-brand-500/10 border-brand-500/30 text-brand-200',
-        success: 'bg-success-500/10 border-success-500/30 text-success-200',
-        warning: 'bg-warning-500/10 border-warning-500/30 text-warning-200',
-        error:   'bg-error-500/10 border-error-500/30 text-error-200',
+        info:    'bg-brand-50   border-brand-500/25   text-brand-700   dark:bg-brand-500/10   dark:border-brand-500/30   dark:text-brand-200',
+        success: 'bg-success-50 border-success-500/25 text-success-600 dark:bg-success-500/10 dark:border-success-500/30 dark:text-success-300',
+        warning: 'bg-warning-50 border-warning-500/25 text-warning-600 dark:bg-warning-500/10 dark:border-warning-500/30 dark:text-warning-300',
+        error:   'bg-error-50   border-error-500/25   text-error-600   dark:bg-error-500/10   dark:border-error-500/30   dark:text-error-300',
       },
     },
     defaultVariants: { variant: 'info' },
@@ -65,7 +65,7 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>(
 
         <div className="flex-1 min-w-0">
           {title && (
-            <p className="font-semibold leading-snug mb-0.5">{title}</p>
+            <span className="block font-semibold leading-snug mb-0.5">{title}</span>
           )}
           {children && (
             <div className="leading-relaxed opacity-85">{children}</div>

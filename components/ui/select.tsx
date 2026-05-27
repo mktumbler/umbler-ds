@@ -7,9 +7,9 @@ import { cn } from '@/lib/utils';
 
 const selectVariants = cva(
   [
-    'w-full appearance-none rounded-md bg-neutral-900 text-neutral-100',
+    'w-full appearance-none rounded-md bg-surface text-foreground',
     'border transition-[border-color,box-shadow] duration-150',
-    'focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-neutral-950',
+    'focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-surface',
     'disabled:opacity-50 disabled:cursor-not-allowed',
     'pr-9', // espaço para o caret
   ].join(' '),
@@ -21,7 +21,7 @@ const selectVariants = cva(
         lg: 'h-12 pl-4 text-base',
       },
       state: {
-        default: 'border-neutral-600/70 hover:border-neutral-500 focus:border-brand-500 focus:ring-brand-500/30',
+        default: 'border-border hover:border-border-strong focus:border-brand-500 focus:ring-brand-500/30',
         error:   'border-error-500   focus:border-error-500   focus:ring-error-500/30',
         success: 'border-success-500 focus:border-success-500 focus:ring-success-500/30',
       },
@@ -46,7 +46,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
       >
         {children}
       </select>
-      <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-neutral-400">
+      <span className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-foreground-muted">
         <CaretDown size={14} weight="bold" />
       </span>
     </div>

@@ -7,16 +7,16 @@ import { InputLabel, InputHint, InputGroup } from '@/components/ui/input';
 
 export const textareaVariants = cva(
   [
-    'w-full rounded-md bg-neutral-900 text-neutral-100 placeholder:text-neutral-500',
+    'w-full rounded-md bg-surface text-foreground placeholder:text-foreground-subtle',
     'border transition-[border-color,box-shadow] duration-150',
-    'focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-neutral-950',
+    'focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-surface',
     'disabled:opacity-50 disabled:cursor-not-allowed',
     'resize-y px-3 py-2.5 text-sm min-h-[80px]',
   ].join(' '),
   {
     variants: {
       state: {
-        default: 'border-neutral-600/70 hover:border-neutral-500 focus:border-brand-500 focus:ring-brand-500/30',
+        default: 'border-border hover:border-border-strong focus:border-brand-500 focus:ring-brand-500/30',
         error:   'border-error-500 focus:border-error-500 focus:ring-error-500/30',
         success: 'border-success-500 focus:border-success-500 focus:ring-success-500/30',
       },

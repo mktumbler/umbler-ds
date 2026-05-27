@@ -72,17 +72,35 @@
   --font-heading: 'p22-mackinac-pro', Georgia, serif;
   --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
 
-  --text-display: 4.5rem;     /* 72px */
+  --text-display: 3.5rem;                  /* 56px — destaque de seção */
   --text-display--line-height: 1.05;
   --text-display--font-weight: 500;
+  --text-display--letter-spacing: -0.1rem;
 
-  --text-h1: 3rem;            /* 48px */
+  --text-display-lg: 4.5rem;               /* 72px — hero padrão */
+  --text-display-lg--line-height: 1.05;
+  --text-display-lg--font-weight: 500;
+  --text-display-lg--letter-spacing: -0.15rem;
+
+  --text-display-xl: 6rem;                 /* 96px — splash */
+  --text-display-xl--line-height: 1.0;
+  --text-display-xl--font-weight: 500;
+  --text-display-xl--letter-spacing: -0.2rem;
+
+  --text-display-2xl: 8rem;                /* 128px — impacto máximo */
+  --text-display-2xl--line-height: 0.95;
+  --text-display-2xl--font-weight: 500;
+  --text-display-2xl--letter-spacing: -0.4rem;
+
+  --text-h1: 3rem;                         /* 48px */
   --text-h1--line-height: 1.1;
   --text-h1--font-weight: 500;
+  --text-h1--letter-spacing: -0.1rem;
 
-  --text-h2: 2.25rem;         /* 36px */
+  --text-h2: 2.25rem;                      /* 36px */
   --text-h2--line-height: 1.2;
   --text-h2--font-weight: 500;
+  --text-h2--letter-spacing: -0.05rem;
 
   --text-h3: 1.75rem;         /* 28px */
   --text-h3--line-height: 1.25;
@@ -106,22 +124,16 @@
   --text-caption--font-weight: 500;
 
   /* -------- Spacing (4px base) -------- */
-  --spacing-0-5: 0.125rem;    /* 2px */
-  --spacing-1: 0.25rem;       /* 4px */
-  --spacing-1-5: 0.375rem;    /* 6px */
-  --spacing-2: 0.5rem;        /* 8px */
-  --spacing-2-5: 0.625rem;    /* 10px */
-  --spacing-3: 0.75rem;       /* 12px */
-  --spacing-4: 1rem;          /* 16px */
-  --spacing-5: 1.25rem;       /* 20px */
-  --spacing-6: 1.5rem;        /* 24px */
-  --spacing-8: 2rem;          /* 32px */
-  --spacing-10: 2.5rem;       /* 40px */
-  --spacing-12: 3rem;         /* 48px */
-  --spacing-16: 4rem;         /* 64px */
-  --spacing-20: 5rem;         /* 80px */
-  --spacing-24: 6rem;         /* 96px */
-  --spacing-32: 8rem;         /* 128px */
+  --spacing-0-5: 0.125rem;    /* 2px  — micro */
+  --spacing-1:   0.25rem;     /* 4px  — micro */
+  --spacing-1-5: 0.375rem;    /* 6px  — micro */
+  --spacing-2:   0.5rem;      /* 8px  — componente */
+  --spacing-3:   0.75rem;     /* 12px — componente */
+  --spacing-4:   1rem;        /* 16px — componente */
+  --spacing-5:   1.25rem;     /* 20px — componente */
+  --spacing-6:   1.5rem;      /* 24px — componente */
+  --spacing-8:   2rem;        /* 32px — seção */
+  --spacing-12:  3rem;        /* 48px — seção */
 
   /* -------- Radius -------- */
   --radius-sm: 0.375rem;      /* 6px */
@@ -130,13 +142,7 @@
   --radius-xl: 1.5rem;        /* 24px */
   --radius-full: 9999px;
 
-  /* -------- Shadows (tuned for dark surfaces) -------- */
-  --shadow-xs: 0 1px 2px 0 rgb(0 0 0 / 0.3);
-  --shadow-sm: 0 1px 3px 0 rgb(0 0 0 / 0.35), 0 1px 2px -1px rgb(0 0 0 / 0.3);
-  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4), 0 2px 4px -2px rgb(0 0 0 / 0.35);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.45), 0 4px 6px -4px rgb(0 0 0 / 0.4);
-  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.5), 0 8px 10px -6px rgb(0 0 0 / 0.4);
-  --shadow-glow: 0 0 32px 0 rgb(26 92 255 / 0.35);
+  /* -------- Shadows (adaptive: defined per mode below) -------- */
 
   /* -------- Motion -------- */
   --duration-fast: 150ms;
@@ -161,10 +167,50 @@
 }
 
 /* ============================================================
-   UMBLER GRADIENT
+   SEMANTIC COLOR TOKENS
+   Adaptam ao modo claro/escuro via CSS custom properties.
+   Geram utilitários Tailwind: bg-surface, text-foreground, etc.
    ============================================================ */
+
+@theme inline {
+  --color-surface:               var(--surface);
+  --color-border:                var(--border);
+  --color-border-strong:         var(--border-strong);
+  --color-foreground:            var(--foreground);
+  --color-foreground-secondary:  var(--foreground-secondary);
+  --color-foreground-muted:      var(--foreground-muted);
+  --color-foreground-subtle:     var(--foreground-subtle);
+  --color-control-track:         var(--control-track);
+
+  /* Shadows — adaptive light/dark */
+  --shadow-xs:   var(--shadow-xs-val);
+  --shadow-sm:   var(--shadow-sm-val);
+  --shadow-md:   var(--shadow-md-val);
+  --shadow-lg:   var(--shadow-lg-val);
+  --shadow-xl:   var(--shadow-xl-val);
+  --shadow-glow: var(--shadow-glow-val);
+}
+
+/* Light mode (padrão) */
 :root {
   --gradient-brand: linear-gradient(90deg, #8bbcf8 0%, #f8c4b8 100%);
+
+  --surface:              #ffffff;
+  --border:               rgba(42, 51, 86, 0.18);
+  --border-strong:        rgba(42, 51, 86, 0.35);
+  --foreground:           #111733;          /* neutral-800 */
+  --foreground-secondary: #1a2240;          /* neutral-700 */
+  --foreground-muted:     #4a5278;          /* neutral-500 */
+  --foreground-subtle:    #6e7799;          /* neutral-400 */
+  --control-track:        #c4cae0;          /* neutral-200 */
+
+  /* Shadows — neutral-500 (rgb 74 82 120), índigo-ardósia, para superfícies claras */
+  --shadow-xs-val:   0 1px 2px 0 rgb(74 82 120 / 0.14);
+  --shadow-sm-val:   0 1px 3px 0 rgb(74 82 120 / 0.16), 0 1px 2px -1px rgb(74 82 120 / 0.14);
+  --shadow-md-val:   0 4px 6px -1px rgb(74 82 120 / 0.18), 0 2px 4px -2px rgb(74 82 120 / 0.16);
+  --shadow-lg-val:   0 10px 15px -3px rgb(74 82 120 / 0.2), 0 4px 6px -4px rgb(74 82 120 / 0.18);
+  --shadow-xl-val:   0 20px 25px -5px rgb(74 82 120 / 0.22), 0 8px 10px -6px rgb(74 82 120 / 0.18);
+  --shadow-glow-val: 0 0 32px 0 rgb(26 92 255 / 0.35);
 }
 
 /* ============================================================
@@ -188,6 +234,30 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 500;
 }
 
+h2 {
+  letter-spacing: var(--text-h2--letter-spacing);
+}
+
+/* ── Fumadocs: título de página maior + tracking ────────────────────────────── */
+#nd-page h1 {
+  font-size: var(--text-h1);
+  line-height: var(--text-h1--line-height);
+  font-weight: var(--text-h1--font-weight);
+  letter-spacing: var(--text-h1--letter-spacing);
+  margin-bottom: 0.3rem;
+}
+
+/* ── Fumadocs: descrição colada ao título ───────────────────────────────────── */
+#nd-page h1 + p {
+  margin-top: 0;
+}
+
+/* ── Prose: parágrafo com margem mais compacta ──────────────────────────────── */
+.prose :where(p):not(:where([class~="not-prose"],[class~="not-prose"] *)) {
+  margin-top: 0.75em;
+  margin-bottom: 0.75em;
+}
+
 code,
 pre,
 kbd {
@@ -199,6 +269,16 @@ kbd {
    com a escala de cores da marca
    ============================================================ */
 .dark {
+  /* Semantic tokens — dark overrides */
+  --surface:              #0a0f20;          /* neutral-900 */
+  --border:               rgba(42, 51, 86, 0.7);
+  --border-strong:        #4a5278;          /* neutral-500 */
+  --foreground:           #e8eaf2;          /* neutral-100 */
+  --foreground-secondary: #c4cae0;          /* neutral-200 */
+  --foreground-muted:     #6e7799;          /* neutral-400 */
+  --foreground-subtle:    #4a5278;          /* neutral-500 */
+  --control-track:        #1a2240;          /* neutral-700 */
+
   /* Backgrounds */
   --color-fd-background:         #030614; /* neutral-950 — fundo principal */
   --color-fd-muted:              #0a0f20; /* neutral-900 — sidebar, muted areas */
@@ -222,6 +302,14 @@ kbd {
   /* Borders & ring */
   --color-fd-border:             rgba(42, 51, 86, 0.5); /* neutral-600 / 50% */
   --color-fd-ring:               #1a5cff; /* brand-500 */
+
+  /* Shadows — neutral-900 (rgb 10 15 32), para superfícies escuras */
+  --shadow-xs-val:   0 1px 2px 0 rgb(10 15 32 / 0.3);
+  --shadow-sm-val:   0 1px 3px 0 rgb(10 15 32 / 0.35), 0 1px 2px -1px rgb(10 15 32 / 0.3);
+  --shadow-md-val:   0 4px 6px -1px rgb(10 15 32 / 0.4), 0 2px 4px -2px rgb(10 15 32 / 0.35);
+  --shadow-lg-val:   0 10px 15px -3px rgb(10 15 32 / 0.45), 0 4px 6px -4px rgb(10 15 32 / 0.4);
+  --shadow-xl-val:   0 20px 25px -5px rgb(10 15 32 / 0.5), 0 8px 10px -6px rgb(10 15 32 / 0.4);
+  --shadow-glow-val: 0 0 32px 0 rgb(26 92 255 / 0.35);
 }
 
 /* Item ativo na sidebar — sobrescreve bg-fd-primary/10 text-fd-primary do Fumadocs */
