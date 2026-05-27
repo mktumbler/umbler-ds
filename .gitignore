@@ -39,3 +39,13 @@ yarn-error.log*
 
 # fumadocs
 .source/
+
+# vercel local
+.vercel
+
+# logs
+dev.log
+
+# claude local
+.claude/settings.local.json
+.claude/launch.json

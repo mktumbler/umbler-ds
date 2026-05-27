@@ -17,38 +17,16 @@ export default function HomePage() {
       }}
     >
       <div style={{ maxWidth: '640px', textAlign: 'center' }}>
-        <div
-          style={{
-            display: 'inline-block',
-            padding: '0.25rem 0.75rem',
-            fontSize: '0.75rem',
-            fontWeight: 500,
-            letterSpacing: '0.05em',
-            textTransform: 'uppercase',
-            border: '1px solid rgb(26 92 255 / 0.3)',
-            borderRadius: '9999px',
-            color: 'rgb(107 153 255)',
-            marginBottom: '2rem',
-          }}
-        >
-          Design System · Infraestrutura visual
-        </div>
-
         <h1
           style={{
-            fontSize: 'var(--text-display-lg)',
-            fontWeight: 'var(--text-display-lg--font-weight)',
-            letterSpacing: 'var(--text-display-lg--letter-spacing)',
-            lineHeight: 'var(--text-display-lg--line-height)',
+            fontSize: 'var(--text-display-xl)',
+            fontWeight: 'var(--text-display-xl--font-weight)',
+            letterSpacing: 'var(--text-display-xl--letter-spacing)',
+            lineHeight: 'var(--text-display-xl--line-height)',
             marginBottom: '1.5rem',
-            background:
-              'linear-gradient(180deg, currentColor 0%, color-mix(in oklch, currentColor 60%, transparent) 100%)',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-            backgroundClip: 'text',
           }}
         >
-          Umbler Design System
+          Design System
         </h1>
 
         <p
@@ -59,8 +37,7 @@ export default function HomePage() {
             marginBottom: '2.5rem',
           }}
         >
-          Tokens, componentes e padrões — a infraestrutura visual que equipa
-          times a construir produtos à altura da ambição.
+          Tokens, componentes e padrões. Sempre à altura da ambição.
         </p>
 
         <div

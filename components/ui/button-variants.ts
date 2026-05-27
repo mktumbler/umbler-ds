@@ -5,18 +5,18 @@ import { cva } from 'class-variance-authority';
  * em server components (ex: home page, layouts).
  */
 export const buttonVariants = cva(
-  'inline-flex items-center justify-center gap-2 font-medium whitespace-nowrap select-none cursor-pointer transition-[background-color,border-color,box-shadow,opacity] duration-[150ms] ease-[cubic-bezier(0.22,1,0.36,1)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950 disabled:opacity-50 disabled:pointer-events-none',
+  'inline-flex items-center justify-center gap-2 font-medium whitespace-nowrap select-none cursor-pointer transition-[background-color,border-color,box-shadow,opacity] duration-[150ms] ease-[cubic-bezier(0.22,1,0.36,1)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-neutral-950 disabled:opacity-50 disabled:pointer-events-none',
   {
     variants: {
       variant: {
         primary:
           'bg-brand-500 text-white shadow-xs hover:bg-brand-600 active:bg-brand-700 focus-visible:ring-brand-400',
         secondary:
-          'bg-neutral-700 text-neutral-100 hover:bg-neutral-600 active:bg-neutral-500 focus-visible:ring-neutral-400',
+          'bg-neutral-200 text-neutral-800 hover:bg-neutral-300 active:bg-neutral-400 focus-visible:ring-neutral-400 dark:bg-neutral-700 dark:text-neutral-100 dark:hover:bg-neutral-600 dark:active:bg-neutral-500',
         ghost:
-          'bg-transparent text-neutral-400 hover:bg-neutral-800 hover:text-neutral-100 active:bg-neutral-700 focus-visible:ring-neutral-500',
+          'bg-transparent text-neutral-500 hover:bg-neutral-100 hover:text-neutral-800 active:bg-neutral-200 focus-visible:ring-neutral-400 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-neutral-100 dark:active:bg-neutral-700 dark:focus-visible:ring-neutral-500',
         outline:
-          'bg-transparent border border-neutral-600 text-neutral-300 hover:bg-neutral-800 hover:border-neutral-500 active:bg-neutral-700 focus-visible:ring-neutral-500',
+          'bg-transparent border border-neutral-300 text-neutral-700 hover:bg-neutral-100 hover:border-neutral-400 active:bg-neutral-200 focus-visible:ring-neutral-400 dark:border-neutral-600 dark:text-neutral-300 dark:hover:bg-neutral-800 dark:hover:border-neutral-500 dark:active:bg-neutral-700 dark:focus-visible:ring-neutral-500',
         danger:
           'bg-error-500 text-white shadow-xs hover:bg-error-600 active:bg-error-700 focus-visible:ring-error-400',
       },

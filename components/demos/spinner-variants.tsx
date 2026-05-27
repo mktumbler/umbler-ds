@@ -12,7 +12,7 @@ export function SpinnerSizesDemo() {
     <div className="flex items-end gap-8">
       {sizes.map(({ size, label }) => (
         <div key={size} className="flex flex-col items-center gap-3">
-          <Spinner size={size} className="text-brand-300" />
+          <Spinner size={size} className="text-brand-500 dark:text-brand-300" />
           <span className="text-[11px] text-neutral-400">{label}</span>
         </div>
       ))}
@@ -22,7 +22,7 @@ export function SpinnerSizesDemo() {
 
 export function SpinnerColorsDemo() {
   const colors = [
-    { className: 'text-brand-300', label: 'brand-300' },
+    { className: 'text-brand-500 dark:text-brand-300', label: 'brand' },
     { className: 'text-success-500', label: 'success-500' },
     { className: 'text-warning-500', label: 'warning-500' },
     { className: 'text-error-500', label: 'error-500' },
