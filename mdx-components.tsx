@@ -25,6 +25,7 @@ import { ToggleSizesDemo, ToggleWithLabelDemo, ToggleStatesDemo } from '@/compon
 import { SelectStatesDemo, SelectSizesDemo } from '@/components/demos/select-variants';
 import { SkeletonPrimitivesDemo, SkeletonCardDemo, SkeletonToggleDemo } from '@/components/demos/skeleton-variants';
 import { EmptyStateExamplesDemo, EmptyStateSimpleDemo } from '@/components/demos/empty-state-variants';
+import { FeatureGridSection, FeatureSplitSection, FeatureBentoSection } from '@/components/demos/patterns/site/features';
 
 export function getMDXComponents(components?: MDXComponents): MDXComponents {
   return {
@@ -82,6 +83,9 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     SkeletonToggleDemo,
     EmptyStateExamplesDemo,
     EmptyStateSimpleDemo,
+    FeatureGridSection,
+    FeatureSplitSection,
+    FeatureBentoSection,
     ...components,
   };
 }

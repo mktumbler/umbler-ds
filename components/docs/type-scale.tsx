@@ -6,6 +6,7 @@ interface TypeRow {
   letterSpacing?: string;
   className?: string;
   font?: 'sans' | 'mono' | 'heading';
+  gradient?: boolean;
 }
 
 interface TypeScaleProps {
@@ -38,6 +39,13 @@ export function TypeScale({ rows }: TypeScaleProps) {
                   : 'var(--font-sans-inter), var(--font-sans)',
               lineHeight: 1.1,
               letterSpacing: r.letterSpacing,
+              ...(r.gradient && {
+                background: 'var(--gradient-brand)',
+                backgroundClip: 'text',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                color: 'transparent',
+              }),
             }}
           >
             {r.sample}

@@ -193,7 +193,7 @@
 
 /* Light mode (padrão) */
 :root {
-  --gradient-brand: linear-gradient(90deg, #8bbcf8 0%, #f8c4b8 100%);
+  --gradient-brand: #1a5cff;
 
   --surface:              #ffffff;
   --border:               rgba(42, 51, 86, 0.18);
@@ -270,6 +270,8 @@ kbd {
    ============================================================ */
 .dark {
   /* Semantic tokens — dark overrides */
+  --gradient-brand: linear-gradient(90deg, #8bbcf8 0%, #f8c4b8 100%);
+
   --surface:              #0a0f20;          /* neutral-900 */
   --border:               rgba(42, 51, 86, 0.7);
   --border-strong:        #4a5278;          /* neutral-500 */
