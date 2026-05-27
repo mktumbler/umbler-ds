@@ -325,6 +325,19 @@ kbd {
   color: #6b99ff;                           /* brand-300 */
 }
 
+/* ── Eyebrow / caption gradient — padrão DS ─────────────────────────────── */
+.eyebrow {
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
 /* Sidebar com um passo mais claro que o fundo */
 .dark #nd-sidebar {
   --color-fd-background:        #0a0f20; /* neutral-900 */

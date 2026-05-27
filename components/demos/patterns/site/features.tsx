@@ -13,14 +13,6 @@ import {
 } from '@phosphor-icons/react/dist/ssr';
 import { CardAurora } from '@/components/ui/card-aurora';
 
-/* ── helper: eyebrow gradient text ─────────────────────────── */
-const eyebrowStyle: React.CSSProperties = {
-  background: 'var(--gradient-brand)',
-  backgroundClip: 'text',
-  WebkitBackgroundClip: 'text',
-  WebkitTextFillColor: 'transparent',
-  color: 'transparent',
-};
 
 /* ══════════════════════════════════════════════════════════════
    1. FEATURE GRID — 3 colunas, ícone + título + descrição
@@ -64,8 +56,7 @@ export function FeatureGridSection() {
       {/* Header */}
       <div className="mx-auto max-w-2xl text-center mb-16">
         <p
-          className="mb-3 text-[0.7rem] font-medium uppercase tracking-[0.22em]"
-          style={eyebrowStyle}
+          className="eyebrow mb-3"
         >
           Plataforma
         </p>
@@ -121,12 +112,7 @@ export function FeatureSplitSection() {
 
         {/* Texto */}
         <div>
-          <p
-            className="mb-3 text-[0.7rem] font-medium uppercase tracking-[0.22em]"
-            style={eyebrowStyle}
-          >
-            CRM
-          </p>
+          <p className="eyebrow mb-3">CRM</p>
           <h2
             className="font-heading text-h2 text-neutral-900 dark:text-neutral-50 mb-5"
             style={{ letterSpacing: '-0.05rem' }}
@@ -205,8 +191,7 @@ export function FeatureBentoSection() {
       {/* Header */}
       <div className="mx-auto max-w-xl text-center mb-12">
         <p
-          className="mb-3 text-[0.7rem] font-medium uppercase tracking-[0.22em]"
-          style={eyebrowStyle}
+          className="eyebrow mb-3"
         >
           Diferenciais
         </p>
