@@ -56,7 +56,7 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>(
       >
         {icon && (
           <Icon
-            size={18}
+            size={20}
             weight="fill"
             className="mt-0.5 shrink-0"
             aria-hidden

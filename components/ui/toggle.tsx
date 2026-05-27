@@ -90,7 +90,9 @@ export function Toggle({
   return (
     <div className={cn('flex items-start gap-3', className)}>
       {switchButton}
-      <div>
+      {/* pt-1.5 compensa a diferença entre o centro do switch (12 px) e
+          o centro visual do cap-height do label (~7 px) ≈ 5 px de offset */}
+      <div className="pt-1.5">
         {label && (
           <p className="text-sm font-medium text-neutral-200 leading-none">{label}</p>
         )}
