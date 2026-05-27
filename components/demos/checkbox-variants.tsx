@@ -30,7 +30,7 @@ export function CheckboxIndeterminateDemo() {
   return (
     <div className="flex flex-col gap-3">
       <label className="inline-flex items-start gap-2.5 cursor-pointer">
-        <div className="relative mt-0.5 flex shrink-0 items-center justify-center">
+        <div className="relative flex shrink-0 items-center justify-center">
           <input
             ref={ref}
             type="checkbox"
