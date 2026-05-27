@@ -26,6 +26,7 @@ import { SelectStatesDemo, SelectSizesDemo } from '@/components/demos/select-var
 import { SkeletonPrimitivesDemo, SkeletonCardDemo, SkeletonToggleDemo } from '@/components/demos/skeleton-variants';
 import { EmptyStateExamplesDemo, EmptyStateSimpleDemo } from '@/components/demos/empty-state-variants';
 import { FeatureGridSection, FeatureSplitSection, FeatureBentoSection } from '@/components/demos/patterns/site/features';
+import { HeroBgGridDemo, HeroBgSweepDemo } from '@/components/demos/patterns/site/backgrounds';
 
 export function getMDXComponents(components?: MDXComponents): MDXComponents {
   return {
@@ -86,6 +87,8 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     FeatureGridSection,
     FeatureSplitSection,
     FeatureBentoSection,
+    HeroBgGridDemo,
+    HeroBgSweepDemo,
     ...components,
   };
 }

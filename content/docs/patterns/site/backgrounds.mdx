@@ -1,0 +1,51 @@
+---
+title: Backgrounds
+description: Efeitos de fundo para seções de hero e marketing — SVG blob com blur e mix-blend-mode.
+---
+
+Efeitos baseados em SVG shapes grandes, `filter: blur(80px)` e `mix-blend-mode: lighten` sobre fundo escuro `rgb(3,6,20)`. O resultado é um glow azul que remete à identidade visual Umbler sem uso de imagens ou canvas.
+
+O componente `HeroBackground` envolve qualquer conteúdo e aceita uma `variant` que escolhe o blob SVG. As cores usam os tokens da marca (`#001866` = navy escuro + `#6b99ff` = brand-300).
+
+## Variantes
+
+<HeroBgGridDemo />
+
+## Exemplo completo — Sweep
+
+A variante `sweep` é a mais impactante para hero principal — diagonal que cobre toda a seção.
+
+<HeroBgSweepDemo />
+
+## Uso
+
+```tsx
+import { HeroBackground } from '@/components/ui/hero-background';
+
+<HeroBackground variant="sweep" className="min-h-screen">
+  <div className="relative z-10 flex flex-col items-center py-32">
+    {/* conteúdo do hero */}
+  </div>
+</HeroBackground>
+```
+
+## Props
+
+| Prop | Tipo | Padrão | Descrição |
+|---|---|---|---|
+| `variant` | `HeroBgVariant` | `'sweep'` | Qual blob SVG usar |
+| `className` | `string` | — | Classes adicionais (altura, padding, etc.) |
+| `children` | `ReactNode` | — | Conteúdo renderizado sobre o background |
+
+## Variantes disponíveis
+
+| Variante | Forma | Uso recomendado |
+|---|---|---|
+| `sweep` | Grande diagonal cruzada | Hero principal |
+| `cloud` | Horizontal distribuído | Seção secundária |
+| `wedge` | Cunhas geométricas | Grid de features |
+| `arc` | Arco diagonal | CTA, features |
+| `cap` | Concentrado no topo | Transição entre seções |
+| `arc-flip` | Arc invertido verticalmente | Variação de arc |
+| `sweep-invert` | Sweep 180° | Alternância de layouts |
+| `cap-mirror` | Cap espelhado | Glow à esquerda |
