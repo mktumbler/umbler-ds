@@ -14,6 +14,7 @@ import { BadgeVariantsDemo, BadgeSizesDemo, BadgeDotsDemo } from '@/components/d
 import { TagVariantsDemo, TagInputDemo } from '@/components/demos/tag-variants';
 import { AvatarSizesDemo, AvatarFallbacksDemo, AvatarGroupDemo } from '@/components/demos/avatar-variants';
 import { CardVariantsDemo, CardCompositionDemo, CardProductsDemo, CardHorizontalDemo } from '@/components/demos/card-variants';
+import { CardAuroraRotationsDemo, CardAuroraPrismDemo, CardAuroraBentoDemo } from '@/components/demos/card-aurora-demo';
 import { SeparatorDemo } from '@/components/demos/separator-kbd-variants';
 import { InputStatesDemo, InputSizesDemo, InputSlotsDemo } from '@/components/demos/input-variants';
 import { AlertVariantsDemo, AlertSimpleDemo, AlertDismissibleDemo, AlertNoIconDemo } from '@/components/demos/alert-variants';
@@ -52,6 +53,9 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     CardCompositionDemo,
     CardProductsDemo,
     CardHorizontalDemo,
+    CardAuroraRotationsDemo,
+    CardAuroraPrismDemo,
+    CardAuroraBentoDemo,
     SeparatorDemo,
     InputStatesDemo,
     InputSizesDemo,
