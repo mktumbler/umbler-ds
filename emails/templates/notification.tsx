@@ -47,7 +47,7 @@ export default function NotificationEmail({
         style={{
           fontFamily: t.fontStack,
           fontSize:   '24px',
-          fontWeight: 700,
+          fontWeight: 600,
           lineHeight: '32px',
           color:      t.white,
           margin:     '0 0 12px',
@@ -90,7 +90,7 @@ export default function NotificationEmail({
               style={{
                 fontFamily: t.fontStack,
                 fontSize:   '32px',
-                fontWeight: 700,
+                fontWeight: 600,
                 color:      t.white,
                 margin:     0,
               }}

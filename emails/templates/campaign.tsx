@@ -35,10 +35,11 @@ export default function CampaignEmail({
         <EmailBadge color={t.brandLight}>Novidade</EmailBadge>
       </Section>
 
-      {/* Hero visual — superfície elevada com borda azul-claro */}
+      {/* Hero visual — mesmo padrão dos cards do welcome:
+          brandLight11 bg + brandLight33 border (callout sutil em azul-claro) */}
       <Section
         style={{
-          backgroundColor: t.surfaceRaised,
+          backgroundColor: `${t.brandLight}11`,
           borderRadius:    '10px',
           border:          `1px solid ${t.brandLight}33`,
           padding:         '40px 32px',
@@ -62,7 +63,7 @@ export default function CampaignEmail({
           style={{
             fontFamily:  t.fontStack,
             fontSize:    '26px',
-            fontWeight:  700,
+            fontWeight:  600,
             lineHeight:  '34px',
             color:       t.white,
             margin:      '0 0 12px',

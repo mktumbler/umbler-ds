@@ -35,7 +35,7 @@ export default function WelcomeEmail({
         style={{
           fontFamily:  t.fontStack,
           fontSize:    '28px',
-          fontWeight:  700,
+          fontWeight:  600,
           lineHeight:  '36px',
           color:       t.white,
           margin:      '0 0 16px',
