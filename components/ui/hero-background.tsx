@@ -20,21 +20,18 @@ export interface HeroBackgroundProps extends HTMLAttributes<HTMLDivElement> {
 interface BlobProps {
   width: number;   // usado só para calcular aspect-ratio
   height: number;
-  rotate: number;
   children: React.ReactNode;
 }
 
-function Blob({ width, height, rotate, children }: BlobProps) {
+function Blob({ width, height, children }: BlobProps) {
   return (
     <div
       aria-hidden
-      // apenas dois valores dinâmicos ficam inline:
-      //   aspectRatio — geométrico por blob, sem equivalente direto em classe
-      //   --blob-rotate — CSS var consumida pelo utilitário rotate abaixo
-      style={{ aspectRatio: `${width} / ${height}`, '--blob-rotate': `${rotate}deg` } as React.CSSProperties}
+      // apenas aspectRatio fica inline — geométrico por blob, sem equivalente direto em classe
+      style={{ aspectRatio: `${width} / ${height}` }}
       className={cn(
         'absolute top-1/2 left-1/2 w-[200%]',
-        '-translate-x-1/2 -translate-y-1/2 [rotate:var(--blob-rotate)]',
+        '-translate-x-1/2 -translate-y-1/2',
         // blur responsivo via cqw (requer container-type no pai)
         '[filter:blur(clamp(10px,8cqw,80px))]',
         'will-change-transform pointer-events-none',
@@ -53,7 +50,7 @@ function Blob({ width, height, rotate, children }: BlobProps) {
 /** 29 — blob-figma6: isolation:isolate + mix-blend-mode:lighten aninhados */
 function Blob29() {
   return (
-    <Blob width={2120} height={994} rotate={-3}>
+    <Blob width={2120} height={994}>
       <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 2290.8 1185.3" className="w-full h-full">
         <g style={{ isolation: 'isolate' }}>
           <g>
@@ -74,7 +71,7 @@ function Blob29() {
 /** 30 — blob-figma7: grande diagonal cruzada */
 function Blob30() {
   return (
-    <Blob width={2120} height={1690} rotate={0}>
+    <Blob width={2120} height={1690}>
       <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 2172 1731" fill="none" className="w-full h-full">
         <g style={{ mixBlendMode: 'lighten' }}>
           <path d="M25.5,315.7l-213.9,220.8C-14.1,687.6,239.5,998.8,947.8,1203.1c870,251,1735.2,443.5,1245.8,57.2C1026.2,1099.9,261.8,563.7,25.5,315.7Z" fill="#001866"/>
@@ -91,7 +88,7 @@ function Blob30() {
 /** 31 — blob-figma8: cunhas geométricas */
 function Blob31() {
   return (
-    <Blob width={2120} height={1477} rotate={-4}>
+    <Blob width={2120} height={1477}>
       <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1861.7 1296.8" fill="none" className="w-full h-full">
         <g style={{ mixBlendMode: 'lighten' }}>
           <path d="M1571.5,10.5h319c-160.9,110.6-621.6,580.3-1222.5,748.7-270.4,75.8-611.1,105.7-706,108v-108C659.5,659.3,1349.3,196.9,1571.5,10.5Z" fill="#001866"/>
@@ -109,7 +106,7 @@ function Blob31() {
 /** 32 — blob-figma9: arco diagonal */
 function Blob32() {
   return (
-    <Blob width={2120} height={1638} rotate={-2}>
+    <Blob width={2120} height={1638}>
       <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1834.9 1417.7" fill="none" className="w-full h-full">
         <g style={{ mixBlendMode: 'lighten' }}>
           <path d="M31.4,38.2l-213.4,178.2C-39.6,368.9,158.8,672.8,776.3,924c758.5,308.5,1518.2,563.9,1114.8,170C856.6,838.6,220.2,283.8,31.4,38.2Z" fill="#001866"/>
@@ -126,7 +123,7 @@ function Blob32() {
 /** 33 — blob-figma10: concentrado no topo */
 function Blob33() {
   return (
-    <Blob width={2120} height={1081} rotate={-4}>
+    <Blob width={2120} height={1081}>
       <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 2131 1086.8" fill="none" className="w-full h-full">
         <g style={{ mixBlendMode: 'lighten' }}>
           <path d="M1804.9,15.2h364.1c-183.7,126.3-709.5,662.3-1395.3,854.6-308.7,86.5-697.5,120.7-805.8,123.3v-123.3C763.9,755.6,1551.3,227.9,1804.9,15.2Z" fill="#001866"/>
@@ -142,7 +139,7 @@ function Blob33() {
 /** 34 — figma9 flip vertical: scale(1,-1) */
 function Blob34() {
   return (
-    <Blob width={2120} height={1638} rotate={2}>
+    <Blob width={2120} height={1638}>
       <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1834.9 1417.7" fill="none" className="w-full h-full">
         <g style={{ mixBlendMode: 'lighten' }} transform="translate(0,1417.7) scale(1,-1)">
           <path d="M31.4,38.2l-213.4,178.2C-39.6,368.9,158.8,672.8,776.3,924c758.5,308.5,1518.2,563.9,1114.8,170C856.6,838.6,220.2,283.8,31.4,38.2Z" fill="#001866"/>
@@ -159,7 +156,7 @@ function Blob34() {
 /** 35 — figma7 180°: scale(-1,-1) */
 function Blob35() {
   return (
-    <Blob width={2120} height={1690} rotate={-3}>
+    <Blob width={2120} height={1690}>
       <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 2172 1731" fill="none" className="w-full h-full">
         <g style={{ mixBlendMode: 'lighten' }} transform="translate(2172,1731) scale(-1,-1)">
           <path d="M25.5,315.7l-213.9,220.8C-14.1,687.6,239.5,998.8,947.8,1203.1c870,251,1735.2,443.5,1245.8,57.2C1026.2,1099.9,261.8,563.7,25.5,315.7Z" fill="#001866"/>
@@ -176,7 +173,7 @@ function Blob35() {
 /** 36 — figma10 espelho horizontal: scale(-1,1) */
 function Blob36() {
   return (
-    <Blob width={2120} height={1081} rotate={4}>
+    <Blob width={2120} height={1081}>
       <svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 2131 1086.8" fill="none" className="w-full h-full">
         <g style={{ mixBlendMode: 'lighten' }} transform="translate(2131,0) scale(-1,1)">
           <path d="M1804.9,15.2h364.1c-183.7,126.3-709.5,662.3-1395.3,854.6-308.7,86.5-697.5,120.7-805.8,123.3v-123.3C763.9,755.6,1551.3,227.9,1804.9,15.2Z" fill="#001866"/>
