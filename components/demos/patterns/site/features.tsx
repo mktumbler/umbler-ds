@@ -76,10 +76,10 @@ export function FeatureGridSection() {
         {gridFeatures.map(({ icon: Icon, title, desc }) => (
           <div
             key={title}
-            className="bg-white dark:bg-neutral-950 p-8 flex flex-col gap-4 hover:bg-neutral-50 dark:hover:bg-neutral-900 transition-colors"
+            className="bg-white dark:bg-neutral-950 p-8 flex flex-col gap-4"
           >
             <div className="w-10 h-10 rounded-xl bg-brand-50 dark:bg-brand-500/10 flex items-center justify-center text-brand-500 dark:text-brand-300">
-              <Icon size={20} weight="duotone" />
+              <Icon size={20} weight="fill" />
             </div>
             <div>
               <h3 className="font-heading text-h4 text-neutral-900 dark:text-neutral-50 mb-1.5" style={{ fontSize: '1.1rem' }}>
@@ -208,7 +208,7 @@ export function FeatureBentoSection() {
         {/* Card grande — ocupa 2 colunas e 2 linhas */}
         <div className="md:col-span-2 md:row-span-2">
           <CardAurora
-            icon={<Sparkle size={22} />}
+            icon={<Sparkle size={22} weight="fill" />}
             label="IA nativa"
             title="Inteligência que aprende com o seu negócio"
             description="Não é um chatbot genérico. É um agente treinado com seus produtos, processos e tom de voz — que opera no WhatsApp enquanto você escala."
@@ -219,7 +219,7 @@ export function FeatureBentoSection() {
         </div>
         {/* Card 2 */}
         <CardAurora
-          icon={<Globe size={22} />}
+          icon={<Globe size={22} weight="fill" />}
           label="Omnichannel"
           title="Uma caixa de entrada para tudo"
           blob="prism"
@@ -228,7 +228,7 @@ export function FeatureBentoSection() {
         />
         {/* Card 3 */}
         <CardAurora
-          icon={<Lightning size={22} />}
+          icon={<Lightning size={22} weight="fill" />}
           label="Performance"
           title="Infraestrutura que escala com você"
           blob="prism"

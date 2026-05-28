@@ -38,7 +38,7 @@ export default function NotificationEmail({
     >
       {/* Eyebrow */}
       <Section style={{ marginBottom: '24px' }}>
-        <EmailBadge color={t.brand}>Fatura emitida</EmailBadge>
+        <EmailBadge color={t.brandLight}>Fatura emitida</EmailBadge>
       </Section>
 
       {/* Título */}
@@ -193,7 +193,7 @@ export default function NotificationEmail({
 
       <EmailText muted small>
         Dúvidas sobre a fatura? Acesse o{' '}
-        <a href="https://umbler.com/suporte" style={{ color: t.brand }}>
+        <a href="https://umbler.com/suporte" style={{ color: t.brandLight }}>
           suporte
         </a>{' '}
         ou responda este e-mail.

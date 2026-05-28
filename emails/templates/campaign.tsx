@@ -32,25 +32,26 @@ export default function CampaignEmail({
     <EmailLayout preview={`${featureTitle} — novidade para você, ${firstName}`}>
       {/* Eyebrow */}
       <Section style={{ marginBottom: '24px' }}>
-        <EmailBadge color={t.brand}>Novidade</EmailBadge>
+        <EmailBadge color={t.brandLight}>Novidade</EmailBadge>
       </Section>
 
-      {/* Hero visual — gradiente simulado com borda */}
+      {/* Hero visual — superfície elevada com borda azul-claro */}
       <Section
         style={{
-          background:   `linear-gradient(135deg, #0d1f5c 0%, #030614 60%)`,
-          borderRadius: '10px',
-          border:       `1px solid ${t.brand}44`,
-          padding:      '40px 32px',
-          marginBottom: '32px',
-          textAlign:    'center',
+          backgroundColor: t.surfaceRaised,
+          borderRadius:    '10px',
+          border:          `1px solid ${t.brandLight}33`,
+          padding:         '40px 32px',
+          marginBottom:    '32px',
+          textAlign:       'center',
         }}
       >
         <Text
           style={{
             fontFamily:  t.fontStack,
-            fontSize:    '48px',
-            margin:      '0 0 8px',
+            fontSize:    '40px',
+            color:       t.brandLight,
+            margin:      '0 0 12px',
             lineHeight:  '1',
           }}
         >

@@ -26,7 +26,7 @@ export default function WelcomeEmail({
     <EmailLayout preview={`Bem-vindo à Umbler, ${firstName}! Sua conta está pronta.`}>
       {/* Eyebrow */}
       <Section style={{ marginBottom: '24px' }}>
-        <EmailBadge color={t.brand}>Conta criada</EmailBadge>
+        <EmailBadge color={t.brandLight}>Conta criada</EmailBadge>
       </Section>
 
       {/* Título */}
@@ -52,7 +52,7 @@ export default function WelcomeEmail({
       {/* CTA */}
       <Section style={{ margin: '32px 0' }}>
         <EmailButton href={ctaUrl}>
-          Criar meu primeiro site →
+          Criar meu primeiro site
         </EmailButton>
       </Section>
 
@@ -75,8 +75,8 @@ export default function WelcomeEmail({
       {/* Passo 1 */}
       <Section
         style={{
-          backgroundColor: `${t.brand}11`,
-          border:          `1px solid ${t.brand}33`,
+          backgroundColor: `${t.brandLight}11`,
+          border:          `1px solid ${t.brandLight}33`,
           borderRadius:    '8px',
           padding:         '16px',
           marginBottom:    '12px',
@@ -101,8 +101,8 @@ export default function WelcomeEmail({
       {/* Passo 2 */}
       <Section
         style={{
-          backgroundColor: `${t.brand}11`,
-          border:          `1px solid ${t.brand}33`,
+          backgroundColor: `${t.brandLight}11`,
+          border:          `1px solid ${t.brandLight}33`,
           borderRadius:    '8px',
           padding:         '16px',
           marginBottom:    '12px',
@@ -127,8 +127,8 @@ export default function WelcomeEmail({
       {/* Passo 3 */}
       <Section
         style={{
-          backgroundColor: `${t.brand}11`,
-          border:          `1px solid ${t.brand}33`,
+          backgroundColor: `${t.brandLight}11`,
+          border:          `1px solid ${t.brandLight}33`,
           borderRadius:    '8px',
           padding:         '16px',
           marginBottom:    '24px',
@@ -152,7 +152,7 @@ export default function WelcomeEmail({
 
       <EmailText muted small>
         Qualquer dúvida, estamos no{' '}
-        <a href="https://umbler.com/suporte" style={{ color: t.brand }}>
+        <a href="https://umbler.com/suporte" style={{ color: t.brandLight }}>
           suporte
         </a>{' '}
         ou no chat do painel. Bom trabalho!

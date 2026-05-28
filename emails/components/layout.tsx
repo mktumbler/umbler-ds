@@ -31,7 +31,8 @@ export const t = {
   surface:      '#0a0f20',
   surfaceRaised:'#111827',
   border:       '#1a2240',
-  brand:        '#1a5cff',
+  brand:        '#1a5cff',  /* brand-500 — uso em CTAs sólidos (fundo branco do texto) */
+  brandLight:   '#6b99ff',  /* brand-300 — uso em fundos escuros (badges, bordas, links) */
   brandDark:    '#1448cc',
   fg:           '#c4cfe8',
   fgMuted:      '#8b9cc8',
@@ -133,7 +134,7 @@ export function EmailButton({
 /** Badge/label colorido (status) */
 export function EmailBadge({
   children,
-  color = t.brand,
+  color = t.brandLight,
 }: {
   children: ReactNode;
   color?: string;
