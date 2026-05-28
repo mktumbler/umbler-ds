@@ -14,7 +14,6 @@
 import {
   Body,
   Container,
-  Font,
   Head,
   Hr,
   Html,
@@ -41,6 +40,12 @@ export const t = {
   success:      '#22c55e',
   warning:      '#f59e0b',
   error:        '#ef4444',
+  /**
+   * Stack de fontes do sistema — renderiza a fonte nativa do OS do destinatário
+   * (SF Pro no macOS/iOS, Segoe UI no Windows, Roboto no Android). Mais
+   * confiável que webfonts em email (Outlook desktop ignora @font-face).
+   */
+  fontStack:    '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif',
 } as const;
 
 /* ── tipos ───────────────────────────────────────────────────────────────── */
@@ -79,7 +84,7 @@ export function EmailText({
   return (
     <Text
       style={{
-        fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+        fontFamily: t.fontStack,
         fontSize:   small ? '13px' : '15px',
         lineHeight: small ? '20px' : '24px',
         color:      muted ? t.fgMuted : t.fg,
@@ -110,7 +115,7 @@ export function EmailButton({
         display:         'inline-block',
         backgroundColor: isPrimary ? t.brand : 'transparent',
         color:           t.white,
-        fontFamily:      'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+        fontFamily:      t.fontStack,
         fontSize:        '14px',
         fontWeight:      600,
         lineHeight:      '1',
@@ -139,7 +144,7 @@ export function EmailBadge({
         display:         'inline-block',
         backgroundColor: `${color}22`,
         color,
-        fontFamily:      'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+        fontFamily:      t.fontStack,
         fontSize:        '11px',
         fontWeight:      600,
         letterSpacing:   '0.05em',
@@ -158,21 +163,10 @@ export function EmailBadge({
 export function EmailLayout({ preview, children }: EmailLayoutProps) {
   return (
     <Html lang="pt-BR" dir="ltr">
-      <Head>
-        <Font
-          fontFamily="Inter"
-          fallbackFontFamily={['Arial', 'sans-serif']}
-          webFont={{
-            url: 'https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiJ-Ek-_EeA.woff2',
-            format: 'woff2',
-          }}
-          fontWeight={400}
-          fontStyle="normal"
-        />
-      </Head>
+      <Head />
       <Preview>{preview}</Preview>
 
-      <Body style={{ backgroundColor: t.bg, margin: 0, padding: 0 }}>
+      <Body style={{ backgroundColor: t.bg, margin: 0, padding: 0, fontFamily: t.fontStack }}>
         {/* Container central */}
         <Container
           style={{
@@ -184,10 +178,10 @@ export function EmailLayout({ preview, children }: EmailLayoutProps) {
           {/* Header */}
           <Section style={{ padding: '32px 0 24px' }}>
             <Img
-              src="https://umbler-ds.vercel.app/umbler-logo-dark.svg"
+              src="https://umbler-ds.vercel.app/brand/umbler-wordmark-light.svg"
               alt="Umbler"
-              width={100}
-              height={24}
+              width={120}
+              height={33}
               style={{ display: 'block' }}
             />
           </Section>
@@ -209,7 +203,7 @@ export function EmailLayout({ preview, children }: EmailLayoutProps) {
           <Section style={{ padding: '24px 0 40px' }}>
             <Text
               style={{
-                fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+                fontFamily: t.fontStack,
                 fontSize:   '12px',
                 lineHeight: '18px',
                 color:      t.fgSubtle,
@@ -221,7 +215,7 @@ export function EmailLayout({ preview, children }: EmailLayoutProps) {
             </Text>
             <Text
               style={{
-                fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+                fontFamily: t.fontStack,
                 fontSize:   '12px',
                 lineHeight: '18px',
                 color:      t.fgSubtle,

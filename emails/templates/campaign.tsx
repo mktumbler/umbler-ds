@@ -3,7 +3,7 @@
  * Email de marketing para anunciar novidades, promoções ou features.
  */
 
-import { Heading, Img, Row, Column, Section, Text } from '@react-email/components';
+import { Heading, Row, Column, Section, Text } from '@react-email/components';
 import {
   EmailBadge,
   EmailButton,
@@ -48,7 +48,7 @@ export default function CampaignEmail({
       >
         <Text
           style={{
-            fontFamily:  'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+            fontFamily:  t.fontStack,
             fontSize:    '48px',
             margin:      '0 0 8px',
             lineHeight:  '1',
@@ -59,7 +59,7 @@ export default function CampaignEmail({
         <Heading
           as="h1"
           style={{
-            fontFamily:  'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+            fontFamily:  t.fontStack,
             fontSize:    '26px',
             fontWeight:  700,
             lineHeight:  '34px',
@@ -71,7 +71,7 @@ export default function CampaignEmail({
         </Heading>
         <Text
           style={{
-            fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+            fontFamily: t.fontStack,
             fontSize:   '15px',
             lineHeight: '24px',
             color:      t.fgMuted,
@@ -98,7 +98,7 @@ export default function CampaignEmail({
       <Heading
         as="h2"
         style={{
-          fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+          fontFamily: t.fontStack,
           fontSize:   '16px',
           fontWeight: 600,
           color:      t.white,
@@ -120,7 +120,7 @@ export default function CampaignEmail({
           <Column style={{ verticalAlign: 'top' }}>
             <Text
               style={{
-                fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+                fontFamily: t.fontStack,
                 fontSize:   '14px',
                 fontWeight: 600,
                 color:      t.white,

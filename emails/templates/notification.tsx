@@ -45,7 +45,7 @@ export default function NotificationEmail({
       <Heading
         as="h1"
         style={{
-          fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+          fontFamily: t.fontStack,
           fontSize:   '24px',
           fontWeight: 700,
           lineHeight: '32px',
@@ -76,7 +76,7 @@ export default function NotificationEmail({
           <Column>
             <Text
               style={{
-                fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+                fontFamily: t.fontStack,
                 fontSize:   '13px',
                 color:      t.fgMuted,
                 margin:     '0 0 4px',
@@ -88,7 +88,7 @@ export default function NotificationEmail({
             </Text>
             <Text
               style={{
-                fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+                fontFamily: t.fontStack,
                 fontSize:   '32px',
                 fontWeight: 700,
                 color:      t.white,
@@ -120,7 +120,7 @@ export default function NotificationEmail({
             >
               <Text
                 style={{
-                  fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+                  fontFamily: t.fontStack,
                   fontSize:   '13px',
                   color:      t.fgMuted,
                   margin:     0,
@@ -139,7 +139,7 @@ export default function NotificationEmail({
             >
               <Text
                 style={{
-                  fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+                  fontFamily: t.fontStack,
                   fontSize:   '14px',
                   fontWeight: 500,
                   color:      t.fg,
@@ -172,7 +172,7 @@ export default function NotificationEmail({
       >
         <Text
           style={{
-            fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+            fontFamily: t.fontStack,
             fontSize:   '13px',
             color:      t.warning,
             fontWeight: 600,

@@ -33,7 +33,7 @@ export default function WelcomeEmail({
       <Heading
         as="h1"
         style={{
-          fontFamily:  'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+          fontFamily:  t.fontStack,
           fontSize:    '28px',
           fontWeight:  700,
           lineHeight:  '36px',
@@ -62,7 +62,7 @@ export default function WelcomeEmail({
       <Heading
         as="h2"
         style={{
-          fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+          fontFamily: t.fontStack,
           fontSize:   '16px',
           fontWeight: 600,
           color:      t.white,
@@ -84,7 +84,7 @@ export default function WelcomeEmail({
       >
         <Text
           style={{
-            fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+            fontFamily: t.fontStack,
             fontSize:   '14px',
             fontWeight: 600,
             color:      t.white,
@@ -110,7 +110,7 @@ export default function WelcomeEmail({
       >
         <Text
           style={{
-            fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+            fontFamily: t.fontStack,
             fontSize:   '14px',
             fontWeight: 600,
             color:      t.white,
@@ -136,7 +136,7 @@ export default function WelcomeEmail({
       >
         <Text
           style={{
-            fontFamily: 'Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+            fontFamily: t.fontStack,
             fontSize:   '14px',
             fontWeight: 600,
             color:      t.white,
