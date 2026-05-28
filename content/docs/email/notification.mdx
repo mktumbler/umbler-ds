@@ -1,0 +1,56 @@
+---
+title: Notificação
+description: Template transacional para faturas, confirmações de pagamento e alertas de conta Umbler.
+---
+
+import { EmailPreview } from '@/components/docs/email-preview';
+
+Template transacional de alta confiança: exibe detalhes da fatura em um card estruturado,
+inclui aviso de segurança (anti-phishing) e CTA direto para o painel de cobrança.
+
+## Preview
+
+<EmailPreview template="notification" height={820} />
+
+## Props
+
+<TokenTable
+  columns={['Prop', 'Tipo', 'Default', 'Descrição']}
+  rows={[
+    ['firstName',     'string', '"Rafael"',           'Nome do destinatário'],
+    ['invoiceNumber', 'string', '"FAT-2025-0042"',    'Número da fatura'],
+    ['invoiceDate',   'string', '"28/05/2025"',       'Data de emissão'],
+    ['dueDate',       'string', '"05/06/2025"',       'Data de vencimento'],
+    ['plan',          'string', '"Umbler Pro · 10 sites"', 'Descrição do plano contratado'],
+    ['amount',        'string', '"R$ 119,90"',        'Valor total formatado'],
+    ['ctaUrl',        'string', '"https://app.umbler.com/billing"', 'Link direto para a fatura no painel'],
+  ]}
+/>
+
+## Uso
+
+```tsx
+import { render } from '@react-email/render';
+import NotificationEmail from '@/emails/templates/notification';
+
+const html = await render(
+  <NotificationEmail
+    firstName="Ana"
+    invoiceNumber="FAT-2025-0099"
+    invoiceDate="01/06/2025"
+    dueDate="10/06/2025"
+    plan="Umbler Pro · 25 sites"
+    amount="R$ 249,90"
+    ctaUrl="https://app.umbler.com/billing/FAT-2025-0099"
+  />
+);
+```
+
+## Estrutura do template
+
+- **Badge** — "Fatura emitida" em azul
+- **Título** + parágrafo de contexto
+- **Card de fatura** — valor em destaque, badge de status e tabela de detalhes
+- **CTA** — "Ver e pagar fatura"
+- **Aviso de segurança** — alerta anti-phishing em amarelo
+- **Nota de suporte**

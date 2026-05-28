@@ -1,0 +1,51 @@
+---
+title: Campanha
+description: Template de email de marketing para anunciar novidades, features ou promoções Umbler.
+---
+
+import { EmailPreview } from '@/components/docs/email-preview';
+
+Template de campanha flexível: serve para anúncios de features, lançamentos de produto,
+promoções sazonais e newsletters. O hero visual é parametrizável via props.
+
+## Preview
+
+<EmailPreview template="campaign" height={800} />
+
+## Props
+
+<TokenTable
+  columns={['Prop', 'Tipo', 'Default', 'Descrição']}
+  rows={[
+    ['firstName',           'string', '"Rafael"', 'Nome do destinatário'],
+    ['featureTitle',        'string', '"Apresentando o Umbler Talk 2.0"', 'Título principal do anúncio'],
+    ['featureDescription',  'string', '—', 'Subtítulo exibido no hero'],
+    ['ctaUrl',              'string', '"https://umbler.com/talk"', 'URL do botão CTA'],
+    ['ctaLabel',            'string', '"Conhecer o Umbler Talk 2.0"', 'Texto do botão CTA'],
+  ]}
+/>
+
+## Uso
+
+```tsx
+import { render } from '@react-email/render';
+import CampaignEmail from '@/emails/templates/campaign';
+
+const html = await render(
+  <CampaignEmail
+    firstName="Ana"
+    featureTitle="Novo: Hospedagem Edge"
+    featureDescription="Seu site entregue de 50+ pontos no mundo — latência abaixo de 50ms."
+    ctaUrl="https://umbler.com/edge"
+    ctaLabel="Conhecer hospedagem Edge"
+  />
+);
+```
+
+## Estrutura do template
+
+- **Badge** — "Novidade" em azul
+- **Hero box** — fundo gradiente com título e subtítulo parametrizáveis
+- **Parágrafo de contexto** personalizado com o nome
+- **CTA principal**
+- **3 benefícios** com ícone + título + descrição em layout de duas colunas

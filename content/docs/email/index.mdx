@@ -1,0 +1,59 @@
+---
+title: Email Marketing
+description: Templates prontos de email para campanhas e notificações Umbler. Construídos com react-email, compartilham os tokens de cor da marca.
+---
+
+O DS inclui templates de email desenvolvidos com [react-email](https://react.email/),
+que compilam para HTML email-safe com CSS inline — compatíveis com Gmail, Outlook,
+Apple Mail e os principais clientes.
+
+## Por que react-email?
+
+Emails têm constraints diferentes do web: **sem CSS variables, sem flexbox confiável,
+sem Tailwind** — o output precisa ser HTML de tabelas com estilos inline. O react-email
+resolve isso mantendo o paradigma de componentes React que o DS já usa.
+
+Os **tokens de cor** são os mesmos do DS (brand-500 = `#1a5cff`, neutral-950 = `#030614`, etc.),
+apenas aplicados como valores literais no CSS inline.
+
+## Templates disponíveis
+
+| Template | Uso | Rota |
+|---|---|---|
+| [Boas-vindas](/docs/email/welcome) | Criação de conta | `/api/email/welcome` |
+| [Campanha](/docs/email/campaign) | Novidades e marketing | `/api/email/campaign` |
+| [Notificação](/docs/email/notification) | Faturas e alertas transacionais | `/api/email/notification` |
+
+## Download e uso
+
+Cada template tem um botão **⬇ Download HTML** que baixa o HTML final pronto para
+importar em Mailchimp, HubSpot, SendGrid, Amazon SES ou qualquer ESP.
+
+Para uso programático com a API do react-email:
+
+```ts
+import { render } from '@react-email/render';
+import WelcomeEmail from '@/emails/templates/welcome';
+
+const html = await render(<WelcomeEmail firstName="Ana" />);
+// html = string com o HTML completo, CSS inline, pronto para envio
+```
+
+## Convenções
+
+- **Fundo escuro** — todos os templates usam o fundo `#030614` (neutral-950) da marca
+- **Fonte Inter** carregada via Google Fonts com fallback `Arial, sans-serif`
+- **Cores hardcoded** — necessário; clientes de email ignoram CSS custom properties
+- **Tokens espelhados** em `emails/components/layout.tsx` como objeto `t` — altere lá e todos os templates herdam
+
+## Estrutura de arquivos
+
+```
+emails/
+  components/
+    layout.tsx       ← EmailLayout, EmailText, EmailButton, EmailBadge, EmailDivider
+  templates/
+    welcome.tsx
+    campaign.tsx
+    notification.tsx
+```

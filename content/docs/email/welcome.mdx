@@ -1,0 +1,45 @@
+---
+title: Boas-vindas
+description: Email enviado quando o usuário cria uma conta Umbler. Apresenta os próximos passos e direciona para o painel.
+---
+
+import { EmailPreview } from '@/components/docs/email-preview';
+
+Enviado logo após o cadastro. Apresenta o produto, reforça a marca e conduz o usuário
+ao primeiro site com um CTA direto.
+
+## Preview
+
+<EmailPreview template="welcome" height={700} />
+
+## Props
+
+<TokenTable
+  columns={['Prop', 'Tipo', 'Default', 'Descrição']}
+  rows={[
+    ['firstName', 'string', '"Rafael"', 'Nome do usuário para personalização'],
+    ['ctaUrl',    'string', 'https://app.umbler.com/sites/new', 'URL do botão principal'],
+  ]}
+/>
+
+## Uso
+
+```tsx
+import { render } from '@react-email/render';
+import WelcomeEmail from '@/emails/templates/welcome';
+
+const html = await render(
+  <WelcomeEmail
+    firstName="Ana"
+    ctaUrl="https://app.umbler.com/sites/new"
+  />
+);
+```
+
+## Estrutura do template
+
+- **Badge** — "Conta criada" em azul
+- **Título** personalizado com o nome do usuário
+- **CTA principal** — "Criar meu primeiro site"
+- **3 cartões de próximos passos** — domínio, publicação, e-mails
+- **Nota de suporte** com link direto

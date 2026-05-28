@@ -31,6 +31,7 @@ import { TabsBasic, TabsWithIcons, TabsDisabled } from '@/components/demos/tabs-
 import { DropdownBasic, DropdownWithLabel, DropdownCheckboxesAndRadios } from '@/components/demos/dropdown-variants';
 import { FeatureGridSection, FeatureSplitSection, FeatureBentoSection } from '@/components/demos/patterns/site/features';
 import { HeroBgGridDemo, HeroBgSweepDemo } from '@/components/demos/patterns/site/backgrounds';
+import { EmailPreview } from '@/components/docs/email-preview';
 
 export function getMDXComponents(components?: MDXComponents): MDXComponents {
   return {
@@ -106,6 +107,7 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     FeatureBentoSection,
     HeroBgGridDemo,
     HeroBgSweepDemo,
+    EmailPreview,
     ...components,
   };
 }
