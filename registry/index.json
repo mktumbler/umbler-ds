@@ -37,6 +37,11 @@
       "description": "Divisor horizontal/vertical com variantes de espessura e cor."
     },
     {
+      "name": "kbd",
+      "type": "registry:ui",
+      "description": "Representação visual de teclas e atalhos. Inclui KbdSequence para combinações."
+    },
+    {
       "name": "input",
       "type": "registry:ui",
       "description": "Campo de texto com estados, tamanhos, slots de prefixo/sufixo e sub-componentes InputLabel, InputHint, InputGroup."

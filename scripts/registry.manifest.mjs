@@ -82,6 +82,13 @@ export const items = [
     dependencies: [CVA],
     registryDependencies: ['utils'],
   },
+  {
+    name: 'kbd',
+    description: 'Representação visual de teclas e atalhos. Inclui KbdSequence para combinações.',
+    files: ['components/ui/kbd.tsx'],
+    dependencies: [CVA],
+    registryDependencies: ['utils'],
+  },
 
   // --- Onda 3 — inputs ---
   {

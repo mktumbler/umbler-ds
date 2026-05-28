@@ -1,0 +1,69 @@
+---
+title: Kbd
+description: Representa teclas e atalhos de teclado com tipografia monoespaçada e visual de tecla física. Inclui `KbdSequence` para combinações.
+---
+
+import { KbdSizes, KbdSingleKeys, KbdSequences } from '@/components/demos/kbd-variants';
+
+Use `Kbd` para indicar uma tecla — `Esc`, `⌘`, `Tab`. Para combinações (`⌘ + K`, `Ctrl + Shift + P`), prefira `KbdSequence` que cuida do espaçamento e do separador.
+
+## Tamanhos
+
+<ComponentPreview title="Sizes — sm, md, lg">
+  <KbdSizes />
+</ComponentPreview>
+
+## Teclas comuns
+
+<ComponentPreview title="Single keys">
+  <KbdSingleKeys />
+</ComponentPreview>
+
+## Sequências e atalhos
+
+<ComponentPreview title="KbdSequence">
+  <KbdSequences />
+</ComponentPreview>
+
+## Props
+
+### Kbd
+
+<TokenTable
+  columns={['Prop', 'Tipo', 'Default', 'Descrição']}
+  rows={[
+    ['size', '"sm" | "md" | "lg"', '"md"', 'Altura da tecla (20/24/28px)'],
+    ['children', 'ReactNode', '—', 'Conteúdo da tecla — texto curto ou símbolo'],
+    ['className', 'string', '—', 'Classes extras'],
+  ]}
+/>
+
+### KbdSequence
+
+<TokenTable
+  columns={['Prop', 'Tipo', 'Default', 'Descrição']}
+  rows={[
+    ['keys', 'ReactNode[]', '—', 'Lista de teclas que compõem o atalho'],
+    ['separator', '"+" | " " | ReactNode', '" "', 'Separador entre teclas. " " para combinação visual (⌘ K), "+" para soma (Ctrl + S)'],
+    ['size', '"sm" | "md" | "lg"', '"md"', 'Propagado para cada Kbd'],
+    ['className', 'string', '—', 'Classes extras'],
+  ]}
+/>
+
+## Uso
+
+```tsx
+import { Kbd, KbdSequence } from '@/components/ui/kbd';
+
+// Tecla isolada
+<Kbd>Esc</Kbd>
+
+// Combinação macOS
+<KbdSequence keys={['⌘', 'K']} />
+
+// Combinação Windows/Linux
+<KbdSequence keys={['Ctrl', 'Shift', 'P']} separator="+" />
+
+// Atalho composto sequencial (estilo Vim/Gmail)
+<KbdSequence keys={['G', 'I']} />
+```
