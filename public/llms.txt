@@ -1,0 +1,314 @@
+# Umbler Design System
+
+> Design system oficial da Umbler. Componentes React + tokens Tailwind v4 para construção de interfaces de produtos e marketing. Stack: Next.js 15 (App Router) + TypeScript + Tailwind CSS v4.
+
+## Instalação
+
+Registry shadcn em https://umbler-ds.vercel.app/r
+
+Instalar tudo de uma vez (recomendado para projetos novos):
+
+```bash
+npx shadcn@latest init
+npx shadcn@latest add https://umbler-ds.vercel.app/r/umbler-ui
+```
+
+Importar tokens no CSS de entrada (app/globals.css) — obrigatório, DEPOIS do tailwind:
+
+```css
+@import 'tailwindcss';
+@import './tokens.css';
+```
+
+Catálogo completo: https://umbler-ds.vercel.app/r/index.json
+Documentação visual: https://umbler-ds.vercel.app/docs
+
+## Convenções obrigatórias
+
+- Importe componentes de `@/components/ui/<nome>`
+- Use SOMENTE os tokens da marca via classes Tailwind — nunca cores, fontes ou espaçamentos arbitrários
+- Cores: `bg-brand-500`, `text-neutral-400`, `bg-success-500`, `border-error-300`, etc.
+- Texto semântico: `text-foreground`, `bg-surface`, `text-foreground-muted`
+- Tipografia: `text-display-xl`, `text-h1`, `text-h2`, `text-body`, `text-body-sm`, `text-caption`
+- Sombras: `shadow-xs`, `shadow-sm`, `shadow-md`, `shadow-lg`, `shadow-glow`
+- Radius: `rounded-sm` (6px), `rounded-md` (10px), `rounded-lg` (16px), `rounded-full`
+- Espaçamento: escala de 4px — use classes padrão Tailwind (`p-4`, `gap-6`, etc.)
+- Motion: `duration-[var(--duration-fast)]`, `ease-[var(--ease-out)]`
+- Eyebrow/caption com gradiente da marca: `<p className="eyebrow">TEXTO</p>`
+- Dark mode: automático via tokens semânticos — não use `dark:` manualmente nos componentes
+
+## Tokens de cor disponíveis
+
+Brand (Umbler Blue): brand-50 → brand-900 (principal: brand-500 = #1a5cff)
+Neutral (superfícies): neutral-50 → neutral-950 (fundo escuro: neutral-950 = #030614)
+Semântico success, warning, error, info (50/100/300/500/600/900 por escala)
+Adaptativo light/dark: surface, foreground, foreground-secondary, foreground-muted, foreground-subtle, border, border-strong, control-track
+
+## Componentes
+
+### Button
+```tsx
+import { Button } from '@/components/ui/button';
+import { buttonVariants } from '@/components/ui/button-variants';
+
+<Button variant="primary" size="md">Texto</Button>
+<Button variant="primary" loading>Salvando...</Button>
+<Button variant="primary" iconOnly><Icon /></Button>
+```
+- variant: `primary` | `secondary` | `ghost` | `outline` | `danger` — padrão: `primary`
+- size: `sm` | `md` | `lg` | `xl` — padrão: `md`
+- loading: boolean — mostra spinner e desabilita
+- iconOnly: boolean — remove padding lateral, torna quadrado
+
+### Badge
+```tsx
+import { Badge } from '@/components/ui/badge';
+
+<Badge variant="brand">Novo</Badge>
+<Badge variant="success" size="sm" dot>Online</Badge>
+```
+- variant: `brand` | `success` | `warning` | `error` | `neutral` — padrão: `neutral`
+- size: `sm` | `md` — padrão: `md`
+- dot: boolean — adiciona ponto colorido à esquerda
+
+### Tag
+```tsx
+import { Tag } from '@/components/ui/tag';
+
+<Tag variant="brand">React</Tag>
+<Tag variant="neutral" onRemove={() => {}}>Removível</Tag>
+```
+- variant: `brand` | `success` | `warning` | `error` | `neutral` — padrão: `neutral`
+- size: `sm` | `md` — padrão: `md`
+- onRemove: () => void — exibe botão X para remoção
+
+### Avatar
+```tsx
+import { Avatar, AvatarGroup } from '@/components/ui/avatar';
+
+<Avatar src="/foto.jpg" name="Ana Lima" size="md" />
+<Avatar name="Carlos" size="lg" />   {/* fallback iniciais */}
+<AvatarGroup avatars={[...]} max={3} size="sm" />
+```
+- size: `xs` | `sm` | `md` | `lg` | `xl` — padrão: `md`
+- src: string (opcional) — fallback automático para iniciais do `name` ou ícone
+- AvatarGroup: avatars[] com src/name + max (número máximo antes do +N)
+
+### Spinner
+```tsx
+import { Spinner } from '@/components/ui/spinner';
+
+<Spinner size="md" className="text-brand-400 dark:text-brand-300" />
+```
+- size: `sm` | `md` | `lg` | `xl` — padrão: `md`
+- Usa `currentColor` — controle a cor via `className` (text-*)
+
+### Separator
+```tsx
+import { Separator } from '@/components/ui/separator';
+
+<Separator />
+<Separator orientation="vertical" className="h-6" />
+```
+- orientation: `horizontal` | `vertical` — padrão: `horizontal`
+
+### Input
+```tsx
+import { Input, InputLabel, InputHint, InputGroup } from '@/components/ui/input';
+
+<InputGroup>
+  <InputLabel htmlFor="email">E-mail</InputLabel>
+  <Input id="email" type="email" placeholder="você@umbler.com" size="md" />
+  <InputHint>Usado para login</InputHint>
+</InputGroup>
+
+<Input state="error" />
+<Input prefix={<Icon />} suffix="@umbler.com" />
+```
+- size: `sm` | `md` | `lg` — padrão: `md`
+- state: `default` | `error` | `success` | `disabled`
+- prefix / suffix: ReactNode — slots laterais
+
+### Textarea
+```tsx
+import { Textarea } from '@/components/ui/textarea';
+import { InputLabel, InputHint, InputGroup } from '@/components/ui/input';
+
+<InputGroup>
+  <InputLabel htmlFor="bio">Bio</InputLabel>
+  <Textarea id="bio" rows={4} resize="vertical" />
+</InputGroup>
+```
+- resize: `none` | `vertical` | `horizontal` | `both` — padrão: `vertical`
+- state: `default` | `error` | `success` | `disabled`
+- Reusa InputLabel/InputHint/InputGroup do Input
+
+### Select
+```tsx
+import { Select } from '@/components/ui/select';
+
+<Select size="md" state="default">
+  <option value="">Escolha...</option>
+  <option value="a">Opção A</option>
+</Select>
+```
+- size: `sm` | `md` | `lg` — padrão: `md`
+- state: `default` | `error` | `disabled`
+
+### Checkbox
+```tsx
+import { Checkbox } from '@/components/ui/checkbox';
+
+<Checkbox label="Aceito os termos" />
+<Checkbox label="Com descrição" description="Texto explicativo" />
+<Checkbox indeterminate />
+<Checkbox state="error" errorMessage="Campo obrigatório" />
+```
+- label: string
+- description: string (opcional) — texto abaixo do label
+- indeterminate: boolean
+- state: `default` | `error`
+- errorMessage: string
+
+### Radio
+```tsx
+import { RadioGroup, RadioItem } from '@/components/ui/radio';
+
+<RadioGroup name="plano" orientation="vertical">
+  <RadioItem value="starter" label="Starter" />
+  <RadioItem value="pro" label="Pro" description="Mais recursos" />
+</RadioGroup>
+```
+- orientation: `vertical` | `horizontal` — padrão: `vertical`
+
+### Toggle (Switch)
+```tsx
+import { Toggle } from '@/components/ui/toggle';
+
+<Toggle label="Notificações" size="md" defaultChecked />
+```
+- size: `sm` | `md` | `lg` — padrão: `md`
+- label: string (opcional)
+- checked / defaultChecked / onChange: controle controlado/não-controlado
+
+### Card
+```tsx
+import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/card';
+
+<Card variant="default">
+  <CardHeader>
+    <CardTitle>Título</CardTitle>
+    <CardDescription>Descrição breve</CardDescription>
+  </CardHeader>
+  <CardContent>conteúdo</CardContent>
+  <CardFooter><Button>Ação</Button></CardFooter>
+</Card>
+```
+- variant: `default` | `elevated` | `ghost` | `outline` — padrão: `default`
+
+### CardAurora
+```tsx
+import { CardAurora } from '@/components/ui/card-aurora';
+
+<CardAurora icon={<Globe size={22} />} title="Feature" description="Texto" blob="sweep" rotation="default" />
+```
+- blob: `sweep` | `prism` — padrão: `sweep`
+- rotation: `default` | `diagonal` | `spin` — padrão: `default`
+- icon: ReactNode — ícone no topo do card
+- title, description: string
+
+### Alert
+```tsx
+import { Alert } from '@/components/ui/alert';
+
+<Alert variant="info" title="Atenção" description="Mensagem informativa." />
+<Alert variant="success" dismissible onDismiss={() => {}} />
+<Alert variant="error" noIcon title="Erro" description="Algo falhou." />
+```
+- variant: `info` | `success` | `warning` | `error` — padrão: `info`
+- title: string (opcional)
+- description: string (opcional)
+- dismissible: boolean — exibe botão X
+- onDismiss: () => void
+- noIcon: boolean — remove ícone lateral
+
+### Skeleton
+```tsx
+import { Skeleton, SkeletonText, SkeletonAvatar } from '@/components/ui/skeleton';
+
+<Skeleton className="h-4 w-48" />
+<SkeletonText lines={3} />
+<SkeletonAvatar size="md" />
+```
+- Skeleton: base com shimmer — use className para definir dimensões
+- SkeletonText: lines (número de linhas simuladas)
+- SkeletonAvatar: size matching avatar sizes
+
+### EmptyState
+```tsx
+import { EmptyState } from '@/components/ui/empty-state';
+import { FolderOpen } from '@phosphor-icons/react';
+
+<EmptyState
+  icon={<FolderOpen size={40} />}
+  title="Nenhum resultado"
+  description="Tente ajustar os filtros."
+  action={<Button variant="outline">Limpar filtros</Button>}
+/>
+```
+- icon: ReactNode
+- title: string
+- description: string (opcional)
+- action: ReactNode (opcional) — botão ou link de ação
+
+### HeroBackground
+```tsx
+import { HeroBackground } from '@/components/ui/hero-background';
+
+<HeroBackground variant="sweep" className="min-h-screen">
+  <div className="relative z-10 flex flex-col items-center py-32">
+    {/* conteúdo do hero */}
+  </div>
+</HeroBackground>
+```
+- variant: `sweep` | `cloud` | `wedge` | `arc` | `cap` | `arc-flip` | `sweep-invert` | `cap-mirror` — padrão: `sweep`
+- Fundo escuro fixo `rgb(3,6,20)` com glow SVG azul (blur + mix-blend-mode)
+- Coloque conteúdo em `relative z-10` para ficar sobre o blob
+
+### UmblerLogo
+```tsx
+import { UmblerLogo } from '@/components/ui/umbler-logo';
+
+<UmblerLogo className="h-8 w-auto" />
+```
+- Adapta automaticamente para light/dark via CSS variables
+- Versão dark tem gradiente na letra 'u'
+
+## Ícones
+
+Use `@phosphor-icons/react` (já instalado). Prefira o subset SSR onde possível:
+```tsx
+import { Globe, ArrowRight, Check } from '@phosphor-icons/react';
+import { Check } from '@phosphor-icons/react/dist/ssr'; // server components
+```
+
+## Patterns de seção (site marketing)
+
+Importar de `@/components/demos/patterns/site/`:
+- `FeatureGridSection` — grid 3 colunas com ícones Phosphor e eyebrow
+- `FeatureSplitSection` — texto + mock de dashboard lado a lado
+- `FeatureBentoSection` — layout assimétrico com CardAurora em fundo escuro
+
+Fundo de hero/seção:
+```tsx
+import { HeroBackground } from '@/components/ui/hero-background';
+// variantes: sweep (hero), cloud (seção secundária), wedge (features), arc (CTA)
+```
+
+## Eyebrow / caption
+
+Para texto de label acima de títulos em seções de marketing:
+```tsx
+<p className="eyebrow">INFRAESTRUTURA · CRESCIMENTO</p>
+```
+Aplica: 0.75rem, weight 500, letter-spacing 0.2em, uppercase + gradiente da marca (light: azul sólido, dark: gradient brand).

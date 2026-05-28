@@ -1,10 +1,14 @@
 {
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "spinner",
   "type": "registry:ui",
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-  "description": "Indicador de carregamento animado — SVG arc com animate-spin, 4 tamanhos, herda cor do contexto.",
-  "dependencies": ["class-variance-authority"],
-  "registryDependencies": [],
+  "description": "Indicador de carregamento circular. Usa currentColor; cor controlada por className do pai.",
+  "dependencies": [
+    "class-variance-authority"
+  ],
+  "registryDependencies": [
+    "https://umbler-ds.vercel.app/r/utils"
+  ],
   "files": [
     {
       "path": "components/ui/spinner.tsx",

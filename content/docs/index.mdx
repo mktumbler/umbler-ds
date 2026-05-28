@@ -1,12 +1,105 @@
 ---
 title: Início
-description: Como consumir os componentes em outros projetos.
+description: Como consumir o Umbler DS em outros projetos — passo a passo.
 ---
 
-Cada componente é distribuído via registry compatível com `shadcn`. Em qualquer projeto Next.js:
+O Umbler DS é distribuído via **registry compatível com `shadcn`**: o código é copiado para dentro do seu projeto (em `components/ui/`), sem dependência de runtime e totalmente customizável.
+
+<Callout title="Pré-requisitos">
+Um projeto **Next.js (App Router)** com **Tailwind CSS v4**. Os componentes usam React 19 e os tokens dependem da diretiva `@theme` do Tailwind v4.
+</Callout>
+
+## Setup com IA (recomendado)
+
+A forma mais rápida: **cole o prompt abaixo no agente de IA do seu projeto** (Claude Code, Cursor, etc.). Ele instala tudo, importa os tokens e valida — sem você rodar comando nenhum.
+
+````text
+Leia https://umbler-ds.vercel.app/llms.txt — ele descreve todos os
+componentes, tokens, convenções e como instalar o Umbler Design System.
+
+Depois, siga os passos de instalação e monte a UI do projeto usando
+os componentes e tokens documentados. Não use cores, fontes ou
+espaçamentos fora dos tokens da marca.
+````
+
+Se preferir fazer na mão, siga o passo a passo abaixo.
+
+---
+
+## 1. Inicialize o shadcn (uma vez por projeto)
+
+Se o projeto ainda não usa shadcn, rode o init para criar a estrutura (`components.json`, aliases `@/components` e `@/lib`):
+
+```bash
+npx shadcn@latest init
+```
+
+## 2. Instale o DS completo
+
+O item agregador `umbler-ui` instala **todos os componentes de uma vez**, junto com o utilitário `cn` (`lib/utils.ts`) e os tokens da marca (`tokens.css`):
+
+```bash
+npx shadcn@latest add https://umbler-ds.vercel.app/r/umbler-ui
+```
+
+As dependências entre componentes são resolvidas automaticamente — você não precisa instalar `spinner`, `input` ou `utils` na mão.
+
+## 3. Importe os tokens no seu CSS
+
+No CSS de entrada do projeto (ex.: `app/globals.css`), importe os tokens **depois** do Tailwind:
+
+```css
+@import 'tailwindcss';
+@import './tokens.css';
+```
+
+Isso registra as cores da marca (`brand-*`, `neutral-*`, semânticas), a tipografia (`text-display-*`, `text-h*`, `text-body-*`), espaçamento, radius, sombras adaptativas light/dark e o utilitário `.eyebrow`.
+
+## 4. Use um componente
+
+```tsx
+import { Button } from '@/components/ui/button';
+
+export default function Page() {
+  return <Button variant="primary">Começar</Button>;
+}
+```
+
+---
+
+## Instalar componentes avulsos
+
+Para puxar só o que precisa, use o slug de cada componente. Vários de uma vez no mesmo comando:
+
+```bash
+npx shadcn@latest add https://umbler-ds.vercel.app/r/button
+npx shadcn@latest add https://umbler-ds.vercel.app/r/card https://umbler-ds.vercel.app/r/badge
+```
+
+Cada item declara suas dependências: instalar `button` traz `spinner` + `utils`; instalar `textarea` traz `input`. O `tokens` também pode ser instalado isolado:
+
+```bash
+npx shadcn@latest add https://umbler-ds.vercel.app/r/tokens
+```
+
+## Atualizando o DS no seu projeto
+
+Como o código é **copiado**, ele não muda sozinho quando o DS evolui. Para receber a versão mais recente de um componente, rode o `add` de novo — ele sobrescreve o arquivo local:
 
 ```bash
 npx shadcn@latest add https://umbler-ds.vercel.app/r/button
 ```
 
-O código fonte é copiado para `/components/ui/` do projeto consumidor — sem dependência runtime, totalmente customizável.
+<Callout type="info">
+Se você customizou o arquivo localmente, faça o re-`add` em uma branch para revisar o diff antes de aceitar. Um canal de atualização versionada via pacote npm (`npm update`) está no roadmap de distribuição.
+</Callout>
+
+## Catálogo do registry
+
+A lista completa de itens instaláveis (componentes, `utils`, `tokens` e o agregador `umbler-ui`) fica em:
+
+```
+https://umbler-ds.vercel.app/r/index.json
+```
+
+Útil para agentes de IA descobrirem o que existe antes de montar a UI de um projeto novo.

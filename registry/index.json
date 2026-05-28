@@ -1,0 +1,115 @@
+{
+  "base": "https://umbler-ds.vercel.app/r",
+  "items": [
+    {
+      "name": "utils",
+      "type": "registry:lib",
+      "description": "cn() — clsx + tailwind-merge customizado para entender os tokens de texto do DS (text-display-*, text-body-*, text-caption) como font-size."
+    },
+    {
+      "name": "tokens",
+      "type": "registry:file",
+      "description": "Tokens da marca Umbler em CSS (@theme do Tailwind v4): cores, tipografia, espaçamento, radius, sombras, motion + tokens semânticos light/dark e utilitário .eyebrow. Importe no CSS de entrada do projeto."
+    },
+    {
+      "name": "spinner",
+      "type": "registry:ui",
+      "description": "Indicador de carregamento circular. Usa currentColor; cor controlada por className do pai."
+    },
+    {
+      "name": "badge",
+      "type": "registry:ui",
+      "description": "Selo compacto de status com variantes de cor, tamanhos e modo dot."
+    },
+    {
+      "name": "tag",
+      "type": "registry:ui",
+      "description": "Etiqueta com variantes, tamanhos e modo removível (input de tags)."
+    },
+    {
+      "name": "avatar",
+      "type": "registry:ui",
+      "description": "Avatar com imagem, fallback de iniciais/ícone, tamanhos e agrupamento."
+    },
+    {
+      "name": "separator",
+      "type": "registry:ui",
+      "description": "Divisor horizontal/vertical com variantes de espessura e cor."
+    },
+    {
+      "name": "input",
+      "type": "registry:ui",
+      "description": "Campo de texto com estados, tamanhos, slots de prefixo/sufixo e sub-componentes InputLabel, InputHint, InputGroup."
+    },
+    {
+      "name": "textarea",
+      "type": "registry:ui",
+      "description": "Área de texto multilinha com estados e controle de resize. Reusa InputLabel/InputHint/InputGroup do input."
+    },
+    {
+      "name": "select",
+      "type": "registry:ui",
+      "description": "Select nativo estilizado com estados, tamanhos e ícone de caret."
+    },
+    {
+      "name": "checkbox",
+      "type": "registry:ui",
+      "description": "Checkbox com estados checked/indeterminate, descrição e estado de erro."
+    },
+    {
+      "name": "radio",
+      "type": "registry:ui",
+      "description": "Radio group com orientação horizontal/vertical."
+    },
+    {
+      "name": "toggle",
+      "type": "registry:ui",
+      "description": "Switch on/off com tamanhos, label e estados."
+    },
+    {
+      "name": "card",
+      "type": "registry:ui",
+      "description": "Container de conteúdo com 4 variantes (default, elevated, ghost, outline) e sub-componentes CardHeader, CardTitle, CardDescription, CardContent, CardFooter."
+    },
+    {
+      "name": "card-aurora",
+      "type": "registry:ui",
+      "description": "Card decorativo com efeito aurora/glow gradiente. Variações de rotação, modo prism e layout bento."
+    },
+    {
+      "name": "alert",
+      "type": "registry:ui",
+      "description": "Alerta com variantes (info, success, warning, error), modo dismissível e ícones."
+    },
+    {
+      "name": "skeleton",
+      "type": "registry:ui",
+      "description": "Placeholder de carregamento (shimmer) com primitivos para compor cards/listas."
+    },
+    {
+      "name": "empty-state",
+      "type": "registry:ui",
+      "description": "Estado vazio com ícone, título, descrição e ação opcional."
+    },
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "description": "Botão Umbler DS — 5 variantes (primary, secondary, ghost, outline, danger), 4 tamanhos, loading e icon-only."
+    },
+    {
+      "name": "umbler-logo",
+      "type": "registry:ui",
+      "description": "Logo Umbler em SVG, adaptável a light/dark via CSS variables."
+    },
+    {
+      "name": "hero-background",
+      "type": "registry:ui",
+      "description": "Fundo de hero com glow SVG (blur + mix-blend-mode). 8 variantes de blob para seções de marketing."
+    },
+    {
+      "name": "umbler-ui",
+      "type": "registry:ui",
+      "description": "Instala todo o Umbler DS de uma vez: componentes, utilitários e tokens. Use para bootstrapar um projeto novo."
+    }
+  ]
+}

@@ -16,7 +16,11 @@ export async function GET(
   ctx: { params: Promise<{ component: string }> }
 ) {
   const { component } = await ctx.params;
-  const safeName = component.replace(/[^a-z0-9-]/gi, '').toLowerCase();
+  // aceita tanto "/r/button" quanto "/r/button.json"; sanitiza o resto.
+  const safeName = component
+    .replace(/\.json$/i, '')
+    .replace(/[^a-z0-9-]/gi, '')
+    .toLowerCase();
 
   const filePath = path.join(
     process.cwd(),

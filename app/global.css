@@ -1,244 +1,15 @@
 @import 'tailwindcss';
 @import 'fumadocs-ui/css/neutral.css';
 @import 'fumadocs-ui/css/preset.css';
+@import './tokens.css';
 
 @source '../node_modules/fumadocs-ui/dist/**/*.js';
 
 /* ============================================================
-   UMBLER DESIGN SYSTEM — TOKENS
-   Migrated 1:1 from umbler-design-system.vercel.app
+   Este arquivo contém APENAS os ajustes específicos da documentação
+   (Fumadocs). Todos os tokens da marca vivem em ./tokens.css, que é
+   a fonte distribuída para os projetos consumidores.
    ============================================================ */
-
-@theme {
-  /* -------- Brand — Umbler Blue -------- */
-  --color-brand-50: #ebf1ff;
-  --color-brand-100: #d0dfff;
-  --color-brand-200: #a3c0ff;
-  --color-brand-300: #6b99ff;
-  --color-brand-400: #3d74ff;
-  --color-brand-500: #1a5cff;
-  --color-brand-600: #0044d9;
-  --color-brand-700: #0033b0;
-  --color-brand-800: #002488;
-  --color-brand-900: #001866;
-
-  /* -------- Neutral — Surface & Background -------- */
-  --color-neutral-50: #f4f5fa;
-  --color-neutral-100: #e8eaf2;
-  --color-neutral-200: #c4cae0;
-  --color-neutral-300: #959fbf;
-  --color-neutral-400: #6e7799;
-  --color-neutral-500: #4a5278;
-  --color-neutral-600: #2a3356;
-  --color-neutral-700: #1a2240;
-  --color-neutral-800: #111733;
-  --color-neutral-900: #0a0f20;
-  --color-neutral-950: #030614;
-
-  /* -------- Semantic — Success -------- */
-  --color-success-50: #e8fce8;
-  --color-success-100: #d0f5d0;
-  --color-success-300: #9cd99c;
-  --color-success-500: #5cb85c;
-  --color-success-600: #438c43;
-  --color-success-900: #316631;
-
-  /* -------- Semantic — Warning -------- */
-  --color-warning-50: #fffaeb;
-  --color-warning-100: #faf1d4;
-  --color-warning-300: #f5df9f;
-  --color-warning-500: #f2c94e;
-  --color-warning-600: #bf9d36;
-  --color-warning-900: #a6882e;
-
-  /* -------- Semantic — Error / Danger -------- */
-  --color-error-50: #fff1f0;
-  --color-error-100: #fad7d4;
-  --color-error-300: #f29c96;
-  --color-error-500: #f2594e;
-  --color-error-600: #c24036;
-  --color-error-900: #9c2f27;
-
-  /* -------- Semantic — Info (matches brand) -------- */
-  --color-info-50: #ebf1ff;
-  --color-info-100: #d0dfff;
-  --color-info-300: #6b99ff;
-  --color-info-500: #1a5cff;
-  --color-info-600: #0044d9;
-  --color-info-900: #001866;
-
-  /* -------- Typography -------- */
-  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
-  --font-heading: 'p22-mackinac-pro', Georgia, serif;
-  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
-
-  --text-display: 3.5rem;                  /* 56px — destaque de seção */
-  --text-display--line-height: 1.05;
-  --text-display--font-weight: 500;
-  --text-display--letter-spacing: -0.1rem;
-
-  --text-display-lg: 4.5rem;               /* 72px — hero padrão */
-  --text-display-lg--line-height: 1.05;
-  --text-display-lg--font-weight: 500;
-  --text-display-lg--letter-spacing: -0.15rem;
-
-  --text-display-xl: 6rem;                 /* 96px — splash */
-  --text-display-xl--line-height: 1.0;
-  --text-display-xl--font-weight: 500;
-  --text-display-xl--letter-spacing: -0.2rem;
-
-  --text-display-2xl: 8rem;                /* 128px — impacto máximo */
-  --text-display-2xl--line-height: 0.95;
-  --text-display-2xl--font-weight: 500;
-  --text-display-2xl--letter-spacing: -0.4rem;
-
-  --text-h1: 3rem;                         /* 48px */
-  --text-h1--line-height: 1.1;
-  --text-h1--font-weight: 500;
-  --text-h1--letter-spacing: -0.1rem;
-
-  --text-h2: 2.25rem;                      /* 36px */
-  --text-h2--line-height: 1.2;
-  --text-h2--font-weight: 500;
-  --text-h2--letter-spacing: -0.05rem;
-
-  --text-h3: 1.75rem;         /* 28px */
-  --text-h3--line-height: 1.25;
-  --text-h3--font-weight: 500;
-
-  --text-h4: 1.375rem;        /* 22px */
-  --text-h4--line-height: 1.35;
-  --text-h4--font-weight: 500;
-
-  --text-body-lg: 1.125rem;   /* 18px */
-  --text-body-lg--line-height: 1.6;
-
-  --text-body: 1rem;          /* 16px */
-  --text-body--line-height: 1.6;
-
-  --text-body-sm: 0.875rem;   /* 14px */
-  --text-body-sm--line-height: 1.5;
-
-  --text-caption: 0.75rem;    /* 12px */
-  --text-caption--line-height: 1.4;
-  --text-caption--font-weight: 500;
-
-  /* -------- Spacing (4px base) -------- */
-  --spacing-0-5: 0.125rem;    /* 2px  — micro */
-  --spacing-1:   0.25rem;     /* 4px  — micro */
-  --spacing-1-5: 0.375rem;    /* 6px  — micro */
-  --spacing-2:   0.5rem;      /* 8px  — componente */
-  --spacing-3:   0.75rem;     /* 12px — componente */
-  --spacing-4:   1rem;        /* 16px — componente */
-  --spacing-5:   1.25rem;     /* 20px — componente */
-  --spacing-6:   1.5rem;      /* 24px — componente */
-  --spacing-8:   2rem;        /* 32px — seção */
-  --spacing-12:  3rem;        /* 48px — seção */
-
-  /* -------- Radius -------- */
-  --radius-sm: 0.375rem;      /* 6px */
-  --radius-md: 0.625rem;      /* 10px */
-  --radius-lg: 1rem;          /* 16px */
-  --radius-xl: 1.5rem;        /* 24px */
-  --radius-full: 9999px;
-
-  /* -------- Shadows (adaptive: defined per mode below) -------- */
-
-  /* -------- Motion -------- */
-  --duration-fast: 150ms;
-  --duration-normal: 250ms;
-  --duration-slow: 400ms;
-  --duration-slower: 600ms;
-
-  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
-  --ease-in-out: cubic-bezier(0.45, 0, 0.55, 1);
-  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
-
-  /* -------- Layout -------- */
-  --container-max: 1200px;
-  --grid-gutter: 1.5rem;       /* 24px */
-  --grid-margin: 2rem;         /* 32px */
-
-  /* -------- Breakpoints -------- */
-  --breakpoint-sm: 640px;
-  --breakpoint-md: 768px;
-  --breakpoint-lg: 1024px;
-  --breakpoint-xl: 1280px;
-}
-
-/* ============================================================
-   SEMANTIC COLOR TOKENS
-   Adaptam ao modo claro/escuro via CSS custom properties.
-   Geram utilitários Tailwind: bg-surface, text-foreground, etc.
-   ============================================================ */
-
-@theme inline {
-  --color-surface:               var(--surface);
-  --color-border:                var(--border);
-  --color-border-strong:         var(--border-strong);
-  --color-foreground:            var(--foreground);
-  --color-foreground-secondary:  var(--foreground-secondary);
-  --color-foreground-muted:      var(--foreground-muted);
-  --color-foreground-subtle:     var(--foreground-subtle);
-  --color-control-track:         var(--control-track);
-
-  /* Shadows — adaptive light/dark */
-  --shadow-xs:   var(--shadow-xs-val);
-  --shadow-sm:   var(--shadow-sm-val);
-  --shadow-md:   var(--shadow-md-val);
-  --shadow-lg:   var(--shadow-lg-val);
-  --shadow-xl:   var(--shadow-xl-val);
-  --shadow-glow: var(--shadow-glow-val);
-}
-
-/* Light mode (padrão) */
-:root {
-  --gradient-brand: #1a5cff;
-  --logo-show-light: block;
-  --logo-show-dark: none;
-
-  --surface:              #ffffff;
-  --border:               rgba(42, 51, 86, 0.18);
-  --border-strong:        rgba(42, 51, 86, 0.35);
-  --foreground:           #111733;          /* neutral-800 */
-  --foreground-secondary: #1a2240;          /* neutral-700 */
-  --foreground-muted:     #4a5278;          /* neutral-500 */
-  --foreground-subtle:    #6e7799;          /* neutral-400 */
-  --control-track:        #c4cae0;          /* neutral-200 */
-
-  /* Shadows — neutral-500 (rgb 74 82 120), índigo-ardósia, para superfícies claras */
-  --shadow-xs-val:   0 1px 2px 0 rgb(74 82 120 / 0.14);
-  --shadow-sm-val:   0 1px 3px 0 rgb(74 82 120 / 0.16), 0 1px 2px -1px rgb(74 82 120 / 0.14);
-  --shadow-md-val:   0 4px 6px -1px rgb(74 82 120 / 0.18), 0 2px 4px -2px rgb(74 82 120 / 0.16);
-  --shadow-lg-val:   0 10px 15px -3px rgb(74 82 120 / 0.2), 0 4px 6px -4px rgb(74 82 120 / 0.18);
-  --shadow-xl-val:   0 20px 25px -5px rgb(74 82 120 / 0.22), 0 8px 10px -6px rgb(74 82 120 / 0.18);
-  --shadow-glow-val: 0 0 32px 0 rgb(26 92 255 / 0.35);
-}
-
-/* ============================================================
-   CARD AURORA — animação do blob
-   ============================================================ */
-
-@keyframes aurora-spin {
-  from { transform: translate(-50%, -50%) rotate(0deg); }
-  to   { transform: translate(-50%, -50%) rotate(360deg); }
-}
-
-/* ============================================================
-   BASE TYPOGRAPHY
-   ============================================================ */
-html {
-  font-family: var(--font-sans);
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-heading);
-  font-weight: 500;
-}
-
-h2 {
-  letter-spacing: var(--text-h2--letter-spacing);
-}
 
 /* ── Fumadocs: título de página maior + tracking ────────────────────────────── */
 #nd-page h1 {
@@ -260,31 +31,11 @@ h2 {
   margin-bottom: 0.75em;
 }
 
-code,
-pre,
-kbd {
-  font-family: var(--font-mono);
-}
-
 /* ============================================================
-   UMBLER DARK MODE — sobrescreve o neutral.css do Fumadocs
-   com a escala de cores da marca
+   FUMADOCS DARK MODE — sobrescreve o neutral.css do Fumadocs
+   com a escala de cores da marca. (Tokens do DS estão em tokens.css.)
    ============================================================ */
 .dark {
-  /* Semantic tokens — dark overrides */
-  --gradient-brand: linear-gradient(90deg, #8bbcf8 0%, #f8c4b8 100%);
-  --logo-show-light: none;
-  --logo-show-dark: block;
-
-  --surface:              #0a0f20;          /* neutral-900 */
-  --border:               rgba(42, 51, 86, 0.7);
-  --border-strong:        #4a5278;          /* neutral-500 */
-  --foreground:           #e8eaf2;          /* neutral-100 */
-  --foreground-secondary: #c4cae0;          /* neutral-200 */
-  --foreground-muted:     #6e7799;          /* neutral-400 */
-  --foreground-subtle:    #4a5278;          /* neutral-500 */
-  --control-track:        #1a2240;          /* neutral-700 */
-
   /* Backgrounds */
   --color-fd-background:         #030614; /* neutral-950 — fundo principal */
   --color-fd-muted:              #0a0f20; /* neutral-900 — sidebar, muted areas */
@@ -308,14 +59,6 @@ kbd {
   /* Borders & ring */
   --color-fd-border:             rgba(42, 51, 86, 0.5); /* neutral-600 / 50% */
   --color-fd-ring:               #1a5cff; /* brand-500 */
-
-  /* Shadows — neutral-900 (rgb 10 15 32), para superfícies escuras */
-  --shadow-xs-val:   0 1px 2px 0 rgb(10 15 32 / 0.3);
-  --shadow-sm-val:   0 1px 3px 0 rgb(10 15 32 / 0.35), 0 1px 2px -1px rgb(10 15 32 / 0.3);
-  --shadow-md-val:   0 4px 6px -1px rgb(10 15 32 / 0.4), 0 2px 4px -2px rgb(10 15 32 / 0.35);
-  --shadow-lg-val:   0 10px 15px -3px rgb(10 15 32 / 0.45), 0 4px 6px -4px rgb(10 15 32 / 0.4);
-  --shadow-xl-val:   0 20px 25px -5px rgb(10 15 32 / 0.5), 0 8px 10px -6px rgb(10 15 32 / 0.4);
-  --shadow-glow-val: 0 0 32px 0 rgb(26 92 255 / 0.35);
 }
 
 /* Item ativo na sidebar — sobrescreve bg-fd-primary/10 text-fd-primary do Fumadocs */
@@ -323,19 +66,6 @@ kbd {
 .dark #nd-sidebar button[data-active='true'] {
   background-color: rgb(26 92 255 / 0.14); /* brand-500/14 */
   color: #6b99ff;                           /* brand-300 */
-}
-
-/* ── Eyebrow / caption gradient — padrão DS ─────────────────────────────── */
-.eyebrow {
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  background: var(--gradient-brand);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
 }
 
 /* Sidebar com um passo mais claro que o fundo */

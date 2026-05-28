@@ -1,0 +1,4 @@
+# Copie para o .npmrc do PROJETO CONSUMIDOR (não commitar o token).
+# Token do GitHub com escopo read:packages.
+@umbler:registry=https://npm.pkg.github.com
+//npm.pkg.github.com/:_authToken=${GITHUB_TOKEN}

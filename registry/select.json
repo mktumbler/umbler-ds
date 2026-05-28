@@ -1,9 +1,20 @@
 {
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "select",
   "type": "registry:ui",
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-  "description": "Dropdown nativo estilizado com appearance-none, caret customizado e estados default/error/success.",
-  "dependencies": ["class-variance-authority", "@phosphor-icons/react"],
-  "registryDependencies": ["input"],
-  "files": [{ "path": "components/ui/select.tsx", "type": "registry:ui" }]
+  "description": "Select nativo estilizado com estados, tamanhos e ícone de caret.",
+  "dependencies": [
+    "class-variance-authority",
+    "@phosphor-icons/react"
+  ],
+  "registryDependencies": [
+    "https://umbler-ds.vercel.app/r/utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/select.tsx",
+      "type": "registry:ui",
+      "content": "import { cva, type VariantProps } from 'class-variance-authority';\nimport { forwardRef, type SelectHTMLAttributes } from 'react';\nimport { CaretDown } from '@phosphor-icons/react/dist/ssr';\nimport { cn } from '@/lib/utils';\n\n// ── Variants ──────────────────────────────────────────────────────────────────\n\nconst selectVariants = cva(\n  [\n    'w-full appearance-none rounded-md bg-surface text-foreground',\n    'border transition-[border-color,box-shadow] duration-150',\n    'focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-surface',\n    'disabled:opacity-50 disabled:cursor-not-allowed',\n    'pr-9', // espaço para o caret\n  ].join(' '),\n  {\n    variants: {\n      size: {\n        sm: 'h-8  pl-3 text-sm',\n        md: 'h-10 pl-3 text-sm',\n        lg: 'h-12 pl-4 text-base',\n      },\n      state: {\n        default: 'border-border hover:border-border-strong focus:border-brand-500 focus:ring-brand-500/30',\n        error:   'border-error-500   focus:border-error-500   focus:ring-error-500/30',\n        success: 'border-success-500 focus:border-success-500 focus:ring-success-500/30',\n      },\n    },\n    defaultVariants: { size: 'md', state: 'default' },\n  },\n);\n\n// ── Select ────────────────────────────────────────────────────────────────────\n\nexport interface SelectProps\n  extends Omit<SelectHTMLAttributes<HTMLSelectElement>, 'size'>,\n    VariantProps<typeof selectVariants> {}\n\nexport const Select = forwardRef<HTMLSelectElement, SelectProps>(\n  ({ className, size, state, children, ...props }, ref) => (\n    <div className=\"relative\">\n      <select\n        ref={ref}\n        className={cn(selectVariants({ size, state }), className)}\n        {...props}\n      >\n        {children}\n      </select>\n      <span className=\"pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-foreground-muted\">\n        <CaretDown size={14} weight=\"bold\" />\n      </span>\n    </div>\n  ),\n);\nSelect.displayName = 'Select';\n\nexport { selectVariants };\n"
+    }
+  ]
 }

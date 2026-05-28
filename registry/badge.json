@@ -1,10 +1,14 @@
 {
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
   "name": "badge",
   "type": "registry:ui",
-  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
-  "description": "Rótulo compacto para status e categorias — 5 variantes semânticas, 2 tamanhos, dot indicator.",
-  "dependencies": ["class-variance-authority"],
-  "registryDependencies": [],
+  "description": "Selo compacto de status com variantes de cor, tamanhos e modo dot.",
+  "dependencies": [
+    "class-variance-authority"
+  ],
+  "registryDependencies": [
+    "https://umbler-ds.vercel.app/r/utils"
+  ],
   "files": [
     {
       "path": "components/ui/badge.tsx",
