@@ -22,6 +22,11 @@ export const metadata = {
   },
   description:
     'Design system Umbler — referência de diretrizes de marca, componentes e padrões.',
+  icons: {
+    icon: '/icon.svg',
+    shortcut: '/icon.svg',
+    apple: '/icon.svg',
+  },
 };
 
 export default function Layout({ children }: { children: ReactNode }) {
