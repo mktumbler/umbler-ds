@@ -24,7 +24,6 @@ import { RadioGroupDemo, RadioOrientationDemo } from '@/components/demos/radio-v
 import { ToggleSizesDemo, ToggleWithLabelDemo, ToggleStatesDemo } from '@/components/demos/toggle-variants';
 import { SelectStatesDemo, SelectSizesDemo } from '@/components/demos/select-variants';
 import { SkeletonPrimitivesDemo, SkeletonCardDemo, SkeletonToggleDemo } from '@/components/demos/skeleton-variants';
-import { EmptyStateExamplesDemo, EmptyStateSimpleDemo } from '@/components/demos/empty-state-variants';
 import { KbdSizes, KbdSingleKeys, KbdSequences } from '@/components/demos/kbd-variants';
 import { TooltipBasic, TooltipSides, TooltipRich } from '@/components/demos/tooltip-variants';
 import { DialogBasic, DialogDestructive, DialogWithForm } from '@/components/demos/dialog-variants';
@@ -88,8 +87,6 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     SkeletonPrimitivesDemo,
     SkeletonCardDemo,
     SkeletonToggleDemo,
-    EmptyStateExamplesDemo,
-    EmptyStateSimpleDemo,
     KbdSizes,
     KbdSingleKeys,
     KbdSequences,

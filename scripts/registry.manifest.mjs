@@ -159,13 +159,6 @@ export const items = [
     files: ['components/ui/skeleton.tsx'],
     registryDependencies: ['utils'],
   },
-  {
-    name: 'empty-state',
-    description: 'Estado vazio com ícone, título, descrição e ação opcional.',
-    files: ['components/ui/empty-state.tsx'],
-    registryDependencies: ['utils'],
-  },
-
   // --- Onda 5 — overlays ---
   {
     name: 'tooltip',

@@ -92,11 +92,6 @@
       "description": "Placeholder de carregamento (shimmer) com primitivos para compor cards/listas."
     },
     {
-      "name": "empty-state",
-      "type": "registry:ui",
-      "description": "Estado vazio com ícone, título, descrição e ação opcional."
-    },
-    {
       "name": "tooltip",
       "type": "registry:ui",
       "description": "Tooltip acessível sobre Radix UI. Texto auxiliar exibido no hover/focus com posicionamento automático."
