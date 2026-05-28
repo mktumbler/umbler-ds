@@ -76,6 +76,12 @@
   --color-fd-ring:               #1a5cff; /* brand-500 */
 }
 
+/* cursor:pointer em todos os links e triggers da sidebar */
+#nd-sidebar a,
+#nd-sidebar button {
+  cursor: pointer;
+}
+
 /* Item ativo na sidebar — sobrescreve bg-fd-primary/10 text-fd-primary do Fumadocs */
 .dark #nd-sidebar a[data-active='true'],
 .dark #nd-sidebar button[data-active='true'] {
