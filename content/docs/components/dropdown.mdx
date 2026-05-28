@@ -1,0 +1,92 @@
+---
+title: Dropdown
+description: Menu de ações ou opções acionado por um trigger. Construído sobre Radix Dropdown Menu, com suporte a checkboxes, radios, submenus e atalhos de teclado.
+---
+
+import { DropdownBasic, DropdownWithLabel, DropdownCheckboxesAndRadios } from '@/components/demos/dropdown-variants';
+
+Use `DropdownMenu` para **ações secundárias** de um item (editar/duplicar/excluir), **opções rápidas** de configuração, ou **filtros**. Para seleção primária de valor em formulário, use `Select`.
+
+## Básico
+
+<ComponentPreview title="Dropdown de ações com item destrutivo">
+  <DropdownBasic />
+</ComponentPreview>
+
+Aplique `destructive` no `DropdownMenuItem` que tem consequência irreversível.
+
+## Com label e seções
+
+<ComponentPreview title="Dropdown com labels e separadores">
+  <DropdownWithLabel />
+</ComponentPreview>
+
+## Checkbox e Radio
+
+Para opções que alternam estado (toggle) use `DropdownMenuCheckboxItem`. Para escolha única entre N use `DropdownMenuRadioGroup` + `DropdownMenuRadioItem`.
+
+<ComponentPreview title="Checkbox + Radio em mesmo menu">
+  <DropdownCheckboxesAndRadios />
+</ComponentPreview>
+
+## Anatomia
+
+```tsx
+<DropdownMenu>
+  <DropdownMenuTrigger>...</DropdownMenuTrigger>
+  <DropdownMenuContent>
+    <DropdownMenuLabel>...</DropdownMenuLabel>
+    <DropdownMenuItem>...</DropdownMenuItem>
+    <DropdownMenuSeparator />
+    <DropdownMenuCheckboxItem checked={x} onCheckedChange={setX}>...</DropdownMenuCheckboxItem>
+    <DropdownMenuRadioGroup value={v} onValueChange={setV}>
+      <DropdownMenuRadioItem value="a">...</DropdownMenuRadioItem>
+    </DropdownMenuRadioGroup>
+    <DropdownMenuItem destructive>Excluir</DropdownMenuItem>
+  </DropdownMenuContent>
+</DropdownMenu>
+```
+
+## Acessibilidade
+
+- ↑↓ navegam itens, ↵ ativa, `Esc` fecha, `Tab` move foco para fora.
+- Tipar uma letra pula para o próximo item que começa com ela.
+- O trigger expõe `aria-haspopup="menu"` e `aria-expanded` automaticamente.
+
+## Atalhos de teclado
+
+`DropdownMenuShortcut` é apenas visual — ele não registra um listener global. Para o atalho funcionar de fato, use um hook tipo `useHotkeys`/`react-hotkeys-hook` ou um listener `keydown` no escopo certo. O componente só renderiza a representação:
+
+```tsx
+<DropdownMenuItem onSelect={handleEdit}>
+  Editar
+  <DropdownMenuShortcut>⌘E</DropdownMenuShortcut>
+</DropdownMenuItem>
+```
+
+## Uso
+
+```tsx
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown';
+
+<DropdownMenu>
+  <DropdownMenuTrigger asChild>
+    <Button>Ações</Button>
+  </DropdownMenuTrigger>
+  <DropdownMenuContent>
+    <DropdownMenuLabel>Item</DropdownMenuLabel>
+    <DropdownMenuItem onSelect={onEdit}>Editar</DropdownMenuItem>
+    <DropdownMenuSeparator />
+    <DropdownMenuItem destructive onSelect={onDelete}>
+      Excluir
+    </DropdownMenuItem>
+  </DropdownMenuContent>
+</DropdownMenu>
+```

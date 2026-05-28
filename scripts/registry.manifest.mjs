@@ -166,6 +166,36 @@ export const items = [
     registryDependencies: ['utils'],
   },
 
+  // --- Onda 5 — overlays ---
+  {
+    name: 'tooltip',
+    description: 'Tooltip acessível sobre Radix UI. Texto auxiliar exibido no hover/focus com posicionamento automático.',
+    files: ['components/ui/tooltip.tsx'],
+    dependencies: ['@radix-ui/react-tooltip'],
+    registryDependencies: ['utils'],
+  },
+  {
+    name: 'dialog',
+    description: 'Janela modal acessível sobre Radix Dialog. Inclui DialogHeader, DialogTitle, DialogDescription, DialogFooter, DialogClose.',
+    files: ['components/ui/dialog.tsx'],
+    dependencies: ['@radix-ui/react-dialog', PHOSPHOR],
+    registryDependencies: ['utils'],
+  },
+  {
+    name: 'tabs',
+    description: 'Tabs acessíveis sobre Radix Tabs. Segmented control por padrão; customizável para underline via className.',
+    files: ['components/ui/tabs.tsx'],
+    dependencies: ['@radix-ui/react-tabs'],
+    registryDependencies: ['utils'],
+  },
+  {
+    name: 'dropdown',
+    description: 'Menu de ações sobre Radix Dropdown Menu. Suporta itens, labels, separadores, checkbox, radio, submenus e atalhos visuais.',
+    files: ['components/ui/dropdown.tsx'],
+    dependencies: ['@radix-ui/react-dropdown-menu', PHOSPHOR],
+    registryDependencies: ['utils'],
+  },
+
   // --- Botão (depende de spinner + arquivo button-variants) ---
   {
     name: 'button',

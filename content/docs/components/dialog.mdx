@@ -1,0 +1,106 @@
+---
+title: Dialog
+description: Janela modal centralizada para fluxos críticos — confirmações, formulários curtos e mensagens de alta prioridade. Construído sobre Radix Dialog.
+---
+
+import { DialogBasic, DialogDestructive, DialogWithForm } from '@/components/demos/dialog-variants';
+
+Use `Dialog` quando precisar **interromper o fluxo do usuário** e exigir uma decisão antes de continuar — confirmar uma exclusão, completar um cadastro curto, exibir um aviso crítico. Para conteúdo que pode coexistir com a página, prefira `Popover` ou navegação inline.
+
+## Confirmação simples
+
+<ComponentPreview title="Confirmação">
+  <DialogBasic />
+</ComponentPreview>
+
+## Ação destrutiva
+
+Combine com `Button variant="danger"` no trigger e na confirmação. Deixe o texto explícito sobre o que será perdido.
+
+<ComponentPreview title="Excluir com confirmação">
+  <DialogDestructive />
+</ComponentPreview>
+
+## Formulário em modal
+
+Bom para edições curtas (perfil, configurações de item). Para formulários longos ou multi-etapa, prefira página dedicada.
+
+<ComponentPreview title="Editar perfil">
+  <DialogWithForm />
+</ComponentPreview>
+
+## Anatomia
+
+```tsx
+<Dialog>
+  <DialogTrigger>...</DialogTrigger>
+  <DialogContent>
+    <DialogHeader>
+      <DialogTitle>...</DialogTitle>
+      <DialogDescription>...</DialogDescription>
+    </DialogHeader>
+    {/* conteúdo */}
+    <DialogFooter>
+      <DialogClose>Cancelar</DialogClose>
+      <button>Confirmar</button>
+    </DialogFooter>
+  </DialogContent>
+</Dialog>
+```
+
+## Acessibilidade
+
+- Foco é capturado dentro do dialog (focus trap) e devolvido ao trigger ao fechar.
+- `Esc` fecha. Clique no overlay também fecha (controle via `onPointerDownOutside`).
+- `DialogTitle` e `DialogDescription` são anunciados como `aria-labelledby` e `aria-describedby` automaticamente.
+- O scroll do `body` é travado enquanto o dialog está aberto.
+
+## Props
+
+### DialogContent
+
+<TokenTable
+  columns={['Prop', 'Tipo', 'Default', 'Descrição']}
+  rows={[
+    ['showClose', 'boolean', 'true', 'Exibe o botão X no canto superior direito'],
+    ['className', 'string', '—', 'Classes extras (ex.: max-w-2xl para dialogs maiores)'],
+  ]}
+/>
+
+Aceita também todas as props de `Dialog.Content` do Radix (`onOpenAutoFocus`, `onEscapeKeyDown`, etc.).
+
+## Uso
+
+```tsx
+import {
+  Dialog,
+  DialogClose,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '@/components/ui/dialog';
+import { Button } from '@/components/ui/button';
+
+<Dialog>
+  <DialogTrigger asChild>
+    <Button>Abrir</Button>
+  </DialogTrigger>
+  <DialogContent>
+    <DialogHeader>
+      <DialogTitle>Confirmar ação</DialogTitle>
+      <DialogDescription>Isto não pode ser desfeito.</DialogDescription>
+    </DialogHeader>
+    <DialogFooter>
+      <DialogClose asChild>
+        <Button variant="ghost">Cancelar</Button>
+      </DialogClose>
+      <DialogClose asChild>
+        <Button>Confirmar</Button>
+      </DialogClose>
+    </DialogFooter>
+  </DialogContent>
+</Dialog>
+```

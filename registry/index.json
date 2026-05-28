@@ -97,6 +97,26 @@
       "description": "Estado vazio com ícone, título, descrição e ação opcional."
     },
     {
+      "name": "tooltip",
+      "type": "registry:ui",
+      "description": "Tooltip acessível sobre Radix UI. Texto auxiliar exibido no hover/focus com posicionamento automático."
+    },
+    {
+      "name": "dialog",
+      "type": "registry:ui",
+      "description": "Janela modal acessível sobre Radix Dialog. Inclui DialogHeader, DialogTitle, DialogDescription, DialogFooter, DialogClose."
+    },
+    {
+      "name": "tabs",
+      "type": "registry:ui",
+      "description": "Tabs acessíveis sobre Radix Tabs. Segmented control por padrão; customizável para underline via className."
+    },
+    {
+      "name": "dropdown",
+      "type": "registry:ui",
+      "description": "Menu de ações sobre Radix Dropdown Menu. Suporta itens, labels, separadores, checkbox, radio, submenus e atalhos visuais."
+    },
+    {
       "name": "button",
       "type": "registry:ui",
       "description": "Botão Umbler DS — 5 variantes (primary, secondary, ghost, outline, danger), 4 tamanhos, loading e icon-only."

@@ -1,0 +1,70 @@
+---
+title: Tabs
+description: Navegação entre painéis de conteúdo relacionados. Construído sobre Radix Tabs, com suporte completo a teclado e ARIA.
+---
+
+import { TabsBasic, TabsWithIcons, TabsDisabled } from '@/components/demos/tabs-variants';
+
+Use `Tabs` para alternar entre seções **paralelas** de um mesmo contexto — quando o usuário não precisa ver tudo ao mesmo tempo, mas pode querer comparar rapidamente. Evite tabs para fluxos sequenciais (use steps/wizard) ou para o que cabe simultaneamente na tela (use seções com headings).
+
+## Básico
+
+<ComponentPreview title="Tabs simples">
+  <TabsBasic />
+</ComponentPreview>
+
+## Com ícones
+
+<ComponentPreview title="Tabs com ícones e conteúdo em card">
+  <TabsWithIcons />
+</ComponentPreview>
+
+## Item desabilitado
+
+<ComponentPreview title="Tab disabled">
+  <TabsDisabled />
+</ComponentPreview>
+
+## Anatomia
+
+```tsx
+<Tabs defaultValue="a">
+  <TabsList>
+    <TabsTrigger value="a">A</TabsTrigger>
+    <TabsTrigger value="b">B</TabsTrigger>
+  </TabsList>
+  <TabsContent value="a">Painel A</TabsContent>
+  <TabsContent value="b">Painel B</TabsContent>
+</Tabs>
+```
+
+## Acessibilidade
+
+- ↔ setas navegam entre triggers; Home/End vão para primeiro/último.
+- `Enter` ou `Space` ativam o tab focado (automático por padrão; controle via `activationMode="manual"`).
+- A relação trigger ↔ painel é exposta como `role="tab"` / `role="tabpanel"` com `aria-controls`/`aria-labelledby` automáticos.
+
+## Uso controlado
+
+```tsx
+const [tab, setTab] = useState('overview');
+
+<Tabs value={tab} onValueChange={setTab}>
+  ...
+</Tabs>
+```
+
+## Variações de estilo
+
+O `TabsList` por padrão é um *segmented control* (fundo `surface`, item ativo realçado). Se preferir o visual de *underline tabs*, sobrescreva `className` em `TabsList` e `TabsTrigger`:
+
+```tsx
+<TabsList className="border-0 border-b border-border bg-transparent rounded-none p-0">
+  <TabsTrigger
+    value="a"
+    className="rounded-none border-b-2 border-transparent data-[state=active]:border-brand-500 data-[state=active]:bg-transparent"
+  >
+    ...
+  </TabsTrigger>
+</TabsList>
+```
