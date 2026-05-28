@@ -36,7 +36,7 @@ function Blob({ width, height, rotate, children }: BlobProps) {
         'absolute top-1/2 left-1/2 w-[200%]',
         '-translate-x-1/2 -translate-y-1/2 [rotate:var(--blob-rotate)]',
         // blur responsivo via cqw (requer container-type no pai)
-        '[filter:blur(clamp(10px,5cqw,80px))]',
+        '[filter:blur(clamp(10px,8cqw,80px))]',
         'will-change-transform pointer-events-none',
       )}
     >
