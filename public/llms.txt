@@ -33,7 +33,7 @@ Documentação visual: https://umbler-ds.vercel.app/docs
 - Sombras: `shadow-xs`, `shadow-sm`, `shadow-md`, `shadow-lg`, `shadow-glow`
 - Radius: `rounded-sm` (6px), `rounded-md` (10px), `rounded-lg` (16px), `rounded-full`
 - Espaçamento: escala de 4px — use classes padrão Tailwind (`p-4`, `gap-6`, etc.)
-- Motion: `duration-[var(--duration-fast)]`, `ease-[var(--ease-out)]`
+- Motion: durations via `duration-[var(--duration-fast/normal/slow/slower/instant)]`; easings via `ease-out`, `ease-in`, `ease-spring` (mapeados do @theme)
 - Eyebrow/caption com gradiente da marca: `<p className="eyebrow">TEXTO</p>`
 - Dark mode: automático via tokens semânticos — não use `dark:` manualmente nos componentes
 
@@ -98,10 +98,17 @@ import { Avatar, AvatarGroup } from '@/components/ui/avatar';
 ```tsx
 import { Spinner } from '@/components/ui/spinner';
 
-<Spinner size="md" className="text-brand-400 dark:text-brand-300" />
+// Orbital (padrão) — dois pontos em órbita, cores da marca
+<Spinner size="md" />
+<Spinner size="lg" variant="orbit" colorA="#8bbcf8" colorB="#f8c4b8" />
+
+// Arco giratório — ideal para uso inline em botões
+<Spinner variant="arc" size="sm" className="text-brand-400" />
 ```
 - size: `sm` | `md` | `lg` | `xl` — padrão: `md`
-- Usa `currentColor` — controle a cor via `className` (text-*)
+- variant: `orbit` | `arc` — padrão: `orbit`
+- colorA / colorB: qualquer valor CSS (orbit) — padrão: tokens `--color-loader-a/b`
+- arc usa `currentColor` — controle via `className` (text-*)
 
 ### Separator
 ```tsx
@@ -161,35 +168,39 @@ import { Checkbox } from '@/components/ui/checkbox';
 
 <Checkbox label="Aceito os termos" />
 <Checkbox label="Com descrição" description="Texto explicativo" />
-<Checkbox indeterminate />
-<Checkbox state="error" errorMessage="Campo obrigatório" />
+{/* indeterminate via ref nativo */}
+<Checkbox ref={ref} label="Parcial" />  {/* ref.current.indeterminate = true */}
+<Checkbox state="error" label="Campo obrigatório" />
 ```
-- label: string
+- label: string (opcional)
 - description: string (opcional) — texto abaixo do label
-- indeterminate: boolean
-- state: `default` | `error`
-- errorMessage: string
+- state: `default` | `error` — padrão: `default`
+- Aceita todos os atributos de `InputHTMLAttributes<HTMLInputElement>`
+- `indeterminate` é atributo nativo do input, definido via ref
 
 ### Radio
 ```tsx
-import { RadioGroup, RadioItem } from '@/components/ui/radio';
+import { Radio, RadioGroup } from '@/components/ui/radio';
 
-<RadioGroup name="plano" orientation="vertical">
-  <RadioItem value="starter" label="Starter" />
-  <RadioItem value="pro" label="Pro" description="Mais recursos" />
+<RadioGroup label="Plano" orientation="vertical">
+  <Radio name="plano" value="starter" label="Starter" />
+  <Radio name="plano" value="pro" label="Pro" description="Mais recursos" />
 </RadioGroup>
 ```
-- orientation: `vertical` | `horizontal` — padrão: `vertical`
+- `Radio`: estende `InputHTMLAttributes<HTMLInputElement>` + `label?` + `description?`
+- `RadioGroup`: `label?` + `orientation?: 'vertical' | 'horizontal'` — padrão: `vertical`
 
 ### Toggle (Switch)
 ```tsx
 import { Toggle } from '@/components/ui/toggle';
 
 <Toggle label="Notificações" size="md" defaultChecked />
+<Toggle checked={active} onChange={setActive} description="Texto explicativo" />
 ```
-- size: `sm` | `md` | `lg` — padrão: `md`
+- size: `sm` | `md` — padrão: `md`
 - label: string (opcional)
-- checked / defaultChecked / onChange: controle controlado/não-controlado
+- description: string (opcional)
+- checked / defaultChecked / onChange(checked: boolean): controle controlado/não-controlado
 
 ### Card
 ```tsx
@@ -221,16 +232,15 @@ import { CardAurora } from '@/components/ui/card-aurora';
 ```tsx
 import { Alert } from '@/components/ui/alert';
 
-<Alert variant="info" title="Atenção" description="Mensagem informativa." />
-<Alert variant="success" dismissible onDismiss={() => {}} />
-<Alert variant="error" noIcon title="Erro" description="Algo falhou." />
+<Alert variant="info" title="Atenção">Mensagem informativa.</Alert>
+<Alert variant="success" title="Salvo!" onClose={() => {}} />
+<Alert variant="error" icon={false} title="Erro">Algo falhou.</Alert>
 ```
 - variant: `info` | `success` | `warning` | `error` — padrão: `info`
-- title: string (opcional)
-- description: string (opcional)
-- dismissible: boolean — exibe botão X
-- onDismiss: () => void
-- noIcon: boolean — remove ícone lateral
+- title: string (opcional) — aparece em negrito acima do conteúdo
+- icon: boolean — exibe ícone lateral — padrão: `true`
+- onClose: () => void — exibe botão X quando definido
+- children: ReactNode — corpo da mensagem
 
 ### Skeleton
 ```tsx
