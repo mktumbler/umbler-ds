@@ -9,7 +9,7 @@ import { RadiusShowcase } from '@/components/docs/radius-showcase';
 import { ShadowShowcase } from '@/components/docs/shadow-showcase';
 import { ComponentPreview } from '@/components/docs/component-preview';
 import { DurationDemo, EasingDemo } from '@/components/docs/motion-demo';
-import { SpinnerSizesDemo, SpinnerColorsDemo } from '@/components/demos/spinner-variants';
+import { SpinnerOrbitSizes, SpinnerOrbitColors, SpinnerArc } from '@/components/demos/spinner-variants';
 import { BadgeVariantsDemo, BadgeSizesDemo, BadgeDotsDemo } from '@/components/demos/badge-variants';
 import { TagVariantsDemo, TagInputDemo } from '@/components/demos/tag-variants';
 import { AvatarSizesDemo, AvatarFallbacksDemo, AvatarGroupDemo } from '@/components/demos/avatar-variants';
@@ -25,6 +25,11 @@ import { ToggleSizesDemo, ToggleWithLabelDemo, ToggleStatesDemo } from '@/compon
 import { SelectStatesDemo, SelectSizesDemo } from '@/components/demos/select-variants';
 import { SkeletonPrimitivesDemo, SkeletonCardDemo, SkeletonToggleDemo } from '@/components/demos/skeleton-variants';
 import { EmptyStateExamplesDemo, EmptyStateSimpleDemo } from '@/components/demos/empty-state-variants';
+import { KbdSizes, KbdSingleKeys, KbdSequences } from '@/components/demos/kbd-variants';
+import { TooltipBasic, TooltipSides, TooltipRich } from '@/components/demos/tooltip-variants';
+import { DialogBasic, DialogDestructive, DialogWithForm } from '@/components/demos/dialog-variants';
+import { TabsBasic, TabsWithIcons, TabsDisabled } from '@/components/demos/tabs-variants';
+import { DropdownBasic, DropdownWithLabel, DropdownCheckboxesAndRadios } from '@/components/demos/dropdown-variants';
 import { FeatureGridSection, FeatureSplitSection, FeatureBentoSection } from '@/components/demos/patterns/site/features';
 import { HeroBgGridDemo, HeroBgSweepDemo } from '@/components/demos/patterns/site/backgrounds';
 
@@ -41,8 +46,9 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     ComponentPreview,
     DurationDemo,
     EasingDemo,
-    SpinnerSizesDemo,
-    SpinnerColorsDemo,
+    SpinnerOrbitSizes,
+    SpinnerOrbitColors,
+    SpinnerArc,
     BadgeVariantsDemo,
     BadgeSizesDemo,
     BadgeDotsDemo,
@@ -84,6 +90,21 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     SkeletonToggleDemo,
     EmptyStateExamplesDemo,
     EmptyStateSimpleDemo,
+    KbdSizes,
+    KbdSingleKeys,
+    KbdSequences,
+    TooltipBasic,
+    TooltipSides,
+    TooltipRich,
+    DialogBasic,
+    DialogDestructive,
+    DialogWithForm,
+    TabsBasic,
+    TabsWithIcons,
+    TabsDisabled,
+    DropdownBasic,
+    DropdownWithLabel,
+    DropdownCheckboxesAndRadios,
     FeatureGridSection,
     FeatureSplitSection,
     FeatureBentoSection,

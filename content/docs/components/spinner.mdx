@@ -1,24 +1,32 @@
 ---
 title: Spinner
-description: Indicador de carregamento animado — SVG arc com animate-spin, herdando a cor do contexto.
+description: Indicador de carregamento com dois pontos orbitando — estilo do loader Umbler. Também disponível em variante arco para uso inline em botões.
 ---
 
-import { SpinnerSizesDemo, SpinnerColorsDemo } from '@/components/demos/spinner-variants';
+import { SpinnerOrbitSizes, SpinnerOrbitColors, SpinnerArc } from '@/components/demos/spinner-variants';
 
-O `Spinner` é usado para indicar estados de carregamento. Herda a cor do elemento pai via `currentColor`, tornando-o facilmente adaptável a qualquer contexto.
+O `Spinner` replica o loader oficial Umbler: dois pontos (azul `#8BBCF8` e salmão `#F8C4B8`) em órbita. A variante `arc` mantém o arco giratório clássico para contextos compactos (botões, badges).
 
-## Tamanhos
+## Orbit — tamanhos
 
-<ComponentPreview title="Sizes">
-  <SpinnerSizesDemo />
+<ComponentPreview title="Orbit — sm / md / lg / xl">
+  <SpinnerOrbitSizes />
 </ComponentPreview>
 
-## Cores
+## Orbit — cores customizáveis
 
-A cor é controlada pela propriedade `color` do elemento pai (ex.: `text-brand-300`).
+Use `colorA` e `colorB` para adaptar às cores do contexto.
 
-<ComponentPreview title="Colors">
-  <SpinnerColorsDemo />
+<ComponentPreview title="Cores">
+  <SpinnerOrbitColors />
+</ComponentPreview>
+
+## Arc — inline em botões
+
+Variante `arc` usa `currentColor` — controle pela classe `text-*` do pai.
+
+<ComponentPreview title="Arc (variant='arc')">
+  <SpinnerArc />
 </ComponentPreview>
 
 ## Props
@@ -26,8 +34,11 @@ A cor é controlada pela propriedade `color` do elemento pai (ex.: `text-brand-3
 <TokenTable
   columns={['Prop', 'Tipo', 'Default', 'Descrição']}
   rows={[
-    ['size', '"sm" | "md" | "lg" | "xl"', '"md"', 'Tamanho do ícone: 14 / 16 / 20 / 24px'],
-    ['className', 'string', '—', 'Classes extras (incluindo cor via text-*)'],
+    ['size', '"sm" | "md" | "lg" | "xl"', '"md"', 'Tamanho: 14 / 16 / 20 / 24px'],
+    ['variant', '"orbit" | "arc"', '"orbit"', 'orbit = dois pontos (padrão Umbler), arc = arco giratório'],
+    ['colorA', 'string', '"#8BBCF8"', 'Cor do ponto A (azul). Qualquer valor CSS.'],
+    ['colorB', 'string', '"#F8C4B8"', 'Cor do ponto B (salmão). Qualquer valor CSS.'],
+    ['className', 'string', '—', 'Classes extras'],
   ]}
 />
 
@@ -36,15 +47,15 @@ A cor é controlada pela propriedade `color` do elemento pai (ex.: `text-brand-3
 ```tsx
 import { Spinner } from '@/components/ui/spinner';
 
-// Padrão
+// Padrão — orbit com cores do gradiente Umbler
 <Spinner />
 
-// Tamanho grande, cor de erro
-<Spinner size="lg" className="text-error-500" />
+// Orbit com cores customizadas
+<Spinner colorA="#1A5CFF" colorB="#5B8EFF" />
 
-// Em um botão customizado
-<button className="text-brand-300">
-  <Spinner size="sm" />
+// Arc inline em botão
+<button className="text-brand-400">
+  <Spinner size="sm" variant="arc" />
   Carregando...
 </button>
 ```

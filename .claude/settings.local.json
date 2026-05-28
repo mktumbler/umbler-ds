@@ -60,7 +60,8 @@
       "Bash(git -C B:/Projetos/IAs/DS/umbler-ds add components/demos/brand-assets.tsx content/docs/downloads.mdx public/brand/)",
       "Bash(git -C B:/Projetos/IAs/DS/umbler-ds commit -m ' *)",
       "Bash(git -C B:/Projetos/IAs/DS/umbler-ds add components/ui/kbd.tsx components/demos/kbd-variants.tsx content/docs/components/kbd.mdx content/docs/components/meta.json scripts/registry.manifest.mjs registry/)",
-      "Bash(npm install *)"
+      "Bash(npm install *)",
+      "WebFetch(domain:static.umbler.com)"
     ]
   }
 }

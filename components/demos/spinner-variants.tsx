@@ -1,6 +1,6 @@
 import { Spinner } from '@/components/ui/spinner';
 
-export function SpinnerSizesDemo() {
+export function SpinnerOrbitSizes() {
   const sizes = [
     { size: 'sm', label: 'sm — 14px' },
     { size: 'md', label: 'md — 16px' },
@@ -12,7 +12,7 @@ export function SpinnerSizesDemo() {
     <div className="flex items-end gap-8">
       {sizes.map(({ size, label }) => (
         <div key={size} className="flex flex-col items-center gap-3">
-          <Spinner size={size} className="text-brand-400 dark:text-brand-300" />
+          <Spinner size={size} />
           <span className="text-[11px] text-neutral-400">{label}</span>
         </div>
       ))}
@@ -20,20 +20,50 @@ export function SpinnerSizesDemo() {
   );
 }
 
-export function SpinnerColorsDemo() {
-  const colors = [
-    { className: 'text-brand-400 dark:text-brand-300', label: 'brand' },
-    { className: 'text-success-500', label: 'success-500' },
-    { className: 'text-warning-500', label: 'warning-500' },
-    { className: 'text-error-500', label: 'error-500' },
-    { className: 'text-neutral-400', label: 'neutral-400' },
+export function SpinnerOrbitColors() {
+  const variants = [
+    {
+      label: 'brand gradient (padrão)',
+      colorA: '#8BBCF8',
+      colorB: '#F8C4B8',
+    },
+    {
+      label: 'brand sólido',
+      colorA: '#1A5CFF',
+      colorB: '#5B8EFF',
+    },
+    {
+      label: 'neutro',
+      colorA: '#6b7280',
+      colorB: '#9ca3af',
+    },
   ];
 
   return (
-    <div className="flex items-end gap-8">
-      {colors.map(({ className, label }) => (
+    <div className="flex items-center gap-10">
+      {variants.map(({ label, colorA, colorB }) => (
         <div key={label} className="flex flex-col items-center gap-3">
-          <Spinner size="lg" className={className} />
+          <Spinner size="xl" colorA={colorA} colorB={colorB} />
+          <span className="text-[11px] text-neutral-400">{label}</span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+export function SpinnerArc() {
+  const sizes = [
+    { size: 'sm', label: 'sm' },
+    { size: 'md', label: 'md' },
+    { size: 'lg', label: 'lg' },
+    { size: 'xl', label: 'xl' },
+  ] as const;
+
+  return (
+    <div className="flex items-end gap-8">
+      {sizes.map(({ size, label }) => (
+        <div key={size} className="flex flex-col items-center gap-3">
+          <Spinner size={size} variant="arc" className="text-brand-400" />
           <span className="text-[11px] text-neutral-400">{label}</span>
         </div>
       ))}
