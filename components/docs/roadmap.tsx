@@ -18,27 +18,35 @@ const ROADMAP: Wave[] = [
     items: ['Colors', 'Typography', 'Spacing', 'Radius', 'Shadows', 'Motion'],
   },
   {
-    id: 'onda-2', title: 'Onda 2 — Primitivos', status: 'done',
-    items: ['Button', 'Badge', 'Tag', 'Avatar', 'Separator', 'Kbd', 'Spinner'],
+    id: 'onda-2', title: 'Onda 2 — Primitivos', status: 'progress',
+    items: ['Button ✓', 'Badge ✓', 'Tag ✓', 'Avatar ✓', 'Separator ✓', 'Kbd ✓', 'Spinner ✓', 'Button group', 'FAB'],
   },
   {
     id: 'onda-3', title: 'Onda 3 — Inputs', status: 'progress',
-    items: ['Checkbox ✓', 'Radio ✓', 'Toggle ✓', 'Input ✓', 'Textarea ✓', 'Select ✓', 'Combobox', 'DatePicker'],
+    items: ['Checkbox ✓', 'Radio ✓', 'Toggle ✓', 'Input ✓', 'Textarea ✓', 'Select ✓', 'Input group', 'Validation states', 'Combobox', 'DatePicker'],
   },
   {
     id: 'onda-4', title: 'Onda 4 — Containers & feedback', status: 'progress',
-    items: ['Card ✓', 'CardAurora ✓', 'Alert ✓', 'Skeleton ✓', 'Toast', 'Progress'],
+    items: ['Card ✓', 'CardAurora ✓', 'Alert ✓', 'Skeleton ✓', 'Accordion ✓', 'List group', 'Toast', 'Progress'],
   },
   {
-    id: 'onda-5', title: 'Onda 5 — Overlays', status: 'done',
-    items: ['Tooltip', 'Dialog', 'Tabs', 'Dropdown'],
+    id: 'onda-5', title: 'Onda 5 — Overlays', status: 'progress',
+    items: ['Tooltip ✓', 'Dialog ✓', 'Tabs ✓', 'Dropdown ✓', 'Popover ✓'],
   },
   {
-    id: 'onda-6', title: 'Onda 6 — Específicos Umbler/Talk', status: 'planned',
+    id: 'onda-6', title: 'Onda 6 — Navigation', status: 'progress',
+    items: ['Breadcrumbs ✓', 'Pagination ✓', 'Navs'],
+  },
+  {
+    id: 'onda-7', title: 'Onda 7 — Data display', status: 'planned',
+    items: ['Table', 'Timeline', 'List'],
+  },
+  {
+    id: 'onda-8', title: 'Onda 8 — Específicos Umbler/Talk', status: 'planned',
     items: ['ChatBubble', 'ConversationList', 'AgentAvatar', 'StatusPill'],
   },
   {
-    id: 'onda-7', title: 'Onda 7 — Patterns', status: 'progress',
+    id: 'onda-9', title: 'Onda 9 — Patterns', status: 'progress',
     items: ['Hero ✓', 'Feature Grid ✓', 'Feature Split ✓', 'Feature Bento ✓', 'Pricing', 'CTA Footer'],
   },
   {

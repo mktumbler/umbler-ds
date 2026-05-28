@@ -112,6 +112,26 @@
       "description": "Menu de ações sobre Radix Dropdown Menu. Suporta itens, labels, separadores, checkbox, radio, submenus e atalhos visuais."
     },
     {
+      "name": "popover",
+      "type": "registry:ui",
+      "description": "Overlay contextual com conteúdo rico sobre Radix Popover. Container clicável por dentro — ideal para mini-forms, picks e ações secundárias com explicação."
+    },
+    {
+      "name": "accordion",
+      "type": "registry:ui",
+      "description": "Seções expansíveis/colapsáveis sobre Radix Accordion. Modos single (uma aberta) e multiple, animação de altura via Radix vars."
+    },
+    {
+      "name": "breadcrumbs",
+      "type": "registry:ui",
+      "description": "Trilha de navegação hierárquica. Compound (BreadcrumbItem, BreadcrumbCurrent, BreadcrumbSeparator) com separador customizável."
+    },
+    {
+      "name": "pagination",
+      "type": "registry:ui",
+      "description": "Navegação entre páginas com ellipsis dinâmica. Controlado via page/onPageChange — fácil de sincronizar com URL."
+    },
+    {
       "name": "button",
       "type": "registry:ui",
       "description": "Botão Umbler DS — 5 variantes (primary, secondary, ghost, outline, danger), 4 tamanhos, loading e icon-only."

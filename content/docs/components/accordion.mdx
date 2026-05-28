@@ -1,0 +1,49 @@
+---
+title: Accordion
+description: Seções de conteúdo expansíveis/colapsáveis verticalmente. Ideal para FAQ, configurações avançadas e blocos longos divisíveis.
+---
+
+import { AccordionSingle, AccordionMultiple } from '@/components/demos/accordion-variants';
+
+Construído sobre Radix Accordion — gerencia foco, navegação por teclado e estado. Animação de altura aproveita `--radix-accordion-content-height` exposto pelo Radix.
+
+## Single (uma aberta por vez)
+
+Use `type="single"` quando apenas uma seção deve ficar aberta. Adicione `collapsible` se quiser permitir fechar a aberta (sem ela, sempre tem uma aberta).
+
+<ComponentPreview title="FAQ — comportamento accordion clássico">
+  <AccordionSingle />
+</ComponentPreview>
+
+## Multiple (várias simultâneas)
+
+Use `type="multiple"` quando o usuário pode abrir várias seções ao mesmo tempo. `defaultValue` aceita um array.
+
+<ComponentPreview title="Várias seções abertas">
+  <AccordionMultiple />
+</ComponentPreview>
+
+## Acessibilidade
+
+- Trigger é um `<button>` dentro de `<h3>` (Radix Header) — boa hierarquia semântica.
+- Setas para cima/baixo navegam entre triggers.
+- `Home`/`End` vão pro primeiro/último.
+- `Space`/`Enter` abrem/fecham.
+
+## Uso
+
+```tsx
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion';
+
+<Accordion type="single" collapsible>
+  <AccordionItem value="item-1">
+    <AccordionTrigger>Pergunta 1</AccordionTrigger>
+    <AccordionContent>Resposta 1</AccordionContent>
+  </AccordionItem>
+</Accordion>
+```

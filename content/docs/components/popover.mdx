@@ -1,0 +1,60 @@
+---
+title: Popover
+description: Overlay contextual com conteúdo rico — texto, ações, formulários — ancorado a um trigger. Construído sobre Radix Popover.
+---
+
+import { PopoverBasic, PopoverWithForm, PopoverIconTrigger } from '@/components/demos/popover-variants';
+
+Diferente do `Tooltip` (texto curto, abre no hover) e do `Dropdown` (menu de ações navegável por setas), o `Popover` é um **container livre** clicável por dentro. Use para mini-formulários, picks, ações secundárias com explicação.
+
+## Básico
+
+<ComponentPreview title="Popover simples">
+  <PopoverBasic />
+</ComponentPreview>
+
+## Com formulário
+
+Aceita qualquer ReactNode — inputs, botões, conteúdo rico. Use `PopoverClose` para fechar via ação interna.
+
+<ComponentPreview title="Mini-form de configuração">
+  <PopoverWithForm />
+</ComponentPreview>
+
+## Com arrow + ícone trigger
+
+A prop `arrow` adiciona uma setinha apontando pro trigger — útil quando o trigger é um ícone discreto.
+
+<ComponentPreview title="Help text com seta">
+  <PopoverIconTrigger />
+</ComponentPreview>
+
+## Acessibilidade
+
+- Trigger ganha `aria-expanded` e `aria-controls` automaticamente.
+- Foco move pro conteúdo quando abre; volta pro trigger quando fecha.
+- Fecha em `Escape` ou clique fora.
+- Para trigger sem texto visível (ícone), forneça `aria-label` no botão.
+
+## Uso
+
+```tsx
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+  PopoverClose,
+} from '@/components/ui/popover';
+
+<Popover>
+  <PopoverTrigger asChild>
+    <Button>Abrir</Button>
+  </PopoverTrigger>
+  <PopoverContent>
+    <p>Conteúdo do popover</p>
+    <PopoverClose asChild>
+      <Button size="sm">Fechar</Button>
+    </PopoverClose>
+  </PopoverContent>
+</Popover>
+```

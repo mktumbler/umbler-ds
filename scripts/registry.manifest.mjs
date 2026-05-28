@@ -188,6 +188,36 @@ export const items = [
     dependencies: ['@radix-ui/react-dropdown-menu', PHOSPHOR],
     registryDependencies: ['utils'],
   },
+  {
+    name: 'popover',
+    description: 'Overlay contextual com conteúdo rico sobre Radix Popover. Container clicável por dentro — ideal para mini-forms, picks e ações secundárias com explicação.',
+    files: ['components/ui/popover.tsx'],
+    dependencies: ['@radix-ui/react-popover'],
+    registryDependencies: ['utils'],
+  },
+  {
+    name: 'accordion',
+    description: 'Seções expansíveis/colapsáveis sobre Radix Accordion. Modos single (uma aberta) e multiple, animação de altura via Radix vars.',
+    files: ['components/ui/accordion.tsx'],
+    dependencies: ['@radix-ui/react-accordion', PHOSPHOR],
+    registryDependencies: ['utils'],
+  },
+
+  // --- Onda 6 — navigation ---
+  {
+    name: 'breadcrumbs',
+    description: 'Trilha de navegação hierárquica. Compound (BreadcrumbItem, BreadcrumbCurrent, BreadcrumbSeparator) com separador customizável.',
+    files: ['components/ui/breadcrumbs.tsx'],
+    dependencies: [PHOSPHOR],
+    registryDependencies: ['utils'],
+  },
+  {
+    name: 'pagination',
+    description: 'Navegação entre páginas com ellipsis dinâmica. Controlado via page/onPageChange — fácil de sincronizar com URL.',
+    files: ['components/ui/pagination.tsx'],
+    dependencies: [PHOSPHOR],
+    registryDependencies: ['utils'],
+  },
 
   // --- Botão (depende de spinner + arquivo button-variants) ---
   {

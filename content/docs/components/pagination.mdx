@@ -1,0 +1,57 @@
+---
+title: Pagination
+description: Navegação entre páginas de uma lista. Lógica de ellipsis dinâmica e prop controlada (page, onPageChange).
+---
+
+import { PaginationBasic, PaginationMany, PaginationFew } from '@/components/demos/pagination-variants';
+
+Componente **controlado**: você passa `page` e `onPageChange`. Isso permite sincronizar com URL, estado global ou query params sem mágica.
+
+## Básico
+
+<ComponentPreview title="10 páginas, 1 sibling de cada lado">
+  <PaginationBasic />
+</ComponentPreview>
+
+## Muitas páginas
+
+Com muitas páginas, o componente mostra reticências (`…`) escondendo o trecho não-adjacente à atual. Útil pra listagens grandes (logs, faturas, contatos).
+
+<ComponentPreview title="42 páginas — reticências dinâmicas">
+  <PaginationMany />
+</ComponentPreview>
+
+## Poucas páginas
+
+Se tudo cabe sem ellipsis, mostra a sequência completa.
+
+<ComponentPreview title="4 páginas — todas visíveis">
+  <PaginationFew />
+</ComponentPreview>
+
+## Props
+
+| Prop | Tipo | Default | Descrição |
+|---|---|---|---|
+| `page` | `number` | — | Página ativa (1-indexed). |
+| `totalPages` | `number` | — | Total de páginas. Se ≤ 1, não renderiza. |
+| `onPageChange` | `(n: number) => void` | — | Disparado quando o usuário troca de página. |
+| `siblings` | `number` | `1` | Quantas páginas visíveis ao redor da atual. |
+
+## Acessibilidade
+
+- `<nav aria-label="Paginação">` agrupa.
+- Página atual marcada com `aria-current="page"`.
+- Botões prev/next ganham `aria-label` e ficam `disabled` nos extremos.
+
+## Uso
+
+```tsx
+'use client';
+import { useState } from 'react';
+import { Pagination } from '@/components/ui/pagination';
+
+const [page, setPage] = useState(1);
+
+<Pagination page={page} totalPages={20} onPageChange={setPage} />
+```

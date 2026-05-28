@@ -1,0 +1,55 @@
+---
+title: Breadcrumbs
+description: Trilha de navegação hierárquica indicando a localização atual dentro da estrutura do site/produto.
+---
+
+import { BreadcrumbsBasic, BreadcrumbsCustomSeparator, BreadcrumbsWithIcon } from '@/components/demos/breadcrumbs-variants';
+
+Compõe um `<nav>` com `<ol>` semântico. Cada item é um link; o último (página atual) é texto com `aria-current="page"`.
+
+## Básico
+
+<ComponentPreview title="Trilha clássica com chevron">
+  <BreadcrumbsBasic />
+</ComponentPreview>
+
+## Separador customizado
+
+`BreadcrumbSeparator` aceita children — passe qualquer ReactNode (ícone, caractere, divisor) pra substituir o chevron default.
+
+<ComponentPreview title="Separador com barra">
+  <BreadcrumbsCustomSeparator />
+</ComponentPreview>
+
+## Item-ícone
+
+Item pode conter ícone no lugar de texto — útil pro primeiro nível (home). Lembre de fornecer `aria-label`.
+
+<ComponentPreview title="Home como ícone">
+  <BreadcrumbsWithIcon />
+</ComponentPreview>
+
+## Acessibilidade
+
+- `<nav aria-label="Trilha de navegação">` agrupa a trilha.
+- `<ol>` indica ordem hierárquica.
+- Último item usa `aria-current="page"` no lugar de `<a>` — leitores de tela anunciam corretamente.
+
+## Uso
+
+```tsx
+import {
+  Breadcrumbs,
+  BreadcrumbItem,
+  BreadcrumbCurrent,
+  BreadcrumbSeparator,
+} from '@/components/ui/breadcrumbs';
+
+<Breadcrumbs>
+  <BreadcrumbItem href="/">Início</BreadcrumbItem>
+  <BreadcrumbSeparator />
+  <BreadcrumbItem href="/docs">Docs</BreadcrumbItem>
+  <BreadcrumbSeparator />
+  <BreadcrumbCurrent>Página atual</BreadcrumbCurrent>
+</Breadcrumbs>
+```

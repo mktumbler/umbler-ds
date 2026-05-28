@@ -378,6 +378,25 @@ kbd {
 }
 
 /* ============================================================
+   ACCORDION — expansão vertical com Radix
+   Radix expõe --radix-accordion-content-height no próprio Content.
+   ============================================================ */
+@keyframes accordion-down {
+  from { height: 0; }
+  to   { height: var(--radix-accordion-content-height); }
+}
+@keyframes accordion-up {
+  from { height: var(--radix-accordion-content-height); }
+  to   { height: 0; }
+}
+@utility animate-accordion-down {
+  animation: accordion-down var(--duration-base) var(--ease-out);
+}
+@utility animate-accordion-up {
+  animation: accordion-up var(--duration-fast) var(--ease-in);
+}
+
+/* ============================================================
    EYEBROW / CAPTION — gradiente da marca (padrão DS)
    ============================================================ */
 .eyebrow {
