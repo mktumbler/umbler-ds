@@ -92,6 +92,16 @@
       "description": "Placeholder de carregamento (shimmer) com primitivos para compor cards/listas."
     },
     {
+      "name": "progress",
+      "type": "registry:ui",
+      "description": "Indicador de progresso linear (Radix) e circular (SVG). Modos determinado/indeterminado, tones semânticos."
+    },
+    {
+      "name": "toast",
+      "type": "registry:ui",
+      "description": "Notificação transitória empilhável sobre sonner. Helpers success/error/warning/info, ações e loading com promise."
+    },
+    {
       "name": "tooltip",
       "type": "registry:ui",
       "description": "Tooltip acessível sobre Radix UI. Texto auxiliar exibido no hover/focus com posicionamento automático."
@@ -130,6 +140,11 @@
       "name": "pagination",
       "type": "registry:ui",
       "description": "Navegação entre páginas com ellipsis dinâmica. Controlado via page/onPageChange — fácil de sincronizar com URL."
+    },
+    {
+      "name": "table",
+      "type": "registry:ui",
+      "description": "Tabela semântica em compound (Table/Header/Body/Row/Head/Cell/Caption/Footer). Variantes zebra, dense, bordered, interactive."
     },
     {
       "name": "button",

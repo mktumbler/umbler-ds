@@ -159,6 +159,20 @@ export const items = [
     files: ['components/ui/skeleton.tsx'],
     registryDependencies: ['utils'],
   },
+  {
+    name: 'progress',
+    description: 'Indicador de progresso linear (Radix) e circular (SVG). Modos determinado/indeterminado, tones semânticos.',
+    files: ['components/ui/progress.tsx'],
+    dependencies: [CVA, '@radix-ui/react-progress'],
+    registryDependencies: ['utils'],
+  },
+  {
+    name: 'toast',
+    description: 'Notificação transitória empilhável sobre sonner. Helpers success/error/warning/info, ações e loading com promise.',
+    files: ['components/ui/toast.tsx'],
+    dependencies: ['sonner', PHOSPHOR],
+    registryDependencies: ['utils'],
+  },
   // --- Onda 5 — overlays ---
   {
     name: 'tooltip',
@@ -216,6 +230,15 @@ export const items = [
     description: 'Navegação entre páginas com ellipsis dinâmica. Controlado via page/onPageChange — fácil de sincronizar com URL.',
     files: ['components/ui/pagination.tsx'],
     dependencies: [PHOSPHOR],
+    registryDependencies: ['utils'],
+  },
+
+  // --- Onda 7 — data display ---
+  {
+    name: 'table',
+    description: 'Tabela semântica em compound (Table/Header/Body/Row/Head/Cell/Caption/Footer). Variantes zebra, dense, bordered, interactive.',
+    files: ['components/ui/table.tsx'],
+    dependencies: [CVA],
     registryDependencies: ['utils'],
   },
 

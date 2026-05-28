@@ -1,0 +1,94 @@
+---
+title: Toast
+description: Notificação transitória empilhável sobre sonner. Variantes semânticas, ação, loading com promise.
+---
+
+import { ToastPlayground } from '@/components/demos/toast-variants';
+
+Toast é feedback **transitório** — confirma que algo aconteceu sem interromper o fluxo. Para mensagens persistentes que pedem atenção use [Alert](/docs/components/alert); para decisões críticas use [Dialog](/docs/components/dialog).
+
+## Playground
+
+<ComponentPreview title="Variantes + ações">
+  <ToastPlayground />
+</ComponentPreview>
+
+## Setup
+
+Monte o `<Toaster />` **uma vez** na raiz da aplicação (geralmente no `app/layout.tsx`):
+
+```tsx
+import { Toaster } from '@/components/ui/toast';
+
+export default function RootLayout({ children }) {
+  return (
+    <html>
+      <body>
+        {children}
+        <Toaster />
+      </body>
+    </html>
+  );
+}
+```
+
+Depois, dispare de qualquer componente cliente:
+
+```tsx
+'use client';
+import { toast } from '@/components/ui/toast';
+
+toast.success('Salvo com sucesso');
+toast.error('Falhou ao salvar', { description: 'Tente novamente em instantes.' });
+```
+
+## Variantes
+
+| Helper | Quando usar |
+|---|---|
+| `toast(msg)` | Confirmações neutras ("Mensagem enviada", "Item copiado"). |
+| `toast.success(msg)` | Operação concluída ("Domínio conectado", "Pago"). |
+| `toast.warning(msg)` | Atenção sem bloqueio ("Plano quase no limite"). |
+| `toast.error(msg)` | Falha — algo precisa ser refeito. |
+| `toast.info(msg)` | Aviso informativo ("Nova versão disponível"). |
+| `toast.loading(msg)` | Operação em andamento; atualize com `{ id }`. |
+
+## Ação e cancelamento
+
+Passe `action` para um botão clicável dentro do toast:
+
+```tsx
+toast('Convite enviado', {
+  action: { label: 'Desfazer', onClick: () => undoInvite() },
+});
+```
+
+## Loading → success/error
+
+Para feedback de operações assíncronas, capture o id do toast de loading e atualize:
+
+```tsx
+const id = toast.loading('Publicando…');
+try {
+  await publish();
+  toast.success('Publicado!', { id });
+} catch {
+  toast.error('Falhou ao publicar', { id });
+}
+```
+
+Ou use `toast.promise()`:
+
+```tsx
+toast.promise(publish(), {
+  loading: 'Publicando…',
+  success: 'Publicado!',
+  error:   'Falhou ao publicar',
+});
+```
+
+## Acessibilidade
+
+- Sonner usa `role="status"` (`aria-live="polite"`) por padrão; erros usam `role="alert"`.
+- Botão de fechar tem `aria-label`.
+- Posicionamento padrão `bottom-right` — passe `position` no `<Toaster />` se quiser outro.

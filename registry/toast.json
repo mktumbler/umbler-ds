@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "toast",
+  "type": "registry:ui",
+  "description": "Notificação transitória empilhável sobre sonner. Helpers success/error/warning/info, ações e loading com promise.",
+  "dependencies": [
+    "sonner",
+    "@phosphor-icons/react"
+  ],
+  "registryDependencies": [
+    "https://umbler-ds.vercel.app/r/utils"
+  ],
+  "files": [
+    {
+      "path": "components/ui/toast.tsx",
+      "type": "registry:ui",
+      "content": "'use client';\n\n/**\n * Toast — feedback transitório sobre sonner.\n *\n * `<Toaster />` é o container que vive na raiz da app (uma vez só).\n * Para disparar, importe `toast` daqui (re-exportado de sonner) ou os\n * helpers tipados em `toast.success` / `.error` / `.warning` / `.info`.\n *\n * Estilo casado com tokens do DS (cores, radius, sombras, motion).\n */\n\nimport * as React from 'react';\nimport { Toaster as Sonner, toast as sonnerToast, type ToasterProps } from 'sonner';\nimport {\n  Info,\n  CheckCircle,\n  Warning,\n  XCircle,\n} from '@phosphor-icons/react/dist/ssr';\n\nexport type { ToasterProps };\n\nexport function Toaster(props: ToasterProps) {\n  return (\n    <Sonner\n      position=\"bottom-right\"\n      duration={4000}\n      closeButton\n      richColors={false}\n      icons={{\n        info:    <Info size={18} weight=\"fill\" />,\n        success: <CheckCircle size={18} weight=\"fill\" />,\n        warning: <Warning size={18} weight=\"fill\" />,\n        error:   <XCircle size={18} weight=\"fill\" />,\n      }}\n      toastOptions={{\n        classNames: {\n          toast:\n            'group flex items-start gap-3 rounded-lg border border-border bg-surface-raised text-foreground shadow-xl px-4 py-3 text-body-sm',\n          title:       'font-semibold leading-snug',\n          description: 'text-foreground-muted leading-relaxed',\n          actionButton:\n            'rounded-md bg-brand-500 px-2.5 py-1 text-caption font-semibold text-white hover:bg-brand-600',\n          cancelButton:\n            'rounded-md px-2.5 py-1 text-caption font-semibold text-foreground-muted hover:text-foreground',\n          closeButton:\n            'border border-border bg-surface text-foreground-muted hover:text-foreground',\n          icon: 'shrink-0 mt-0.5',\n          success: '[--toast-icon-color:var(--color-success-500)]',\n          error:   '[--toast-icon-color:var(--color-error-500)]',\n          warning: '[--toast-icon-color:var(--color-warning-500)]',\n          info:    '[--toast-icon-color:var(--color-brand-500)]',\n        },\n      }}\n      {...props}\n    />\n  );\n}\n\n// Re-exporta o toast() — assim consumidor só importa daqui.\nexport const toast = sonnerToast;\n"
+    }
+  ]
+}

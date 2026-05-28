@@ -27,7 +27,7 @@ const ROADMAP: Wave[] = [
   },
   {
     id: 'onda-4', title: 'Onda 4 — Containers & feedback', status: 'progress',
-    items: ['Card ✓', 'CardAurora ✓', 'Alert ✓', 'Skeleton ✓', 'Accordion ✓', 'List group', 'Toast', 'Progress'],
+    items: ['Card ✓', 'CardAurora ✓', 'Alert ✓', 'Skeleton ✓', 'Accordion ✓', 'Toast ✓', 'Progress ✓', 'List group'],
   },
   {
     id: 'onda-5', title: 'Onda 5 — Overlays', status: 'progress',
@@ -38,8 +38,8 @@ const ROADMAP: Wave[] = [
     items: ['Breadcrumbs ✓', 'Pagination ✓', 'Navs'],
   },
   {
-    id: 'onda-7', title: 'Onda 7 — Data display', status: 'planned',
-    items: ['Table', 'Timeline', 'List'],
+    id: 'onda-7', title: 'Onda 7 — Data display', status: 'progress',
+    items: ['Table ✓', 'Timeline', 'List'],
   },
   {
     id: 'onda-8', title: 'Onda 8 — Específicos Umbler/Talk', status: 'planned',

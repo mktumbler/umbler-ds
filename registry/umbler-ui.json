@@ -22,6 +22,8 @@
     "https://umbler-ds.vercel.app/r/card-aurora",
     "https://umbler-ds.vercel.app/r/alert",
     "https://umbler-ds.vercel.app/r/skeleton",
+    "https://umbler-ds.vercel.app/r/progress",
+    "https://umbler-ds.vercel.app/r/toast",
     "https://umbler-ds.vercel.app/r/tooltip",
     "https://umbler-ds.vercel.app/r/dialog",
     "https://umbler-ds.vercel.app/r/tabs",
@@ -30,6 +32,7 @@
     "https://umbler-ds.vercel.app/r/accordion",
     "https://umbler-ds.vercel.app/r/breadcrumbs",
     "https://umbler-ds.vercel.app/r/pagination",
+    "https://umbler-ds.vercel.app/r/table",
     "https://umbler-ds.vercel.app/r/button",
     "https://umbler-ds.vercel.app/r/umbler-logo",
     "https://umbler-ds.vercel.app/r/hero-background"

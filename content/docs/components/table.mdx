@@ -1,0 +1,88 @@
+---
+title: Table
+description: Tabela semântica com variantes zebra, dense, bordered e interactive. Compound em cima de table/thead/tbody nativos.
+---
+
+import {
+  TableBasic,
+  TableZebraDense,
+  TableInteractive,
+} from '@/components/demos/table-variants';
+
+Tabela base do DS — compound semântico (`<Table>`, `<TableHeader>`, `<TableBody>`, `<TableRow>`, `<TableHead>`, `<TableCell>`, `<TableCaption>`, `<TableFooter>`) sobre elementos nativos do HTML. Para listas com filtros, ordenação e seleção, embrulhe com TanStack Table ou similar — os primitivos daqui cuidam só do visual e da acessibilidade base.
+
+## Básico
+
+<ComponentPreview title="Listagem de faturas com footer de total">
+  <TableBasic />
+</ComponentPreview>
+
+## Zebra + dense
+
+`zebra` alterna o fundo das linhas pares. `dense` reduz o padding — útil pra listagens grandes.
+
+<ComponentPreview title="Listagem compacta">
+  <TableZebraDense />
+</ComponentPreview>
+
+## Interativa
+
+`interactive` muda o cursor e o hover da linha — combina com `onClick` no `<TableRow>` para listas clicáveis.
+
+<ComponentPreview title="Linhas clicáveis">
+  <TableInteractive />
+</ComponentPreview>
+
+## Props
+
+### `<Table>`
+
+| Prop | Tipo | Default | Descrição |
+|---|---|---|---|
+| `zebra` | `boolean` | `false` | Alterna o fundo das linhas pares. |
+| `dense` | `boolean` | `false` | Padding compacto. |
+| `bordered` | `boolean` | `false` | Bordas internas verticais entre colunas. |
+| `interactive` | `boolean` | `false` | Hover destaca a linha; cursor pointer. |
+
+As variantes são propagadas via Context — você define no `<Table>` e os filhos consomem automaticamente.
+
+## Estado selecionado
+
+Use `data-state="selected"` no `<TableRow>` pra marcar linhas com checkbox/seleção:
+
+```tsx
+<TableRow data-state={isSelected ? 'selected' : undefined}>
+  ...
+</TableRow>
+```
+
+## Acessibilidade
+
+- Elementos nativos: `<table>`, `<thead>`, `<tbody>`, `<th>`, `<td>` — leitores anunciam estrutura corretamente.
+- `<TableCaption>` vira `<caption>` semântico (resumo da tabela).
+- Em listas clicáveis com `interactive`, prefira embrulhar o conteúdo do `<TableCell>` em um `<a>` ou `<button>` real ao invés de só `onClick` no `<tr>` — assim mantém navegação por teclado e foco.
+
+## Uso
+
+```tsx
+import {
+  Table, TableHeader, TableBody, TableRow, TableHead, TableCell,
+} from '@/components/ui/table';
+
+<Table zebra>
+  <TableHeader>
+    <TableRow>
+      <TableHead>Nome</TableHead>
+      <TableHead>Plano</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    {data.map((row) => (
+      <TableRow key={row.id}>
+        <TableCell>{row.nome}</TableCell>
+        <TableCell>{row.plano}</TableCell>
+      </TableRow>
+    ))}
+  </TableBody>
+</Table>
+```

@@ -1,0 +1,75 @@
+---
+title: Progress
+description: Indicador de progresso linear (Radix) e circular (SVG). Modos determinado e indeterminado, tones semânticos.
+---
+
+import {
+  ProgressLinear,
+  ProgressIndeterminate,
+  ProgressAnimated,
+  ProgressCircleDemo,
+} from '@/components/demos/progress-variants';
+
+Use Progress quando o usuário precisa saber **quanto falta** ou que **algo está acontecendo**. Para feedback transitório de conclusão use [Toast](/docs/components/toast); para loading inline de botões/links use [Spinner](/docs/components/spinner).
+
+## Linear — determinado
+
+<ComponentPreview title="3 barras com tones diferentes">
+  <ProgressLinear />
+</ComponentPreview>
+
+## Linear — indeterminado
+
+Omita `value` (ou passe `null`) quando o progresso não pode ser medido — sincronização, indexação, requisições sem ETA.
+
+<ComponentPreview title="Loop infinito">
+  <ProgressIndeterminate />
+</ComponentPreview>
+
+## Linear — animado
+
+<ComponentPreview title="Avança 7% a cada 350ms">
+  <ProgressAnimated />
+</ComponentPreview>
+
+## Circular
+
+<ComponentPreview title="Tamanhos sm / md / lg + indeterminado">
+  <ProgressCircleDemo />
+</ComponentPreview>
+
+## Props
+
+### `<Progress>`
+
+| Prop | Tipo | Default | Descrição |
+|---|---|---|---|
+| `value` | `number \| null` | — | 0–`max`. Omita para indeterminado. |
+| `max` | `number` | `100` | Valor máximo. |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Espessura da barra. |
+| `tone` | `'brand' \| 'success' \| 'warning' \| 'error'` | `'brand'` | Cor do indicador. |
+
+### `<ProgressCircle>`
+
+Mesmos `value` / `max` / `tone`. `size` muda o diâmetro (28/40/56px). `showLabel` mostra o percentual no centro.
+
+## Acessibilidade
+
+- Radix Progress aplica `role="progressbar"` + `aria-valuenow`/`min`/`max` automaticamente.
+- `ProgressCircle` aplica os mesmos atributos manualmente.
+- No modo indeterminado, `aria-valuenow` é omitido — leitores anunciam "carregando".
+
+## Uso
+
+```tsx
+import { Progress, ProgressCircle } from '@/components/ui/progress';
+
+// Determinado
+<Progress value={uploaded} max={total} />
+
+// Indeterminado
+<Progress />
+
+// Circular com label
+<ProgressCircle value={64} showLabel size="lg" />
+```
