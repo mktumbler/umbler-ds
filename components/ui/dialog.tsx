@@ -42,7 +42,8 @@ export const DialogContent = React.forwardRef<
     <DialogPrimitive.Content
       ref={ref}
       className={cn(
-        'fixed left-1/2 top-1/2 z-50 w-full max-w-lg -translate-x-1/2 -translate-y-1/2',
+        // inset-0 + m-auto centra sem conflito com o transform da animação
+        'fixed inset-0 z-50 m-auto h-fit w-full max-w-lg mx-4 sm:mx-auto',
         'rounded-xl border border-border bg-surface p-6 shadow-2xl',
         'data-[state=open]:animate-dialog-in',
         'data-[state=closed]:animate-dialog-out',
@@ -94,7 +95,7 @@ export const DialogTitle = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <DialogPrimitive.Title
     ref={ref}
-    className={cn('text-display-sm font-semibold text-foreground', className)}
+    className={cn('font-sans text-h4 font-semibold text-foreground', className)}
     {...props}
   />
 ));
