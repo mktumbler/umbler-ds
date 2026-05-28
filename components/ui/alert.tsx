@@ -12,7 +12,7 @@ import { cn } from '@/lib/utils';
 // ── Variants ──────────────────────────────────────────────────────────────────
 
 const alertVariants = cva(
-  'relative flex gap-3 rounded-lg border px-4 py-3.5 text-sm',
+  'relative flex gap-3 rounded-lg border px-4 py-3.5 text-sm animate-alert-in',
   {
     variants: {
       variant: {

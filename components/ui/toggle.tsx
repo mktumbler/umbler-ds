@@ -66,7 +66,7 @@ export function Toggle({
       disabled={disabled}
       onClick={handleClick}
       className={cn(
-        'relative shrink-0 rounded-full transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 focus-visible:ring-offset-surface',
+        'relative shrink-0 rounded-full transition-colors duration-[var(--duration-fast)] ease-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 focus-visible:ring-offset-surface',
         track,
         isChecked ? 'bg-brand-500' : 'bg-control-track',
         disabled && 'opacity-50 cursor-not-allowed',
@@ -76,7 +76,10 @@ export function Toggle({
     >
       <span
         className={cn(
-          'block rounded-full bg-white shadow-sm transition-transform duration-150',
+          'block rounded-full bg-white shadow-sm',
+          // Spring no movimento do thumb — ultrapassa levemente e volta,
+          // dando sensação tátil. Cor da trilha (no <button>) segue rápida.
+          'transition-transform duration-[var(--duration-normal)] ease-spring',
           thumb,
           isChecked ? translateOn : translateOff,
           'absolute top-1/2 -translate-y-1/2',

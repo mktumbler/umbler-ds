@@ -26,25 +26,28 @@ interface SpinnerProps extends VariantProps<typeof spinnerVariants> {
    * "arc"    — arco giratório, ideal para uso inline em botões.
    */
   variant?: 'orbit' | 'arc';
-  /** Cor do ponto A (azul). Qualquer valor CSS. Padrão: #8BBCF8 */
+  /** Cor do ponto A (azul). Qualquer valor CSS. Padrão: var(--color-loader-a) */
   colorA?: string;
-  /** Cor do ponto B (salmão). Qualquer valor CSS. Padrão: #F8C4B8 */
+  /** Cor do ponto B (salmão). Qualquer valor CSS. Padrão: var(--color-loader-b) */
   colorB?: string;
   className?: string;
 }
 
-/** Cores dos pontos — aceita qualquer cor CSS válida. */
 interface OrbitProps {
   px: number;
   colorA?: string;
   colorB?: string;
 }
 
-function OrbitDots({ px, colorA = '#8BBCF8', colorB = '#F8C4B8' }: OrbitProps) {
-  const r = px / 2;          // raio do SVG
-  const orbit = r * 0.55;    // raio da órbita
-  const dotA = r * 0.22;     // raio ponto A (azul, maior)
-  const dotB = r * 0.18;     // raio ponto B (salmão, menor)
+function OrbitDots({
+  px,
+  colorA = 'var(--color-loader-a)',
+  colorB = 'var(--color-loader-b)',
+}: OrbitProps) {
+  const r = px / 2;
+  const orbit = r * 0.55;
+  const dotA = r * 0.22;
+  const dotB = r * 0.18;
 
   return (
     <svg
@@ -55,7 +58,6 @@ function OrbitDots({ px, colorA = '#8BBCF8', colorB = '#F8C4B8' }: OrbitProps) {
       aria-hidden
       style={{ display: 'inline-block', flexShrink: 0 }}
     >
-      {/* Ponto A — orbita horário */}
       <circle cx={r} cy={r - orbit} r={dotA} fill={colorA}>
         <animateTransform
           attributeName="transform"
@@ -66,7 +68,6 @@ function OrbitDots({ px, colorA = '#8BBCF8', colorB = '#F8C4B8' }: OrbitProps) {
           repeatCount="indefinite"
         />
       </circle>
-      {/* Ponto B — começa 180° à frente (mesmo eixo, lado oposto) */}
       <circle cx={r} cy={r + orbit} r={dotB} fill={colorB}>
         <animateTransform
           attributeName="transform"

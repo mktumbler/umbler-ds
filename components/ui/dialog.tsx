@@ -18,7 +18,7 @@ const DialogOverlay = React.forwardRef<
     ref={ref}
     className={cn(
       'fixed inset-0 z-50 bg-black/60 backdrop-blur-sm',
-      'transition-opacity duration-200',
+      'transition-opacity duration-[var(--duration-normal)] ease-out',
       'data-[state=closed]:opacity-0 data-[state=open]:opacity-100',
       className,
     )}
@@ -44,9 +44,8 @@ export const DialogContent = React.forwardRef<
       className={cn(
         'fixed left-1/2 top-1/2 z-50 w-full max-w-lg -translate-x-1/2 -translate-y-1/2',
         'rounded-xl border border-border bg-surface p-6 shadow-2xl',
-        'transition-[opacity,transform] duration-200 ease-out',
-        'data-[state=closed]:opacity-0 data-[state=closed]:scale-95',
-        'data-[state=open]:opacity-100 data-[state=open]:scale-100',
+        'data-[state=open]:animate-dialog-in',
+        'data-[state=closed]:animate-dialog-out',
         'focus:outline-none',
         className,
       )}
@@ -58,7 +57,8 @@ export const DialogContent = React.forwardRef<
           aria-label="Fechar"
           className={cn(
             'absolute right-4 top-4 inline-flex size-7 items-center justify-center rounded-md',
-            'text-foreground-muted hover:bg-neutral-700/40 hover:text-foreground',
+            'text-foreground-muted transition-colors duration-[var(--duration-fast)] ease-out',
+            'hover:bg-control-hover hover:text-foreground',
             'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500',
           )}
         >

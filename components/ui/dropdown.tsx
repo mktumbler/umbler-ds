@@ -15,7 +15,7 @@ export const DropdownMenuRadioGroup = DropdownMenuPrimitive.RadioGroup;
 const contentStyles = cn(
   'z-50 min-w-[12rem] overflow-hidden rounded-lg border border-border bg-surface p-1 shadow-xl',
   'origin-[var(--radix-dropdown-menu-content-transform-origin)]',
-  'transition-[opacity,transform] duration-150 ease-out',
+  'transition-[opacity,transform] duration-[var(--duration-fast)] ease-out',
   'data-[state=closed]:opacity-0 data-[state=closed]:scale-95',
   'data-[state=open]:opacity-100 data-[state=open]:scale-100',
 );
@@ -23,8 +23,8 @@ const contentStyles = cn(
 const itemStyles = cn(
   'relative flex cursor-pointer select-none items-center gap-2 rounded-md px-2 py-1.5',
   'text-body-sm text-foreground outline-none',
-  'transition-colors duration-100',
-  'data-[highlighted]:bg-neutral-700/50',
+  'transition-colors duration-[var(--duration-fast)] ease-out',
+  'data-[highlighted]:bg-control-hover',
   'data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
 );
 
@@ -157,7 +157,7 @@ export const DropdownMenuSubTrigger = React.forwardRef<
 >(({ className, inset, children, ...props }, ref) => (
   <DropdownMenuPrimitive.SubTrigger
     ref={ref}
-    className={cn(itemStyles, 'data-[state=open]:bg-neutral-700/50', inset && 'pl-8', className)}
+    className={cn(itemStyles, 'data-[state=open]:bg-control-hover', inset && 'pl-8', className)}
     {...props}
   >
     {children}

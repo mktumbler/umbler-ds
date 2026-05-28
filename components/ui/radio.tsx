@@ -29,14 +29,14 @@ export function Radio({ className, label, description, ...props }: RadioProps) {
             'checked:border-brand-500',
             'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 focus-visible:ring-offset-surface',
             'disabled:cursor-not-allowed',
-            'transition-colors duration-150',
+            'transition-colors duration-[var(--duration-fast)] ease-out',
             'hover:border-border-strong',
             className,
           )}
           {...props}
         />
-        {/* Central dot — visible when checked */}
-        <span className="pointer-events-none absolute h-1.5 w-1.5 rounded-full bg-brand-500 opacity-0 peer-checked:opacity-100 transition-opacity" />
+        {/* Central dot — escala de 0→1 com spring ao selecionar */}
+        <span className="pointer-events-none absolute h-1.5 w-1.5 rounded-full bg-brand-500 scale-0 opacity-0 peer-checked:scale-100 peer-checked:opacity-100 transition-[transform,opacity] duration-[var(--duration-normal)] ease-spring" />
       </div>
       {(label || description) && (
         <div>

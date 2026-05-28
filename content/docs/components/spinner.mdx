@@ -5,7 +5,7 @@ description: Indicador de carregamento com dois pontos orbitando — estilo do l
 
 import { SpinnerOrbitSizes, SpinnerOrbitColors, SpinnerArc } from '@/components/demos/spinner-variants';
 
-O `Spinner` replica o loader oficial Umbler: dois pontos (azul `#8BBCF8` e salmão `#F8C4B8`) em órbita. A variante `arc` mantém o arco giratório clássico para contextos compactos (botões, badges).
+O `Spinner` replica o loader oficial Umbler: dois pontos (azul `#8BBCF8` e salmão `#F8C4B8`) em órbita circular. A variante `arc` mantém o arco giratório clássico para contextos compactos (botões, badges).
 
 ## Orbit — tamanhos
 
@@ -35,7 +35,7 @@ Variante `arc` usa `currentColor` — controle pela classe `text-*` do pai.
   columns={['Prop', 'Tipo', 'Default', 'Descrição']}
   rows={[
     ['size', '"sm" | "md" | "lg" | "xl"', '"md"', 'Tamanho: 14 / 16 / 20 / 24px'],
-    ['variant', '"orbit" | "arc"', '"orbit"', 'orbit = dois pontos (padrão Umbler), arc = arco giratório'],
+    ['variant', '"orbit" | "arc"', '"orbit"', 'orbit = dois pontos em órbita (padrão Umbler), arc = arco giratório'],
     ['colorA', 'string', '"#8BBCF8"', 'Cor do ponto A (azul). Qualquer valor CSS.'],
     ['colorB', 'string', '"#F8C4B8"', 'Cor do ponto B (salmão). Qualquer valor CSS.'],
     ['className', 'string', '—', 'Classes extras'],

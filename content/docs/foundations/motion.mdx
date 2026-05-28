@@ -12,10 +12,11 @@ Motion no Umbler DS é discreto e funcional. Toda transição deve ter um propó
 <TokenTable
   columns={['Nome', 'Valor', 'Token']}
   rows={[
-    ['Fast',   '150ms', '--duration-fast'],
-    ['Normal', '250ms', '--duration-normal'],
-    ['Slow',   '400ms', '--duration-slow'],
-    ['Slower', '600ms', '--duration-slower'],
+    ['Instant', '80ms',  '--duration-instant'],
+    ['Fast',    '150ms', '--duration-fast'],
+    ['Normal',  '250ms', '--duration-normal'],
+    ['Slow',    '400ms', '--duration-slow'],
+    ['Slower',  '600ms', '--duration-slower'],
   ]}
 />
 
@@ -29,8 +30,32 @@ Todas as curvas abaixo rodam com `600ms` para facilitar a comparação visual.
   columns={['Curva', 'Valor', 'Uso']}
   rows={[
     ['ease-out',     'cubic-bezier(0.22, 1, 0.36, 1)',    'Entradas — modais abrindo, elementos aparecendo'],
+    ['ease-in',      'cubic-bezier(0.55, 0, 0.78, 0)',    'Saídas — modais fechando, elementos sumindo'],
     ['ease-in-out',  'cubic-bezier(0.45, 0, 0.55, 1)',    'Transições contínuas — toggles, slides'],
-    ['ease-spring',  'cubic-bezier(0.34, 1.56, 0.64, 1)', 'Bounce sutil — confirmações, sucessos'],
+    ['ease-spring',  'cubic-bezier(0.34, 1.56, 0.64, 1)', 'Bounce sutil — checkboxes, switches, confirmações'],
+  ]}
+/>
+
+## Microinterações por componente
+
+Padrão geral: **estado = fast + ease-out · transição = normal + ease-out · entrada/saída = slow + ease-out/in · feedback tátil = ease-spring**.
+
+<TokenTable
+  columns={['Componente', 'Microinteração', 'Duração', 'Easing']}
+  rows={[
+    ['Button',           'Hover/active cor + scale press 0.97',   '150ms (80ms no press)', 'ease-out'],
+    ['Checkbox',         'Tick desenhado (stroke-dasharray)',      '250ms', 'ease-spring'],
+    ['Toggle',           'Thumb desliza + cor da trilha',          '250ms', 'ease-spring'],
+    ['Radio',            'Dot interno escala 0→1',                 '250ms', 'ease-spring'],
+    ['Tooltip',          'Fade + slide direcional do data-side',   '150ms', 'ease-out'],
+    ['Dialog',           'Overlay fade + content scale 0.97→1',    '250ms (in) / 150ms (out)', 'ease-out / ease-in'],
+    ['Dropdown',         'Fade + scale, origem do trigger',        '150ms', 'ease-out'],
+    ['Tabs',             'Pop sutil ao ativar (scale 0.94→1)',     '250ms', 'ease-spring'],
+    ['Card (hover)',     'translateY(-2 a -4px) + sombra cresce',  '250ms', 'ease-out'],
+    ['Alert / Toast',    'Slide-in vertical + fade na montagem',   '400ms', 'ease-out'],
+    ['Input / Textarea', 'Border + ring entre estados',            '150ms', 'ease-out'],
+    ['Skeleton',         'Shimmer gradient horizontal',            '1500ms infinite', 'linear'],
+    ['Spinner orbit',    'Dois pontos opostos orbitando o centro', '900ms infinite', 'linear'],
   ]}
 />
 

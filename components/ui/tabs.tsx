@@ -30,10 +30,10 @@ export const TabsTrigger = React.forwardRef<
     className={cn(
       'inline-flex items-center gap-2 rounded-md px-3 py-1.5',
       'text-body-sm font-medium text-foreground-muted',
-      'transition-colors duration-150',
+      'transition-colors duration-[var(--duration-fast)] ease-out',
       'hover:text-foreground',
       'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-1 focus-visible:ring-offset-surface',
-      'data-[state=active]:bg-neutral-700/50 data-[state=active]:text-foreground data-[state=active]:shadow-sm',
+      'data-[state=active]:bg-control-hover data-[state=active]:text-foreground data-[state=active]:shadow-sm data-[state=active]:animate-tab-pop',
       'disabled:pointer-events-none disabled:opacity-50',
       className,
     )}

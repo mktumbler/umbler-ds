@@ -5,7 +5,7 @@ import { cva } from 'class-variance-authority';
  * em server components (ex: home page, layouts).
  */
 export const buttonVariants = cva(
-  'inline-flex items-center justify-center gap-2 font-medium whitespace-nowrap select-none cursor-pointer transition-[background-color,border-color,box-shadow,opacity] duration-[150ms] ease-[cubic-bezier(0.22,1,0.36,1)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-neutral-950 disabled:opacity-50 disabled:pointer-events-none',
+  'inline-flex items-center justify-center gap-2 font-medium whitespace-nowrap select-none cursor-pointer transition-[background-color,border-color,box-shadow,opacity,transform] duration-[var(--duration-fast)] ease-out active:scale-[0.97] active:duration-[var(--duration-instant)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-neutral-950 disabled:opacity-50 disabled:pointer-events-none disabled:active:scale-100',
   {
     variants: {
       variant: {
