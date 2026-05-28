@@ -31,6 +31,11 @@
   margin-bottom: 0.75em;
 }
 
+/* ── Layout dos docs em light mode: fundo branco puro ───────────────────────── */
+:root:not(.dark) #nd-docs-layout {
+  background-color: #ffffff;
+}
+
 /* ============================================================
    FUMADOCS DARK MODE — sobrescreve o neutral.css do Fumadocs
    com a escala de cores da marca. (Tokens do DS estão em tokens.css.)
