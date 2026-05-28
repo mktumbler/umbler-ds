@@ -1,0 +1,72 @@
+[
+  {
+    "date": "2026-05-28",
+    "type": "feat",
+    "scope": "email",
+    "title": "Templates de email marketing",
+    "description": "3 templates (boas-vindas, campanha, fatura) com react-email + preview com iframe e download HTML."
+  },
+  {
+    "date": "2026-05-28",
+    "type": "refactor",
+    "scope": "hero-background",
+    "title": "Blobs sem rotate + blur responsivo",
+    "description": "Removida rotação inline dos blobs. Blur agora escala via container queries (clamp + cqw)."
+  },
+  {
+    "date": "2026-05-28",
+    "type": "refactor",
+    "scope": "spinner",
+    "title": "Spinner simplificado",
+    "description": "Removida variante orbit. Apenas modo arc com SVG path + currentColor."
+  },
+  {
+    "date": "2026-05-28",
+    "type": "feat",
+    "scope": "brand",
+    "title": "Favicon Umbler",
+    "description": "SVG com fundo escuro neutral-950 + símbolo branco com gradiente na letra 'u'."
+  },
+  {
+    "date": "2026-05-28",
+    "type": "fix",
+    "scope": "dialog",
+    "title": "Centralização e tipografia do título",
+    "description": "Posicionamento via inset-0 + m-auto resolve conflito com transform da animação. DialogTitle agora usa font-sans + text-h4."
+  },
+  {
+    "date": "2026-05-28",
+    "type": "refactor",
+    "scope": "ds",
+    "title": "Tokenização completa de motion",
+    "description": "Todos os valores hardcoded (durations, cubic-bezier) substituídos por tokens --duration-* e --ease-*. Tooltip e control-hover ganharam tokens semânticos."
+  },
+  {
+    "date": "2026-05-28",
+    "type": "feat",
+    "scope": "overlays",
+    "title": "Onda 5 — Tooltip, Dialog, Tabs, Dropdown",
+    "description": "Componentes interativos críticos sobre Radix UI. Tooltip com posicionamento auto, Dropdown com submenus, Tabs segmentado por padrão."
+  },
+  {
+    "date": "2026-05-27",
+    "type": "feat",
+    "scope": "kbd",
+    "title": "Componente Kbd",
+    "description": "Representação visual de teclas e atalhos. Inclui KbdSequence para combinações tipo ⌘+K."
+  },
+  {
+    "date": "2026-05-27",
+    "type": "feat",
+    "scope": "brand",
+    "title": "Página Downloads",
+    "description": "Galeria com 3 variações do símbolo Umbler (escuro, claro, gradiente) e logos completos prontos para download."
+  },
+  {
+    "date": "2026-05-27",
+    "type": "feat",
+    "scope": "distribution",
+    "title": "Registry shadcn + llms.txt + pacote @umbler/ui",
+    "description": "Distribuição via /r/[component] compatível com shadcn add. Geração automática em build time. Arquivo llms.txt para agentes de IA."
+  }
+]

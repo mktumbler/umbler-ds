@@ -32,6 +32,10 @@ import { DropdownBasic, DropdownWithLabel, DropdownCheckboxesAndRadios } from '@
 import { FeatureGridSection, FeatureSplitSection, FeatureBentoSection } from '@/components/demos/patterns/site/features';
 import { HeroBgGridDemo, HeroBgSweepDemo } from '@/components/demos/patterns/site/backgrounds';
 import { EmailPreview } from '@/components/docs/email-preview';
+import { DSStack } from '@/components/docs/ds-stack';
+import { DSStats } from '@/components/docs/ds-stats';
+import { Changelog } from '@/components/docs/changelog';
+import { Roadmap } from '@/components/docs/roadmap';
 
 export function getMDXComponents(components?: MDXComponents): MDXComponents {
   return {
@@ -108,6 +112,10 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     HeroBgGridDemo,
     HeroBgSweepDemo,
     EmailPreview,
+    DSStack,
+    DSStats,
+    Changelog,
+    Roadmap,
     ...components,
   };
 }

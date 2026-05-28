@@ -1,0 +1,59 @@
+---
+title: Sobre o DS
+description: O que tem dentro do Umbler Design System, qual stack o sustenta, o que mudou recentemente e o que vem por aí.
+---
+
+import { DSStack } from '@/components/docs/ds-stack';
+import { DSStats } from '@/components/docs/ds-stats';
+import { Changelog } from '@/components/docs/changelog';
+import { Roadmap } from '@/components/docs/roadmap';
+
+O Umbler DS é a **fonte da verdade visual** dos produtos Umbler. Ele unifica
+tokens, componentes e padrões em uma única biblioteca consumível por qualquer
+projeto Next.js da empresa — produtos, sites de marketing, ferramentas internas
+e templates de email.
+
+## Em números
+
+<DSStats />
+
+## Stack
+
+O DS é construído sobre uma stack moderna, sem dependências de runtime opcionais
+e com **zero lock-in**: o código é copiado para dentro do seu projeto via registry
+shadcn — você sempre controla o que está rodando.
+
+<DSStack />
+
+## Princípios
+
+1. **Tokens são lei** — nenhum valor de cor, fonte, espaçamento ou motion fora dos tokens.
+2. **Paridade 1:1** com o protótipo HTML antes de qualquer melhoria.
+3. **Acessibilidade razoável** — Radix UI só em interativos críticos (overlays).
+4. **Light/dark automático** via tokens semânticos — sem `dark:` manual nos componentes.
+5. **Componentes copiáveis** — distribuição via shadcn registry, sem runtime dependency.
+6. **IA-first** — `llms.txt` permite que qualquer agente instale e use o DS sozinho.
+
+## Últimas atualizações
+
+Mudanças recentes em ordem cronológica reversa. Atualizado a cada release.
+
+<Changelog limit={8} />
+
+## Roadmap
+
+Ondas de implementação do DS. Itens com **✓** já estão concluídos.
+
+<Roadmap />
+
+## Como contribuir
+
+Todo componente novo segue o fluxo abaixo:
+
+1. **Estuda o HTML original** em [umbler-design-system.vercel.app](https://umbler-design-system.vercel.app/)
+2. **Cria** `components/ui/<nome>.tsx` usando os tokens do `app/tokens.css`
+3. **Cria demo** em `components/demos/<nome>-variants.tsx`
+4. **Cria página MDX** em `content/docs/components/<nome>.mdx`
+5. **Adiciona slug** em `content/docs/components/meta.json` e ao registry em `scripts/registry.manifest.mjs`
+
+Detalhes completos no [CLAUDE.md](https://github.com/umbler/umbler-ds/blob/master/CLAUDE.md) — briefing para humanos e agentes de IA.
