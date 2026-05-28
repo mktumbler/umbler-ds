@@ -9,10 +9,14 @@
  */
 
 import Link from 'next/link';
-import { Info, Sparkle, DownloadSimple } from '@phosphor-icons/react/dist/ssr';
+import { Sparkle, DownloadSimple } from '@phosphor-icons/react/dist/ssr';
 
+/**
+ * "Sobre o DS" não está aqui — ele vive inline ao lado do theme toggle
+ * (ver app/docs/layout.tsx, prop themeSwitch.component) por ter
+ * hierarquia mais alta que os outros dois links secundários.
+ */
 const links = [
-  { href: '/docs/sobre',     label: 'Sobre o DS',     icon: Info },
   { href: '/docs/brand',     label: 'A Marca Umbler', icon: Sparkle },
   { href: '/docs/downloads', label: 'Downloads',      icon: DownloadSimple },
 ] as const;

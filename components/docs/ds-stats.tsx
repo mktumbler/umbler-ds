@@ -24,7 +24,7 @@ export function DSStats() {
           key={s.label}
           className="rounded-lg border border-border bg-surface p-4"
         >
-          <div className="mb-3 text-display font-bold text-brand-500 leading-none tracking-tight">
+          <div className="mb-3 font-heading text-display font-bold text-brand-300 leading-none tracking-tight">
             {s.value}
           </div>
           <div className="mb-1 text-body-sm font-semibold text-foreground">

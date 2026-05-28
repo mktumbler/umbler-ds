@@ -3,6 +3,7 @@ import type { ReactNode } from 'react';
 import { source } from '@/lib/source';
 import { baseOptions } from '@/app/layout.config';
 import { SidebarMetaLinks } from '@/components/ui/sidebar-meta-links';
+import { SidebarThemeRow } from '@/components/ui/sidebar-theme-row';
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (
@@ -11,6 +12,9 @@ export default function Layout({ children }: { children: ReactNode }) {
       {...baseOptions}
       sidebar={{
         footer: <SidebarMetaLinks />,
+      }}
+      themeSwitch={{
+        component: <SidebarThemeRow />,
       }}
     >
       {children}
