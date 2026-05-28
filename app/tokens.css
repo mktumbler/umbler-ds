@@ -276,6 +276,20 @@ kbd {
 }
 
 /* ============================================================
+   TOOLTIP — fade + scale de entrada/saída
+   ============================================================ */
+@keyframes tooltip-in {
+  from { opacity: 0; transform: scale(0.93); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes tooltip-out {
+  from { opacity: 1; transform: scale(1); }
+  to   { opacity: 0; transform: scale(0.93); }
+}
+.animate-tooltip-in  { animation: tooltip-in  120ms var(--ease-out) forwards; }
+.animate-tooltip-out { animation: tooltip-out  80ms ease-in      forwards; }
+
+/* ============================================================
    EYEBROW / CAPTION — gradiente da marca (padrão DS)
    ============================================================ */
 .eyebrow {

@@ -17,19 +17,19 @@ export const TooltipContent = React.forwardRef<
       ref={ref}
       sideOffset={sideOffset}
       className={cn(
-        'z-50 max-w-xs rounded-md border border-border bg-surface px-2.5 py-1.5',
-        'text-caption text-foreground shadow-lg',
+        'z-50 max-w-xs rounded-md bg-neutral-950 px-2.5 py-1.5',
+        'text-caption text-white shadow-lg',
         'origin-[var(--radix-tooltip-content-transform-origin)]',
-        'transition-[opacity,transform] duration-150 ease-out',
-        'data-[state=closed]:opacity-0 data-[state=closed]:scale-95',
-        'data-[state=delayed-open]:opacity-100 data-[state=delayed-open]:scale-100',
-        'data-[state=instant-open]:opacity-100 data-[state=instant-open]:scale-100',
+        'will-change-[opacity,transform]',
+        'data-[state=delayed-open]:animate-tooltip-in',
+        'data-[state=instant-open]:animate-tooltip-in',
+        'data-[state=closed]:animate-tooltip-out',
         className,
       )}
       {...props}
     >
       {children}
-      <TooltipPrimitive.Arrow className="fill-surface" />
+      <TooltipPrimitive.Arrow className="fill-neutral-950" />
     </TooltipPrimitive.Content>
   </TooltipPrimitive.Portal>
 ));

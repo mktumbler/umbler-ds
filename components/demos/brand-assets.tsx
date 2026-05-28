@@ -68,7 +68,7 @@ const LOCKUPS: Asset[] = [
 const SYMBOLS: Asset[] = [
   {
     label: 'Fundo claro',
-    desc: 'Símbolo escuro + crescente em gradiente',
+    desc: 'Símbolo 100% escuro (#0A0F20)',
     file: '/brand/umbler-symbol-dark.svg',
     tile: 'bg-white',
     imgClass: 'h-16',
