@@ -177,13 +177,13 @@ export function EmailLayout({ preview, children }: EmailLayoutProps) {
           }}
         >
           {/* Header */}
-          <Section style={{ padding: '32px 0 24px' }}>
+          <Section style={{ padding: '32px 0 24px', textAlign: 'center' }}>
             <Img
               src="https://umbler-ds.vercel.app/brand/umbler-wordmark-light.svg"
               alt="Umbler"
               width={120}
               height={33}
-              style={{ display: 'block' }}
+              style={{ display: 'block', margin: '0 auto' }}
             />
           </Section>
 
