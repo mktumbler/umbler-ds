@@ -1,32 +1,24 @@
 ---
 title: Spinner
-description: Indicador de carregamento com dois pontos orbitando — estilo do loader Umbler. Também disponível em variante arco para uso inline em botões.
+description: Indicador de carregamento em arco giratório. Usa currentColor — controle a cor via classe text-*.
 ---
 
-import { SpinnerOrbitSizes, SpinnerOrbitColors, SpinnerArc } from '@/components/demos/spinner-variants';
+import { SpinnerSizes, SpinnerColors } from '@/components/demos/spinner-variants';
 
-O `Spinner` replica o loader oficial Umbler: dois pontos (azul `#8BBCF8` e salmão `#F8C4B8`) em órbita circular. A variante `arc` mantém o arco giratório clássico para contextos compactos (botões, badges).
+O `Spinner` é um arco giratório que usa `currentColor`, adaptando-se a qualquer contexto pelo `text-*` do pai — botões, overlays, áreas de loading.
 
-## Orbit — tamanhos
+## Tamanhos
 
-<ComponentPreview title="Orbit — sm / md / lg / xl">
-  <SpinnerOrbitSizes />
+<ComponentPreview title="sm / md / lg / xl">
+  <SpinnerSizes />
 </ComponentPreview>
 
-## Orbit — cores customizáveis
+## Cores
 
-Use `colorA` e `colorB` para adaptar às cores do contexto.
+Controle via `className` com qualquer classe `text-*`.
 
-<ComponentPreview title="Cores">
-  <SpinnerOrbitColors />
-</ComponentPreview>
-
-## Arc — inline em botões
-
-Variante `arc` usa `currentColor` — controle pela classe `text-*` do pai.
-
-<ComponentPreview title="Arc (variant='arc')">
-  <SpinnerArc />
+<ComponentPreview title="Cores via currentColor">
+  <SpinnerColors />
 </ComponentPreview>
 
 ## Props
@@ -34,11 +26,8 @@ Variante `arc` usa `currentColor` — controle pela classe `text-*` do pai.
 <TokenTable
   columns={['Prop', 'Tipo', 'Default', 'Descrição']}
   rows={[
-    ['size', '"sm" | "md" | "lg" | "xl"', '"md"', 'Tamanho: 14 / 16 / 20 / 24px'],
-    ['variant', '"orbit" | "arc"', '"orbit"', 'orbit = dois pontos em órbita (padrão Umbler), arc = arco giratório'],
-    ['colorA', 'string', '"#8BBCF8"', 'Cor do ponto A (azul). Qualquer valor CSS.'],
-    ['colorB', 'string', '"#F8C4B8"', 'Cor do ponto B (salmão). Qualquer valor CSS.'],
-    ['className', 'string', '—', 'Classes extras'],
+    ['size', '"sm" | "md" | "lg" | "xl"', '"md"', 'Tamanho do ícone: 14 / 16 / 20 / 24px'],
+    ['className', 'string', '—', 'Classes extras — use text-* para cor'],
   ]}
 />
 
@@ -47,15 +36,12 @@ Variante `arc` usa `currentColor` — controle pela classe `text-*` do pai.
 ```tsx
 import { Spinner } from '@/components/ui/spinner';
 
-// Padrão — orbit com cores do gradiente Umbler
-<Spinner />
+// Standalone
+<Spinner size="lg" className="text-brand-400" />
 
-// Orbit com cores customizadas
-<Spinner colorA="#1A5CFF" colorB="#5B8EFF" />
-
-// Arc inline em botão
-<button className="text-brand-400">
-  <Spinner size="sm" variant="arc" />
-  Carregando...
+// Inline em botão
+<button disabled>
+  <Spinner size="sm" />
+  Salvando...
 </button>
 ```

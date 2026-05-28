@@ -9,7 +9,7 @@ import { RadiusShowcase } from '@/components/docs/radius-showcase';
 import { ShadowShowcase } from '@/components/docs/shadow-showcase';
 import { ComponentPreview } from '@/components/docs/component-preview';
 import { DurationDemo, EasingDemo } from '@/components/docs/motion-demo';
-import { SpinnerOrbitSizes, SpinnerOrbitColors, SpinnerArc } from '@/components/demos/spinner-variants';
+import { SpinnerSizes, SpinnerColors } from '@/components/demos/spinner-variants';
 import { BadgeVariantsDemo, BadgeSizesDemo, BadgeDotsDemo } from '@/components/demos/badge-variants';
 import { TagVariantsDemo, TagInputDemo } from '@/components/demos/tag-variants';
 import { AvatarSizesDemo, AvatarFallbacksDemo, AvatarGroupDemo } from '@/components/demos/avatar-variants';
@@ -45,9 +45,8 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     ComponentPreview,
     DurationDemo,
     EasingDemo,
-    SpinnerOrbitSizes,
-    SpinnerOrbitColors,
-    SpinnerArc,
+    SpinnerSizes,
+    SpinnerColors,
     BadgeVariantsDemo,
     BadgeSizesDemo,
     BadgeDotsDemo,

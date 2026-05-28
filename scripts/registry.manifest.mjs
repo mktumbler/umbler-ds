@@ -49,7 +49,7 @@ export const items = [
   // --- Onda 2 — primitivos ---
   {
     name: 'spinner',
-    description: 'Indicador de carregamento circular. Usa currentColor; cor controlada por className do pai.',
+    description: 'Indicador de carregamento em arco. Usa currentColor — controle a cor via text-* no pai.',
     files: ['components/ui/spinner.tsx'],
     dependencies: [CVA],
     registryDependencies: ['utils'],

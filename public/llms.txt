@@ -98,17 +98,16 @@ import { Avatar, AvatarGroup } from '@/components/ui/avatar';
 ```tsx
 import { Spinner } from '@/components/ui/spinner';
 
-// Orbital (padrão) — dois pontos em órbita, cores da marca
-<Spinner size="md" />
-<Spinner size="lg" variant="orbit" colorA="#8bbcf8" colorB="#f8c4b8" />
+<Spinner size="md" className="text-brand-400" />
 
-// Arco giratório — ideal para uso inline em botões
-<Spinner variant="arc" size="sm" className="text-brand-400" />
+// Inline em botão
+<button disabled>
+  <Spinner size="sm" />
+  Salvando...
+</button>
 ```
 - size: `sm` | `md` | `lg` | `xl` — padrão: `md`
-- variant: `orbit` | `arc` — padrão: `orbit`
-- colorA / colorB: qualquer valor CSS (orbit) — padrão: tokens `--color-loader-a/b`
-- arc usa `currentColor` — controle via `className` (text-*)
+- Usa `currentColor` — controle a cor via `className` (text-*)
 
 ### Separator
 ```tsx
