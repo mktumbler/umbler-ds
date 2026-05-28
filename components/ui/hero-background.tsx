@@ -35,7 +35,8 @@ function Blob({ width, height, rotate, children }: WrapperProps) {
         width: '200%',
         aspectRatio: `${width} / ${height}`,
         transform: `translate(-50%, -50%) rotate(${rotate}deg)`,
-        filter: 'blur(80px)',
+        // blur escala com o container: 5cqw → 15px em 300px, 80px em 1600px
+        filter: 'blur(clamp(10px, 5cqw, 80px))',
         opacity: 1,
         willChange: 'transform',
         pointerEvents: 'none',
@@ -214,6 +215,7 @@ export function HeroBackground({
   return (
     <div
       className={cn('relative overflow-hidden bg-[rgb(3,6,20)]', className)}
+      style={{ containerType: 'inline-size' }}
       {...props}
     >
       {BLOB_MAP[variant]}
