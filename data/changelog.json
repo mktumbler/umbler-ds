@@ -1,5 +1,33 @@
 [
   {
+    "date": "2026-05-29",
+    "type": "feat",
+    "scope": "sheet",
+    "title": "Componente Sheet (drawer)",
+    "description": "Painel lateral sobre Radix Dialog deslizando de qualquer borda (right/left/top/bottom). Inclui Header/Body/Footer/Close + keyframes próprios de slide por lado. Fecha a Onda 5."
+  },
+  {
+    "date": "2026-05-29",
+    "type": "feat",
+    "scope": "list",
+    "title": "Componente List",
+    "description": "Lista vertical compound (List/Item/Leading/Content/Title/Description/Trailing) com variantes bordered, dividers, dense e interactive. Itens com onClick ganham role=button + foco por teclado. Fecha a Onda 4 e a Onda 7."
+  },
+  {
+    "date": "2026-05-29",
+    "type": "feat",
+    "scope": "timeline",
+    "title": "Componente Timeline",
+    "description": "Feed de eventos no tempo. Compound com dot semântico (default/brand/success/warning/error), ícones opcionais e variante compact para changelogs densos."
+  },
+  {
+    "date": "2026-05-29",
+    "type": "docs",
+    "scope": "colors",
+    "title": "Cor para ação vs. estado",
+    "description": "Nova seção em /foundations/colors deixando explícita a regra: verde é estado (badge, toast, status pill), nunca CTA. Para qualquer ação primária, use Button variant=primary."
+  },
+  {
     "date": "2026-05-28",
     "type": "feat",
     "scope": "email",
