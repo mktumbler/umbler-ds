@@ -4,6 +4,16 @@
 
 ## Instalação
 
+### Pré-requisitos (obrigatórios)
+
+- **Next.js 15+** com App Router
+- **Tailwind CSS v4** (NÃO funciona em v3 — usa sintaxe `@theme` exclusiva do v4)
+- **TypeScript**
+
+Se o projeto está em Tailwind v3, faça o upgrade pro v4 antes — o DS é v4-only.
+
+### Passos
+
 Registry shadcn em https://umbler-ds.vercel.app/r
 
 Instalar tudo de uma vez (recomendado para projetos novos):
@@ -18,6 +28,33 @@ Importar tokens no CSS de entrada (app/globals.css) — obrigatório, DEPOIS do 
 ```css
 @import 'tailwindcss';
 @import './tokens.css';
+```
+
+### Dark mode
+
+Os componentes adaptam automaticamente via tokens semânticos (`bg-surface`, `text-foreground`, etc). Basta alternar a classe `.dark` no elemento raiz:
+
+```tsx
+// app/layout.tsx
+<html lang="pt-BR" className="dark">
+  {/* ou alternar dinamicamente via next-themes, theme provider próprio, etc. */}
+```
+
+NÃO use `dark:` manualmente nos componentes — os tokens já resolvem isso.
+
+### Providers globais
+
+Alguns componentes precisam de provider montado UMA vez na raiz da app:
+
+```tsx
+// app/layout.tsx
+import { TooltipProvider } from '@/components/ui/tooltip';
+import { Toaster } from '@/components/ui/toast';
+
+<TooltipProvider>
+  {children}
+  <Toaster />
+</TooltipProvider>
 ```
 
 Catálogo completo: https://umbler-ds.vercel.app/r/index.json
