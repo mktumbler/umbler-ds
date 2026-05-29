@@ -396,6 +396,29 @@ kbd {
   animation: accordion-up var(--duration-fast) var(--ease-in);
 }
 
+/* ============================================================
+   SHEET / DRAWER — slide a partir de cada borda
+   Usado pelo Sheet sobre Radix Dialog. Um keyframe por lado, com
+   in/out separados pra controlar easing + duração de cada fase.
+   ============================================================ */
+@keyframes sheet-in-right { from { transform: translateX(100%); } to { transform: translateX(0); } }
+@keyframes sheet-out-right { from { transform: translateX(0); } to { transform: translateX(100%); } }
+@keyframes sheet-in-left { from { transform: translateX(-100%); } to { transform: translateX(0); } }
+@keyframes sheet-out-left { from { transform: translateX(0); } to { transform: translateX(-100%); } }
+@keyframes sheet-in-top { from { transform: translateY(-100%); } to { transform: translateY(0); } }
+@keyframes sheet-out-top { from { transform: translateY(0); } to { transform: translateY(-100%); } }
+@keyframes sheet-in-bottom { from { transform: translateY(100%); } to { transform: translateY(0); } }
+@keyframes sheet-out-bottom { from { transform: translateY(0); } to { transform: translateY(100%); } }
+
+@utility animate-sheet-in-right  { animation: sheet-in-right  var(--duration-normal) var(--ease-out) forwards; }
+@utility animate-sheet-out-right { animation: sheet-out-right var(--duration-fast)   var(--ease-in)  forwards; }
+@utility animate-sheet-in-left   { animation: sheet-in-left   var(--duration-normal) var(--ease-out) forwards; }
+@utility animate-sheet-out-left  { animation: sheet-out-left  var(--duration-fast)   var(--ease-in)  forwards; }
+@utility animate-sheet-in-top    { animation: sheet-in-top    var(--duration-normal) var(--ease-out) forwards; }
+@utility animate-sheet-out-top   { animation: sheet-out-top   var(--duration-fast)   var(--ease-in)  forwards; }
+@utility animate-sheet-in-bottom { animation: sheet-in-bottom var(--duration-normal) var(--ease-out) forwards; }
+@utility animate-sheet-out-bottom{ animation: sheet-out-bottom var(--duration-fast)  var(--ease-in)  forwards; }
+
 /* Progress (linear) indeterminate — uma faixa cruzando o track */
 @keyframes progress-indeterminate {
   0%   { transform: translateX(-100%) scaleX(0.4); }

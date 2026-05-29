@@ -26,20 +26,20 @@ const ROADMAP: Wave[] = [
     items: ['Checkbox ✓', 'Radio ✓', 'Toggle ✓', 'Input ✓', 'Textarea ✓', 'Select ✓', 'Input group', 'Validation states', 'Combobox', 'DatePicker'],
   },
   {
-    id: 'onda-4', title: 'Onda 4 — Containers & feedback', status: 'progress',
-    items: ['Card ✓', 'CardAurora ✓', 'Alert ✓', 'Skeleton ✓', 'Accordion ✓', 'Toast ✓', 'Progress ✓', 'List group'],
+    id: 'onda-4', title: 'Onda 4 — Containers & feedback', status: 'done',
+    items: ['Card ✓', 'CardAurora ✓', 'Alert ✓', 'Skeleton ✓', 'Accordion ✓', 'Toast ✓', 'Progress ✓', 'List group ✓'],
   },
   {
-    id: 'onda-5', title: 'Onda 5 — Overlays', status: 'progress',
-    items: ['Tooltip ✓', 'Dialog ✓', 'Tabs ✓', 'Dropdown ✓', 'Popover ✓'],
+    id: 'onda-5', title: 'Onda 5 — Overlays', status: 'done',
+    items: ['Tooltip ✓', 'Dialog ✓', 'Tabs ✓', 'Dropdown ✓', 'Popover ✓', 'Sheet ✓'],
   },
   {
     id: 'onda-6', title: 'Onda 6 — Navigation', status: 'progress',
     items: ['Breadcrumbs ✓', 'Pagination ✓', 'Navs'],
   },
   {
-    id: 'onda-7', title: 'Onda 7 — Data display', status: 'progress',
-    items: ['Table ✓', 'Timeline', 'List'],
+    id: 'onda-7', title: 'Onda 7 — Data display', status: 'done',
+    items: ['Table ✓', 'Timeline ✓', 'List ✓'],
   },
   {
     id: 'onda-8', title: 'Onda 8 — Específicos Umbler/Talk', status: 'planned',

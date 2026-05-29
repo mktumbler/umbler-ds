@@ -147,6 +147,21 @@
       "description": "Tabela semântica em compound (Table/Header/Body/Row/Head/Cell/Caption/Footer). Variantes zebra, dense, bordered, interactive."
     },
     {
+      "name": "timeline",
+      "type": "registry:ui",
+      "description": "Feed de eventos no tempo. Compound (Timeline/Item/Dot/Content/Title/Time) com dot semântico (default/brand/success/warning/error), suporte a ícones e variante compact."
+    },
+    {
+      "name": "list",
+      "type": "registry:ui",
+      "description": "Lista vertical genérica em compound (List/Item/Leading/Content/Title/Description/Trailing). Variantes bordered, dividers, dense e interactive."
+    },
+    {
+      "name": "sheet",
+      "type": "registry:ui",
+      "description": "Painel lateral (drawer) sobre Radix Dialog. Desliza de qualquer borda (right/left/top/bottom) e inclui Header/Body/Footer/Close. Usa keyframes próprios de slide."
+    },
+    {
       "name": "button",
       "type": "registry:ui",
       "description": "Botão Umbler DS — 5 variantes (primary, secondary, ghost, outline, danger), 4 tamanhos, loading e icon-only."

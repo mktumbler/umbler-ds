@@ -95,6 +95,46 @@ Cores semânticas seguem o padrão oficial da Umbler (Frontify). Use **500** com
   ]}
 />
 
+## Cor para ação vs. estado
+
+Regra simples — e que vale **independente do que cada produto faz hoje**:
+
+> **Verde é estado, não ação.** Use `success-*` em badges, toasts, status pills e ícones de feedback positivo. Para chamar ação (salvar, confirmar, criar, enviar, publicar), use sempre `Button variant="primary"`.
+
+Isso vale tanto pra paridade visual entre produtos quanto pra acessibilidade: usuários daltônicos e leitores de tela dependem da **forma + texto** do CTA, não da cor. Quando o "salvar" de um lugar é verde e o de outro é azul, o sinal de "ação primária" fica diluído.
+
+### Intenção → componente
+
+| Intenção | Componente |
+|---|---|
+| Ação primária (qualquer verbo: salvar, criar, confirmar, enviar, publicar) | `Button variant="primary"` |
+| Ação secundária (cancelar, voltar) | `Button variant="secondary"` ou `ghost` |
+| Ação destrutiva (excluir, remover) | `Button variant="danger"` |
+| Estado "deu certo" (pago, ativo, conectado, concluído) | `Badge variant="success"` / toast `success` |
+| Estado de atenção (pendente, expirando) | `Badge variant="warning"` / toast `warning` |
+| Estado de erro (falha, recusado) | `Badge variant="error"` / toast `error` |
+
+### Faça / Não faça
+
+<ComponentPreview title="Confirmar pagamento — ação primária">
+  <div className="flex items-center gap-4">
+    <div className="flex flex-col items-center gap-2">
+      <button className="rounded-md bg-brand-500 px-4 py-2 text-body-sm font-semibold text-white">
+        Confirmar pagamento
+      </button>
+      <span className="text-caption text-success-500">✓ Faça</span>
+    </div>
+    <div className="flex flex-col items-center gap-2">
+      <button className="rounded-md bg-success-500 px-4 py-2 text-body-sm font-semibold text-white opacity-60 line-through decoration-2">
+        Confirmar pagamento
+      </button>
+      <span className="text-caption text-error-500">✗ Não faça</span>
+    </div>
+  </div>
+</ComponentPreview>
+
+O verde fica reservado pra _comunicar_ que algo foi confirmado depois — em um `Badge variant="success"` na fatura, num toast de sucesso, num check-icon na linha do tempo. Nunca no botão que dispara a ação.
+
 ## Brand Gradient
 
 O gradient de marca é usado em hero sections, destaques e elementos decorativos pontuais.

@@ -1,4 +1,4 @@
 {
   "title": "Components",
-  "pages": ["button", "spinner", "badge", "tag", "avatar", "card", "input", "textarea", "select", "checkbox", "radio", "toggle", "alert", "skeleton", "progress", "accordion", "tooltip", "dialog", "tabs", "dropdown", "popover", "toast", "breadcrumbs", "pagination", "table"]
+  "pages": ["button", "spinner", "badge", "tag", "avatar", "card", "input", "textarea", "select", "checkbox", "radio", "toggle", "alert", "skeleton", "progress", "accordion", "tooltip", "dialog", "tabs", "dropdown", "popover", "toast", "breadcrumbs", "pagination", "table", "timeline", "list", "sheet"]
 }

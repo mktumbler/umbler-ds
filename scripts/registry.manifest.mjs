@@ -241,6 +241,26 @@ export const items = [
     dependencies: [CVA],
     registryDependencies: ['utils'],
   },
+  {
+    name: 'timeline',
+    description: 'Feed de eventos no tempo. Compound (Timeline/Item/Dot/Content/Title/Time) com dot semântico (default/brand/success/warning/error), suporte a ícones e variante compact.',
+    files: ['components/ui/timeline.tsx'],
+    dependencies: [CVA],
+    registryDependencies: ['utils'],
+  },
+  {
+    name: 'list',
+    description: 'Lista vertical genérica em compound (List/Item/Leading/Content/Title/Description/Trailing). Variantes bordered, dividers, dense e interactive.',
+    files: ['components/ui/list.tsx'],
+    registryDependencies: ['utils'],
+  },
+  {
+    name: 'sheet',
+    description: 'Painel lateral (drawer) sobre Radix Dialog. Desliza de qualquer borda (right/left/top/bottom) e inclui Header/Body/Footer/Close. Usa keyframes próprios de slide.',
+    files: ['components/ui/sheet.tsx'],
+    dependencies: [CVA, '@radix-ui/react-dialog', PHOSPHOR],
+    registryDependencies: ['utils'],
+  },
 
   // --- Botão (depende de spinner + arquivo button-variants) ---
   {

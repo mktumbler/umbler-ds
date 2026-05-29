@@ -1,0 +1,101 @@
+---
+title: List
+description: Lista vertical genérica em compound. Itens com leading (ícone/avatar) e trailing (badge/timestamp), com variantes divisor, borda, dense e interativa.
+---
+
+import {
+  ListBasic,
+  ListInteractive,
+  ListDense,
+  ListFlat,
+} from '@/components/demos/list-variants';
+
+Compound semântico em cima de `<ul>` / `<li>`, pensado pro "list group" tradicional — pastas, conversas, configurações, atividades. Para tabelas com colunas e seleção use [`Table`](/docs/components/table); para feed de eventos no tempo use [`Timeline`](/docs/components/timeline).
+
+## Básico
+
+`bordered` adiciona uma borda externa com cantos arredondados; `dividers` separa os itens com uma linha sutil.
+
+<ComponentPreview title="Lista de pastas">
+  <ListBasic />
+</ComponentPreview>
+
+## Interativa
+
+Combine `interactive` com `onClick` no `<ListItem>` para listas clicáveis. O DS já cuida do hover, do cursor e do foco visível por teclado.
+
+<ComponentPreview title="Caixa de entrada — clique em uma conversa">
+  <ListInteractive />
+</ComponentPreview>
+
+## Dense (sidebar / menu)
+
+`dense` reduz o padding — bom pra menus de navegação ou painéis estreitos.
+
+<ComponentPreview title="Menu lateral compacto">
+  <ListDense />
+</ComponentPreview>
+
+## Flat (sem borda)
+
+Sem `bordered`, a lista vira um bloco fluido — útil dentro de cards ou seções onde a borda já vem do container pai.
+
+<ComponentPreview title="Atividade recente dentro de um card">
+  <ListFlat />
+</ComponentPreview>
+
+## Props
+
+### `<List>`
+
+| Prop | Tipo | Default | Descrição |
+|---|---|---|---|
+| `bordered` | `boolean` | `false` | Borda externa + cantos arredondados. |
+| `dividers` | `boolean` | `false` | Separador entre os itens. |
+| `dense` | `boolean` | `false` | Padding reduzido. |
+| `interactive` | `boolean` | `false` | Aplica hover/cursor em todos os itens. |
+
+As variantes são propagadas via Context — define no `<List>` e os filhos consomem automaticamente.
+
+### `<ListItem>`
+
+| Prop | Tipo | Default | Descrição |
+|---|---|---|---|
+| `interactive` | `boolean` | herda | Sobrescreve o `interactive` do `<List>` para este item específico. Se houver `onClick`, fica interativo automaticamente. |
+
+Aceita também `onClick` — quando presente, o item ganha `role="button"` e `tabIndex={0}` pra navegação por teclado.
+
+### Slots
+
+- `<ListItemLeading>` — ícone ou avatar à esquerda
+- `<ListItemContent>` — bloco central (título + descrição), ocupa o espaço sobrando
+- `<ListItemTitle>` — título do item (truncado com `text-overflow: ellipsis`)
+- `<ListItemDescription>` — texto secundário
+- `<ListItemTrailing>` — ação, badge ou timestamp à direita
+
+## Acessibilidade
+
+- `<ul>` + `<li>` nativos: leitores anunciam "lista com N itens".
+- Itens com `onClick` viram focáveis por teclado e ganham `role="button"`. Para navegação real (links de página), prefira embrulhar o conteúdo do `<ListItemContent>` em um `<a>` real — assim mantém o comportamento de "abrir em nova aba", "copiar link", etc.
+
+## Uso
+
+```tsx
+import {
+  List, ListItem, ListItemLeading, ListItemContent,
+  ListItemTitle, ListItemDescription, ListItemTrailing,
+} from '@/components/ui/list';
+
+<List bordered dividers interactive>
+  <ListItem onClick={() => openConversation(c.id)}>
+    <ListItemLeading><Avatar size="sm" name={c.name} /></ListItemLeading>
+    <ListItemContent>
+      <ListItemTitle>{c.name}</ListItemTitle>
+      <ListItemDescription>{c.lastMessage}</ListItemDescription>
+    </ListItemContent>
+    <ListItemTrailing>
+      {c.unread > 0 && <Badge variant="brand">{c.unread}</Badge>}
+    </ListItemTrailing>
+  </ListItem>
+</List>
+```
