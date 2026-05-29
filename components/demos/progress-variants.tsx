@@ -27,7 +27,7 @@ export function ProgressLinear() {
           <span>Verificação concluída</span>
           <span className="tabular-nums">100%</span>
         </div>
-        <Progress value={100} tone="success" size="sm" />
+        <Progress value={100} tone="success" />
       </div>
     </div>
   );
