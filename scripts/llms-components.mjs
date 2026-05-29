@@ -1,57 +1,24 @@
-# Umbler Design System
+/**
+ * llms-components.mjs — corpo de cada componente no llms.txt.
+ *
+ * Map slug → bloco markdown (sem o `### <Pascal>` no topo — o gerador
+ * cuida do header). Cada bloco deve conter:
+ *   • ```tsx code block``` mostrando import + uso típico (variantes
+ *     importantes, compound se houver)
+ *   • lista de props/notas
+ *
+ * Mantém o llms.txt útil pra agentes de IA: foco em "como usar" + tipos
+ * de variantes — não documentação de design.
+ *
+ * Para adicionar um componente novo: declare uma entry abaixo. Se faltar,
+ * o gerador (`build-llms.mjs`) reclama e falha.
+ */
 
-> Design system oficial da Umbler. Componentes React + tokens Tailwind v4 para construção de interfaces de produtos e marketing. Stack: Next.js 15 (App Router) + TypeScript + Tailwind CSS v4.
+/** @type {Record<string,string>} */
+export const llmsBlocks = {
+  // ── Onda 2 — primitivos ──────────────────────────────────────────────────
 
-## Instalação
-
-Registry shadcn em https://umbler-ds.vercel.app/r
-
-Instalar tudo de uma vez (recomendado para projetos novos):
-
-```bash
-npx shadcn@latest init
-npx shadcn@latest add https://umbler-ds.vercel.app/r/umbler-ui
-```
-
-Importar tokens no CSS de entrada (app/globals.css) — obrigatório, DEPOIS do tailwind:
-
-```css
-@import 'tailwindcss';
-@import './tokens.css';
-```
-
-Catálogo completo: https://umbler-ds.vercel.app/r/index.json
-Documentação visual: https://umbler-ds.vercel.app/docs
-
-## Convenções obrigatórias
-
-- Importe componentes de `@/components/ui/<nome>`
-- Use SOMENTE os tokens da marca via classes Tailwind — nunca cores, fontes ou espaçamentos arbitrários
-- Cores: `bg-brand-500`, `text-neutral-400`, `bg-success-500`, `border-error-300`, etc.
-- Texto semântico: `text-foreground`, `bg-surface`, `text-foreground-muted`
-- Tipografia: `text-display-xl`, `text-h1`, `text-h2`, `text-body`, `text-body-sm`, `text-caption`
-- Sombras: `shadow-xs`, `shadow-sm`, `shadow-md`, `shadow-lg`, `shadow-glow`
-- Radius: `rounded-sm` (6px), `rounded-md` (10px), `rounded-lg` (16px), `rounded-full`
-- Espaçamento: escala de 4px — use classes padrão Tailwind (`p-4`, `gap-6`, etc.)
-- Motion: durations via `duration-[var(--duration-fast/normal/slow/slower/instant)]`; easings via `ease-out`, `ease-in`, `ease-spring` (mapeados do @theme)
-- Eyebrow/caption com gradiente da marca: `<p className="eyebrow">TEXTO</p>`
-- Dark mode: automático via tokens semânticos — não use `dark:` manualmente nos componentes
-
-### Cor para ação vs. estado
-
-Verde é **estado**, nunca **ação**. Use `success-*` em badges, toasts e status pills. Para qualquer CTA (salvar, criar, confirmar, enviar, publicar), use SEMPRE `Button variant="primary"` — independente do que o produto fazia antes da migração.
-
-## Tokens de cor disponíveis
-
-Brand (Umbler Blue): brand-50 → brand-900 (principal: brand-500 = #1a5cff)
-Neutral (superfícies): neutral-50 → neutral-950 (fundo escuro: neutral-950 = #030614)
-Semântico success, warning, error, info (50/100/300/500/600/900 por escala)
-Adaptativo light/dark: surface, foreground, foreground-secondary, foreground-muted, foreground-subtle, border, border-strong, control-track
-
-## Componentes
-
-### Spinner
-```tsx
+  spinner: `\`\`\`tsx
 import { Spinner } from '@/components/ui/spinner';
 
 <Spinner size="md" className="text-brand-400" />
@@ -61,66 +28,62 @@ import { Spinner } from '@/components/ui/spinner';
   <Spinner size="sm" />
   Salvando...
 </button>
-```
-- size: `sm` | `md` | `lg` | `xl` — padrão: `md`
-- Usa `currentColor` — controle a cor via `className` (text-*)
+\`\`\`
+- size: \`sm\` | \`md\` | \`lg\` | \`xl\` — padrão: \`md\`
+- Usa \`currentColor\` — controle a cor via \`className\` (text-*)`,
 
-### Badge
-```tsx
+  badge: `\`\`\`tsx
 import { Badge } from '@/components/ui/badge';
 
 <Badge variant="brand">Novo</Badge>
 <Badge variant="success" size="sm" dot>Online</Badge>
-```
-- variant: `brand` | `success` | `warning` | `error` | `neutral` — padrão: `neutral`
-- size: `sm` | `md` — padrão: `md`
-- dot: boolean — adiciona ponto colorido à esquerda
+\`\`\`
+- variant: \`brand\` | \`success\` | \`warning\` | \`error\` | \`neutral\` — padrão: \`neutral\`
+- size: \`sm\` | \`md\` — padrão: \`md\`
+- dot: boolean — adiciona ponto colorido à esquerda`,
 
-### Tag
-```tsx
+  tag: `\`\`\`tsx
 import { Tag } from '@/components/ui/tag';
 
 <Tag variant="brand">React</Tag>
 <Tag variant="neutral" onRemove={() => {}}>Removível</Tag>
-```
-- variant: `brand` | `success` | `warning` | `error` | `neutral` — padrão: `neutral`
-- size: `sm` | `md` — padrão: `md`
-- onRemove: () => void — exibe botão X para remoção
+\`\`\`
+- variant: \`brand\` | \`success\` | \`warning\` | \`error\` | \`neutral\` — padrão: \`neutral\`
+- size: \`sm\` | \`md\` — padrão: \`md\`
+- onRemove: () => void — exibe botão X para remoção`,
 
-### Avatar
-```tsx
+  avatar: `\`\`\`tsx
 import { Avatar, AvatarGroup } from '@/components/ui/avatar';
 
 <Avatar src="/foto.jpg" name="Ana Lima" size="md" />
 <Avatar name="Carlos" size="lg" />   {/* fallback iniciais */}
 <AvatarGroup avatars={[...]} max={3} size="sm" />
-```
-- size: `xs` | `sm` | `md` | `lg` | `xl` — padrão: `md`
-- src: string (opcional) — fallback automático para iniciais do `name` ou ícone
-- AvatarGroup: avatars[] com src/name + max (número máximo antes do +N)
+\`\`\`
+- size: \`xs\` | \`sm\` | \`md\` | \`lg\` | \`xl\` — padrão: \`md\`
+- src: string (opcional) — fallback automático para iniciais do \`name\` ou ícone
+- AvatarGroup: avatars[] com src/name + max (número máximo antes do +N)`,
 
-### Separator
-```tsx
+  separator: `\`\`\`tsx
 import { Separator } from '@/components/ui/separator';
 
 <Separator />
 <Separator orientation="vertical" className="h-6" />
-```
-- orientation: `horizontal` | `vertical` — padrão: `horizontal`
+\`\`\`
+- orientation: \`horizontal\` | \`vertical\` — padrão: \`horizontal\``,
 
-### Kbd
-```tsx
+  kbd: `\`\`\`tsx
 import { Kbd, KbdSequence } from '@/components/ui/kbd';
 
 <Kbd>⌘</Kbd>
 <KbdSequence keys={['⌘', 'K']} />              {/* combinação tipo command palette */}
 <KbdSequence keys={['Ctrl', 'Shift', 'P']} separator="+" />
-```
-- Kbd size: `sm` | `md` | `lg` — padrão: `md`
-- KbdSequence: keys[], separator `' '` (visual) ou `'+'` (soma)
+\`\`\`
+- Kbd size: \`sm\` | \`md\` | \`lg\` — padrão: \`md\`
+- KbdSequence: keys[], separator \`' '\` (visual) ou \`'+'\` (soma)`,
 
-### Input
-```tsx
+  // ── Onda 3 — inputs ──────────────────────────────────────────────────────
+
+  input: `\`\`\`tsx
 import { Input, InputLabel, InputHint, InputGroup } from '@/components/ui/input';
 
 <InputGroup>
@@ -131,13 +94,12 @@ import { Input, InputLabel, InputHint, InputGroup } from '@/components/ui/input'
 
 <Input state="error" />
 <Input prefix={<Icon />} suffix="@umbler.com" />
-```
-- size: `sm` | `md` | `lg` — padrão: `md`
-- state: `default` | `error` | `success` | `disabled`
-- prefix / suffix: ReactNode — slots laterais
+\`\`\`
+- size: \`sm\` | \`md\` | \`lg\` — padrão: \`md\`
+- state: \`default\` | \`error\` | \`success\` | \`disabled\`
+- prefix / suffix: ReactNode — slots laterais`,
 
-### Textarea
-```tsx
+  textarea: `\`\`\`tsx
 import { Textarea } from '@/components/ui/textarea';
 import { InputLabel, InputHint, InputGroup } from '@/components/ui/input';
 
@@ -145,25 +107,23 @@ import { InputLabel, InputHint, InputGroup } from '@/components/ui/input';
   <InputLabel htmlFor="bio">Bio</InputLabel>
   <Textarea id="bio" rows={4} resize="vertical" />
 </InputGroup>
-```
-- resize: `none` | `vertical` | `horizontal` | `both` — padrão: `vertical`
-- state: `default` | `error` | `success` | `disabled`
-- Reusa InputLabel/InputHint/InputGroup do Input
+\`\`\`
+- resize: \`none\` | \`vertical\` | \`horizontal\` | \`both\` — padrão: \`vertical\`
+- state: \`default\` | \`error\` | \`success\` | \`disabled\`
+- Reusa InputLabel/InputHint/InputGroup do Input`,
 
-### Select
-```tsx
+  select: `\`\`\`tsx
 import { Select } from '@/components/ui/select';
 
 <Select size="md" state="default">
   <option value="">Escolha...</option>
   <option value="a">Opção A</option>
 </Select>
-```
-- size: `sm` | `md` | `lg` — padrão: `md`
-- state: `default` | `error` | `disabled`
+\`\`\`
+- size: \`sm\` | \`md\` | \`lg\` — padrão: \`md\`
+- state: \`default\` | \`error\` | \`disabled\``,
 
-### Checkbox
-```tsx
+  checkbox: `\`\`\`tsx
 import { Checkbox } from '@/components/ui/checkbox';
 
 <Checkbox label="Aceito os termos" />
@@ -171,39 +131,38 @@ import { Checkbox } from '@/components/ui/checkbox';
 {/* indeterminate via ref nativo */}
 <Checkbox ref={ref} label="Parcial" />  {/* ref.current.indeterminate = true */}
 <Checkbox state="error" label="Campo obrigatório" />
-```
+\`\`\`
 - label: string (opcional)
 - description: string (opcional) — texto abaixo do label
-- state: `default` | `error` — padrão: `default`
-- Aceita todos os atributos de `InputHTMLAttributes<HTMLInputElement>`
-- `indeterminate` é atributo nativo do input, definido via ref
+- state: \`default\` | \`error\` — padrão: \`default\`
+- Aceita todos os atributos de \`InputHTMLAttributes<HTMLInputElement>\`
+- \`indeterminate\` é atributo nativo do input, definido via ref`,
 
-### Radio
-```tsx
+  radio: `\`\`\`tsx
 import { Radio, RadioGroup } from '@/components/ui/radio';
 
 <RadioGroup label="Plano" orientation="vertical">
   <Radio name="plano" value="starter" label="Starter" />
   <Radio name="plano" value="pro" label="Pro" description="Mais recursos" />
 </RadioGroup>
-```
-- `Radio`: estende `InputHTMLAttributes<HTMLInputElement>` + `label?` + `description?`
-- `RadioGroup`: `label?` + `orientation?: 'vertical' | 'horizontal'` — padrão: `vertical`
+\`\`\`
+- \`Radio\`: estende \`InputHTMLAttributes<HTMLInputElement>\` + \`label?\` + \`description?\`
+- \`RadioGroup\`: \`label?\` + \`orientation?: 'vertical' | 'horizontal'\` — padrão: \`vertical\``,
 
-### Toggle
-```tsx
+  toggle: `\`\`\`tsx
 import { Toggle } from '@/components/ui/toggle';
 
 <Toggle label="Notificações" size="md" defaultChecked />
 <Toggle checked={active} onChange={setActive} description="Texto explicativo" />
-```
-- size: `sm` | `md` — padrão: `md`
+\`\`\`
+- size: \`sm\` | \`md\` — padrão: \`md\`
 - label: string (opcional)
 - description: string (opcional)
-- checked / defaultChecked / onChange(checked: boolean): controle controlado/não-controlado
+- checked / defaultChecked / onChange(checked: boolean): controle controlado/não-controlado`,
 
-### Card
-```tsx
+  // ── Onda 4 — containers & feedback ───────────────────────────────────────
+
+  card: `\`\`\`tsx
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/card';
 
 <Card variant="default">
@@ -214,48 +173,44 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter }
   <CardContent>conteúdo</CardContent>
   <CardFooter><Button>Ação</Button></CardFooter>
 </Card>
-```
-- variant: `default` | `elevated` | `ghost` | `outline` — padrão: `default`
+\`\`\`
+- variant: \`default\` | \`elevated\` | \`ghost\` | \`outline\` — padrão: \`default\``,
 
-### CardAurora
-```tsx
+  'card-aurora': `\`\`\`tsx
 import { CardAurora } from '@/components/ui/card-aurora';
 
 <CardAurora icon={<Globe size={22} />} title="Feature" description="Texto" blob="sweep" rotation="default" />
-```
-- blob: `sweep` | `prism` — padrão: `sweep`
-- rotation: `default` | `diagonal` | `spin` — padrão: `default`
+\`\`\`
+- blob: \`sweep\` | \`prism\` — padrão: \`sweep\`
+- rotation: \`default\` | \`diagonal\` | \`spin\` — padrão: \`default\`
 - icon: ReactNode — ícone no topo do card
-- title, description: string
+- title, description: string`,
 
-### Alert
-```tsx
+  alert: `\`\`\`tsx
 import { Alert } from '@/components/ui/alert';
 
 <Alert variant="info" title="Atenção">Mensagem informativa.</Alert>
 <Alert variant="success" title="Salvo!" onClose={() => {}} />
 <Alert variant="error" icon={false} title="Erro">Algo falhou.</Alert>
-```
-- variant: `info` | `success` | `warning` | `error` — padrão: `info`
+\`\`\`
+- variant: \`info\` | \`success\` | \`warning\` | \`error\` — padrão: \`info\`
 - title: string (opcional) — aparece em negrito acima do conteúdo
-- icon: boolean — exibe ícone lateral — padrão: `true`
+- icon: boolean — exibe ícone lateral — padrão: \`true\`
 - onClose: () => void — exibe botão X quando definido
-- children: ReactNode — corpo da mensagem
+- children: ReactNode — corpo da mensagem`,
 
-### Skeleton
-```tsx
+  skeleton: `\`\`\`tsx
 import { Skeleton, SkeletonText, SkeletonAvatar } from '@/components/ui/skeleton';
 
 <Skeleton className="h-4 w-48" />
 <SkeletonText lines={3} />
 <SkeletonAvatar size="md" />
-```
+\`\`\`
 - Skeleton: base com shimmer — use className para definir dimensões
 - SkeletonText: lines (número de linhas simuladas)
-- SkeletonAvatar: size matching avatar sizes
+- SkeletonAvatar: size matching avatar sizes`,
 
-### Progress
-```tsx
+  progress: `\`\`\`tsx
 import { Progress, ProgressCircle } from '@/components/ui/progress';
 
 <Progress value={64} />                          {/* determinado */}
@@ -264,15 +219,14 @@ import { Progress, ProgressCircle } from '@/components/ui/progress';
 
 <ProgressCircle value={64} size="md" showLabel />
 <ProgressCircle size="lg" />                     {/* indeterminado */}
-```
+\`\`\`
 - value: number | null — omita/null para modo indeterminado
 - max: number — padrão: 100
-- size: `sm` | `md` | `lg` — padrão: `md`
-- tone: `brand` | `success` | `warning` | `error` — padrão: `brand`
-- ProgressCircle: `showLabel` exibe % no centro
+- size: \`sm\` | \`md\` | \`lg\` — padrão: \`md\`
+- tone: \`brand\` | \`success\` | \`warning\` | \`error\` — padrão: \`brand\`
+- ProgressCircle: \`showLabel\` exibe % no centro`,
 
-### Toast
-```tsx
+  toast: `\`\`\`tsx
 // 1) montar o container UMA vez na raiz da app (layout.tsx)
 import { Toaster } from '@/components/ui/toast';
 <Toaster />
@@ -296,13 +250,14 @@ toast.promise(saveDoc(), {
   success: 'Pronto',
   error: 'Erro ao salvar',
 });
-```
-- Construído sobre `sonner` — re-exporta o helper `toast()` tipado
-- Posição default: `bottom-right`, duração 4s, com botão de fechar
-- Cores semânticas (success/error/warning/info) casadas com tokens do DS
+\`\`\`
+- Construído sobre \`sonner\` — re-exporta o helper \`toast()\` tipado
+- Posição default: \`bottom-right\`, duração 4s, com botão de fechar
+- Cores semânticas (success/error/warning/info) casadas com tokens do DS`,
 
-### Tooltip
-```tsx
+  // ── Onda 5 — overlays ────────────────────────────────────────────────────
+
+  tooltip: `\`\`\`tsx
 import { TooltipProvider, Tooltip, TooltipTrigger, TooltipContent } from '@/components/ui/tooltip';
 
 // 1) envolver a app/seção UMA vez
@@ -314,13 +269,12 @@ import { TooltipProvider, Tooltip, TooltipTrigger, TooltipContent } from '@/comp
     <TooltipContent side="top">Texto auxiliar</TooltipContent>
   </Tooltip>
 </TooltipProvider>
-```
-- side: `top` | `right` | `bottom` | `left` — padrão: `top`
+\`\`\`
+- side: \`top\` | \`right\` | \`bottom\` | \`left\` — padrão: \`top\`
 - Construído sobre Radix UI — posicionamento auto, accessible por padrão
-- `TooltipTrigger asChild` evita botão extra no DOM
+- \`TooltipTrigger asChild\` evita botão extra no DOM`,
 
-### Dialog
-```tsx
+  dialog: `\`\`\`tsx
 import {
   Dialog, DialogTrigger, DialogContent,
   DialogHeader, DialogTitle, DialogDescription,
@@ -340,12 +294,11 @@ import {
     </DialogFooter>
   </DialogContent>
 </Dialog>
-```
+\`\`\`
 - Construído sobre Radix Dialog — overlay, foco preso, ESC fecha
-- Modal centralizado com animação fade+scale. Para drawer lateral use `Sheet`
+- Modal centralizado com animação fade+scale. Para drawer lateral use \`Sheet\``,
 
-### Tabs
-```tsx
+  tabs: `\`\`\`tsx
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 
 <Tabs defaultValue="overview">
@@ -358,12 +311,11 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
   <TabsContent value="metrics">...</TabsContent>
   <TabsContent value="settings">...</TabsContent>
 </Tabs>
-```
+\`\`\`
 - Construído sobre Radix Tabs — gerencia foco/setas por padrão
-- Estilo segmented control. Para underline tradicional, sobrescreva via className
+- Estilo segmented control. Para underline tradicional, sobrescreva via className`,
 
-### Dropdown
-```tsx
+  dropdown: `\`\`\`tsx
 import {
   Dropdown, DropdownTrigger, DropdownContent,
   DropdownItem, DropdownLabel, DropdownSeparator,
@@ -387,12 +339,11 @@ import {
     </DropdownSub>
   </DropdownContent>
 </Dropdown>
-```
+\`\`\`
 - Construído sobre Radix Dropdown Menu — teclado completo, foco preso
-- Suporta itens, labels, separadores, checkbox, radio, submenus, atalhos visuais
+- Suporta itens, labels, separadores, checkbox, radio, submenus, atalhos visuais`,
 
-### Popover
-```tsx
+  popover: `\`\`\`tsx
 import { Popover, PopoverTrigger, PopoverContent } from '@/components/ui/popover';
 
 <Popover>
@@ -402,14 +353,13 @@ import { Popover, PopoverTrigger, PopoverContent } from '@/components/ui/popover
     <p className="text-caption text-foreground-muted">Mini-form, filtros, picks...</p>
   </PopoverContent>
 </Popover>
-```
-- side: `top` | `right` | `bottom` | `left` — padrão: `bottom`
-- align: `start` | `center` | `end` — padrão: `center`
+\`\`\`
+- side: \`top\` | \`right\` | \`bottom\` | \`left\` — padrão: \`bottom\`
+- align: \`start\` | \`center\` | \`end\` — padrão: \`center\`
 - Construído sobre Radix Popover. Container clicável (diferente do Tooltip)
-- Ideal para mini-forms, filtros, ações secundárias com explicação
+- Ideal para mini-forms, filtros, ações secundárias com explicação`,
 
-### Accordion
-```tsx
+  accordion: `\`\`\`tsx
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@/components/ui/accordion';
 
 <Accordion type="single" collapsible defaultValue="a">
@@ -425,13 +375,40 @@ import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '@/
 
 {/* várias abertas */}
 <Accordion type="multiple">...</Accordion>
-```
-- type: `single` (uma aberta por vez) | `multiple` — obrigatório
-- collapsible: boolean — em `single`, permite fechar a aberta
-- Construído sobre Radix Accordion — animação de altura via vars do Radix
+\`\`\`
+- type: \`single\` (uma aberta por vez) | \`multiple\` — obrigatório
+- collapsible: boolean — em \`single\`, permite fechar a aberta
+- Construído sobre Radix Accordion — animação de altura via vars do Radix`,
 
-### Breadcrumbs
-```tsx
+  sheet: `\`\`\`tsx
+import {
+  Sheet, SheetTrigger, SheetContent,
+  SheetHeader, SheetTitle, SheetDescription,
+  SheetBody, SheetFooter, SheetClose,
+} from '@/components/ui/sheet';
+
+<Sheet>
+  <SheetTrigger asChild><Button>Abrir painel</Button></SheetTrigger>
+  <SheetContent side="right">
+    <SheetHeader>
+      <SheetTitle>Detalhes da conversa</SheetTitle>
+      <SheetDescription>Resumo, anotações e ações.</SheetDescription>
+    </SheetHeader>
+    <SheetBody>conteúdo rolável</SheetBody>
+    <SheetFooter>
+      <SheetClose asChild><Button variant="secondary">Fechar</Button></SheetClose>
+      <Button>Salvar</Button>
+    </SheetFooter>
+  </SheetContent>
+</Sheet>
+\`\`\`
+- side: \`right\` | \`left\` | \`top\` | \`bottom\` — padrão: \`right\`
+- Construído sobre Radix Dialog (mesma a11y do modal) com slide-in por borda
+- \`SheetBody\` já tem overflow-y-auto — Header/Footer ficam fixos`,
+
+  // ── Onda 6 — navigation ──────────────────────────────────────────────────
+
+  breadcrumbs: `\`\`\`tsx
 import {
   Breadcrumbs, BreadcrumbItem, BreadcrumbCurrent, BreadcrumbSeparator,
 } from '@/components/ui/breadcrumbs';
@@ -443,14 +420,13 @@ import {
   <BreadcrumbSeparator />
   <BreadcrumbCurrent>Detalhe</BreadcrumbCurrent>
 </Breadcrumbs>
-```
-- Compound semântico em `<nav aria-label="Breadcrumb">` + `<ol>`
-- BreadcrumbItem: `href` ou onClick (vira link/botão real)
+\`\`\`
+- Compound semântico em \`<nav aria-label="Breadcrumb">\` + \`<ol>\`
+- BreadcrumbItem: \`href\` ou onClick (vira link/botão real)
 - BreadcrumbCurrent: item ativo (aria-current="page")
-- BreadcrumbSeparator: aceita ReactNode pra trocar o "/" default
+- BreadcrumbSeparator: aceita ReactNode pra trocar o "/" default`,
 
-### Pagination
-```tsx
+  pagination: `\`\`\`tsx
 import { Pagination } from '@/components/ui/pagination';
 
 <Pagination
@@ -460,16 +436,17 @@ import { Pagination } from '@/components/ui/pagination';
   siblings={1}
   boundaries={1}
 />
-```
+\`\`\`
 - page: number (controlado)
 - pageCount: number — total de páginas
 - onPageChange: (page: number) => void
 - siblings: número de páginas mostradas ao redor da atual — padrão: 1
 - boundaries: número de páginas mostradas no início/fim — padrão: 1
-- Ellipsis (`…`) aparece automaticamente quando há gap
+- Ellipsis (\`…\`) aparece automaticamente quando há gap`,
 
-### Table
-```tsx
+  // ── Onda 7 — data display ────────────────────────────────────────────────
+
+  table: `\`\`\`tsx
 import {
   Table, TableHeader, TableBody, TableFooter,
   TableRow, TableHead, TableCell, TableCaption,
@@ -492,13 +469,12 @@ import {
     </TableRow>
   </TableBody>
 </Table>
-```
-- Variantes no `<Table>`: `zebra`, `dense`, `bordered`, `interactive`
-- Compound semântico — gera `<table><thead><tbody>...` correto
-- TableRow com `onClick` em modo `interactive` ganha hover/cursor
+\`\`\`
+- Variantes no \`<Table>\`: \`zebra\`, \`dense\`, \`bordered\`, \`interactive\`
+- Compound semântico — gera \`<table><thead><tbody>...\` correto
+- TableRow com \`onClick\` em modo \`interactive\` ganha hover/cursor`,
 
-### Timeline
-```tsx
+  timeline: `\`\`\`tsx
 import {
   Timeline, TimelineItem, TimelineDot,
   TimelineContent, TimelineTitle, TimelineTime,
@@ -525,14 +501,13 @@ import { GitBranch } from '@phosphor-icons/react';
 
 {/* variante compacta pra changelog/logs densos */}
 <Timeline compact>...</Timeline>
-```
-- Compound em `<ol>/<li>` com linha conectora gerada via pseudo-elemento
-- TimelineDot tone: `default` | `brand` | `success` | `warning` | `error`
-- TimelineDot `icon` (ReactNode) — dot maior com ícone dentro
-- `<Timeline compact>` — espaçamento reduzido
+\`\`\`
+- Compound em \`<ol>/<li>\` com linha conectora gerada via pseudo-elemento
+- TimelineDot tone: \`default\` | \`brand\` | \`success\` | \`warning\` | \`error\`
+- TimelineDot \`icon\` (ReactNode) — dot maior com ícone dentro
+- \`<Timeline compact>\` — espaçamento reduzido`,
 
-### List
-```tsx
+  list: `\`\`\`tsx
 import {
   List, ListItem, ListItemLeading, ListItemContent,
   ListItemTitle, ListItemDescription, ListItemTrailing,
@@ -550,63 +525,37 @@ import {
     </ListItemTrailing>
   </ListItem>
 </List>
-```
-- Variantes no `<List>`: `bordered` (cartão), `dividers` (separa itens), `dense`, `interactive`
-- Item com `onClick` ganha `role=button` + `tabIndex=0` automaticamente
-- Slots opcionais: Leading (ícone/avatar), Content (título+desc), Trailing (ação/badge)
+\`\`\`
+- Variantes no \`<List>\`: \`bordered\` (cartão), \`dividers\` (separa itens), \`dense\`, \`interactive\`
+- Item com \`onClick\` ganha \`role=button\` + \`tabIndex=0\` automaticamente
+- Slots opcionais: Leading (ícone/avatar), Content (título+desc), Trailing (ação/badge)`,
 
-### Sheet
-```tsx
-import {
-  Sheet, SheetTrigger, SheetContent,
-  SheetHeader, SheetTitle, SheetDescription,
-  SheetBody, SheetFooter, SheetClose,
-} from '@/components/ui/sheet';
+  // ── Botão (depois dos outros pra coincidir com llms.txt anterior) ────────
 
-<Sheet>
-  <SheetTrigger asChild><Button>Abrir painel</Button></SheetTrigger>
-  <SheetContent side="right">
-    <SheetHeader>
-      <SheetTitle>Detalhes da conversa</SheetTitle>
-      <SheetDescription>Resumo, anotações e ações.</SheetDescription>
-    </SheetHeader>
-    <SheetBody>conteúdo rolável</SheetBody>
-    <SheetFooter>
-      <SheetClose asChild><Button variant="secondary">Fechar</Button></SheetClose>
-      <Button>Salvar</Button>
-    </SheetFooter>
-  </SheetContent>
-</Sheet>
-```
-- side: `right` | `left` | `top` | `bottom` — padrão: `right`
-- Construído sobre Radix Dialog (mesma a11y do modal) com slide-in por borda
-- `SheetBody` já tem overflow-y-auto — Header/Footer ficam fixos
-
-### Button
-```tsx
+  button: `\`\`\`tsx
 import { Button } from '@/components/ui/button';
 import { buttonVariants } from '@/components/ui/button-variants';
 
 <Button variant="primary" size="md">Texto</Button>
 <Button variant="primary" loading>Salvando...</Button>
 <Button variant="primary" iconOnly><Icon /></Button>
-```
-- variant: `primary` | `secondary` | `ghost` | `outline` | `danger` — padrão: `primary`
-- size: `sm` | `md` | `lg` | `xl` — padrão: `md`
+\`\`\`
+- variant: \`primary\` | \`secondary\` | \`ghost\` | \`outline\` | \`danger\` — padrão: \`primary\`
+- size: \`sm\` | \`md\` | \`lg\` | \`xl\` — padrão: \`md\`
 - loading: boolean — mostra spinner e desabilita
-- iconOnly: boolean — remove padding lateral, torna quadrado
+- iconOnly: boolean — remove padding lateral, torna quadrado`,
 
-### UmblerLogo
-```tsx
+  // ── Marca / patterns ─────────────────────────────────────────────────────
+
+  'umbler-logo': `\`\`\`tsx
 import { UmblerLogo } from '@/components/ui/umbler-logo';
 
 <UmblerLogo className="h-8 w-auto" />
-```
+\`\`\`
 - Adapta automaticamente para light/dark via CSS variables
-- Versão dark tem gradiente na letra 'u'
+- Versão dark tem gradiente na letra 'u'`,
 
-### HeroBackground
-```tsx
+  'hero-background': `\`\`\`tsx
 import { HeroBackground } from '@/components/ui/hero-background';
 
 <HeroBackground variant="sweep" className="min-h-screen">
@@ -614,36 +563,8 @@ import { HeroBackground } from '@/components/ui/hero-background';
     {/* conteúdo do hero */}
   </div>
 </HeroBackground>
-```
-- variant: `sweep` | `cloud` | `wedge` | `arc` | `cap` | `arc-flip` | `sweep-invert` | `cap-mirror` — padrão: `sweep`
-- Fundo escuro fixo `rgb(3,6,20)` com glow SVG azul (blur + mix-blend-mode)
-- Coloque conteúdo em `relative z-10` para ficar sobre o blob
-
-## Ícones
-
-Use `@phosphor-icons/react` (já instalado). Prefira o subset SSR onde possível:
-```tsx
-import { Globe, ArrowRight, Check } from '@phosphor-icons/react';
-import { Check } from '@phosphor-icons/react/dist/ssr'; // server components
-```
-
-## Patterns de seção (site marketing)
-
-Importar de `@/components/demos/patterns/site/`:
-- `FeatureGridSection` — grid 3 colunas com ícones Phosphor e eyebrow
-- `FeatureSplitSection` — texto + mock de dashboard lado a lado
-- `FeatureBentoSection` — layout assimétrico com CardAurora em fundo escuro
-
-Fundo de hero/seção:
-```tsx
-import { HeroBackground } from '@/components/ui/hero-background';
-// variantes: sweep (hero), cloud (seção secundária), wedge (features), arc (CTA)
-```
-
-## Eyebrow / caption
-
-Para texto de label acima de títulos em seções de marketing:
-```tsx
-<p className="eyebrow">INFRAESTRUTURA · CRESCIMENTO</p>
-```
-Aplica: 0.75rem, weight 500, letter-spacing 0.2em, uppercase + gradiente da marca (light: azul sólido, dark: gradient brand).
+\`\`\`
+- variant: \`sweep\` | \`cloud\` | \`wedge\` | \`arc\` | \`cap\` | \`arc-flip\` | \`sweep-invert\` | \`cap-mirror\` — padrão: \`sweep\`
+- Fundo escuro fixo \`rgb(3,6,20)\` com glow SVG azul (blur + mix-blend-mode)
+- Coloque conteúdo em \`relative z-10\` para ficar sobre o blob`,
+};
