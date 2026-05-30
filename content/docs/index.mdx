@@ -43,6 +43,10 @@ Sem agente? Vá pra [setup manual](#setup-manual).
 
 Em projeto que já tem código, **não saia instalando direto** — o DS pode colidir com tokens, classes e componentes locais. O caminho seguro é audit + adoção progressiva.
 
+<Callout title="Branch por fase, não uma só">
+O **audit não precisa de branch** (é read-only). Mas cada fase que muda código — migrar Tailwind, instalar o DS, migrar a tela piloto — deve ser uma **branch curta com seu próprio PR**, mergeada rápido na main. Evite a armadilha da branch única `adopt-design-system` que tenta fazer tudo e vive por semanas: ela diverge, dá conflito e vira um big-bang disfarçado. Em especial, **a migração do Tailwind (se precisar) é um PR separado** do install do DS.
+</Callout>
+
 ### Passo 1 — Audit com IA
 
 Cole o prompt abaixo. Ele faz a varredura e te apresenta um **plano**; nada é alterado ainda.
@@ -59,27 +63,30 @@ qualquer coisa, faça um compat audit do estado atual e me apresente:
 6. Onde mora o CSS global (globals.css, _app.scss, styled-components, etc)
 
 Depois leia https://umbler-ds.vercel.app/llms.txt e proponha um plano
-de adoção progressiva: instalar lado-a-lado, escolher UMA tela piloto
-pra migrar, e regra "novo código usa DS, antigo migra quando tocado".
+de adoção progressiva, com CADA fase de mudança em seu próprio PR curto
+(migração do Tailwind isolada do install do DS): instalar lado-a-lado,
+escolher UMA tela piloto pra migrar, e regra "novo código usa DS, antigo
+migra quando tocado".
 
-NÃO migre nada ainda. Só me apresente o relatório e o plano.
+NÃO migre nada ainda e NÃO commite na main. Só me apresente o relatório
+e o plano de PRs.
 ````
 
 ### Passo 2 — Resolver bloqueios
 
-Com o relatório em mãos:
+Com o relatório em mãos (cada item abaixo, se aplicável, em **seu próprio PR**):
 
-- **Tailwind v3?** Migre pro v4 primeiro (é pré-requisito). Sem isso, o DS não roda.
+- **Tailwind v3?** Migre pro v4 primeiro (é pré-requisito) — PR isolado, antes de tudo. Sem isso, o DS não roda.
 - **Tokens colidindo?** Renomeie os do projeto ou consuma o DS namespaceado.
 - **Componente local com mesmo nome?** Mantenha o legado por um tempo importando aliasado (`import { Button as DsButton } from '@/components/ui/button'`).
 
 ### Passo 3 — Instalar lado-a-lado
 
-`npx shadcn@latest add https://umbler-ds.vercel.app/r/umbler-ui` no projeto, importar os tokens em `globals.css` e **só compilar**. Ninguém usa ainda. Se subiu sem quebrar, o DS coexiste.
+Em uma branch `chore/ds-install`: rode `npx shadcn@latest add https://umbler-ds.vercel.app/r/umbler-ui`, importe os tokens em `globals.css` e **só compile**. Ninguém usa ainda. Se subiu sem quebrar, o DS coexiste — abra o PR.
 
 ### Passo 4 — Migrar 1 tela piloto
 
-Escolha uma página de baixo risco (configurações, perfil, uma tela interna pouco trafegada). Troque tudo dela pelo DS. O objetivo é **aprender o atrito real**, não migrar o produto inteiro.
+Em uma branch `chore/ds-pilot-<tela>`: escolha uma página de baixo risco (configurações, perfil, uma tela interna pouco trafegada) e troque tudo dela pelo DS. O objetivo é **aprender o atrito real**, não migrar o produto inteiro.
 
 ### Passo 5 — Regra "novo = DS"
 
