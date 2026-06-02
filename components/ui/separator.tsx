@@ -2,7 +2,7 @@ import { forwardRef, type HTMLAttributes } from 'react';
 import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
 
-const separatorVariants = cva('shrink-0 bg-neutral-600/50', {
+const separatorVariants = cva('shrink-0 bg-border', {
   variants: {
     orientation: {
       horizontal: 'h-px w-full',
@@ -23,9 +23,9 @@ export const Separator = forwardRef<HTMLDivElement, SeparatorProps>(
     if (label && orientation !== 'vertical') {
       return (
         <div ref={ref} className={cn('flex items-center gap-3', className)} {...props}>
-          <div className="h-px flex-1 bg-neutral-600/50" />
-          <span className="text-xs text-neutral-500 font-medium shrink-0">{label}</span>
-          <div className="h-px flex-1 bg-neutral-600/50" />
+          <div className="h-px flex-1 bg-border" />
+          <span className="text-xs text-foreground-muted font-medium shrink-0">{label}</span>
+          <div className="h-px flex-1 bg-border" />
         </div>
       );
     }

@@ -6,7 +6,7 @@ import { User } from '@phosphor-icons/react';
 import { cn } from '@/lib/utils';
 
 const avatarVariants = cva(
-  'relative inline-flex shrink-0 select-none items-center justify-center overflow-hidden rounded-full bg-neutral-700 text-neutral-300 font-medium',
+  'relative inline-flex shrink-0 select-none items-center justify-center overflow-hidden rounded-full bg-neutral-200 text-neutral-600 dark:bg-neutral-700 dark:text-neutral-300 font-medium',
   {
     variants: {
       size: {
@@ -88,14 +88,14 @@ export function AvatarGroup({ avatars, max, size = 'md', className }: AvatarGrou
           key={i}
           {...avatar}
           size={size}
-          className={cn('ring-2 ring-fd-background', i !== 0 && '-ml-2')}
+          className={cn('ring-2 ring-surface', i !== 0 && '-ml-2')}
         />
       ))}
       {overflow > 0 && (
         <span
           className={cn(
             avatarVariants({ size }),
-            'ring-2 ring-fd-background -ml-2 bg-neutral-600 text-neutral-200'
+            'ring-2 ring-surface -ml-2 bg-neutral-300 text-neutral-700 dark:bg-neutral-600 dark:text-neutral-200'
           )}
         >
           +{overflow}
