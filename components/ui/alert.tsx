@@ -16,10 +16,10 @@ const alertVariants = cva(
   {
     variants: {
       variant: {
-        info:    'bg-brand-50   border-brand-500/25   text-brand-700   dark:bg-brand-500/10   dark:border-brand-500/30   dark:text-brand-200',
-        success: 'bg-success-50 border-success-500/25 text-success-600 dark:bg-success-500/10 dark:border-success-500/30 dark:text-success-300',
-        warning: 'bg-warning-50 border-warning-500/25 text-warning-600 dark:bg-warning-500/10 dark:border-warning-500/30 dark:text-warning-300',
-        error:   'bg-error-50   border-error-500/25   text-error-600   dark:bg-error-500/10   dark:border-error-500/30   dark:text-error-300',
+        info:    'bg-brand-50   border-brand-500/25   text-brand-700   dark:bg-brand-500/10   dark:border-brand-500/30   dark:text-brand-300',
+        success: 'bg-success-50 border-success-500/25 text-success-900 dark:bg-success-500/10 dark:border-success-500/30 dark:text-success-300',
+        warning: 'bg-warning-50 border-warning-500/25 text-warning-900 dark:bg-warning-500/10 dark:border-warning-500/30 dark:text-warning-300',
+        error:   'bg-error-50   border-error-500/25   text-error-900   dark:bg-error-500/10   dark:border-error-500/30   dark:text-error-300',
       },
     },
     defaultVariants: { variant: 'info' },
@@ -31,6 +31,15 @@ const iconMap = {
   success: CheckCircle,
   warning: Warning,
   error:   XCircle,
+} as const;
+
+// Cor do ícone — escala mais fraca que o texto do título (-600/-700),
+// pra não competir visualmente com o conteúdo.
+const iconColorMap = {
+  info:    'text-brand-500   dark:text-brand-300',
+  success: 'text-success-500 dark:text-success-300',
+  warning: 'text-warning-500 dark:text-warning-300',
+  error:   'text-error-500   dark:text-error-300',
 } as const;
 
 // ── Alert ────────────────────────────────────────────────────────────────────
@@ -58,7 +67,7 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>(
           <Icon
             size={20}
             weight="fill"
-            className="mt-0.5 shrink-0"
+            className={cn('mt-0.5 shrink-0', iconColorMap[variant ?? 'info'])}
             aria-hidden
           />
         )}

@@ -29,7 +29,7 @@ export function CardVariantsDemo() {
             <CardDescription>{desc}</CardDescription>
           </CardHeader>
           <CardContent>
-            <p className="text-sm text-neutral-400">Conteúdo principal do card.</p>
+            <p className="text-sm text-foreground-muted">Conteúdo principal do card.</p>
           </CardContent>
         </Card>
       ))}
@@ -49,7 +49,7 @@ export function CardCompositionDemo() {
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <ul className="space-y-1.5 text-sm text-neutral-300">
+        <ul className="space-y-1.5 text-sm text-foreground-secondary">
           {['SSL gratuito', 'Backups diários', 'Painel simplificado'].map((item) => (
             <li key={item} className="flex items-center gap-2">
               <span className="size-1.5 rounded-full bg-brand-400 shrink-0" />
@@ -59,7 +59,7 @@ export function CardCompositionDemo() {
         </ul>
       </CardContent>
       <CardFooter className="justify-between">
-        <span className="text-sm text-neutral-400">A partir de <strong className="text-neutral-100">R$ 19/mês</strong></span>
+        <span className="text-sm text-foreground-muted">A partir de <strong className="text-foreground">R$ 19/mês</strong></span>
         <Button size="sm">
           Saiba mais <ArrowRight size={14} />
         </Button>
@@ -98,20 +98,20 @@ export function CardProductsDemo() {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
       {products.map(({ icon: Icon, badge, title, description, price }) => (
-        <Card key={title} variant="default" className="group hover:border-neutral-500/70 transition-colors duration-150">
+        <Card key={title} variant="default" className="group hover:border-border-strong transition-colors duration-150">
           <CardHeader>
             <div className="flex items-start justify-between gap-2 mb-3">
-              <div className="p-2 rounded-md bg-brand-500/10 text-brand-300">
+              <div className="p-2 rounded-md bg-brand-500/10 text-brand-500 dark:text-brand-300">
                 <Icon size={20} />
               </div>
-              {badge && <Badge variant={badge.variant} size="sm">{badge.label}</Badge>}
+              {badge && <Badge variant={badge.variant}>{badge.label}</Badge>}
             </div>
             <CardTitle>{title}</CardTitle>
             <CardDescription>{description}</CardDescription>
           </CardHeader>
           <CardFooter className="justify-between">
-            <span className="text-sm font-medium text-neutral-200">{price}</span>
-            <button className="text-xs text-brand-400 hover:text-brand-300 inline-flex items-center gap-1 transition-colors">
+            <span className="text-sm font-medium text-foreground">{price}</span>
+            <button className="text-xs text-brand-500 hover:text-brand-600 dark:text-brand-400 dark:hover:text-brand-300 inline-flex items-center gap-1 transition-colors">
               Saiba mais <ArrowRight size={12} />
             </button>
           </CardFooter>
@@ -126,14 +126,14 @@ export function CardProductsDemo() {
 export function CardHorizontalDemo() {
   return (
     <Card className="flex-row items-center max-w-lg">
-      <div className="p-5 border-r border-neutral-600/40 shrink-0">
-        <div className="size-12 rounded-full bg-brand-500/15 text-brand-300 flex items-center justify-center">
+      <div className="p-5 border-r border-border shrink-0">
+        <div className="size-12 rounded-full bg-brand-500/15 text-brand-500 dark:text-brand-300 flex items-center justify-center">
           <Globe size={24} />
         </div>
       </div>
       <div className="flex-1 min-w-0 px-5 py-4">
-        <p className="text-sm font-semibold text-neutral-100">WordPress Hosting</p>
-        <p className="text-xs text-neutral-400 mt-0.5 truncate">umbler.com · Plano Pro · Ativo</p>
+        <p className="text-sm font-semibold text-foreground">WordPress Hosting</p>
+        <p className="text-xs text-foreground-muted mt-0.5 truncate">umbler.com · Plano Pro · Ativo</p>
       </div>
       <div className="pr-5 shrink-0">
         <Badge variant="success" dot>Ativo</Badge>

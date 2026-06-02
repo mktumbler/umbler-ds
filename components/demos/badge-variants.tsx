@@ -13,26 +13,9 @@ export function BadgeVariantsDemo() {
   return (
     <div className="flex flex-wrap items-center gap-3">
       {variants.map((variant) => (
-        <Badge key={variant} variant={variant} size="md">
+        <Badge key={variant} variant={variant}>
           {variantLabels[variant]}
         </Badge>
-      ))}
-    </div>
-  );
-}
-
-export function BadgeSizesDemo() {
-  return (
-    <div className="flex flex-wrap items-center gap-6">
-      {variants.map((variant) => (
-        <div key={variant} className="flex items-center gap-2">
-          <Badge variant={variant} size="sm">
-            {variantLabels[variant]}
-          </Badge>
-          <Badge variant={variant} size="md">
-            {variantLabels[variant]}
-          </Badge>
-        </div>
       ))}
     </div>
   );
@@ -42,10 +25,31 @@ export function BadgeDotsDemo() {
   return (
     <div className="flex flex-wrap items-center gap-3">
       {variants.map((variant) => (
-        <Badge key={variant} variant={variant} size="md" dot>
+        <Badge key={variant} variant={variant} dot>
           {variantLabels[variant]}
         </Badge>
       ))}
+    </div>
+  );
+}
+
+export function BadgeShapesDemo() {
+  return (
+    <div className="flex flex-col gap-4">
+      <div className="flex flex-wrap items-center gap-3">
+        {variants.map((variant) => (
+          <Badge key={variant} variant={variant} shape="pill">
+            pill
+          </Badge>
+        ))}
+      </div>
+      <div className="flex flex-wrap items-center gap-3">
+        {variants.map((variant) => (
+          <Badge key={variant} variant={variant} shape="tag">
+            tag
+          </Badge>
+        ))}
+      </div>
     </div>
   );
 }

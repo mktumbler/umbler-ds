@@ -4,8 +4,10 @@
  */
 
 import changelogData from '../../data/changelog.json';
+import { Badge } from '@/components/ui/badge';
 
 type EntryType = 'feat' | 'fix' | 'refactor' | 'chore' | 'docs';
+type BadgeVariant = 'brand' | 'success' | 'warning' | 'error' | 'neutral';
 
 interface ChangelogEntry {
   date: string;
@@ -15,20 +17,12 @@ interface ChangelogEntry {
   description: string;
 }
 
-const typeLabel: Record<EntryType, string> = {
-  feat:     'Novo',
-  fix:      'Correção',
-  refactor: 'Refatoração',
-  chore:    'Manutenção',
-  docs:     'Docs',
-};
-
-const typeColor: Record<EntryType, string> = {
-  feat:     'bg-success-500/15 text-success-500',
-  fix:      'bg-warning-500/15 text-warning-500',
-  refactor: 'bg-info-500/15 text-info-500',
-  chore:    'bg-neutral-500/15 text-foreground-muted',
-  docs:     'bg-brand-500/15 text-brand-400',
+const typeMeta: Record<EntryType, { label: string; variant: BadgeVariant }> = {
+  feat:     { label: 'Novo',        variant: 'success' },
+  fix:      { label: 'Correção',    variant: 'warning' },
+  refactor: { label: 'Refatoração', variant: 'brand'   },
+  chore:    { label: 'Manutenção',  variant: 'neutral' },
+  docs:     { label: 'Docs',        variant: 'brand'   },
 };
 
 function formatDate(iso: string): string {
@@ -51,9 +45,9 @@ export function Changelog({ limit }: { limit?: number }) {
 
           <div className="rounded-lg border border-border bg-surface p-4">
             <div className="mb-2 flex flex-wrap items-center gap-2">
-              <span className={`rounded px-2 py-0.5 text-caption font-semibold uppercase tracking-wide ${typeColor[e.type]}`}>
-                {typeLabel[e.type]}
-              </span>
+              <Badge variant={typeMeta[e.type].variant} shape="tag">
+                {typeMeta[e.type].label}
+              </Badge>
               <span className="text-caption font-mono text-foreground-muted">
                 {e.scope}
               </span>

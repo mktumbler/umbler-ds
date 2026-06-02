@@ -56,7 +56,7 @@ export function FeatureGridSection() {
       {/* Header */}
       <div className="mx-auto max-w-2xl text-center mb-16">
         <p
-          className="eyebrow mb-3"
+          className="eyebrow mb-1"
         >
           Plataforma
         </p>
@@ -72,17 +72,17 @@ export function FeatureGridSection() {
       </div>
 
       {/* Grid */}
-      <div className="mx-auto max-w-5xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-black/8 dark:bg-white/8 rounded-xl overflow-hidden">
+      <div className="mx-auto max-w-5xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {gridFeatures.map(({ icon: Icon, title, desc }) => (
           <div
             key={title}
-            className="bg-white dark:bg-neutral-950 p-8 flex flex-col gap-4"
+            className="p-2 flex flex-col gap-4"
           >
             <div className="w-10 h-10 rounded-xl bg-brand-50 dark:bg-brand-500/10 flex items-center justify-center text-brand-500 dark:text-brand-300">
               <Icon size={20} weight="fill" />
             </div>
             <div>
-              <h3 className="font-heading text-h4 text-neutral-900 dark:text-neutral-50 mb-1.5" style={{ fontSize: '1.1rem' }}>
+              <h3 className="font-sans text-h4 text-neutral-900 dark:text-neutral-50 mb-1.5" style={{ fontSize: '1.1rem' }}>
                 {title}
               </h3>
               <p className="text-body-sm text-neutral-500 dark:text-neutral-400 leading-relaxed">
@@ -112,7 +112,7 @@ export function FeatureSplitSection() {
 
         {/* Texto */}
         <div>
-          <p className="eyebrow mb-3">CRM</p>
+          <p className="eyebrow mb-1">CRM</p>
           <h2
             className="font-heading text-h2 text-neutral-900 dark:text-neutral-50 mb-5"
             style={{ letterSpacing: '-0.05rem' }}
@@ -152,7 +152,7 @@ export function FeatureSplitSection() {
           <div className="grid grid-cols-3 gap-2 mb-3">
             {['Leads', 'Proposta', 'Fechado'].map((col, i) => (
               <div key={col}>
-                <p className="text-[10px] font-medium text-neutral-400 dark:text-neutral-500 uppercase tracking-wide mb-2">{col}</p>
+                <p className="text-[10px] font-medium text-neutral-400 dark:text-neutral-500 mb-2">{col}</p>
                 <div className="flex flex-col gap-1.5">
                   {Array.from({ length: i === 0 ? 3 : i === 1 ? 2 : 1 }).map((_, j) => (
                     <div
@@ -187,11 +187,11 @@ export function FeatureSplitSection() {
 ══════════════════════════════════════════════════════════════ */
 export function FeatureBentoSection() {
   return (
-    <section className="rounded-2xl bg-neutral-950 px-8 py-20 not-prose">
+    <section className="dark rounded-2xl bg-neutral-950 px-8 py-20 not-prose">
       {/* Header */}
       <div className="mx-auto max-w-xl text-center mb-12">
         <p
-          className="eyebrow mb-3"
+          className="eyebrow mb-1"
         >
           Diferenciais
         </p>

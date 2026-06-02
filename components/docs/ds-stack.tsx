@@ -67,7 +67,7 @@ export function DSStack() {
             </span>
           </div>
           <p className="mb-2 text-body-sm text-foreground-muted">{item.description}</p>
-          <span className="text-caption uppercase tracking-wide text-foreground-subtle">
+          <span className="eyebrow">
             {categoryLabel[item.category]}
           </span>
         </a>

@@ -11,7 +11,7 @@ export const tagVariants = cva(
       variant: {
         brand:   'bg-brand-100   text-brand-700   dark:bg-brand-500/15   dark:text-brand-300',
         success: 'bg-success-100 text-success-900 dark:bg-success-500/15 dark:text-success-300',
-        warning: 'bg-warning-300 text-neutral-800 dark:bg-warning-500/15 dark:text-warning-300',
+        warning: 'bg-warning-100 text-warning-900 dark:bg-warning-500/15 dark:text-warning-300',
         error:   'bg-error-100   text-error-900   dark:bg-error-500/15   dark:text-error-300',
         neutral: 'bg-neutral-100 text-neutral-600 dark:bg-neutral-700    dark:text-neutral-300',
       },

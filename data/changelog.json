@@ -1,5 +1,33 @@
 [
   {
+    "date": "2026-06-02",
+    "type": "feat",
+    "scope": "tag-input",
+    "title": "Componente TagInput",
+    "description": "Campo de formulário multi-tag controlado. Enter ou vírgula adiciona, Backspace remove a última. Tamanhos sm/md/lg alinhados ao Input para uso lado-a-lado em formulários. Cor de tag configurável."
+  },
+  {
+    "date": "2026-06-02",
+    "type": "refactor",
+    "scope": "typography",
+    "title": "P22 Mackinac apenas a partir de H3",
+    "description": "H4 e menores agora em Inter — leitura melhor em tamanhos pequenos (era até H6). Regra base envolvida em @layer base para que utilitários da Tailwind consigam sobrescrever pontualmente (ex: <h3> usado em feature card pequeno)."
+  },
+  {
+    "date": "2026-06-02",
+    "type": "refactor",
+    "scope": "ds",
+    "title": "Eyebrow como padrão único",
+    "description": "Classe .eyebrow (com gradient da marca clipado no texto) consolidada como padrão em Dropdown, CardAurora e DsStack — antes cada lugar reinventava o estilo com cor própria. Use sempre .eyebrow para micro-labels acima de títulos."
+  },
+  {
+    "date": "2026-06-02",
+    "type": "refactor",
+    "scope": "badge",
+    "title": "Badge sem prop size + nova prop shape",
+    "description": "BREAKING: prop size removida — Badge sempre em escala única. Em troca, nova prop shape ('pill' | 'tag') — 'tag' substitui o look antigo de release/changelog tag (retangular, caps, tracking). Changelog e Roadmap da Doc migrados pro Badge oficial."
+  },
+  {
     "date": "2026-05-29",
     "type": "feat",
     "scope": "sheet",

@@ -8,10 +8,13 @@ import { SpacingScale } from '@/components/docs/spacing-scale';
 import { RadiusShowcase } from '@/components/docs/radius-showcase';
 import { ShadowShowcase } from '@/components/docs/shadow-showcase';
 import { ComponentPreview } from '@/components/docs/component-preview';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
 import { DurationDemo, EasingDemo } from '@/components/docs/motion-demo';
 import { SpinnerSizes, SpinnerColors } from '@/components/demos/spinner-variants';
-import { BadgeVariantsDemo, BadgeSizesDemo, BadgeDotsDemo } from '@/components/demos/badge-variants';
-import { TagVariantsDemo, TagInputDemo } from '@/components/demos/tag-variants';
+import { BadgeVariantsDemo, BadgeDotsDemo, BadgeShapesDemo } from '@/components/demos/badge-variants';
+import { TagVariantsDemo } from '@/components/demos/tag-variants';
+import { TagInputDemo, TagInputWithInputDemo, TagInputStatesDemo } from '@/components/demos/tag-input-variants';
 import { AvatarSizesDemo, AvatarFallbacksDemo, AvatarGroupDemo } from '@/components/demos/avatar-variants';
 import { CardVariantsDemo, CardCompositionDemo, CardProductsDemo, CardHorizontalDemo } from '@/components/demos/card-variants';
 import { CardAuroraRotationsDemo, CardAuroraPrismDemo, CardAuroraBentoDemo } from '@/components/demos/card-aurora-demo';
@@ -48,15 +51,19 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     RadiusShowcase,
     ShadowShowcase,
     ComponentPreview,
+    Button,
+    Badge,
     DurationDemo,
     EasingDemo,
     SpinnerSizes,
     SpinnerColors,
     BadgeVariantsDemo,
-    BadgeSizesDemo,
     BadgeDotsDemo,
+    BadgeShapesDemo,
     TagVariantsDemo,
     TagInputDemo,
+    TagInputWithInputDemo,
+    TagInputStatesDemo,
     AvatarSizesDemo,
     AvatarFallbacksDemo,
     AvatarGroupDemo,

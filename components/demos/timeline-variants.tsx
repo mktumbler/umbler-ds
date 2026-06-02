@@ -85,7 +85,7 @@ export function TimelineChangelog() {
         <TimelineDot tone="brand" />
         <TimelineContent>
           <div className="flex flex-wrap items-baseline gap-x-2">
-            <Badge variant="brand" size="sm">NEW</Badge>
+            <Badge variant="brand">NEW</Badge>
             <span className="font-mono text-body font-semibold text-foreground">v2.14.0</span>
             <TimelineTime>28 mai 2026</TimelineTime>
           </div>
@@ -99,7 +99,7 @@ export function TimelineChangelog() {
         <TimelineDot tone="success" />
         <TimelineContent>
           <div className="flex flex-wrap items-baseline gap-x-2">
-            <Badge variant="success" size="sm">FIX</Badge>
+            <Badge variant="success">FIX</Badge>
             <span className="font-mono text-body font-semibold text-foreground">v2.13.4</span>
             <TimelineTime>26 mai 2026</TimelineTime>
           </div>
@@ -113,7 +113,7 @@ export function TimelineChangelog() {
         <TimelineDot tone="brand" />
         <TimelineContent>
           <div className="flex flex-wrap items-baseline gap-x-2">
-            <Badge variant="brand" size="sm">NEW</Badge>
+            <Badge variant="brand">NEW</Badge>
             <span className="font-mono text-body font-semibold text-foreground">v2.13.0</span>
             <TimelineTime>21 mai 2026</TimelineTime>
           </div>
@@ -127,7 +127,7 @@ export function TimelineChangelog() {
         <TimelineDot tone="success" />
         <TimelineContent>
           <div className="flex flex-wrap items-baseline gap-x-2">
-            <Badge variant="success" size="sm">FIX</Badge>
+            <Badge variant="success">FIX</Badge>
             <span className="font-mono text-body font-semibold text-foreground">v2.12.2</span>
             <TimelineTime>18 mai 2026</TimelineTime>
           </div>

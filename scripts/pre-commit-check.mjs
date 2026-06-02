@@ -96,6 +96,23 @@ if (hasTsxStaged) {
   }
 }
 
+// ── 5. Anti-patterns (BLOQUEIA novos hand-rolls em arquivos staged) ────────
+//
+// Auto-consistência do DS: a doc não pode reimplementar à mão o que o próprio
+// DS oferece. Roda em strict mode SÓ se há .tsx/.mdx staged — assim dívida
+// pré-existente em arquivos não tocados nunca trava o commit, mas qualquer
+// novo hand-roll bloqueia.
+
+if (hasTsxStaged || staged.some((f) => f.endsWith('.mdx'))) {
+  console.log(c('cyan', '\n→ pre-commit: audit-antipatterns (hand-rolls vs DS)'));
+  try {
+    execSync('node scripts/audit-antipatterns.mjs --strict', { stdio: 'inherit' });
+  } catch {
+    console.log(c('red', '\n✗ commit bloqueado: hand-rolls detectados. Importe o componente do DS, ou marque a linha com `// audit-ignore: <rule-id>` se for caso pedagógico.'));
+    blocked = true;
+  }
+}
+
 if (blocked) process.exit(1);
 
 console.log(c('green', '\n✓ pre-commit OK\n'));

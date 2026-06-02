@@ -27,6 +27,11 @@
       "description": "Etiqueta com variantes, tamanhos e modo removível (input de tags)."
     },
     {
+      "name": "tag-input",
+      "type": "registry:ui",
+      "description": "Campo de formulário multi-tag, dimensionado igual ao Input, com estados de validação."
+    },
+    {
       "name": "avatar",
       "type": "registry:ui",
       "description": "Avatar com imagem, fallback de iniciais/ícone, tamanhos e agrupamento."

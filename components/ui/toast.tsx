@@ -46,7 +46,7 @@ export function Toaster(props: ToasterProps) {
             'rounded-md px-2.5 py-1 text-caption font-semibold text-foreground-muted hover:text-foreground',
           closeButton:
             'border border-border bg-surface text-foreground-muted hover:text-foreground',
-          icon: 'shrink-0 mt-0.5',
+          icon: 'shrink-0 mt-0.5 text-[var(--toast-icon-color,currentColor)]',
           success: '[--toast-icon-color:var(--color-success-500)]',
           error:   '[--toast-icon-color:var(--color-error-500)]',
           warning: '[--toast-icon-color:var(--color-warning-500)]',

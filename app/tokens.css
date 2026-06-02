@@ -58,7 +58,7 @@
   --color-warning-300: #f5df9f;
   --color-warning-500: #f2c94e;
   --color-warning-600: #bf9d36;
-  --color-warning-900: #a6882e;
+  --color-warning-900: #7a6420;
 
   /* -------- Semantic — Error / Danger -------- */
   --color-error-50: #fff1f0;
@@ -266,24 +266,36 @@
 
 /* ============================================================
    BASE TYPOGRAPHY
+   Envolvido em @layer base para que utilitários da Tailwind
+   (.font-sans, .font-heading) consigam sobrescrever em casos
+   pontuais — ex.: um <h3> usado em tamanho pequeno (feature card)
+   que precisa ficar em Inter. Sem o @layer, regras unlayered
+   vencem qualquer utilitário do Tailwind silenciosamente.
    ============================================================ */
-html {
-  font-family: var(--font-sans);
-}
+@layer base {
+  html {
+    font-family: var(--font-sans);
+  }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-heading);
-  font-weight: 500;
-}
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 500;
+  }
 
-h2 {
-  letter-spacing: var(--text-h2--letter-spacing);
-}
+  /* P22 Mackinac (display/heading) apenas de H3 pra cima (≥28px).
+     h4 e menores usam a sans — leitura melhor em tamanhos pequenos. */
+  h1, h2, h3 {
+    font-family: var(--font-heading);
+  }
 
-code,
-pre,
-kbd {
-  font-family: var(--font-mono);
+  h2 {
+    letter-spacing: var(--text-h2--letter-spacing);
+  }
+
+  code,
+  pre,
+  kbd {
+    font-family: var(--font-mono);
+  }
 }
 
 /* ============================================================
@@ -390,10 +402,10 @@ kbd {
   to   { height: 0; }
 }
 @utility animate-accordion-down {
-  animation: accordion-down var(--duration-base) var(--ease-out);
+  animation: accordion-down var(--duration-normal) var(--ease-in-out);
 }
 @utility animate-accordion-up {
-  animation: accordion-up var(--duration-fast) var(--ease-in);
+  animation: accordion-up var(--duration-normal) var(--ease-in-out);
 }
 
 /* ============================================================

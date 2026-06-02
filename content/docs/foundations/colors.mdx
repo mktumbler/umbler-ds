@@ -119,15 +119,14 @@ Isso vale tanto pra paridade visual entre produtos quanto pra acessibilidade: us
 <ComponentPreview title="Confirmar pagamento — ação primária">
   <div className="flex items-center gap-4">
     <div className="flex flex-col items-center gap-2">
-      <button className="rounded-md bg-brand-500 px-4 py-2 text-body-sm font-semibold text-white">
-        Confirmar pagamento
-      </button>
+      <Button>Confirmar pagamento</Button>
       <span className="text-caption text-success-500">✓ Faça</span>
     </div>
     <div className="flex flex-col items-center gap-2">
-      <button className="rounded-md bg-success-500 px-4 py-2 text-body-sm font-semibold text-white opacity-60 line-through decoration-2">
+      {/* audit-ignore: button-hand-roll — ilustração de misuse para a regra "verde nunca é CTA" */}
+      <Button className="!bg-success-500 hover:!bg-success-600 opacity-60 line-through decoration-2">
         Confirmar pagamento
-      </button>
+      </Button>
       <span className="text-caption text-error-500">✗ Não faça</span>
     </div>
   </div>

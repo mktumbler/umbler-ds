@@ -21,7 +21,7 @@ function BgPreview({ name, label, description }: { name: HeroBgVariant; label: s
       >
         <div className="flex flex-col items-center justify-center h-[280px] gap-3 text-center px-6">
           <p className="eyebrow">Background</p>
-          <p className="font-heading text-2xl text-white font-medium" style={{ letterSpacing: '-0.03rem' }}>
+          <p className="text-2xl text-white font-medium" style={{ letterSpacing: '-0.03rem' }}>
             {label}
           </p>
         </div>

@@ -65,7 +65,7 @@ export function ListInteractive() {
           <ListItemDescription>Última mensagem há 5 min</ListItemDescription>
         </ListItemContent>
         <ListItemTrailing>
-          <Badge variant="brand" size="sm">3</Badge>
+          <Badge variant="brand">3</Badge>
           <CaretRight />
         </ListItemTrailing>
       </ListItem>
@@ -78,7 +78,7 @@ export function ListInteractive() {
           <ListItemDescription>Aguardando resposta</ListItemDescription>
         </ListItemContent>
         <ListItemTrailing>
-          <Badge variant="warning" size="sm">!</Badge>
+          <Badge variant="warning">!</Badge>
           <CaretRight />
         </ListItemTrailing>
       </ListItem>
@@ -107,7 +107,7 @@ export function ListDense() {
           <ListItemTitle>Notificações</ListItemTitle>
         </ListItemContent>
         <ListItemTrailing>
-          <Badge variant="brand" size="sm">12</Badge>
+          <Badge variant="brand">12</Badge>
         </ListItemTrailing>
       </ListItem>
       <ListItem onClick={() => alert('Mensagens')}>
@@ -116,7 +116,7 @@ export function ListDense() {
           <ListItemTitle>Mensagens</ListItemTitle>
         </ListItemContent>
         <ListItemTrailing>
-          <Badge variant="brand" size="sm">3</Badge>
+          <Badge variant="brand">3</Badge>
         </ListItemTrailing>
       </ListItem>
       <ListItem onClick={() => alert('Configurações')}>

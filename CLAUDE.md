@@ -43,6 +43,7 @@ scripts/
 - Componentes simples direto, sem Radix
 - Zero hardcoded: cores → tokens semânticos, durações → var(--duration-*), easings → ease-out/ease-spring
 - Figma em construção; quando divergir do HTML, o HTML ganha
+- **Auto-consistência**: o DS é fonte E consumidor (a doc usa o DS). Se já existe componente, **importe — nunca recrie**. `<Badge>` não é `<span className="rounded ...">`; `<Button>` não é `<button className="bg-brand-500 ...">`; eyebrow é `.eyebrow`, não `uppercase tracking-wide` hand-rolled. Guarda automática: `scripts/audit-antipatterns.mjs` (roda no pre-commit). Exceções pedagógicas legítimas: comentário inline `{/* audit-ignore: <rule-id> — motivo */}`.
 
 ## Roadmap
 - ✅ Onda 1 — Foundations (Colors, Typography, Spacing, Radius, Shadows, Motion)

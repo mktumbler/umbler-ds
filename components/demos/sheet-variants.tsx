@@ -127,7 +127,7 @@ export function SheetNotifications() {
       <SheetTrigger asChild>
         <Button variant="secondary">
           <Bell size={16} /> Notificações
-          <Badge variant="brand" size="sm" className="ml-1">4</Badge>
+          <Badge variant="brand" className="ml-1">4</Badge>
         </Button>
       </SheetTrigger>
       <SheetContent side="right" className="sm:max-w-sm">

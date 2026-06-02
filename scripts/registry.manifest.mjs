@@ -69,6 +69,13 @@ export const items = [
     registryDependencies: ['utils'],
   },
   {
+    name: 'tag-input',
+    description: 'Campo de formulário multi-tag, dimensionado igual ao Input, com estados de validação.',
+    files: ['components/ui/tag-input.tsx'],
+    dependencies: [CVA, PHOSPHOR],
+    registryDependencies: ['utils', 'tag'],
+  },
+  {
     name: 'avatar',
     description: 'Avatar com imagem, fallback de iniciais/ícone, tamanhos e agrupamento.',
     files: ['components/ui/avatar.tsx'],

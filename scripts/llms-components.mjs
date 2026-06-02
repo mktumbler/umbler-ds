@@ -36,10 +36,9 @@ import { Spinner } from '@/components/ui/spinner';
 import { Badge } from '@/components/ui/badge';
 
 <Badge variant="brand">Novo</Badge>
-<Badge variant="success" size="sm" dot>Online</Badge>
+<Badge variant="success" dot>Online</Badge>
 \`\`\`
 - variant: \`brand\` | \`success\` | \`warning\` | \`error\` | \`neutral\` — padrão: \`neutral\`
-- size: \`sm\` | \`md\` — padrão: \`md\`
 - dot: boolean — adiciona ponto colorido à esquerda`,
 
   tag: `\`\`\`tsx
@@ -51,6 +50,21 @@ import { Tag } from '@/components/ui/tag';
 - variant: \`brand\` | \`success\` | \`warning\` | \`error\` | \`neutral\` — padrão: \`neutral\`
 - size: \`sm\` | \`md\` — padrão: \`md\`
 - onRemove: () => void — exibe botão X para remoção`,
+
+  'tag-input': `\`\`\`tsx
+'use client';
+import { useState } from 'react';
+import { TagInput } from '@/components/ui/tag-input';
+
+const [tags, setTags] = useState(['Next.js']);
+<TagInput value={tags} onChange={setTags} placeholder="Adicionar tag…" />
+\`\`\`
+- Campo de formulário multi-tag (controlado). Dimensionado igual ao Input.
+- value: string[] / onChange: (tags: string[]) => void — controlado
+- size: \`sm\` | \`md\` | \`lg\` — padrão: \`md\` (mesma altura do Input)
+- state: \`default\` | \`error\` | \`success\` — borda + ring de validação
+- tagVariant: cor das tags (padrão \`brand\`); dedupe (padrão true); disabled
+- Enter/vírgula adiciona; Backspace com campo vazio remove a última`,
 
   avatar: `\`\`\`tsx
 import { Avatar, AvatarGroup } from '@/components/ui/avatar';

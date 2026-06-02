@@ -27,7 +27,7 @@ const inputVariants = cva(
         lg: 'h-12 px-4 text-base',
       },
       state: {
-        default: 'border-border hover:border-border-strong focus:border-brand-500 focus:ring-brand-500/30',
+        default: 'border-border-strong hover:border-brand-400 focus:border-brand-500 focus:ring-brand-500/30',
         error:   'border-error-500 focus:border-error-500 focus:ring-error-500/30',
         success: 'border-success-500 focus:border-success-500 focus:ring-success-500/30',
       },

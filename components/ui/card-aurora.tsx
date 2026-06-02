@@ -156,11 +156,11 @@ export function CardAurora({
         {children ?? (
           <div className={cn(icon ? 'mt-6' : '')}>
             {label && (
-              <p className="mb-1.5 text-[0.65rem] font-normal uppercase tracking-[0.1em] text-neutral-50/40">
+              <p className="eyebrow mb-1.5">
                 {label}
               </p>
             )}
-            <h3 className="font-heading text-[1.6rem] font-medium leading-snug text-neutral-50">
+            <h3 className="font-sans text-[1.6rem] font-medium leading-snug text-neutral-50">
               {title}
             </h3>
             {description && (

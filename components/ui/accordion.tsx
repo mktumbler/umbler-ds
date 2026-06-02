@@ -38,7 +38,8 @@ export const AccordionTrigger = React.forwardRef<
         'flex flex-1 items-center justify-between gap-4 py-4',
         'text-left text-body font-medium text-foreground',
         'transition-colors duration-[var(--duration-fast)] ease-out',
-        'hover:text-brand-300',
+        'hover:text-brand-500 dark:hover:text-brand-400',
+        'data-[state=open]:text-brand-500 dark:data-[state=open]:text-brand-300',
         'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500/50 focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-sm',
         '[&[data-state=open]>svg]:rotate-180',
         'cursor-pointer',
@@ -51,7 +52,7 @@ export const AccordionTrigger = React.forwardRef<
         size={16}
         weight="bold"
         aria-hidden
-        className="shrink-0 text-foreground-muted transition-transform duration-[var(--duration-base)] ease-out"
+        className="shrink-0 text-foreground-muted transition-transform duration-[var(--duration-normal)] ease-out"
       />
     </AccordionPrimitive.Trigger>
   </AccordionPrimitive.Header>

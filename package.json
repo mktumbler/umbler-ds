@@ -8,6 +8,7 @@
     "build:llms": "node scripts/build-llms.mjs",
     "check:sync": "node scripts/check-component-sync.mjs",
     "check:llms": "node scripts/build-llms.mjs --check",
+    "check:antipatterns": "node scripts/audit-antipatterns.mjs",
     "build": "node scripts/build-registry.mjs && node scripts/build-llms.mjs && next build",
     "dev": "next dev",
     "start": "next start",

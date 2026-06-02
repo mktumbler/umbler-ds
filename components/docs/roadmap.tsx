@@ -3,7 +3,10 @@
  * Manutenção: editar a const ROADMAP abaixo.
  */
 
+import { Badge } from '@/components/ui/badge';
+
 type Status = 'done' | 'progress' | 'planned';
+type BadgeVariant = 'brand' | 'success' | 'warning' | 'error' | 'neutral';
 
 interface Wave {
   id:     string;
@@ -55,17 +58,17 @@ const ROADMAP: Wave[] = [
   },
 ];
 
-const statusBadge: Record<Status, { label: string; classes: string }> = {
-  done:     { label: 'Concluído',    classes: 'bg-success-500/15 text-success-500' },
-  progress: { label: 'Em progresso', classes: 'bg-brand-500/15 text-brand-400'    },
-  planned:  { label: 'Planejado',    classes: 'bg-neutral-500/15 text-foreground-muted' },
+const statusMeta: Record<Status, { label: string; variant: BadgeVariant }> = {
+  done:     { label: 'Concluído',    variant: 'success' },
+  progress: { label: 'Em progresso', variant: 'brand'   },
+  planned:  { label: 'Planejado',    variant: 'neutral' },
 };
 
 export function Roadmap() {
   return (
     <div className="not-prose my-8 grid grid-cols-1 gap-3 md:grid-cols-2">
       {ROADMAP.map((wave) => {
-        const badge = statusBadge[wave.status];
+        const status = statusMeta[wave.status];
         return (
           <div
             key={wave.id}
@@ -75,9 +78,9 @@ export function Roadmap() {
               <h4 className="text-body font-semibold text-foreground">
                 {wave.title}
               </h4>
-              <span className={`rounded px-2 py-0.5 text-caption font-semibold uppercase tracking-wide ${badge.classes}`}>
-                {badge.label}
-              </span>
+              <Badge variant={status.variant} shape="tag">
+                {status.label}
+              </Badge>
             </div>
             <ul className="flex flex-wrap gap-1.5">
               {wave.items.map((item) => {
