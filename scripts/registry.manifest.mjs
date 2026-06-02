@@ -43,7 +43,7 @@ export const items = [
     type: 'registry:file',
     description:
       'Tokens da marca Umbler em CSS (@theme do Tailwind v4): cores, tipografia, espaçamento, radius, sombras, motion + tokens semânticos light/dark e utilitário .eyebrow. Importe no CSS de entrada do projeto.',
-    files: [{ src: 'app/tokens.css', target: 'tokens.css', type: 'registry:file' }],
+    files: [{ src: 'app/tokens.css', target: 'app/tokens.css', type: 'registry:file' }],
   },
 
   // --- Onda 2 — primitivos ---

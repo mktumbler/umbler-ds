@@ -23,12 +23,26 @@ npx shadcn@latest init
 npx shadcn@latest add https://umbler-ds.vercel.app/r/umbler-ui
 ```
 
-Importar tokens no CSS de entrada (app/globals.css) — obrigatório, DEPOIS do tailwind:
+O agregador instala todos os componentes + `cn` (`lib/utils.ts`) + os tokens da marca em `app/tokens.css`.
+
+### CSS de entrada — passo OBRIGATÓRIO e crítico
+
+O `shadcn init` moderno injeta um **tema próprio** no seu `app/globals.css` (tokens oklch, blocos `:root`/`.dark`, `@theme inline` com `--primary`, `--border`, etc.). Esse tema **CONFLITA** com os tokens da Umbler — como o DS já traz um sistema de tokens completo, manter os dois faz o tema do shadcn sobrescrever cores da marca (`--foreground`, `--border` saem errados).
+
+**Substitua TODO o conteúdo do `app/globals.css`** por exatamente isto:
 
 ```css
 @import 'tailwindcss';
 @import './tokens.css';
+
+@layer base {
+  body {
+    @apply bg-surface text-foreground;
+  }
+}
 ```
+
+Não mantenha os blocos `:root`, `.dark`, `@theme inline` nem `@import "shadcn/tailwind.css"` que o shadcn criou — o `tokens.css` da marca os substitui por completo. (Se o seu `globals.css` não fica em `app/`, ajuste o caminho relativo do `@import './tokens.css'` de acordo.)
 
 ### Dark mode
 

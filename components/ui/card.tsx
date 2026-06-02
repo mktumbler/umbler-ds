@@ -7,10 +7,10 @@ import { cn } from '@/lib/utils';
 const cardVariants = cva('rounded-lg overflow-hidden flex flex-col', {
   variants: {
     variant: {
-      default:  'bg-neutral-800 border border-neutral-600/50 shadow-sm transition-[box-shadow,transform] duration-[var(--duration-normal)] ease-out hover:-translate-y-0.5 hover:shadow-md',
-      elevated: 'bg-neutral-800 border border-neutral-600/30 shadow-xl transition-[box-shadow,transform] duration-[var(--duration-normal)] ease-out hover:-translate-y-1 hover:shadow-2xl',
-      ghost:    'bg-neutral-800/40 border border-neutral-600/20',
-      outline:  'bg-transparent border border-neutral-600',
+      default:  'bg-surface border border-border shadow-sm transition-[box-shadow,transform] duration-[var(--duration-normal)] ease-out hover:-translate-y-0.5 hover:shadow-md',
+      elevated: 'bg-surface border border-border/60 shadow-xl transition-[box-shadow,transform] duration-[var(--duration-normal)] ease-out hover:-translate-y-1 hover:shadow-2xl',
+      ghost:    'bg-surface/40 border border-border/40',
+      outline:  'bg-transparent border border-border-strong',
     },
   },
   defaultVariants: { variant: 'default' },
@@ -42,7 +42,7 @@ export const CardTitle = forwardRef<HTMLHeadingElement, HTMLAttributes<HTMLHeadi
   ({ className, ...props }, ref) => (
     <h3
       ref={ref}
-      className={cn('font-heading text-[1.125rem] font-medium text-neutral-50 leading-snug', className)}
+      className={cn('font-heading text-[1.125rem] font-medium text-foreground leading-snug', className)}
       {...props}
     />
   ),
@@ -53,7 +53,7 @@ CardTitle.displayName = 'CardTitle';
 
 export const CardDescription = forwardRef<HTMLParagraphElement, HTMLAttributes<HTMLParagraphElement>>(
   ({ className, ...props }, ref) => (
-    <p ref={ref} className={cn('mt-1.5 text-sm text-neutral-400 leading-relaxed', className)} {...props} />
+    <p ref={ref} className={cn('mt-1.5 text-sm text-foreground-muted leading-relaxed', className)} {...props} />
   ),
 );
 CardDescription.displayName = 'CardDescription';
@@ -73,7 +73,7 @@ export const CardFooter = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivEleme
   ({ className, ...props }, ref) => (
     <div
       ref={ref}
-      className={cn('px-6 pt-4 pb-6 flex items-center gap-3 border-t border-neutral-600/40', className)}
+      className={cn('px-6 pt-4 pb-6 flex items-center gap-3 border-t border-border', className)}
       {...props}
     />
   ),

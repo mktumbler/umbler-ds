@@ -112,16 +112,28 @@ Cria `components.json` + aliases `@/components` e `@/lib`.
 npx shadcn@latest add https://umbler-ds.vercel.app/r/umbler-ui
 ```
 
-O agregador `umbler-ui` instala **todos os componentes + utilitário `cn` + tokens** de uma vez. Dependências entre componentes resolvem sozinhas.
+O agregador `umbler-ui` instala **todos os componentes + utilitário `cn` + tokens** (`app/tokens.css`) de uma vez. Dependências entre componentes resolvem sozinhas.
 
-### 3. Importe os tokens no CSS
+### 3. Limpe o CSS de entrada (passo crítico)
 
-No CSS de entrada (ex.: `app/globals.css`), **depois** do Tailwind:
+<Callout type="warn" title="O shadcn init injeta um tema concorrente">
+O `shadcn init` moderno escreve um tema próprio no seu `app/globals.css` (tokens oklch, blocos `:root`/`.dark`, `@theme inline`). Ele **conflita** com os tokens da Umbler e sobrescreve cores da marca (`--foreground`, `--border`). Como o DS já traz o sistema de tokens completo, substitua **todo** o conteúdo do `globals.css`.
+</Callout>
+
+Deixe o `app/globals.css` exatamente assim:
 
 ```css
 @import 'tailwindcss';
 @import './tokens.css';
+
+@layer base {
+  body {
+    @apply bg-surface text-foreground;
+  }
+}
 ```
+
+Se o seu `globals.css` não fica em `app/`, ajuste o caminho relativo do `@import './tokens.css'`.
 
 ### 4. Use um componente
 

@@ -18,7 +18,7 @@ export const Skeleton = forwardRef<HTMLDivElement, SkeletonProps>(
       ref={ref}
       aria-hidden="true"
       className={cn(
-        'animate-pulse bg-neutral-700/60',
+        'animate-pulse bg-control-track',
         circle ? 'rounded-full' : 'rounded-md',
         height,
         width,
@@ -62,7 +62,7 @@ export function SkeletonText({
 export function SkeletonCard({ className, ...props }: HTMLAttributes<HTMLDivElement>) {
   return (
     <div
-      className={cn('rounded-lg border border-neutral-700/50 bg-neutral-800 p-6 flex flex-col gap-4', className)}
+      className={cn('rounded-lg border border-border bg-surface p-6 flex flex-col gap-4', className)}
       aria-hidden="true"
       {...props}
     >
