@@ -68,8 +68,10 @@ export function FeatureCard({
   const content = (
     <Card
       className={cn(
-        'h-full text-center transition-colors duration-[var(--duration-fast)]',
-        href && 'hover:border-brand-400 cursor-pointer',
+        'h-full text-center',
+        // Card variant=default já traz shadow-sm + hover-lift. Quando há href,
+        // reforça o sinal de "clicável" com border-strong em rest + brand no hover.
+        href && 'border-border-strong hover:border-brand-400 cursor-pointer',
         className,
       )}
       {...props}

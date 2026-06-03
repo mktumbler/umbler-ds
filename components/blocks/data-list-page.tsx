@@ -51,7 +51,7 @@ export function PageHeader({
         <div className="flex items-baseline gap-3">
           <h1 className="font-heading text-h2 text-foreground">{title}</h1>
           {count !== undefined && count !== null && (
-            <span className="text-h4 font-medium text-foreground-muted">{count}</span>
+            <span className="text-h4 font-medium text-foreground-muted tabular-nums">{count}</span>
           )}
         </div>
         {description && (

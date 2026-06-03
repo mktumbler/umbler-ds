@@ -1,6 +1,13 @@
 [
   {
     "date": "2026-06-03",
+    "type": "fix",
+    "scope": "blocks",
+    "title": "Polish de blocks: tabular-nums, text-pretty, affordance de link",
+    "description": "Último lote da rodada de revisão DS. PageHeader count usa tabular-nums (números alinham em listas com count variável tipo 4743 vs 12). EmptyState description ganha text-pretty (quebras mais equilibradas em texto centrado). FeatureCard com href agora sinaliza affordance no rest state (border-strong) em vez de só revelar no hover."
+  },
+  {
+    "date": "2026-06-03",
     "type": "docs",
     "scope": "index",
     "title": "Plugin vira caminho primário de adoção",

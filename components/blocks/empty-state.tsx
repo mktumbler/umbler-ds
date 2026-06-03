@@ -70,7 +70,7 @@ export function EmptyState({
       <div className="max-w-prose space-y-2">
         <Heading className="font-sans text-h4 text-foreground">{title}</Heading>
         {description && (
-          <p className="text-body-sm text-foreground-muted leading-relaxed">
+          <p className="text-body-sm text-foreground-muted leading-relaxed text-pretty">
             {description}
           </p>
         )}
