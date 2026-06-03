@@ -1,0 +1,78 @@
+---
+title: EmptyState
+description: Bloco para comunicar "ainda não há nada aqui" ou "essa coisa não está conectada" — ícone, título, descrição e ações.
+---
+
+## Quando usar
+
+- **Lista/tabela vazia** — "Nenhum contato aqui ainda"
+- **Estado não conectado** — "Seus emails não estão conectados à Umbler"
+- **Onboarding bloqueante** — "Para usar sites você vai precisar de um domínio"
+- **Resultado de busca vazio** — "Nada encontrado"
+
+Não use pra **promoção de feature** (compra de plano, ative algo pago). Pra isso é o `<MarketingBanner>` (split com imagem + benefícios).
+
+## Onde aparece no produto
+
+| Tela | Variante |
+|---|---|
+| Console → DNS | Email não conectado — ilustração + título + 2 CTAs |
+| Modal Subdomínio | Onboarding bloqueante — ícone + título + input + CTA |
+| Talk → listagens vazias | Sem conversas / sem contatos — info-only |
+| Talk → busca | Resultado vazio — pequeno, info-only |
+
+## Padrão — Estado não conectado
+
+<ComponentPreview title="DNS sem email conectado — 2 ações lado a lado">
+  <EmptyStateDnsDemo />
+</ComponentPreview>
+
+## Sem ações — info only
+
+Quando o usuário não precisa fazer nada agora (ex: vazio inicial natural), pula `actions`.
+
+<ComponentPreview title="Lista de conversas vazia">
+  <EmptyStateInfoOnlyDemo />
+</ComponentPreview>
+
+## Compacto — dentro de tabela/card
+
+`size="sm"` reduz padding pra caber em vazios internos (linha vazia, tab vazia, popover sem resultados).
+
+<ComponentPreview title="Resultado de busca vazio — tamanho compacto">
+  <EmptyStateCompactDemo />
+</ComponentPreview>
+
+## Grande — onboarding em página
+
+`size="lg"` aumenta respiro pra estados de boas-vindas/onboarding que ocupam a página inteira.
+
+<ComponentPreview title="Onboarding bloqueante — registrar domínio">
+  <EmptyStateLargeDemo />
+</ComponentPreview>
+
+## Componentes usados
+
+- [`Button`](/docs/components/button) — pras CTAs (primária + secundária, nunca verde)
+- Ícones do `@phosphor-icons/react` recomendados — peso `duotone` para vazios "ilustrativos", regular pros mais funcionais
+
+## API
+
+<TokenTable
+  columns={['Prop', 'Tipo', 'Descrição']}
+  rows={[
+    ['media',       'ReactNode',           'Ícone ou ilustração no topo. Opcional mas recomendado.'],
+    ['title',       'ReactNode',           'Título principal. Required.'],
+    ['description', 'ReactNode',           'Texto abaixo do título. Opcional.'],
+    ['actions',     'ReactNode',           'Slot de ações (Buttons). Renderiza em linha, centralizado.'],
+    ['size',        'sm | md | lg',        'Padding do bloco. Default: md.'],
+  ]}
+/>
+
+## Boas práticas
+
+- **Toda EmptyState diz "o que" e "o que fazer".** Título nomeia o estado, descrição explica o porquê, ação resolve. Sem ação = sem urgência (ex: lista naturalmente vazia que vai se preencher).
+- **CTA primária resolve o estado, secundária oferece alternativa.** "Conectar DNS Umbler" (primária) + "Usar DNS de terceiros" (secundária). Nunca 2 primárias.
+- **Não use verde como CTA.** Verde é estado. Veja [colors.mdx](/docs/foundations/colors).
+- **Tom evita culpar o usuário.** "Nenhuma conversa por aqui" é melhor que "Você não tem conversas". Vazio é estado do sistema, não falha da pessoa.
+- **Tamanho responde ao espaço, não à importância.** EmptyState de tabela é `sm`; de página inteira é `lg`. Não é "este é mais importante então grande".

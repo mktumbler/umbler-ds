@@ -1,0 +1,72 @@
+---
+title: FormPanel
+description: Card centralizado para formulários "criar / editar X" — título, descrição, campos e CTA full-width no rodapé.
+---
+
+## Quando usar
+
+- **Criar entidade** — novo grupo, novo filtro, novo contato, nova campanha
+- **Editar entidade** — atualizar configurações de algo já existente
+- **Modais bloqueantes com 1 ação principal** — "informe um domínio para continuar"
+
+Não use pra **filtros de listagem inline** (esse é o `<DataToolbar>`). Não use pra **formulários longos com seções** (esse é um pattern de página, não bloco).
+
+## Onde aparece no produto
+
+| Tela | Variante |
+|---|---|
+| Console → Novo filtro de email | Header card + form com selects/inputs + CTA verde full-width |
+| Console → Novo grupo de email | Header card + Nome/Email/Membros + CTA full-width |
+| Modal Subdomínio | Form enxuto com 1 input + CTA full-width |
+
+## Padrão — Novo grupo de email
+
+CTA full-width no rodapé. Cobre a maior parte dos casos.
+
+<ComponentPreview title="Form panel com 3 campos e submit full-width">
+  <FormPanelGroupDemo />
+</ComponentPreview>
+
+## Múltiplos campos / steps inline
+
+Mesma estrutura, mais campos. Layout com `flex` interno fica por conta do consumer — o FormPanel só dá o shell.
+
+<ComponentPreview title="Form com selects + inputs lado-a-lado">
+  <FormPanelFilterDemo />
+</ComponentPreview>
+
+## Footer inline — Cancelar + Salvar
+
+Quando o submit dividir espaço com uma ação secundária (cancelar, voltar, deletar), use `footerFullWidth={false}`. As ações alinham à direita.
+
+<ComponentPreview title="Edição com Cancelar + Salvar lado-a-lado">
+  <FormPanelInlineFooterDemo />
+</ComponentPreview>
+
+## Componentes usados
+
+- [`Card`](/docs/components/card) — wrapper visual com Header / Content / Footer
+- [`Input`](/docs/components/input) / [`Select`](/docs/components/select) / [`TagInput`](/docs/components/tag-input) — campos
+- [`Button`](/docs/components/button) — CTA no footer (nunca verde)
+
+## API
+
+<TokenTable
+  columns={['Prop', 'Tipo', 'Descrição']}
+  rows={[
+    ['title',           'ReactNode', 'Título do formulário. Required.'],
+    ['description',     'ReactNode', 'Descrição abaixo do título. Opcional.'],
+    ['footer',          'ReactNode', 'Slot do rodapé. Geralmente um Button de submit. Opcional.'],
+    ['footerFullWidth', 'boolean',   'CTA(s) do footer ocupam 100% (default true) ou alinham à direita.'],
+    ['children',        'ReactNode', 'Campos do form.'],
+    ['onSubmit, etc.',  '...',       'Recebe todos os atributos de <form>.'],
+  ]}
+/>
+
+## Boas práticas
+
+- **Submit full-width = 1 ação principal.** Se tem cancelar/voltar/deletar, use `footerFullWidth={false}` pra colocar as 2 ações lado-a-lado à direita.
+- **Não verde como CTA.** Verde é estado. O CTA do form é `<Button>` (azul brand).
+- **Largura máxima.** O FormPanel já vem com `max-w-2xl mx-auto`. Pra formulários mais largos (ex: 2 colunas reais), passe `className="max-w-4xl"`.
+- **InputLabel sempre acima do campo.** É um par tipográfico, não label flutuante — colocar inline confunde acessibilidade.
+- **Não aninhe FormPanel dentro de FormPanel.** Se você precisa de "form dentro de form", o pattern é seções de página, não cards aninhados.

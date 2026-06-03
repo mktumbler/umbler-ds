@@ -36,6 +36,8 @@ import { FeatureGridSection, FeatureSplitSection, FeatureBentoSection } from '@/
 import { FeatureCardGrid3UpDemo, FeatureCardGrid2UpDemo, FeatureCardGridLinksDemo } from '@/components/demos/blocks/feature-card-grid-variants';
 import { UserRowBasicDemo, UserRowSelectableDemo, UserRowInteractiveDemo } from '@/components/demos/blocks/user-row-variants';
 import { DataListPageFullDemo, DataListPageMinimalDemo, PageHeaderSoloDemo } from '@/components/demos/blocks/data-list-page-variants';
+import { EmptyStateDnsDemo, EmptyStateInfoOnlyDemo, EmptyStateCompactDemo, EmptyStateLargeDemo } from '@/components/demos/blocks/empty-state-variants';
+import { FormPanelGroupDemo, FormPanelFilterDemo, FormPanelInlineFooterDemo } from '@/components/demos/blocks/form-panel-variants';
 import { HeroBgGridDemo, HeroBgSweepDemo } from '@/components/demos/patterns/site/backgrounds';
 import { EmailPreview } from '@/components/docs/email-preview';
 import { DSStack } from '@/components/docs/ds-stack';
@@ -128,6 +130,13 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     DataListPageFullDemo,
     DataListPageMinimalDemo,
     PageHeaderSoloDemo,
+    EmptyStateDnsDemo,
+    EmptyStateInfoOnlyDemo,
+    EmptyStateCompactDemo,
+    EmptyStateLargeDemo,
+    FormPanelGroupDemo,
+    FormPanelFilterDemo,
+    FormPanelInlineFooterDemo,
     HeroBgGridDemo,
     HeroBgSweepDemo,
     EmailPreview,

@@ -3,6 +3,13 @@
     "date": "2026-06-03",
     "type": "feat",
     "scope": "blocks",
+    "title": "Blocks: EmptyState + FormPanel",
+    "description": "Segunda leva da camada Blocks. EmptyState para vazios/não-conectados/onboarding (P0 do inventory, 4 telas: DNS sem email, Subdomínio modal, listagens vazias). FormPanel para criar/editar X (P1, 3 telas: Novo filtro, Novo grupo, Subdomínio modal). Ambos compõem Card/Input/Select/Button do DS — audit-antipatterns clean."
+  },
+  {
+    "date": "2026-06-03",
+    "type": "feat",
+    "scope": "blocks",
     "title": "Nova camada: Blocks",
     "description": "Camada intermediária entre Components e Patterns — organismos reutilizáveis cuja seleção passa por Interface Inventory (regra do 3 de Polaris/Primer). Primeiros 3 blocos: DataListPage (PageHeader + DataToolbar + Table wrapper), UserRow (linhas de contato/atendente) e FeatureCardGrid (grid n-up de feature cards). Estrutura em components/blocks/ + content/docs/blocks/."
   },
