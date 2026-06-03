@@ -1,6 +1,13 @@
 [
   {
     "date": "2026-06-03",
+    "type": "docs",
+    "scope": "index",
+    "title": "Plugin vira caminho primário de adoção",
+    "description": "Index reorganizado: plugin do Claude Code é o caminho mais rápido (1 install + /umbler-init). Os fluxos por prompt (projeto novo) e audit + adoção progressiva (projeto existente) passam a ser alternativas para quem usa outro agente ou prefere fluxo manual."
+  },
+  {
+    "date": "2026-06-03",
     "type": "refactor",
     "scope": "tokens",
     "title": "Foundations: tokens semânticos amarrados ao raw + escalas completas",

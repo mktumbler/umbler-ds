@@ -9,22 +9,45 @@ O Umbler DS é distribuído via **registry compatível com `shadcn`**: o código
 Um projeto **Next.js 15+ (App Router)** com **Tailwind CSS v4** e **TypeScript**. Os componentes usam React 19 e os tokens dependem da diretiva `@theme` do Tailwind v4 — **não funciona no v3**.
 </Callout>
 
-## Qual é o seu caso?
+## Caminho mais rápido — plugin do Claude Code
 
-Existem dois caminhos de adoção. O melhor é o que tem **menos atrito** pro seu cenário:
+Se você está usando **Claude Code**, instale o plugin oficial. Ele traz:
+
+- Skill `umbler-ds` com **todo o contexto** do DS (convenções, princípios, catálogo via WebFetch)
+- **4 slash commands**: `/umbler-init`, `/umbler-add`, `/umbler-audit`, `/umbler-block`
+- **Sub-agent** especialista em criar Blocks via Interface Inventory + regra do 3
+- **Hook automático** que avisa de hand-rolls a cada Edit/Write
+
+```
+/plugin add umbler-ds
+```
+
+Depois, num projeto novo ou existente:
+
+```
+/umbler-init
+```
+
+Faz bootstrap completo (shadcn init, instala tokens, importa `umbler-ui`, ajusta `globals.css`). Pronto. Veja [docs do plugin](/docs/plugin) pra detalhes.
+
+---
+
+## Alternativas — sem plugin
+
+Quem **não** está no Claude Code (Cursor, Windsurf, agente próprio) ou prefere fluxo manual segue um dos dois caminhos abaixo. O melhor é o que tem **menos atrito** pro seu cenário:
 
 | Cenário                                              | Caminho recomendado                |
 | ---------------------------------------------------- | ---------------------------------- |
 | **Projeto novo** (não tem código ainda ou bem inicial) | [Setup direto com IA](#projeto-novo--setup-com-ia) |
 | **Projeto existente** (já tem UI, CSS, componentes)   | [Audit + adoção progressiva](#projeto-existente--audit-antes-de-adotar)  |
 
-Os dois usam o mesmo registry. O que muda é a **ordem** de quem mexe no que.
+Os dois usam o mesmo registry — o que muda é a **ordem** de quem mexe no que.
 
 ---
 
 ## Projeto novo — setup com IA
 
-A forma mais rápida: **cole o prompt abaixo no agente de IA do seu projeto** (Claude Code, Cursor, Windsurf, etc.). Ele lê o `llms.txt`, instala tudo, importa os tokens e começa a montar a UI.
+**Cole o prompt abaixo no agente do seu projeto** (Cursor, Windsurf, etc.). Ele lê o `llms.txt`, instala tudo, importa os tokens e começa a montar a UI.
 
 ````text
 Leia https://umbler-ds.vercel.app/llms.txt — ele descreve todos os
@@ -35,7 +58,7 @@ os componentes e tokens documentados. Não use cores, fontes ou
 espaçamentos fora dos tokens da marca.
 ````
 
-Sem agente? Vá pra [setup manual](#setup-manual).
+Sem agente nenhum? Vá pra [setup manual](#setup-manual).
 
 ---
 
