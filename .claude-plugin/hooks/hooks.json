@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-hooks.json",
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "description": "Após edição de .tsx/.mdx, roda audit-antipatterns em modo warning (não bloqueia, só avisa).",
+        "command": "node ${CLAUDE_PLUGIN_ROOT}/scripts/audit-antipatterns.mjs"
+      }
+    ]
+  }
+}

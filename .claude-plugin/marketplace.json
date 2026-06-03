@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "name": "umbler",
+  "description": "Marketplace de plugins do Umbler — design system, ferramentas internas e produtividade Claude Code.",
+  "owner": {
+    "name": "Umbler",
+    "url": "https://umbler.com"
+  },
+  "plugins": [
+    {
+      "name": "umbler-ds",
+      "source": "./",
+      "description": "Umbler Design System — tokens, componentes, blocks e padrões para projetos Umbler.",
+      "version": "0.1.0"
+    }
+  ]
+}

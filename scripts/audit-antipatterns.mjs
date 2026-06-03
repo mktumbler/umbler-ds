@@ -69,8 +69,11 @@ const RULES = [
     label: 'badge-like span — use <Badge variant=… shape="pill" | "tag">',
     // <span … rounded[-full|-md]? … bg-(brand|success|warning|error)-(100|500)…
     pattern: /<span\b[^>]*\bclassName\s*=\s*[`"'{][^`"'}]*\brounded(?:-full|-md|-lg)?\b[^`"'}]*\bbg-(brand|success|warning|error|info)-(?:100|500)(?:\s|\/|\b)/g,
-    // Ignora se tem fixed dimensions pequenas (w-N h-N onde N <= 8) — é container de ícone, não badge.
-    skipIfLineMatches: /\bw-[1-8]\b[^"`'}]*\bh-[1-8]\b|\bh-[1-8]\b[^"`'}]*\bw-[1-8]\b/,
+    // Ignora se for container de ícone (centering wrapper):
+    //   • w-N h-N (N <= 8)
+    //   • size-N + flex items-center justify-center (qualquer N — é layout, não badge)
+    //   • rounded-xl/2xl/3xl (icon containers usam isso, badges não)
+    skipIfLineMatches: /\bw-[1-8]\b[^"`'}]*\bh-[1-8]\b|\bh-[1-8]\b[^"`'}]*\bw-[1-8]\b|\bsize-\d+\b[^"`'}]*\bflex\b[^"`'}]*\b(?:items-center|justify-center)\b|\brounded-(?:xl|2xl|3xl)\b/,
   },
   {
     id: 'eyebrow-hand-roll',

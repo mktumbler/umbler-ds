@@ -2,6 +2,13 @@
   {
     "date": "2026-06-03",
     "type": "feat",
+    "scope": "plugin",
+    "title": "Claude Code Plugin — `umbler-ds`",
+    "description": "DS empacotado como plugin do Claude Code. Inclui: skill principal (contexto + regras do DS), 4 slash commands (/umbler-init, /umbler-add, /umbler-audit, /umbler-block), 1 sub-agent (umbler-block-creator que automatiza Interface Inventory + regra do 3), 1 hook (auto-audit em Edit/Write) e audit-antipatterns.mjs portátil. Marketplace standalone em .claude-plugin/marketplace.json para instalação via Diretório → Plugins da org Umbler no Claude Code."
+  },
+  {
+    "date": "2026-06-03",
+    "type": "feat",
     "scope": "blocks",
     "title": "Blocks: EmptyState + FormPanel",
     "description": "Segunda leva da camada Blocks. EmptyState para vazios/não-conectados/onboarding (P0 do inventory, 4 telas: DNS sem email, Subdomínio modal, listagens vazias). FormPanel para criar/editar X (P1, 3 telas: Novo filtro, Novo grupo, Subdomínio modal). Ambos compõem Card/Input/Select/Button do DS — audit-antipatterns clean."

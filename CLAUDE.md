@@ -4,6 +4,7 @@
 Design system Umbler em Next.js 15 + Tailwind v4 + Fumadocs.
 Migração 1:1 do protótipo HTML em https://umbler-design-system.vercel.app/
 Produção: https://umbler-ds.vercel.app
+Plugin Claude Code: `.claude-plugin/` (instalável via marketplace Umbler)
 
 ## Stack
 - Next.js 15 (App Router) + TypeScript

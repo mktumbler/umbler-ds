@@ -1,0 +1,12 @@
+{
+  "name": "umbler-ds",
+  "version": "0.1.0",
+  "description": "Umbler Design System — tokens, componentes, blocks e padrões para projetos Umbler. Inclui skill, slash commands, sub-agent e auditoria de hand-rolls.",
+  "author": {
+    "name": "Umbler",
+    "url": "https://umbler.com"
+  },
+  "homepage": "https://umbler-ds.vercel.app",
+  "repository": "https://github.com/adrianocostaa/umbler-ds",
+  "keywords": ["design-system", "umbler", "shadcn", "tailwind-v4", "fumadocs", "talk"]
+}
