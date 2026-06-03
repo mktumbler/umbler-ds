@@ -146,8 +146,6 @@ O Claude Code lê esse código e usa como referência para construir features.
 
 **Tudo em `app/global.css`**, dentro do bloco `@theme`.
 
-Migrado 1:1 do protótipo HTML em https://umbler-design-system.vercel.app/
-
 - Cores: brand (azul Umbler), neutral, success, warning, error, info
 - Tipografia: Inter (sans), JetBrains Mono (mono), 10 níveis de escala
 - Espaçamento: 4px base, 16 steps de 2px a 128px

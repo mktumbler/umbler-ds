@@ -2,7 +2,6 @@
 
 ## O que é
 Design system Umbler em Next.js 15 + Tailwind v4 + Fumadocs.
-Migração 1:1 do protótipo HTML em https://umbler-design-system.vercel.app/
 Produção: https://umbler-ds.vercel.app
 Plugin Claude Code: `.claude-plugin/` (instalável via marketplace Umbler)
 
@@ -57,12 +56,11 @@ scripts/
 - 🔜 Onda 7 — Patterns
 
 ## Como construir um componente novo
-1. Lê o HTML original em https://umbler-design-system.vercel.app/ (âncora correspondente)
-2. Cria `components/ui/<nome>.tsx` (React + Tailwind, usa tokens de `app/tokens.css`)
-3. Cria demo em `components/demos/<nome>-variants.tsx`
-4. Cria página MDX em `content/docs/components/<nome>.mdx`
-5. Adiciona slug em `content/docs/components/meta.json`
-6. Cria `registry/<nome>.json` no formato shadcn
+1. Cria `components/ui/<nome>.tsx` (React + Tailwind, usa tokens de `app/tokens.css`)
+2. Cria demo em `components/demos/<nome>-variants.tsx`
+3. Cria página MDX em `content/docs/components/<nome>.mdx`
+4. Adiciona slug em `content/docs/components/meta.json`
+5. Cria `registry/<nome>.json` no formato shadcn
 
 ## Deploy
 ```bash

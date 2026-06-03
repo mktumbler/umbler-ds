@@ -19,7 +19,6 @@
       "Bash(git -C * commit *)",
       "Bash(curl -s *)",
       "Bash(curl -sS *)",
-      "WebFetch(domain:umbler-design-system.vercel.app)",
       "WebFetch(domain:umbler-ds.vercel.app)",
       "WebFetch(domain:static.umbler.com)"
     ]

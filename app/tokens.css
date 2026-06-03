@@ -4,8 +4,6 @@
    radius, sombras, motion, layout) + tokens semânticos adaptativos
    light/dark.
 
-   Migrado 1:1 de umbler-design-system.vercel.app
-
    COMO USAR EM OUTRO PROJETO (Tailwind v4):
      No CSS de entrada do seu projeto, importe DEPOIS do tailwind:
 
