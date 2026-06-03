@@ -161,7 +161,7 @@ export function PageHeaderSoloDemo() {
       title="Agentes de IA"
       count={744}
       description="Aqui você consegue criar, configurar e treinar os seus agentes de IA."
-      trailing={<Button>Novo agente</Button>}
+      actions={<Button>Novo agente</Button>}
     />
   );
 }

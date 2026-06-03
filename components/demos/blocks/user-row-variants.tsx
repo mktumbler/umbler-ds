@@ -17,7 +17,7 @@ export function UserRowBasicDemo() {
         meta="- há 12 minutos"
         subtitle="+55 19 99576-4300"
         tags={<Tag variant="brand">Proposta</Tag>}
-        action={
+        actions={
           <button className="text-foreground-muted hover:text-foreground" aria-label="Ver">
             <Eye size={18} />
           </button>
@@ -29,7 +29,7 @@ export function UserRowBasicDemo() {
         meta="- há 2 horas"
         subtitle="+55 31 98756-5581"
         tags={<Tag variant="error">Teste</Tag>}
-        action={
+        actions={
           <button className="text-foreground-muted hover:text-foreground" aria-label="Ver">
             <Eye size={18} />
           </button>
@@ -46,7 +46,7 @@ export function UserRowBasicDemo() {
             <Tag variant="success">Sales</Tag>
           </>
         }
-        action={
+        actions={
           <button className="text-foreground-muted hover:text-foreground" aria-label="Mais opções">
             <DotsThree size={20} />
           </button>
@@ -91,31 +91,33 @@ export function UserRowSelectableDemo() {
 
 /* ──────────────────────────────────────────────────────────
    Clicável — réplica do "Nova conversa" modal
+   Use `asChild` envolvendo com <button> (ou <a>/<Link> em rotas reais).
    ────────────────────────────────────────────────────────── */
 export function UserRowInteractiveDemo() {
   return (
     <div className="rounded-lg border border-border bg-surface divide-y divide-border">
       <UserRow
-        interactive
-        onClick={() => alert('Abrir conversa com Jana')}
+        asChild
         avatar={{ name: 'Jana Silva' }}
         name="Jana"
         meta="- há 14 minutos"
         subtitle="+55 19 99576-4300"
         tags={<Tag variant="brand">Proposta</Tag>}
-      />
+      >
+        <button type="button" onClick={() => alert('Abrir conversa com Jana')} />
+      </UserRow>
       <UserRow
-        interactive
-        onClick={() => alert('Abrir conversa com Nathan')}
+        asChild
         avatar={{ name: 'Nathan Costa' }}
         name="Nathan"
         meta="- há 3 horas"
         subtitle="+55 31 98756-5581"
         tags={<Tag variant="error">Teste</Tag>}
-      />
+      >
+        <button type="button" onClick={() => alert('Abrir conversa com Nathan')} />
+      </UserRow>
       <UserRow
-        interactive
-        onClick={() => alert('Abrir conversa com Fernando')}
+        asChild
         avatar={{ name: 'Fernando Lima' }}
         name="Fernando"
         meta="- há 4 horas"
@@ -126,7 +128,9 @@ export function UserRowInteractiveDemo() {
             <Tag variant="success">Sales</Tag>
           </>
         }
-      />
+      >
+        <button type="button" onClick={() => alert('Abrir conversa com Fernando')} />
+      </UserRow>
     </div>
   );
 }

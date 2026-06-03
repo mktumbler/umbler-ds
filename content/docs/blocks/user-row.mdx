@@ -19,7 +19,13 @@ Para listagens com bulk-action, ative `selectable`. O Checkbox é o componente d
 
 ## Clicável — Modal de seleção
 
-Quando a linha inteira é a ação (abrir conversa, selecionar contato), use `interactive`. Adiciona hover e cursor pointer; consumidor passa `onClick`.
+Quando a linha inteira é a ação (abrir conversa, selecionar contato), use `asChild` envolvendo a linha com `<a>`, `<button>` ou `<Link>`. O bloco adota o tag do filho, herdando estilo + hover + focus-visible. A acessibilidade vem de graça (role correto, navegação por teclado, ring no foco).
+
+```tsx
+<UserRow asChild name="Jana" avatar={{ name: 'Jana Silva' }} subtitle="…">
+  <Link href="/contacts/jana" />
+</UserRow>
+```
 
 <ComponentPreview title="Linhas como botões — réplica de Nova Conversa">
   <UserRowInteractiveDemo />
@@ -41,17 +47,18 @@ Quando a linha inteira é a ação (abrir conversa, selecionar contato), use `in
     ['meta',             'ReactNode',            'Texto secundário ao lado do nome (ex: "há 12 min"). Opcional.'],
     ['subtitle',         'ReactNode',            'Linha abaixo do nome (telefone, prévia). Opcional.'],
     ['tags',             'ReactNode',            'Slot para Badges/Tags antes da ação. Opcional.'],
-    ['action',           'ReactNode',            'Slot de ação à extrema direita. Opcional.'],
+    ['actions',          'ReactNode',            'Slot de ação à extrema direita. Opcional.'],
     ['selectable',       'boolean',              'Renderiza checkbox de seleção à esquerda.'],
     ['selected',         'boolean',              'Estado controlado do checkbox.'],
     ['onSelectedChange', '(b: boolean) => void', 'Handler do checkbox.'],
-    ['interactive',      'boolean',              'Linha clicável (hover + cursor pointer).'],
+    ['asChild',          'boolean',              'Usa o filho (<a>/<button>) como wrapper externo; conteúdo da linha vira filho dele.'],
+    ['children',         'ReactElement',         'Elemento único usado como wrapper quando asChild=true.'],
   ]}
 />
 
 ## Boas práticas
 
 - **Avatar sempre que possível.** Em listas de pessoas, o reconhecimento visual depende dele. Sem avatar a linha vira "lista de strings".
-- **Não combine `selectable` com `interactive` na mesma linha.** Se a linha é clicável e selecionável simultaneamente, fica ambíguo o que o clique faz. Escolha um modelo.
+- **Não combine `selectable` com `asChild` na mesma linha.** Se a linha é clicável e selecionável simultaneamente, fica ambíguo o que o clique faz. Escolha um modelo.
 - **Tags são contexto, não decoração.** Use 1–3 tags por linha; mais que isso vira ruído. Se precisa exibir muita info, é card, não row.
-- **`action` reserva à direita.** Não amontoe vários ícones — se precisa de 2+ ações, use Dropdown (kebab menu).
+- **`actions` reserva à direita.** Não amontoe vários ícones — se precisa de 2+ ações, use Dropdown (kebab menu).

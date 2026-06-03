@@ -12,6 +12,13 @@
  *   • Talk → Notificações: avatar + texto + data + close
  *
  * Composição usa Avatar + Checkbox do DS — sem hand-roll.
+ *
+ * Affordance clicável (padrão DS): use `asChild` envolvendo com <a>/<button>:
+ *   <UserRow asChild name="…">
+ *     <Link href="/contacts/123" />
+ *   </UserRow>
+ * O elemento filho passa a ser a tag externa da linha, herdando estilo,
+ * hover e focus-visible — a11y vem de graça por usar a tag certa.
  */
 
 import * as React from 'react';
@@ -31,14 +38,20 @@ export interface UserRowProps extends Omit<React.HTMLAttributes<HTMLDivElement>,
   /** Badges/Tags exibidos à direita do texto, antes da ação. */
   tags?: React.ReactNode;
   /** Slot de ação à extrema direita (botão, ícone, dropdown trigger). */
-  action?: React.ReactNode;
+  actions?: React.ReactNode;
   /** Renderiza Checkbox à esquerda. */
   selectable?: boolean;
   /** Estado controlado do checkbox. Requer onSelectedChange. */
   selected?: boolean;
   onSelectedChange?: (selected: boolean) => void;
-  /** Linha clicável (vira hover sutil + cursor pointer). */
-  interactive?: boolean;
+  /**
+   * Quando true, usa o elemento filho como wrapper (<a>, <button>, <Link>),
+   * adotando seu tag e merge de props. O conteúdo interno (avatar, texto,
+   * tags, actions) vira filho desse elemento.
+   */
+  asChild?: boolean;
+  /** Único filho válido quando asChild=true. Ignorado caso contrário. */
+  children?: React.ReactElement;
 }
 
 export function UserRow({
@@ -47,38 +60,26 @@ export function UserRow({
   meta,
   subtitle,
   tags,
-  action,
+  actions,
   selectable,
   selected,
   onSelectedChange,
-  interactive,
+  asChild,
   className,
-  onKeyDown,
+  children,
   ...props
 }: UserRowProps) {
-  const handleKeyDown = interactive
-    ? (e: React.KeyboardEvent<HTMLDivElement>) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          (e.currentTarget as HTMLElement).click();
-        }
-        onKeyDown?.(e);
-      }
-    : onKeyDown;
+  const interactiveClasses =
+    'cursor-pointer rounded-md hover:bg-control-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2';
 
-  return (
-    <div
-      role={interactive ? 'button' : undefined}
-      tabIndex={interactive ? 0 : undefined}
-      onKeyDown={handleKeyDown}
-      className={cn(
-        'flex items-center gap-3 px-4 py-3 transition-colors duration-[var(--duration-fast)]',
-        interactive &&
-          'cursor-pointer rounded-md hover:bg-control-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2',
-        className,
-      )}
-      {...props}
-    >
+  const rowClasses = cn(
+    'flex items-center gap-3 px-4 py-3 transition-colors duration-[var(--duration-fast)]',
+    asChild && interactiveClasses,
+    className,
+  );
+
+  const content = (
+    <>
       {selectable && (
         <Checkbox
           checked={selected}
@@ -102,7 +103,25 @@ export function UserRow({
 
       {tags && <div className="flex shrink-0 items-center gap-1.5">{tags}</div>}
 
-      {action && <div className="shrink-0">{action}</div>}
+      {actions && <div className="shrink-0">{actions}</div>}
+    </>
+  );
+
+  if (asChild && React.isValidElement(children)) {
+    const childProps = children.props as { className?: string };
+    return React.cloneElement(
+      children as React.ReactElement<Record<string, unknown>>,
+      {
+        ...(props as Record<string, unknown>),
+        className: cn(rowClasses, childProps.className),
+      },
+      content,
+    );
+  }
+
+  return (
+    <div className={rowClasses} {...props}>
+      {content}
     </div>
   );
 }

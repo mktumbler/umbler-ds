@@ -8,7 +8,7 @@
  *   ├──────────────────────────────────────────────┤
  *   │  <campos do form…>                           │
  *   ├──────────────────────────────────────────────┤
- *   │  [Submit full-width]                         │  ← footer com CTA
+ *   │  [Submit full-width]                         │  ← actions (CTA do formulário)
  *   └──────────────────────────────────────────────┘
  *
  * Aparece em:
@@ -17,6 +17,8 @@
  *   • Modal Subdomínio (variação enxuta)
  *
  * Usa Card do DS — sem hand-roll.
+ *
+ * Rhythm vertical: gap-5 (20px, escala "médio") — ver /docs/foundations/spacing.
  */
 
 import * as React from 'react';
@@ -27,17 +29,17 @@ export interface FormPanelProps
   extends Omit<React.FormHTMLAttributes<HTMLFormElement>, 'title'> {
   title: React.ReactNode;
   description?: React.ReactNode;
-  /** Slot do rodapé. Geralmente um <Button> de submit. Renderiza full-width por padrão. */
-  footer?: React.ReactNode;
-  /** Quando true, o footer ocupa 100% da largura (default). Quando false, fica à direita. */
-  footerFullWidth?: boolean;
+  /** Slot do rodapé (CTA do form). Geralmente um <Button> de submit. */
+  actions?: React.ReactNode;
+  /** Quando true, o conteúdo do slot actions ocupa 100% da largura (default). Quando false, alinha à direita. */
+  actionsFullWidth?: boolean;
 }
 
 export function FormPanel({
   title,
   description,
-  footer,
-  footerFullWidth = true,
+  actions,
+  actionsFullWidth = true,
   className,
   children,
   ...props
@@ -50,15 +52,15 @@ export function FormPanel({
           {description && <CardDescription>{description}</CardDescription>}
         </CardHeader>
         <CardContent className="flex flex-col gap-5">{children}</CardContent>
-        {footer && (
+        {actions && (
           <CardFooter
             className={cn(
-              footerFullWidth
+              actionsFullWidth
                 ? '[&>*]:w-full flex-col items-stretch'
                 : 'justify-end',
             )}
           >
-            {footer}
+            {actions}
           </CardFooter>
         )}
       </form>

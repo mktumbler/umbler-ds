@@ -56,3 +56,15 @@ Para valores customizados com tokens semânticos, use CSS variables:
 ```tsx
 <div style={{ padding: 'var(--spacing-6)' }} />
 ```
+
+## Rhythm vertical em Blocks
+
+Blocos (organismos compostos) seguem uma **escala discreta de 3 níveis** pra rhythm interno. Documentar isso evita decidir gap caso-a-caso.
+
+| Nível | Gap | Uso | Exemplos |
+|---|---|---|---|
+| **Micro** | `gap-3` (12px) | Linhas densas, conteúdo justaposto | `UserRow`, `FeatureCard` interno |
+| **Médio** | `gap-5` (20px) | Blocos médios com hierarquia interna | `EmptyState`, `FormPanel` |
+| **Grande** | `gap-8` (32px) | Wrapper de página (entre header / toolbar / body) | `DataListPage` |
+
+A regra serve pra escolher rapidamente quando criar um bloco novo. Se o caso de uso não cabe em micro/médio/grande, é sinal de que o bloco não está bem definido.

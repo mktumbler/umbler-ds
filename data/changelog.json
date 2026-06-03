@@ -1,6 +1,13 @@
 [
   {
     "date": "2026-06-03",
+    "type": "refactor",
+    "scope": "blocks",
+    "title": "BREAKING: API uniforme — actions, asChild e rhythm em escala 3",
+    "description": "Última rodada de decisões estruturais da revisão DS — 3 mudanças de API (breaking, sem alias de deprecation porque o DS está em v0.x e só o piloto consome). 1) Slot de ações unificado em `actions`: PageHeader.trailing → actions; FormPanel.footer/footerFullWidth → actions/actionsFullWidth; UserRow.action → actions. 2) Affordance interativa unificada em `asChild`: UserRow.interactive → asChild (envolver com <button>/<a>/<Link>); FeatureCard.href → asChild (envolver com <a>/<Link>). Implementação via React.cloneElement minimalista (sem dependência de @radix-ui/react-slot — não fitness pro caso onde o bloco dona o conteúdo interno). 3) Rhythm vertical em escala discreta de 3: gap-3 (micro: UserRow/FeatureCard), gap-5 (médio: EmptyState/FormPanel), gap-8 (grande: DataListPage). Documentado em /foundations/spacing#rhythm-vertical-em-blocks. EmptyState foi de gap-4 → gap-5, DataListPage de gap-6 → gap-8."
+  },
+  {
+    "date": "2026-06-03",
     "type": "fix",
     "scope": "blocks",
     "title": "Polish de blocks: tabular-nums, text-pretty, affordance de link",

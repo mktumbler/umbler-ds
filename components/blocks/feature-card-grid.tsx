@@ -10,6 +10,11 @@
  *   • Landing patterns: FeatureGridSection (3-col features)
  *
  * Composição usa Card do DS — sem hand-roll.
+ *
+ * Affordance clicável (padrão DS): use `asChild` envolvendo com <a>/<Link>:
+ *   <FeatureCard asChild title="…" icon={…}>
+ *     <Link href="/files" />
+ *   </FeatureCard>
  */
 
 import * as React from 'react';
@@ -53,30 +58,37 @@ export interface FeatureCardProps
   icon?: React.ReactNode;
   title: React.ReactNode;
   description?: React.ReactNode;
-  /** Renderiza o card como link (mantém estilo de Card, adiciona hover). */
-  href?: string;
+  /**
+   * Quando true, usa o elemento filho como wrapper externo do card (<a>,
+   * <Link>, <button>). Recebe estilo + focus-visible. O ícone/título/desc
+   * são renderizados como filhos desse elemento.
+   */
+  asChild?: boolean;
+  /** Único filho válido quando asChild=true. Ignorado caso contrário. */
+  children?: React.ReactElement;
 }
 
 export function FeatureCard({
   icon,
   title,
   description,
-  href,
+  asChild,
   className,
+  children,
   ...props
 }: FeatureCardProps) {
-  const content = (
+  const cardInner = (
     <Card
       className={cn(
         'h-full text-center',
-        // Card variant=default já traz shadow-sm + hover-lift. Quando há href,
-        // reforça o sinal de "clicável" com border-strong em rest + brand no hover.
-        href && 'border-border-strong hover:border-brand-400 cursor-pointer',
+        // Card variant=default já traz shadow-sm + hover-lift. Quando clicável,
+        // reforça o sinal com border-strong em rest + brand no hover.
+        asChild && 'border-border-strong hover:border-brand-400',
         className,
       )}
-      {...props}
+      {...(!asChild && props)}
     >
-      <CardContent className="flex flex-col items-center gap-3 p-6 pt-6">
+      <CardContent className="flex flex-col items-center gap-3 p-6">
         {icon && (
           <span className="flex size-12 items-center justify-center rounded-xl bg-brand-50 text-brand-500 dark:bg-brand-500/10 dark:text-brand-300">
             {icon}
@@ -90,13 +102,20 @@ export function FeatureCard({
     </Card>
   );
 
-  if (href) {
-    return (
-      <a href={href} className="block focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 rounded-lg">
-        {content}
-      </a>
+  if (asChild && React.isValidElement(children)) {
+    const childProps = children.props as { className?: string };
+    return React.cloneElement(
+      children as React.ReactElement<Record<string, unknown>>,
+      {
+        ...(props as Record<string, unknown>),
+        className: cn(
+          'block rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 cursor-pointer',
+          childProps.className,
+        ),
+      },
+      cardInner,
     );
   }
 
-  return content;
+  return cardInner;
 }

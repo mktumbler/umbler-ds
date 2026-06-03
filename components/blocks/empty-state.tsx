@@ -12,6 +12,8 @@
  *
  * Não é Marketing — pra promo card com split + ilustração + benefits,
  * use o futuro <MarketingBanner/>.
+ *
+ * Rhythm vertical: gap-5 (20px, escala "médio") — ver /docs/foundations/spacing.
  */
 
 import * as React from 'react';
@@ -19,7 +21,7 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
 
 const emptyStateVariants = cva(
-  'flex flex-col items-center justify-center gap-4 text-center',
+  'flex flex-col items-center justify-center gap-5 text-center',
   {
     variants: {
       size: {

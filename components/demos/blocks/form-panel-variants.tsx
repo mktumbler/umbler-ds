@@ -16,7 +16,7 @@ export function FormPanelGroupDemo() {
     <FormPanel
       title="Novo grupo de email"
       description="Envie uma mensagem para o email de um grupo e todos os membros recebem."
-      footer={<Button type="submit">Salvar</Button>}
+      actions={<Button type="submit">Salvar</Button>}
       onSubmit={(e) => {
         e.preventDefault();
         alert('Grupo criado');
@@ -55,7 +55,7 @@ export function FormPanelFilterDemo() {
     <FormPanel
       title="Novo filtro de email"
       description="Organize as mensagens da sua caixa através de condições e ações."
-      footer={<Button type="submit">Salvar</Button>}
+      actions={<Button type="submit">Salvar</Button>}
       onSubmit={(e) => e.preventDefault()}
     >
       <div>
@@ -99,8 +99,8 @@ export function FormPanelInlineFooterDemo() {
   return (
     <FormPanel
       title="Editar contato"
-      footerFullWidth={false}
-      footer={
+      actionsFullWidth={false}
+      actions={
         <>
           <Button variant="secondary">Cancelar</Button>
           <Button type="submit">Salvar alterações</Button>

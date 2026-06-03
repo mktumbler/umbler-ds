@@ -17,6 +17,8 @@
  * Exportado como três peças independentes (PageHeader, DataToolbar,
  * DataListPage) — o consumer compõe. PageHeader e DataToolbar também
  * funcionam isolados em outras páginas que não sejam listagem.
+ *
+ * Rhythm vertical: gap-8 (32px, escala "grande") — ver /docs/foundations/spacing.
  */
 
 import * as React from 'react';
@@ -30,15 +32,15 @@ export interface PageHeaderProps extends Omit<React.HTMLAttributes<HTMLDivElemen
   count?: React.ReactNode;
   /** Texto descritivo abaixo do título. */
   description?: React.ReactNode;
-  /** Slot opcional à direita (ações de página, dropdown, etc.). */
-  trailing?: React.ReactNode;
+  /** Slot de ações à direita do título (botões, dropdown, etc.). */
+  actions?: React.ReactNode;
 }
 
 export function PageHeader({
   title,
   count,
   description,
-  trailing,
+  actions,
   className,
   ...props
 }: PageHeaderProps) {
@@ -60,7 +62,7 @@ export function PageHeader({
           </p>
         )}
       </div>
-      {trailing && <div className="shrink-0">{trailing}</div>}
+      {actions && <div className="shrink-0">{actions}</div>}
     </header>
   );
 }
@@ -111,7 +113,7 @@ export function DataListPage({
   ...props
 }: DataListPageProps) {
   return (
-    <section className={cn('flex flex-col gap-6', className)} {...props}>
+    <section className={cn('flex flex-col gap-8', className)} {...props}>
       {header}
       {toolbar}
       <div>{children}</div>

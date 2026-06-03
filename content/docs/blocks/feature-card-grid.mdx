@@ -17,7 +17,13 @@ description: Grid n-up de feature cards — ícone + título + descrição. Bloc
 
 ## Como link clicável
 
-Quando o card é uma ação (e não só descrição), use `href`. O Card inteiro vira link com hover destacando a borda.
+Quando o card é uma ação (e não só descrição), use `asChild` envolvendo com `<a>` ou `<Link>`. O elemento filho vira o wrapper externo do card, herdando estilo + focus-visible + hover destacando a borda.
+
+```tsx
+<FeatureCard asChild icon={…} title="Hospedar site" description="…">
+  <Link href="/sites/new" />
+</FeatureCard>
+```
 
 <ComponentPreview title="Cards interativos — Dashboard">
   <FeatureCardGridLinksDemo />
@@ -44,10 +50,11 @@ Quando o card é uma ação (e não só descrição), use `href`. O Card inteiro
 <TokenTable
   columns={['Prop', 'Tipo', 'Descrição']}
   rows={[
-    ['icon',        'ReactNode', 'Ícone exibido no topo. Recomendado: 24px duotone do Phosphor.'],
-    ['title',       'ReactNode', 'Título do card.'],
-    ['description', 'ReactNode', 'Descrição curta. Opcional.'],
-    ['href',        'string',    'Se presente, o card inteiro vira link com hover destacado.'],
+    ['icon',        'ReactNode',    'Ícone exibido no topo. Recomendado: 24px duotone do Phosphor.'],
+    ['title',       'ReactNode',    'Título do card.'],
+    ['description', 'ReactNode',    'Descrição curta. Opcional.'],
+    ['asChild',     'boolean',      'Usa o filho (<a>/<Link>) como wrapper externo do card.'],
+    ['children',    'ReactElement', 'Elemento único usado como wrapper quando asChild=true.'],
   ]}
 />
 

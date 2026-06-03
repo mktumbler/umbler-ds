@@ -60,23 +60,29 @@ export function FeatureCardGridLinksDemo() {
   return (
     <FeatureCardGrid columns={3}>
       <FeatureCard
-        href="#"
+        asChild
         icon={<Globe size={24} weight="duotone" />}
         title="Hospedar site"
         description="WordPress ou PHP com poucos cliques."
-      />
+      >
+        <a href="#" />
+      </FeatureCard>
       <FeatureCard
-        href="#"
+        asChild
         icon={<ChatCircle size={24} weight="duotone" />}
         title="Criar emails"
         description="Gere valor para o seu negócio com um email profissional."
-      />
+      >
+        <a href="#" />
+      </FeatureCard>
       <FeatureCard
-        href="#"
+        asChild
         icon={<Lightning size={24} weight="duotone" />}
         title="Registrar domínio"
         description='Domínios ".com.br" e ".com" a preço de custo.'
-      />
+      >
+        <a href="#" />
+      </FeatureCard>
     </FeatureCardGrid>
   );
 }

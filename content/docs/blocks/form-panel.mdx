@@ -21,9 +21,9 @@ Mesma estrutura, mais campos. Layout com `flex` interno fica por conta do consum
   <FormPanelFilterDemo />
 </ComponentPreview>
 
-## Footer inline — Cancelar + Salvar
+## Actions inline — Cancelar + Salvar
 
-Quando o submit dividir espaço com uma ação secundária (cancelar, voltar, deletar), use `footerFullWidth={false}`. As ações alinham à direita.
+Quando o submit dividir espaço com uma ação secundária (cancelar, voltar, deletar), use `actionsFullWidth={false}`. As ações alinham à direita.
 
 <ComponentPreview title="Edição com Cancelar + Salvar lado-a-lado">
   <FormPanelInlineFooterDemo />
@@ -40,18 +40,18 @@ Quando o submit dividir espaço com uma ação secundária (cancelar, voltar, de
 <TokenTable
   columns={['Prop', 'Tipo', 'Descrição']}
   rows={[
-    ['title',           'ReactNode', 'Título do formulário. Required.'],
-    ['description',     'ReactNode', 'Descrição abaixo do título. Opcional.'],
-    ['footer',          'ReactNode', 'Slot do rodapé. Geralmente um Button de submit. Opcional.'],
-    ['footerFullWidth', 'boolean',   'CTA(s) do footer ocupam 100% (default true) ou alinham à direita.'],
-    ['children',        'ReactNode', 'Campos do form.'],
-    ['onSubmit, etc.',  '...',       'Recebe todos os atributos de <form>.'],
+    ['title',            'ReactNode', 'Título do formulário. Required.'],
+    ['description',      'ReactNode', 'Descrição abaixo do título. Opcional.'],
+    ['actions',          'ReactNode', 'Slot do rodapé — CTA do form. Geralmente um <Button type="submit">.'],
+    ['actionsFullWidth', 'boolean',   'CTA(s) ocupam 100% (default true) ou alinham à direita.'],
+    ['children',         'ReactNode', 'Campos do form.'],
+    ['onSubmit, etc.',   '...',       'Recebe todos os atributos de <form>.'],
   ]}
 />
 
 ## Boas práticas
 
-- **Submit full-width = 1 ação principal.** Se tem cancelar/voltar/deletar, use `footerFullWidth={false}` pra colocar as 2 ações lado-a-lado à direita.
+- **Submit full-width = 1 ação principal.** Se tem cancelar/voltar/deletar, use `actionsFullWidth={false}` pra colocar as 2 ações lado-a-lado à direita.
 - **Não verde como CTA.** Verde é estado. O CTA do form é `<Button>` (azul brand).
 - **Largura máxima.** O FormPanel já vem com `max-w-2xl mx-auto`. Pra formulários mais largos (ex: 2 colunas reais), passe `className="max-w-4xl"`.
 - **InputLabel sempre acima do campo.** É um par tipográfico, não label flutuante — colocar inline confunde acessibilidade.
