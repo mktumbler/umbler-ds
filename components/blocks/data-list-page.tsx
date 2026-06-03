@@ -49,9 +49,7 @@ export function PageHeader({
     >
       <div className="min-w-0">
         <div className="flex items-baseline gap-3">
-          <h1 className="font-heading text-h2 text-foreground" style={{ letterSpacing: '-0.02em' }}>
-            {title}
-          </h1>
+          <h1 className="font-heading text-h2 text-foreground">{title}</h1>
           {count !== undefined && count !== null && (
             <span className="text-h4 font-medium text-foreground-muted">{count}</span>
           )}

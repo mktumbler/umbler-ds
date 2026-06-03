@@ -43,6 +43,11 @@ export interface EmptyStateProps
   description?: React.ReactNode;
   /** Slot de ações (botões). Renderiza em linha, centralizado. */
   actions?: React.ReactNode;
+  /**
+   * Nível semântico do título. Use de acordo com a hierarquia da página:
+   * `h2` no topo de uma rota, `h3` (default) em tabs/sections, `h4` em cards.
+   */
+  as?: 'h2' | 'h3' | 'h4' | 'p';
 }
 
 export function EmptyState({
@@ -51,18 +56,19 @@ export function EmptyState({
   description,
   actions,
   size,
+  as: Heading = 'h3',
   className,
   ...props
 }: EmptyStateProps) {
   return (
     <div className={cn(emptyStateVariants({ size }), className)} {...props}>
       {media && (
-        <div className="flex items-center justify-center text-foreground-muted">
+        <div className="flex items-center justify-center text-foreground-muted" aria-hidden="true">
           {media}
         </div>
       )}
       <div className="max-w-prose space-y-2">
-        <h3 className="font-sans text-h4 text-foreground">{title}</h3>
+        <Heading className="font-sans text-h4 text-foreground">{title}</Heading>
         {description && (
           <p className="text-body-sm text-foreground-muted leading-relaxed">
             {description}

@@ -31,7 +31,7 @@ Card.displayName = 'Card';
 
 export const CardHeader = forwardRef<HTMLDivElement, HTMLAttributes<HTMLDivElement>>(
   ({ className, ...props }, ref) => (
-    <div ref={ref} className={cn('px-6 pt-6 pb-2', className)} {...props} />
+    <div ref={ref} className={cn('flex flex-col gap-1.5 px-6 pt-6 pb-2', className)} {...props} />
   ),
 );
 CardHeader.displayName = 'CardHeader';
@@ -53,7 +53,7 @@ CardTitle.displayName = 'CardTitle';
 
 export const CardDescription = forwardRef<HTMLParagraphElement, HTMLAttributes<HTMLParagraphElement>>(
   ({ className, ...props }, ref) => (
-    <p ref={ref} className={cn('mt-1.5 text-sm text-foreground-muted leading-relaxed', className)} {...props} />
+    <p ref={ref} className={cn('text-sm text-foreground-muted leading-relaxed', className)} {...props} />
   ),
 );
 CardDescription.displayName = 'CardDescription';

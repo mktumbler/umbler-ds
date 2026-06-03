@@ -82,7 +82,7 @@ export function FeatureCard({
         )}
         <CardTitle className="text-center">{title}</CardTitle>
         {description && (
-          <CardDescription className="mt-0 text-center">{description}</CardDescription>
+          <CardDescription className="text-center">{description}</CardDescription>
         )}
       </CardContent>
     </Card>

@@ -53,13 +53,28 @@ export function UserRow({
   onSelectedChange,
   interactive,
   className,
+  onKeyDown,
   ...props
 }: UserRowProps) {
+  const handleKeyDown = interactive
+    ? (e: React.KeyboardEvent<HTMLDivElement>) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          (e.currentTarget as HTMLElement).click();
+        }
+        onKeyDown?.(e);
+      }
+    : onKeyDown;
+
   return (
     <div
+      role={interactive ? 'button' : undefined}
+      tabIndex={interactive ? 0 : undefined}
+      onKeyDown={handleKeyDown}
       className={cn(
         'flex items-center gap-3 px-4 py-3 transition-colors duration-[var(--duration-fast)]',
-        interactive && 'cursor-pointer hover:bg-control-hover',
+        interactive &&
+          'cursor-pointer rounded-md hover:bg-control-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2',
         className,
       )}
       {...props}

@@ -1,6 +1,13 @@
 [
   {
     "date": "2026-06-03",
+    "type": "fix",
+    "scope": "blocks",
+    "title": "Revisão de consistência: a11y, tokens e spacing",
+    "description": "Rodada de fixes pós-revisão DS. UserRow `interactive` agora cumpre a11y completa (role=button, tabIndex, keyboard Enter/Space, focus-visible ring). PageHeader removeu override inline de letter-spacing — h1 respeita o token --text-h2--letter-spacing. CardHeader virou flex flex-col gap-1.5 e CardDescription perdeu mt-1.5 default (spacing agora é do container, não da child) — FeatureCard pôde dropar o mt-0 override. EmptyState ganhou prop `as` (h2|h3|h4|p, default h3) para o título acompanhar a hierarquia da página, e media wrapper agora tem aria-hidden."
+  },
+  {
+    "date": "2026-06-03",
     "type": "feat",
     "scope": "plugin",
     "title": "Claude Code Plugin — `umbler-ds`",
