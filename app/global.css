@@ -41,6 +41,11 @@
   margin-bottom: 0.75em;
 }
 
+/* ── Prose: underline de links com 1px (default Fumadocs/Tailwind é 1.5px) ── */
+.prose :where(a):not(:where([class~="not-prose"],[class~="not-prose"] *)) {
+  text-decoration-thickness: 1px;
+}
+
 /* ── Layout dos docs em light mode: fundo branco puro ───────────────────────── */
 :root:not(.dark) #nd-docs-layout {
   background-color: #ffffff;
