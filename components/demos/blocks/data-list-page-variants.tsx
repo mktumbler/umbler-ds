@@ -4,7 +4,7 @@ import { MagnifyingGlass, Plus, Eye, DotsThree } from '@phosphor-icons/react/dis
 import { Input } from '@/components/ui/input';
 import { Select } from '@/components/ui/select';
 import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
+import { Tag } from '@/components/ui/tag';
 import { Avatar } from '@/components/ui/avatar';
 import {
   Table,
@@ -85,9 +85,7 @@ export function DataListPageFullDemo() {
                 </div>
               </TableCell>
               <TableCell>
-                <Badge variant={c.tag.variant} shape="tag">
-                  {c.tag.label}
-                </Badge>
+                <Tag variant={c.tag.variant}>{c.tag.label}</Tag>
               </TableCell>
               <TableCell className="text-right">
                 <button className="text-foreground-muted hover:text-foreground" aria-label="Ver">

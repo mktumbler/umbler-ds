@@ -3,24 +3,6 @@ title: UserRow
 description: Linha de listagem de pessoa/contato — avatar, nome, metadado, tags e ação. Para inboxes, contatos, listas de atendentes.
 ---
 
-## Quando usar
-
-Sempre que você precisar listar **pessoas ou contatos**:
-
-- Inbox de conversas
-- Lista de contatos / clientes / atendentes
-- Modal de seleção ("escolher contato", "atribuir atendente")
-- Linhas de notificação
-
-## Onde aparece no produto
-
-| Tela | Variante |
-|---|---|
-| Talk → Conversas | Avatar + nome + última mensagem + tags + horário |
-| Talk → Contatos | Avatar + nome + telefone + tags + ações |
-| Talk → Nova conversa (modal) | Avatar + nome + telefone + tag, clicável |
-| Talk → Notificações | Avatar + texto + data + close |
-
 ## Básico — Lista com ações
 
 <ComponentPreview title="Lista de contatos com tags e ação por linha">
@@ -47,7 +29,7 @@ Quando a linha inteira é a ação (abrir conversa, selecionar contato), use `in
 
 - [`Avatar`](/docs/components/avatar) — props passadas direto via `avatar={...}`
 - [`Checkbox`](/docs/components/checkbox) — quando `selectable`
-- [`Badge`](/docs/components/badge) — para as tags. Recomendado: `shape="tag"`
+- [`Tag`](/docs/components/tag) — para as etiquetas (Proposta, Sales, etc.). É o pill arredondado padrão do Umbler Talk. Não confunda com `Badge shape="tag"`, que é o estilo retangular/uppercase usado em changelog/roadmap.
 
 ## API
 

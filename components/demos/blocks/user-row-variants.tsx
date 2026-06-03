@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { Eye, DotsThree } from '@phosphor-icons/react/dist/ssr';
-import { Badge } from '@/components/ui/badge';
+import { Tag } from '@/components/ui/tag';
 import { UserRow } from '@/components/blocks/user-row';
 
 /* ──────────────────────────────────────────────────────────
@@ -16,7 +16,7 @@ export function UserRowBasicDemo() {
         name="Jana"
         meta="- há 12 minutos"
         subtitle="+55 19 99576-4300"
-        tags={<Badge variant="brand" shape="tag">Proposta</Badge>}
+        tags={<Tag variant="brand">Proposta</Tag>}
         action={
           <button className="text-foreground-muted hover:text-foreground" aria-label="Ver">
             <Eye size={18} />
@@ -28,7 +28,7 @@ export function UserRowBasicDemo() {
         name="Nathan"
         meta="- há 2 horas"
         subtitle="+55 31 98756-5581"
-        tags={<Badge variant="error" shape="tag">Teste</Badge>}
+        tags={<Tag variant="error">Teste</Tag>}
         action={
           <button className="text-foreground-muted hover:text-foreground" aria-label="Ver">
             <Eye size={18} />
@@ -42,8 +42,8 @@ export function UserRowBasicDemo() {
         subtitle="+55 51 99370-3086"
         tags={
           <>
-            <Badge variant="warning" shape="tag">Indif.</Badge>
-            <Badge variant="success" shape="tag">Sales</Badge>
+            <Tag variant="warning">Indif.</Tag>
+            <Tag variant="success">Sales</Tag>
           </>
         }
         action={
@@ -73,7 +73,7 @@ export function UserRowSelectableDemo() {
         name="Jana"
         meta="- há 12 minutos"
         subtitle="+55 19 99576-4300"
-        tags={<Badge variant="brand" shape="tag">Proposta</Badge>}
+        tags={<Tag variant="brand">Proposta</Tag>}
       />
       <UserRow
         selectable
@@ -83,7 +83,7 @@ export function UserRowSelectableDemo() {
         name="Nathan"
         meta="- há 2 horas"
         subtitle="+55 31 98756-5581"
-        tags={<Badge variant="error" shape="tag">Teste</Badge>}
+        tags={<Tag variant="error">Teste</Tag>}
       />
     </div>
   );
@@ -102,7 +102,7 @@ export function UserRowInteractiveDemo() {
         name="Jana"
         meta="- há 14 minutos"
         subtitle="+55 19 99576-4300"
-        tags={<Badge variant="brand" shape="tag">Proposta</Badge>}
+        tags={<Tag variant="brand">Proposta</Tag>}
       />
       <UserRow
         interactive
@@ -111,7 +111,7 @@ export function UserRowInteractiveDemo() {
         name="Nathan"
         meta="- há 3 horas"
         subtitle="+55 31 98756-5581"
-        tags={<Badge variant="error" shape="tag">Teste</Badge>}
+        tags={<Tag variant="error">Teste</Tag>}
       />
       <UserRow
         interactive
@@ -122,8 +122,8 @@ export function UserRowInteractiveDemo() {
         subtitle="+55 51 99370-3086"
         tags={
           <>
-            <Badge variant="warning" shape="tag">Indif.</Badge>
-            <Badge variant="success" shape="tag">Sales</Badge>
+            <Tag variant="warning">Indif.</Tag>
+            <Tag variant="success">Sales</Tag>
           </>
         }
       />

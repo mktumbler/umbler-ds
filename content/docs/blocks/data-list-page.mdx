@@ -3,30 +3,9 @@ title: DataListPage
 description: Estrutura padrão para páginas de listagem — título, descrição, contador, toolbar de filtros e tabela de dados.
 ---
 
-Bloco composto que captura a estrutura recorrente das páginas de listagem do Talk (Contatos, Chatbots, Agentes de IA, Campanhas, Relatórios) e do Console (Histórico financeiro, Contas de email). Exportado em 3 peças que se combinam:
+Bloco composto exportado em 3 peças que se combinam: `<PageHeader>` (título + count + descrição), `<DataToolbar>` (search + filtros + CTA) e `<DataListPage>` (wrapper que arranja o espaçamento entre eles + o conteúdo).
 
-```
-┌─────────────────────────────────────┐
-│  Título 4743           [+ CTA]      │  ← PageHeader
-│  Descrição…                         │
-├─────────────────────────────────────┤
-│  [search] [filtro] [sort]    [+]    │  ← DataToolbar
-├─────────────────────────────────────┤
-│  <Table />                          │  ← children
-└─────────────────────────────────────┘
-```
-
-## Onde aparece no produto
-
-| Tela | Variação |
-|---|---|
-| Talk → Contatos | Header + count + descr + toolbar (search/select×2) + tabela com avatar/badge |
-| Talk → Chatbots | Header simples + toolbar (search/select×2) + tabela multi-linha |
-| Talk → Agentes de IA | Header + count + descr + link + toolbar + tabela com type/status |
-| Talk → Campanhas | Header + descr + toolbar (search + CTA) + tabela |
-| Console → Histórico financeiro | Tabs + header + toolbar (search) + tabela + footer |
-
-## Completo — Réplica do Talk → Contatos
+## Completo
 
 <ComponentPreview title="DataListPage com todos os slots populados">
   <DataListPageFullDemo />
