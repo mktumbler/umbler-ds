@@ -55,11 +55,7 @@ export function FeatureGridSection() {
     <section className="rounded-2xl border border-black/8 dark:border-white/8 bg-white dark:bg-neutral-950 px-8 py-20 not-prose">
       {/* Header */}
       <div className="mx-auto max-w-2xl text-center mb-16">
-        <p
-          className="eyebrow mb-1"
-        >
-          Plataforma
-        </p>
+        <p className="eyebrow">Plataforma</p>
         <h2
           className="font-heading text-h2 text-neutral-900 dark:text-neutral-50 mb-4"
           style={{ letterSpacing: '-0.05rem' }}
@@ -112,7 +108,7 @@ export function FeatureSplitSection() {
 
         {/* Texto */}
         <div>
-          <p className="eyebrow mb-1">CRM</p>
+          <p className="eyebrow">CRM</p>
           <h2
             className="font-heading text-h2 text-neutral-900 dark:text-neutral-50 mb-5"
             style={{ letterSpacing: '-0.05rem' }}
@@ -190,11 +186,7 @@ export function FeatureBentoSection() {
     <section className="dark rounded-2xl bg-neutral-950 px-8 py-20 not-prose">
       {/* Header */}
       <div className="mx-auto max-w-xl text-center mb-12">
-        <p
-          className="eyebrow mb-1"
-        >
-          Diferenciais
-        </p>
+        <p className="eyebrow">Diferenciais</p>
         <h2
           className="font-heading text-h2 text-neutral-50 mb-4"
           style={{ letterSpacing: '-0.05rem' }}

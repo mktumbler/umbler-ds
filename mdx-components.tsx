@@ -33,6 +33,9 @@ import { DialogBasic, DialogDestructive, DialogWithForm } from '@/components/dem
 import { TabsBasic, TabsWithIcons, TabsDisabled } from '@/components/demos/tabs-variants';
 import { DropdownBasic, DropdownWithLabel, DropdownCheckboxesAndRadios } from '@/components/demos/dropdown-variants';
 import { FeatureGridSection, FeatureSplitSection, FeatureBentoSection } from '@/components/demos/patterns/site/features';
+import { FeatureCardGrid3UpDemo, FeatureCardGrid2UpDemo, FeatureCardGridLinksDemo } from '@/components/demos/blocks/feature-card-grid-variants';
+import { UserRowBasicDemo, UserRowSelectableDemo, UserRowInteractiveDemo } from '@/components/demos/blocks/user-row-variants';
+import { DataListPageFullDemo, DataListPageMinimalDemo, PageHeaderSoloDemo } from '@/components/demos/blocks/data-list-page-variants';
 import { HeroBgGridDemo, HeroBgSweepDemo } from '@/components/demos/patterns/site/backgrounds';
 import { EmailPreview } from '@/components/docs/email-preview';
 import { DSStack } from '@/components/docs/ds-stack';
@@ -116,6 +119,15 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     FeatureGridSection,
     FeatureSplitSection,
     FeatureBentoSection,
+    FeatureCardGrid3UpDemo,
+    FeatureCardGrid2UpDemo,
+    FeatureCardGridLinksDemo,
+    UserRowBasicDemo,
+    UserRowSelectableDemo,
+    UserRowInteractiveDemo,
+    DataListPageFullDemo,
+    DataListPageMinimalDemo,
+    PageHeaderSoloDemo,
     HeroBgGridDemo,
     HeroBgSweepDemo,
     EmailPreview,

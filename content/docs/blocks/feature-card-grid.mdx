@@ -1,0 +1,73 @@
+---
+title: FeatureCardGrid
+description: Grid n-up de feature cards — ícone + título + descrição. Bloco para introduzir capacidades, ações disponíveis ou diferenciais.
+---
+
+## Quando usar
+
+- Mostrar **capacidades** de uma seção (ex: tipos de deploy disponíveis num site)
+- Apresentar **opções de ação** numa dashboard ou home (ex: "O que gostaria de fazer?")
+- Comunicar **diferenciais** numa landing page
+
+## Onde aparece no produto
+
+| Tela | Uso |
+|---|---|
+| UmblerClub → Site → Arquivos | 3-up: FTPS / Git Remote / Git via SSH / Goodbye.host / Arquivos |
+| UmblerClub → Dashboard | 4-up: Umbler Talk / Hospedar site / Criar emails / Registrar domínio |
+| Landing → Patterns → Features | 3×2 grid de features do produto |
+
+## 3-up — Site → Arquivos
+
+<ComponentPreview title="Grid de 3 colunas — meios de envio de arquivo">
+  <FeatureCardGrid3UpDemo />
+</ComponentPreview>
+
+## 2-up — Variação compacta
+
+<ComponentPreview title="Grid de 2 colunas">
+  <FeatureCardGrid2UpDemo />
+</ComponentPreview>
+
+## Como link clicável
+
+Quando o card é uma ação (e não só descrição), use `href`. O Card inteiro vira link com hover destacando a borda.
+
+<ComponentPreview title="Cards interativos — Dashboard">
+  <FeatureCardGridLinksDemo />
+</ComponentPreview>
+
+## Componentes usados
+
+- [`Card`](/docs/components/card) — wrapper visual, com `CardContent`, `CardTitle`, `CardDescription`
+- Tokens semânticos: `--color-brand-50`, `--color-brand-500`, `--color-foreground`, `--color-foreground-muted`
+
+## API
+
+### `<FeatureCardGrid>`
+
+<TokenTable
+  columns={['Prop', 'Tipo', 'Descrição']}
+  rows={[
+    ['columns', '2 | 3 | 4', 'Número de colunas no breakpoint largo. Default: 3'],
+  ]}
+/>
+
+### `<FeatureCard>`
+
+<TokenTable
+  columns={['Prop', 'Tipo', 'Descrição']}
+  rows={[
+    ['icon',        'ReactNode', 'Ícone exibido no topo. Recomendado: 24px duotone do Phosphor.'],
+    ['title',       'ReactNode', 'Título do card.'],
+    ['description', 'ReactNode', 'Descrição curta. Opcional.'],
+    ['href',        'string',    'Se presente, o card inteiro vira link com hover destacado.'],
+  ]}
+/>
+
+## Boas práticas
+
+- **Mantenha o número de itens entre 2 e 6.** Mais que 6 vira lista, não destaque.
+- **Descrições curtas.** 1 frase, máximo 2 linhas. Se precisar de mais, é uma seção, não um card.
+- **Ícones consistentes em peso.** Use sempre o mesmo `weight` (recomendado: `duotone`) dentro do mesmo grid.
+- **Não use no meio de fluxo denso.** Esse bloco respira — dá pelo menos 16px de espaço acima e abaixo.

@@ -1,0 +1,33 @@
+---
+title: Blocks
+description: Organismos reutilizáveis — composições de componentes que aparecem 3+ vezes em produtos Umbler.
+---
+
+**Blocks** ocupam a camada entre **Components** (átomos e moléculas como Button, Card, Input) e **Patterns** (templates de página inteiros como Hero, Feature Section). São **organismos**, no vocabulário de Atomic Design — pedaços de UI grandes o suficiente pra ter identidade própria, mas pequenos o suficiente pra serem reutilizados em vários contextos.
+
+## Como um bloco entra aqui
+
+Critério objetivo, vindo de Polaris (Shopify) e Primer (GitHub):
+
+> **Algo só vira bloco quando aparece 3+ vezes em telas/produtos diferentes.**
+
+- 1x = página única → escreva direto no código do produto
+- 2x = duplicação suspeita → vale conversa, ainda não bloco
+- 3+ = padrão → vira bloco
+
+Antes de cada bloco virar página aqui, ele passa por um **Interface Inventory** (metodologia Brad Frost): screenshots dos produtos Umbler agrupados por similaridade, contagem de frequência, decisão baseada em evidência — não em "achei legal ter".
+
+## O que tem aqui
+
+| Bloco | Composto de | Aparece em |
+|---|---|---|
+| [DataListPage](/docs/blocks/data-list-page) | PageHeader + DataToolbar + Table | Contatos, Chatbots, Agentes de IA, Campanhas, Relatórios (Talk) |
+| [UserRow](/docs/blocks/user-row) | Avatar + texto + Badge + ações | Conversas, Contatos, Nova conversa, Notificações (Talk) |
+| [FeatureCardGrid](/docs/blocks/feature-card-grid) | Card + ícone + heading + body | Site arquivos, Dashboard ações, landing features |
+
+## Princípios
+
+- **Bloco não reinventa componente.** Se um bloco precisa de um botão, ele usa `<Button>`. Não é `<button className="bg-brand-500 ...">`. Esse princípio é guardado por `scripts/audit-antipatterns.mjs`.
+- **Bloco não cria token novo.** Bloco compõe tokens existentes. Se você precisa de uma cor ou espaçamento que não existe, primeiro abre PR em Foundations.
+- **Bloco mostra contexto real.** Cada página linka pra screenshot do produto onde o bloco aparece, e quais componentes ele combina.
+- **Bloco evolui com a evidência.** Se um padrão deixou de aparecer 3+ vezes (ou foi substituído), o bloco morre.

@@ -447,6 +447,7 @@
 .eyebrow {
   font-size: 0.75rem;
   font-weight: 500;
+  line-height: 1;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   background: var(--gradient-brand);
@@ -454,4 +455,16 @@
   background-clip: text;
   -webkit-text-fill-color: transparent;
   color: transparent;
+}
+
+/* eyebrow + título irmão = par colado.
+   Quando o eyebrow é seguido direto por h1-h6, garante 8px de respiro
+   (e nada mais), independente do que cada lugar resolver. */
+.eyebrow + h1,
+.eyebrow + h2,
+.eyebrow + h3,
+.eyebrow + h4,
+.eyebrow + h5,
+.eyebrow + h6 {
+  margin-top: 0.5rem;
 }

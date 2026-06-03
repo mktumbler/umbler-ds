@@ -1,0 +1,75 @@
+---
+title: UserRow
+description: Linha de listagem de pessoa/contato — avatar, nome, metadado, tags e ação. Para inboxes, contatos, listas de atendentes.
+---
+
+## Quando usar
+
+Sempre que você precisar listar **pessoas ou contatos**:
+
+- Inbox de conversas
+- Lista de contatos / clientes / atendentes
+- Modal de seleção ("escolher contato", "atribuir atendente")
+- Linhas de notificação
+
+## Onde aparece no produto
+
+| Tela | Variante |
+|---|---|
+| Talk → Conversas | Avatar + nome + última mensagem + tags + horário |
+| Talk → Contatos | Avatar + nome + telefone + tags + ações |
+| Talk → Nova conversa (modal) | Avatar + nome + telefone + tag, clicável |
+| Talk → Notificações | Avatar + texto + data + close |
+
+## Básico — Lista com ações
+
+<ComponentPreview title="Lista de contatos com tags e ação por linha">
+  <UserRowBasicDemo />
+</ComponentPreview>
+
+## Selecionável
+
+Para listagens com bulk-action, ative `selectable`. O Checkbox é o componente do DS — não é hand-roll.
+
+<ComponentPreview title="Linhas com checkbox de seleção">
+  <UserRowSelectableDemo />
+</ComponentPreview>
+
+## Clicável — Modal de seleção
+
+Quando a linha inteira é a ação (abrir conversa, selecionar contato), use `interactive`. Adiciona hover e cursor pointer; consumidor passa `onClick`.
+
+<ComponentPreview title="Linhas como botões — réplica de Nova Conversa">
+  <UserRowInteractiveDemo />
+</ComponentPreview>
+
+## Componentes usados
+
+- [`Avatar`](/docs/components/avatar) — props passadas direto via `avatar={...}`
+- [`Checkbox`](/docs/components/checkbox) — quando `selectable`
+- [`Badge`](/docs/components/badge) — para as tags. Recomendado: `shape="tag"`
+
+## API
+
+<TokenTable
+  columns={['Prop', 'Tipo', 'Descrição']}
+  rows={[
+    ['avatar',           'AvatarProps',          'Props repassadas ao <Avatar/>. Opcional.'],
+    ['name',             'ReactNode',            'Nome principal. Required.'],
+    ['meta',             'ReactNode',            'Texto secundário ao lado do nome (ex: "há 12 min"). Opcional.'],
+    ['subtitle',         'ReactNode',            'Linha abaixo do nome (telefone, prévia). Opcional.'],
+    ['tags',             'ReactNode',            'Slot para Badges/Tags antes da ação. Opcional.'],
+    ['action',           'ReactNode',            'Slot de ação à extrema direita. Opcional.'],
+    ['selectable',       'boolean',              'Renderiza checkbox de seleção à esquerda.'],
+    ['selected',         'boolean',              'Estado controlado do checkbox.'],
+    ['onSelectedChange', '(b: boolean) => void', 'Handler do checkbox.'],
+    ['interactive',      'boolean',              'Linha clicável (hover + cursor pointer).'],
+  ]}
+/>
+
+## Boas práticas
+
+- **Avatar sempre que possível.** Em listas de pessoas, o reconhecimento visual depende dele. Sem avatar a linha vira "lista de strings".
+- **Não combine `selectable` com `interactive` na mesma linha.** Se a linha é clicável e selecionável simultaneamente, fica ambíguo o que o clique faz. Escolha um modelo.
+- **Tags são contexto, não decoração.** Use 1–3 tags por linha; mais que isso vira ruído. Se precisa exibir muita info, é card, não row.
+- **`action` reserva à direita.** Não amontoe vários ícones — se precisa de 2+ ações, use Dropdown (kebab menu).

@@ -1,0 +1,100 @@
+---
+title: DataListPage
+description: Estrutura padrão para páginas de listagem — título, descrição, contador, toolbar de filtros e tabela de dados.
+---
+
+Bloco composto que captura a estrutura recorrente das páginas de listagem do Talk (Contatos, Chatbots, Agentes de IA, Campanhas, Relatórios) e do Console (Histórico financeiro, Contas de email). Exportado em 3 peças que se combinam:
+
+```
+┌─────────────────────────────────────┐
+│  Título 4743           [+ CTA]      │  ← PageHeader
+│  Descrição…                         │
+├─────────────────────────────────────┤
+│  [search] [filtro] [sort]    [+]    │  ← DataToolbar
+├─────────────────────────────────────┤
+│  <Table />                          │  ← children
+└─────────────────────────────────────┘
+```
+
+## Onde aparece no produto
+
+| Tela | Variação |
+|---|---|
+| Talk → Contatos | Header + count + descr + toolbar (search/select×2) + tabela com avatar/badge |
+| Talk → Chatbots | Header simples + toolbar (search/select×2) + tabela multi-linha |
+| Talk → Agentes de IA | Header + count + descr + link + toolbar + tabela com type/status |
+| Talk → Campanhas | Header + descr + toolbar (search + CTA) + tabela |
+| Console → Histórico financeiro | Tabs + header + toolbar (search) + tabela + footer |
+
+## Completo — Réplica do Talk → Contatos
+
+<ComponentPreview title="DataListPage com todos os slots populados">
+  <DataListPageFullDemo />
+</ComponentPreview>
+
+## Mínimo — Sem count, sem descrição
+
+<ComponentPreview title="Apenas título + toolbar simples + tabela">
+  <DataListPageMinimalDemo />
+</ComponentPreview>
+
+## PageHeader isolado
+
+`PageHeader` também funciona sozinho em páginas que não são listagem (configurações, dashboards, edição).
+
+<ComponentPreview title="PageHeader com count, descrição e ação trailing">
+  <PageHeaderSoloDemo />
+</ComponentPreview>
+
+## Componentes usados
+
+- [`Input`](/docs/components/input) — search com `leftElement={<MagnifyingGlass />}`
+- [`Select`](/docs/components/select) — filtros
+- [`Button`](/docs/components/button) — CTA primária (nunca verde — verde é estado, não ação)
+- [`Table`](/docs/components/table) — listagem de dados
+- [`Avatar`](/docs/components/avatar) + [`Badge`](/docs/components/badge) — dentro das células
+
+Quando a linha for de pessoa/contato, troque o `<tr>` por [`<UserRow>`](/docs/blocks/user-row) — fica mais consistente entre listas de pessoas em todo o produto.
+
+## API
+
+### `<DataListPage>`
+
+<TokenTable
+  columns={['Prop', 'Tipo', 'Descrição']}
+  rows={[
+    ['header',   'ReactNode', 'Slot do <PageHeader/>. Opcional.'],
+    ['toolbar',  'ReactNode', 'Slot do <DataToolbar/>. Opcional.'],
+    ['children', 'ReactNode', 'Conteúdo principal (Table, lista de UserRows, etc.). Required.'],
+  ]}
+/>
+
+### `<PageHeader>`
+
+<TokenTable
+  columns={['Prop', 'Tipo', 'Descrição']}
+  rows={[
+    ['title',       'ReactNode', 'Título principal da página. Required.'],
+    ['count',       'ReactNode', 'Contador exibido ao lado do título. Opcional.'],
+    ['description', 'ReactNode', 'Texto descritivo abaixo. Opcional.'],
+    ['trailing',    'ReactNode', 'Slot à direita (CTA, dropdown). Opcional.'],
+  ]}
+/>
+
+### `<DataToolbar>`
+
+<TokenTable
+  columns={['Prop', 'Tipo', 'Descrição']}
+  rows={[
+    ['children', 'ReactNode', 'Slot da esquerda — search + filtros. Required.'],
+    ['actions',  'ReactNode', 'Slot da direita — CTA primária + overflow. Opcional.'],
+  ]}
+/>
+
+## Boas práticas
+
+- **`count` quando há contagem total significativa** ("4743 contatos"). Quando o número é pequeno ou volátil, omita.
+- **Não duplique a descrição em outros lugares da página.** Se o usuário já leu "gerencie seus contatos" no header, não repita acima da tabela.
+- **CTA primária à direita do toolbar, sempre.** Não no header. Manter a CTA perto dos filtros mantém previsibilidade entre páginas.
+- **Filtros à esquerda, ação à direita.** É a convenção universal de listagens. Inverter quebra o padrão mental do usuário.
+- **Verde como CTA é proibido.** Verde é estado (`Badge variant="success"`), não ação. Veja [colors.mdx](/docs/foundations/colors).

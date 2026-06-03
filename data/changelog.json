@@ -1,5 +1,19 @@
 [
   {
+    "date": "2026-06-03",
+    "type": "feat",
+    "scope": "blocks",
+    "title": "Nova camada: Blocks",
+    "description": "Camada intermediária entre Components e Patterns — organismos reutilizáveis cuja seleção passa por Interface Inventory (regra do 3 de Polaris/Primer). Primeiros 3 blocos: DataListPage (PageHeader + DataToolbar + Table wrapper), UserRow (linhas de contato/atendente) e FeatureCardGrid (grid n-up de feature cards). Estrutura em components/blocks/ + content/docs/blocks/."
+  },
+  {
+    "date": "2026-06-03",
+    "type": "refactor",
+    "scope": "ds",
+    "title": "Eyebrow com line-height 1 + combinator com título",
+    "description": "Classe .eyebrow agora tem line-height: 1 (remove o leading vertical fantasma) e regra .eyebrow + h1..h6 { margin-top: 0.5rem } garante 8px de respiro entre eyebrow e título irmão. Antes cada lugar decidia o gap (mb-1, mb-2…) e a tipografia ficava inconsistente."
+  },
+  {
     "date": "2026-06-02",
     "type": "feat",
     "scope": "tag-input",
