@@ -119,6 +119,14 @@
   --text-h4--line-height: 1.35;
   --text-h4--font-weight: 500;
 
+  --text-h5: 1.125rem;        /* 18px */
+  --text-h5--line-height: 1.4;
+  --text-h5--font-weight: 500;
+
+  --text-h6: 1rem;            /* 16px */
+  --text-h6--line-height: 1.4;
+  --text-h6--font-weight: 500;
+
   --text-body-lg: 1.125rem;   /* 18px */
   --text-body-lg--line-height: 1.6;
 
@@ -149,6 +157,8 @@
   --radius-md: 0.625rem;      /* 10px */
   --radius-lg: 1rem;          /* 16px */
   --radius-xl: 1.5rem;        /* 24px */
+  --radius-2xl: 2rem;         /* 32px — containers grandes (sections, hero) */
+  --radius-3xl: 2.5rem;       /* 40px — splashes, ilustrações */
   --radius-full: 9999px;
 
   /* -------- Motion -------- */
@@ -213,17 +223,17 @@
   --logo-show-dark: none;
 
   --surface:              #ffffff;
-  --border:               rgba(42, 51, 86, 0.18);
-  --border-strong:        rgba(42, 51, 86, 0.35);
-  --foreground:           #111733;          /* neutral-800 */
-  --foreground-secondary: #1a2240;          /* neutral-700 */
-  --foreground-muted:     #4a5278;          /* neutral-500 */
-  --foreground-subtle:    #6e7799;          /* neutral-400 */
-  --control-track:        #c4cae0;          /* neutral-200 */
-  --control-hover:        rgba(42, 51, 86, 0.08);  /* hover sutil em controles */
+  --border:               color-mix(in srgb, var(--color-neutral-600) 18%, transparent);
+  --border-strong:        color-mix(in srgb, var(--color-neutral-600) 35%, transparent);
+  --foreground:           var(--color-neutral-800);
+  --foreground-secondary: var(--color-neutral-700);
+  --foreground-muted:     var(--color-neutral-500);
+  --foreground-subtle:    var(--color-neutral-400);
+  --control-track:        var(--color-neutral-200);
+  --control-hover:        color-mix(in srgb, var(--color-neutral-600) 8%, transparent);
 
   /* Tooltip — sempre inverso à superfície para contraste máximo */
-  --tooltip-bg: #030614;                    /* neutral-950 */
+  --tooltip-bg: var(--color-neutral-950);
   --tooltip-fg: #ffffff;
 
   /* Shadows — neutral-500 (rgb 74 82 120), índigo-ardósia, superfícies claras */
@@ -241,19 +251,19 @@
   --logo-show-light: none;
   --logo-show-dark: block;
 
-  --surface:              #0a0f20;          /* neutral-900 */
-  --border:               rgba(42, 51, 86, 0.7);
-  --border-strong:        #4a5278;          /* neutral-500 */
-  --foreground:           #e8eaf2;          /* neutral-100 */
-  --foreground-secondary: #c4cae0;          /* neutral-200 */
-  --foreground-muted:     #6e7799;          /* neutral-400 */
-  --foreground-subtle:    #4a5278;          /* neutral-500 */
-  --control-track:        #1a2240;          /* neutral-700 */
-  --control-hover:        rgba(26, 34, 64, 0.6);   /* neutral-700 @ 60% */
+  --surface:              var(--color-neutral-900);
+  --border:               color-mix(in srgb, var(--color-neutral-600) 70%, transparent);
+  --border-strong:        var(--color-neutral-500);
+  --foreground:           var(--color-neutral-100);
+  --foreground-secondary: var(--color-neutral-200);
+  --foreground-muted:     var(--color-neutral-400);
+  --foreground-subtle:    var(--color-neutral-500);
+  --control-track:        var(--color-neutral-700);
+  --control-hover:        color-mix(in srgb, var(--color-neutral-700) 60%, transparent);
 
   /* Tooltip — inverso à superfície (claro sobre dark) */
   --tooltip-bg: #ffffff;
-  --tooltip-fg: #0a0f20;                    /* neutral-900 */
+  --tooltip-fg: var(--color-neutral-900);
 
   /* Shadows — neutral-900 (rgb 10 15 32), superfícies escuras */
   --shadow-xs-val:   0 1px 2px 0 rgb(10 15 32 / 0.3);

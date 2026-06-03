@@ -1,6 +1,13 @@
 [
   {
     "date": "2026-06-03",
+    "type": "refactor",
+    "scope": "tokens",
+    "title": "Foundations: tokens semânticos amarrados ao raw + escalas completas",
+    "description": "Eliminado o nível morto de indireção em tokens semânticos. --foreground/-secondary/-muted/-subtle e --control-track agora apontam para var(--color-neutral-X) em vez de hex literal duplicado — se o palette neutral evoluir, os semânticos seguem junto. Borders e control-hover migrados de rgba(42,51,86,X) hardcoded para color-mix(in srgb, var(--color-neutral-600) X%, transparent). Escala tipográfica completada com h5 (18px) e h6 (16px). Escala de radius ganhou 2xl (32px) e 3xl (40px) — antes existiam só sm/md/lg/xl/full, mas o código já usava rounded-2xl em seções."
+  },
+  {
+    "date": "2026-06-03",
     "type": "fix",
     "scope": "blocks",
     "title": "Revisão de consistência: a11y, tokens e spacing",
