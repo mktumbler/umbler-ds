@@ -2,6 +2,13 @@
   {
     "date": "2026-06-05",
     "type": "feat",
+    "scope": "docs",
+    "title": "Seção Marketing na sidebar — guidelines de marca, conversão e page types",
+    "description": "Nova entrada na sidebar do DS entre 'Patterns' e 'Email'. Marketing é onde mora a camada de orientação para landings: como compor, qual a voz, qual a sequência persuasiva, qual o tipo de página. Index introdutório com mapa de o que vem (Brand, Conversion, Page Types) e tabela de 'quando consultar cada coisa'. As sub-seções (brand/, conversion/, page-types/) entram nos próximos lotes. Decisão de escopo: foundations + components + blocks continuam compartilhados produto/marketing (mesma fonte de verdade); marketing é a camada de método sobre essa base."
+  },
+  {
+    "date": "2026-06-05",
+    "type": "feat",
     "scope": "tokens",
     "title": "Tokens premium para landings (gradientes, shadow-cta, motion expandido, blur, WhatsApp)",
     "description": "Primeira leva de tokens absorvidos do brand guide paralelo, pensando em servir landings premium além do produto. 1) Gradientes nomeados: --gradient-glow (halo radial), --gradient-premium (linear 135°), --gradient-hero (linear 180° deep), --gradient-surface-dark (transição entre seções). Cores fixas dark-premium, funcionam sobre qualquer fundo. 2) --shadow-cta adaptativo (azul brand) para CTAs primários de landing — produto continua com shadow-sm/md. 3) Motion expandido: --duration-slowest (1000ms — reservado para hero/manifesto, não UI funcional); 3 staggers (tight 40ms, default 80ms, relaxed 140ms); 3 easings novos (ease-out-expo, ease-out-quart, ease-in-out-cubic). 4) Blur tokens (--blur-sm/md/lg/xl) para backdrop e glass effects. 5) --color-whatsapp (#25D366) como cor nomeada da marca para componentes do canal. Documentado em foundations/motion e foundations/colors. Fix bonus: warning de build do duration-[var(--duration-fast/normal/slow/slower/instant)] no llms-template (era texto de doc que o Tailwind interpretava como classe)."
