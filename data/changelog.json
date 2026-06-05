@@ -1,6 +1,13 @@
 [
   {
     "date": "2026-06-05",
+    "type": "feat",
+    "scope": "docs",
+    "title": "FoundationsOverview na home da doc",
+    "description": "Tela de Início (/docs) agora abre com um preview compacto dos 6 foundations (Colors, Typography, Spacing, Radius, Shadows, Motion) — cada card mostra um sample visual + link pra página completa. Quem chega no DS pela primeira vez consegue ver a base em um relance, sem precisar caçar no sidebar. Substitui a aterrissagem 'só texto' que dependia do leitor descobrir Foundations por conta própria."
+  },
+  {
+    "date": "2026-06-05",
     "type": "chore",
     "scope": "plugin",
     "title": "Remove sub-agent umbler-block-creator do plugin",

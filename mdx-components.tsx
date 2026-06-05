@@ -44,6 +44,7 @@ import { DSStack } from '@/components/docs/ds-stack';
 import { DSStats } from '@/components/docs/ds-stats';
 import { Changelog } from '@/components/docs/changelog';
 import { Roadmap } from '@/components/docs/roadmap';
+import { FoundationsOverview } from '@/components/docs/foundations-overview';
 
 export function getMDXComponents(components?: MDXComponents): MDXComponents {
   return {
@@ -144,6 +145,7 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     DSStats,
     Changelog,
     Roadmap,
+    FoundationsOverview,
     ...components,
   };
 }
