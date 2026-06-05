@@ -491,6 +491,12 @@
    EYEBROW / CAPTION — gradiente da marca (padrão DS)
    ============================================================ */
 .eyebrow {
+  /* inline-block: o gradiente é clippado pelo bounding box do elemento,
+     então com display block ele estica pela largura inteira do container
+     e o texto pega só uma fatia. inline-block abraça o texto e mostra o
+     gradiente inteiro dentro dos caracteres. Margem vertical (mb-N) e
+     centralização via parent text-center continuam funcionando. */
+  display: inline-block;
   font-size: 0.75rem;
   font-weight: 500;
   line-height: 1;
