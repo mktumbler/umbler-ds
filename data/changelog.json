@@ -1,6 +1,13 @@
 [
   {
     "date": "2026-06-05",
+    "type": "chore",
+    "scope": "plugin",
+    "title": "Remove sub-agent umbler-block-creator do plugin",
+    "description": "O sub-agent foi criado junto com o plugin mas nunca passou por uso real — a disciplina (Interface Inventory + regra do 3) já vive na skill principal e no slash command /umbler-block, que cobrem o mesmo fluxo com menos atrito. Sub-agents trocam contexto (rodam em thread separada), o que vira overhead pra um fluxo que o mantenedor quer acompanhar passo a passo. Removidos: .claude-plugin/agents/umbler-block-creator.md, seção no plugin.mdx, menções no plugin.json e README do plugin."
+  },
+  {
+    "date": "2026-06-05",
     "type": "refactor",
     "scope": "docs",
     "title": "Varredura UI lote B — fd-tokens, motion-demo via Button, opacity → tokens",

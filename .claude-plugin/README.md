@@ -4,7 +4,6 @@ Plugin oficial do Umbler Design System para Claude Code. Empacota:
 
 - **1 skill** — contexto completo do DS (convenções, tokens, regras críticas, catálogo)
 - **4 slash commands** — `/umbler-init`, `/umbler-add`, `/umbler-audit`, `/umbler-block`
-- **1 sub-agent** — `umbler-block-creator` para automatizar criação de blocos
 - **1 hook** — auto-audit após edição de `.tsx`/`.mdx`
 - **1 script** — `audit-antipatterns.mjs` portátil
 
@@ -48,8 +47,6 @@ Quando precisar de um organismo composto:
 │   ├── umbler-add.md
 │   ├── umbler-audit.md
 │   └── umbler-block.md
-├── agents/
-│   └── umbler-block-creator.md  sub-agent
 ├── hooks/
 │   └── hooks.json               auto-audit on edit
 └── scripts/

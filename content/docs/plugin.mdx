@@ -1,13 +1,12 @@
 ---
 title: Claude Code Plugin
-description: Instale o Umbler DS como plugin do Claude Code — skill, slash commands, sub-agent e auto-audit em 1 clique.
+description: Instale o Umbler DS como plugin do Claude Code — skill, slash commands e auto-audit em 1 clique.
 ---
 
 O Umbler DS é distribuído também como **plugin do Claude Code**. Quem instala, ganha:
 
 - O Claude já sabe **todas as convenções** do DS (não precisa explicar)
 - **4 slash commands** que automatizam bootstrap, adição de componentes, auditoria e criação de blocos
-- **1 sub-agent especialista** em criar Blocks via Interface Inventory + regra do 3
 - **Hook automático** que avisa de hand-rolls toda vez que você edita `.tsx` ou `.mdx`
 
 ## Instalação
@@ -29,16 +28,6 @@ Ou via comando:
 | `/umbler-audit` | Varre o repo atrás de hand-rolls (button/badge/eyebrow/alert) |
 | `/umbler-block` | Fluxo de criação de bloco — Interface Inventory + regra do 3 + implementação |
 
-## Sub-agent
-
-`umbler-block-creator` — invoque quando o usuário trouxer prints de tela ou pedir um novo bloco. Ele automatiza o fluxo:
-
-1. Recebe screenshots dos produtos Umbler
-2. Faz Interface Inventory (lista cada padrão visual, conta frequência)
-3. Aplica regra do 3 (Polaris/Primer)
-4. Apresenta ranking de candidatos
-5. Implementa os aprovados seguindo todas as convenções do DS
-
 ## Hook
 
 `PostToolUse` em `Edit|Write` dispara `audit-antipatterns.mjs` em modo warning. Não bloqueia a edição — só avisa se você ou o Claude escreveram algo que duplica um componente do DS.
@@ -54,7 +43,6 @@ A skill `umbler-ds` está configurada para baixar `https://umbler-ds.vercel.app/
 ├── plugin.json          ← manifest
 ├── skills/umbler-ds/    ← contexto + regras
 ├── commands/            ← 4 slash commands
-├── agents/              ← sub-agent block-creator
 ├── hooks/               ← auto-audit
 └── scripts/             ← audit portátil
 ```
