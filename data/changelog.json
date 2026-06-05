@@ -2,6 +2,13 @@
   {
     "date": "2026-06-05",
     "type": "feat",
+    "scope": "button",
+    "title": "BREAKING (v0.2.0): Button vira pill default + shadow-cta em sizes grandes",
+    "description": "Decisão de identidade do brand guide ('todos os botões em formato pill') aplicada. Mudanças: 1) Todos os sizes (sm/md/lg/xl) ganham radius pill (rounded-full) em vez de rounded-sm/md/lg. 2) Padding horizontal aumentado em lg (px-5 → px-6) e xl (px-6 → px-8) para o conteúdo respirar nas curvas pill. 3) Variant primary em sizes lg/xl ganha shadow-cta (sombra colorida azul brand) via compoundVariants — premium para CTAs de landing. Sizes sm/md mantêm shadow-xs (UI de produto, sem ostentação). Sem alias de deprecation: o DS está em v0.x e quebra livremente. Versão bumped 0.1.0 → 0.2.0. Consumers via shadcn precisam rodar `npx shadcn@latest add` para receber a nova versão. Documentado o breaking change no topo da página de Button + tabela de sizes atualizada explicitando shadow por size."
+  },
+  {
+    "date": "2026-06-05",
+    "type": "feat",
     "scope": "audit",
     "title": "Regra em-dash-copy no audit-antipatterns",
     "description": "Adiciona checagem da regra dura do brand guide ('sem em-dash em copy pt-BR') ao audit-antipatterns.mjs. Escopo restrito a rotas de landing real (app/(landing)/**, app/(home)/**, content/docs/marketing/showcase/**) — a doc técnica do DS (/docs/**) fica livre, porque é material de referência, não copy visível ao usuário. Suporte adicionado ao motor de regras: propriedade `scope: RegExp` na regra filtra por path do arquivo antes de aplicar. Pragma de exceção: `{/* audit-ignore: em-dash-copy */}`. Hoje a regra entra em standby (não há landing real ainda); ativa naturalmente quando o showcase chegar no Lote 8."

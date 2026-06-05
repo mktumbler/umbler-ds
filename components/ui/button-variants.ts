@@ -20,11 +20,13 @@ export const buttonVariants = cva(
         danger:
           'bg-error-500 text-white shadow-xs hover:bg-error-600 active:bg-error-700 focus-visible:ring-error-400',
       },
+      // BREAKING (v0.x): radius pill por default em todos os sizes.
+      // Decisão do brand guide — "todos os botões em formato pill, border-radius arredondado completo".
       size: {
-        sm: 'h-8 px-3 text-body-sm rounded-sm',
-        md: 'h-10 px-4 text-body rounded-md',
-        lg: 'h-12 px-5 text-body-lg rounded-md',
-        xl: 'h-14 px-6 text-body-lg rounded-lg',
+        sm: 'h-8 px-3 text-body-sm rounded-full',
+        md: 'h-10 px-4 text-body rounded-full',
+        lg: 'h-12 px-6 text-body-lg rounded-full',
+        xl: 'h-14 px-8 text-body-lg rounded-full',
       },
       iconOnly: {
         true: 'px-0',
@@ -36,6 +38,10 @@ export const buttonVariants = cva(
       { iconOnly: true, size: 'md', className: 'w-10' },
       { iconOnly: true, size: 'lg', className: 'w-12' },
       { iconOnly: true, size: 'xl', className: 'w-14' },
+      // CTAs premium — primary em sizes grandes (lg/xl) ganha shadow-cta colorida.
+      // Sizes pequenas (sm/md) mantêm shadow-xs (UI de produto, sem ostentação).
+      { variant: 'primary', size: 'lg', className: 'shadow-cta hover:shadow-cta' },
+      { variant: 'primary', size: 'xl', className: 'shadow-cta hover:shadow-cta' },
     ],
     defaultVariants: {
       variant: 'primary',

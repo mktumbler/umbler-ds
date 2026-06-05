@@ -12,6 +12,10 @@ import {
 
 O `Button` cobre todas as ações do produto: confirmação, cancelamento, ações destrutivas e navegação. Sem dependência de Radix — React + Tailwind puro.
 
+<Callout type="warn" title="Breaking change v0.x — pill default">
+A partir desta versão, o Button tem **radius pill em todos os tamanhos** (decisão do [brand guide](/docs/marketing/brand)). CTAs primários em sizes `lg`/`xl` ganham `shadow-cta` (sombra azul brand). Quem instalou via shadcn antes da mudança precisa rodar `npx shadcn@latest add` de novo para receber a nova versão.
+</Callout>
+
 ## Variantes
 
 <ComponentPreview title="Variants">
@@ -32,12 +36,14 @@ O `Button` cobre todas as ações do produto: confirmação, cancelamento, açõ
   <ButtonSizesDemo />
 </ComponentPreview>
 
-| Prop       | Altura | Padding H | Uso típico             |
-| ---------- | ------ | --------- | ---------------------- |
-| `size="sm"` | 32px  | 12px      | Tabelas, inline        |
-| `size="md"` | 40px  | 16px      | Padrão (default)       |
-| `size="lg"` | 48px  | 20px      | Formulários, modais    |
-| `size="xl"` | 56px  | 24px      | Hero, onboarding       |
+| Prop       | Altura | Padding H | Sombra (primary) | Uso típico                |
+| ---------- | ------ | --------- | ---------------- | ------------------------- |
+| `size="sm"` | 32px  | 12px      | `shadow-xs`      | Tabelas, inline           |
+| `size="md"` | 40px  | 16px      | `shadow-xs`      | Padrão (default)          |
+| `size="lg"` | 48px  | 24px      | `shadow-cta`     | Formulários, modais, CTAs |
+| `size="xl"` | 56px  | 32px      | `shadow-cta`     | Hero de landing           |
+
+Em landings/marketing, prefira `size="lg"` ou `size="xl"` — o `shadow-cta` (sombra azul brand) é o sinal premium do CTA. Em produto, `md` é o default funcional.
 
 ## Com ícones
 
