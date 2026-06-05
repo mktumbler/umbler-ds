@@ -13,6 +13,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { HeroBackground } from '@/components/ui/hero-background';
+import { LogoCloud } from '@/components/ui/logo-cloud';
 import {
   Accordion,
   AccordionContent,
@@ -100,15 +101,7 @@ export default function ProdutoLanding() {
             <Sparkle size={12} weight="fill" /> Novo: Agente IA Umbler
           </Badge>
 
-          <h1
-            className="font-heading text-white text-balance mb-6"
-            style={{
-              fontSize: 'clamp(2.5rem, 6.5vw, 5.5rem)',
-              fontWeight: 500,
-              letterSpacing: '-0.03em',
-              lineHeight: 1,
-            }}
-          >
+          <h1 className="mb-6 font-heading text-display-lg text-white text-balance md:text-display-xl">
             Atendimento que não dorme.<br />Time que não cansa.
           </h1>
 
@@ -181,21 +174,18 @@ export default function ProdutoLanding() {
 
       {/* ── Logo Cloud ──────────────────────────────────────── */}
       <section className="border-t border-white/5 bg-[var(--color-neutral-950)] px-6 py-16">
-        <div className="mx-auto max-w-[1200px]">
-          <p className="mb-10 text-center text-caption uppercase tracking-[0.2em] text-white/40">
-            +2 mil empresas atendem com Agente IA Umbler
-          </p>
-          <div className="grid grid-cols-2 items-center justify-items-center gap-x-8 gap-y-10 sm:grid-cols-3 md:grid-cols-6">
-            {['Unimed', 'Triider', 'Cora', 'CNA', 'Ânima', 'Linker'].map((name) => (
-              <span
-                key={name}
-                className="text-h4 font-heading text-white/30 grayscale transition-colors duration-[var(--duration-normal)] hover:text-white/60"
-              >
-                {name}
-              </span>
-            ))}
-          </div>
-        </div>
+        <LogoCloud
+          tone="dark"
+          label="+2 mil empresas atendem com Agente IA Umbler"
+          logos={[
+            { src: '/showcase/logos/unimed.svg', alt: 'Unimed' },
+            { src: '/showcase/logos/triider.svg', alt: 'Triider' },
+            { src: '/showcase/logos/cora.svg', alt: 'Cora' },
+            { src: '/showcase/logos/cna.svg', alt: 'CNA' },
+            { src: '/showcase/logos/anima.svg', alt: 'Ânima' },
+            { src: '/showcase/logos/linker.svg', alt: 'Linker' },
+          ]}
+        />
       </section>
 
       {/* ── Feature Cards 3-col ─────────────────────────────── */}
@@ -203,7 +193,7 @@ export default function ProdutoLanding() {
         <div className="mx-auto max-w-[1200px]">
           <div className="mx-auto mb-16 max-w-2xl text-center">
             <p className="eyebrow mb-4">Por que Agente IA Umbler</p>
-            <h2 className="font-heading text-h2 text-foreground text-balance">
+            <h2 className="font-heading text-display text-foreground text-balance">
               Três coisas que chatbot tradicional não faz.
             </h2>
           </div>
@@ -234,10 +224,8 @@ export default function ProdutoLanding() {
           {/* Feature 1: texto esquerda, visual direita */}
           <div className="grid items-center gap-12 md:grid-cols-2">
             <div>
-              <Badge variant="brand" shape="tag" className="mb-4">
-                Conhecimento
-              </Badge>
-              <h3 className="mb-6 font-heading text-h2 text-foreground text-balance">
+              <p className="eyebrow mb-4">Conhecimento</p>
+              <h3 className="mb-6 font-heading text-display text-foreground text-balance">
                 Aprende com o que sua empresa já tem.
               </h3>
               <p className="mb-6 text-body-lg text-foreground-muted text-pretty">
@@ -332,10 +320,8 @@ export default function ProdutoLanding() {
               </div>
             </div>
             <div className="order-1 md:order-2">
-              <Badge variant="brand" shape="tag" className="mb-4">
-                Handoff inteligente
-              </Badge>
-              <h3 className="mb-6 font-heading text-h2 text-foreground text-balance">
+              <p className="eyebrow mb-4">Handoff inteligente</p>
+              <h3 className="mb-6 font-heading text-display text-foreground text-balance">
                 Sabe quando passar pra humano.
               </h3>
               <p className="mb-6 text-body-lg text-foreground-muted text-pretty">
@@ -368,7 +354,7 @@ export default function ProdutoLanding() {
         <div className="mx-auto max-w-[1200px]">
           <div className="mx-auto mb-16 max-w-2xl text-center">
             <p className="eyebrow mb-4">Como começa</p>
-            <h2 className="font-heading text-h2 text-foreground text-balance">
+            <h2 className="font-heading text-display text-foreground text-balance">
               Do upload ao primeiro atendimento, em uma tarde.
             </h2>
           </div>
@@ -379,10 +365,7 @@ export default function ProdutoLanding() {
                 key={s.n}
                 className="relative rounded-2xl border border-border bg-surface-subtle p-8"
               >
-                <span
-                  className="font-heading text-foreground-subtle"
-                  style={{ fontSize: '4rem', lineHeight: 1, letterSpacing: '-0.04em' }}
-                >
+                <span className="font-heading text-display-lg text-foreground-subtle">
                   {s.n}
                 </span>
                 <h3 className="mb-3 mt-4 text-h4 font-heading text-foreground">{s.title}</h3>
@@ -398,7 +381,7 @@ export default function ProdutoLanding() {
         <div className="mx-auto max-w-[1100px]">
           <div className="mx-auto mb-12 max-w-2xl text-center">
             <p className="eyebrow mb-4">Agente IA vs. Chatbot tradicional</p>
-            <h2 className="font-heading text-h2 text-foreground text-balance">
+            <h2 className="font-heading text-display text-foreground text-balance">
               Mesma caixa de mensagem, resultado diferente.
             </h2>
           </div>
@@ -480,10 +463,7 @@ export default function ProdutoLanding() {
             { n: '3x', label: 'mais leads qualificados' },
           ].map((s) => (
             <div key={s.label} className="text-center">
-              <p
-                className="font-heading text-brand-400"
-                style={{ fontSize: 'clamp(2.5rem, 5vw, 4rem)', letterSpacing: '-0.03em' }}
-              >
+              <p className="font-heading text-display text-brand-400 md:text-display-lg">
                 {s.n}
               </p>
               <p className="mt-2 text-caption uppercase tracking-wider text-foreground-muted">
@@ -499,7 +479,7 @@ export default function ProdutoLanding() {
         <div className="mx-auto max-w-3xl">
           <div className="mb-12 text-center">
             <p className="eyebrow mb-4">Dúvidas honestas</p>
-            <h2 className="font-heading text-h2 text-foreground text-balance">
+            <h2 className="font-heading text-display text-foreground text-balance">
               O que perguntam antes de assinar.
             </h2>
           </div>
@@ -533,7 +513,7 @@ export default function ProdutoLanding() {
           <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-caption text-white/70 backdrop-blur">
             <ShieldCheck size={14} weight="fill" /> 7 dias grátis · sem cartão
           </div>
-          <h2 className="mb-6 font-heading text-h1 text-white text-balance">
+          <h2 className="mb-6 font-heading text-display-lg text-white text-balance">
             Coloque um agente atendendo<br />ainda esta semana.
           </h2>
           <p className="mb-10 text-body-lg text-white/70 text-pretty">

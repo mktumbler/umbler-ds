@@ -1,6 +1,7 @@
 import { ArrowRight, Robot, ChartLineUp, Lightning } from '@phosphor-icons/react/dist/ssr';
 import { Button } from '@/components/ui/button';
 import { HeroBackground } from '@/components/ui/hero-background';
+import { LogoCloud } from '@/components/ui/logo-cloud';
 
 /**
  * /showcase: landing demonstrativa montada com o Umbler DS.
@@ -19,15 +20,7 @@ export default function ShowcasePage() {
         <div className="mx-auto flex max-w-[1200px] flex-col items-center justify-center px-6 py-24 text-center md:py-32">
           <p className="eyebrow mb-6">Plataforma de crescimento · CRM · IA</p>
 
-          <h1
-            className="font-heading text-white text-balance mb-6"
-            style={{
-              fontSize: 'clamp(2.5rem, 7vw, 6rem)',
-              fontWeight: 500,
-              letterSpacing: '-0.03em',
-              lineHeight: 1,
-            }}
-          >
+          <h1 className="mb-6 font-heading text-display-lg text-white text-balance md:text-display-xl">
             A estrutura sempre<br />à altura da ambição.
           </h1>
 
@@ -50,21 +43,18 @@ export default function ShowcasePage() {
 
       {/* ── Logo Cloud ──────────────────────────────────────── */}
       <section className="border-t border-white/5 bg-[var(--color-neutral-950)] px-6 py-16">
-        <div className="mx-auto max-w-[1200px]">
-          <p className="mb-10 text-center text-caption uppercase tracking-[0.2em] text-white/40">
-            +60 mil empresas confiam na Umbler
-          </p>
-          <div className="grid grid-cols-2 items-center justify-items-center gap-x-8 gap-y-10 sm:grid-cols-3 md:grid-cols-6">
-            {['Unimed', 'Triider', 'Cora', 'CNA', 'Ânima', 'Linker'].map((name) => (
-              <span
-                key={name}
-                className="text-h4 font-heading text-white/30 grayscale transition-colors duration-[var(--duration-normal)] hover:text-white/60"
-              >
-                {name}
-              </span>
-            ))}
-          </div>
-        </div>
+        <LogoCloud
+          tone="dark"
+          label="+60 mil empresas confiam na Umbler"
+          logos={[
+            { src: '/showcase/logos/unimed.svg', alt: 'Unimed' },
+            { src: '/showcase/logos/triider.svg', alt: 'Triider' },
+            { src: '/showcase/logos/cora.svg', alt: 'Cora' },
+            { src: '/showcase/logos/cna.svg', alt: 'CNA' },
+            { src: '/showcase/logos/anima.svg', alt: 'Ânima' },
+            { src: '/showcase/logos/linker.svg', alt: 'Linker' },
+          ]}
+        />
       </section>
 
       {/* ── Feature Grid ────────────────────────────────────── */}
@@ -72,7 +62,7 @@ export default function ShowcasePage() {
         <div className="mx-auto max-w-[1200px]">
           <div className="mx-auto mb-16 max-w-2xl text-center">
             <p className="eyebrow mb-4">Como funciona</p>
-            <h2 className="font-heading text-h2 text-foreground text-balance">
+            <h2 className="font-heading text-display text-foreground text-balance">
               Três peças, uma operação inteligente.
             </h2>
             <p className="mt-4 text-body-lg text-foreground-muted text-pretty">
@@ -127,7 +117,7 @@ export default function ShowcasePage() {
           style={{ background: 'var(--gradient-glow)' }}
         />
         <div className="relative mx-auto max-w-3xl text-center">
-          <h2 className="mb-6 font-heading text-h1 text-white text-balance">
+          <h2 className="mb-6 font-heading text-display-lg text-white text-balance">
             Pronto pra crescer com estrutura?
           </h2>
           <p className="mb-10 text-body-lg text-white/70 text-pretty">
