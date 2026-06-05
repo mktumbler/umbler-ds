@@ -1,0 +1,102 @@
+---
+title: Legal
+description: Compliance e transparência — Termos de Uso, Política de Privacidade, LGPD.
+---
+
+LP Legal não converte. **Não tenta**. O objetivo é compliance + transparência + acessibilidade do conteúdo legal. Mas isso não significa "qualquer coisa serve" — boa LP legal continua sendo bem desenhada, legível e navegável.
+
+## Objetivo
+
+Visitante (usuário, jurídico do cliente, advogado de oposição, auditor) sai com:
+- **Acesso fácil** ao conteúdo legal completo
+- **Versão atualizada** com data clara
+- **Navegação interna** (TOC, anchor links) pra achar a cláusula específica
+
+## Seções obrigatórias
+
+<TokenTable
+  columns={['Seção', 'Função']}
+  rows={[
+    ['Hero minimalista', 'Título do documento + última atualização'],
+    ['TOC (Table of Contents)', 'Lista clicável de seções — fica fixa em desktop, accordion em mobile'],
+    ['Conteúdo legal completo', 'Cláusulas em sequência, com headings hierárquicos'],
+  ]}
+/>
+
+## Seções opcionais
+
+- **Histórico de versões** — links pra versões anteriores arquivadas
+- **Contato do DPO/Privacy Officer** — pra LGPD
+- **Anexos / definições** — glossário se aplicável
+
+## SEO
+
+- **Meta title:** `[Título do documento] | Umbler`
+  - Ex: "Termos de Uso | Umbler", "Política de Privacidade | Umbler"
+- **Meta description:** descrição curta + data de atualização
+
+## Padrão estrutural
+
+```
+1. Hero
+   Termos de Uso
+   Última atualização: 12 de junho de 2025
+
+2. TOC (sticky em desktop)
+   1. Aceitação dos Termos
+   2. Definições
+   3. Conta e cadastro
+   4. ...
+
+3. Conteúdo
+   Cada seção com heading h2 e anchor link copiável
+   Subseções com h3
+   Listas, tabelas e blocos quando ajudarem leitura
+
+4. Rodapé
+   Contato legal: legal@umbler.com
+   Versão anterior: [link]
+```
+
+## Princípios
+
+### Hierarquia de headings sem skip
+
+H1 (título) → H2 (seções principais) → H3 (subseções). Não pular níveis. Aumenta acessibilidade e ajuda screen readers.
+
+### Anchor links em cada heading
+
+Permite linkar diretamente para uma cláusula específica:
+
+```
+/termos#5-dados-pessoais
+```
+
+Útil quando jurídico pergunta "qual cláusula sobre LGPD?". Resposta vira link, não captura de tela.
+
+### Tipografia confortável
+
+- Body text generoso (`text-body` 16px ou maior)
+- Line-height alto (1.6+)
+- Largura de linha limitada (max-width 65ch)
+- Sem flourishes — texto é o produto
+
+### Tabela quando ajuda
+
+Quando o conteúdo legal envolve **comparação** (planos, retenção de dados, jurisdições), tabela ajuda mais que parágrafo longo.
+
+## Tom
+
+- Direto, claro, sem hostility
+- **Não é local de marca aspiracional** — não fala "Umbler é apaixonada pela sua privacidade"
+- Pode ter humanidade no preâmbulo, depois ficar puramente legal
+- LGPD-friendly: usuário sabe o que é coletado, por quê, como acessar/excluir
+
+## Anti-patterns
+
+- Wall of text sem TOC
+- PDF como única forma de acessar (acessibilidade ruim, hostil a mobile)
+- Tipografia minúscula (lawyer fine-print signaling — perde confiança)
+- Sem data de atualização visível
+- Linkar para arquivo Google Drive de PDF (sai do domínio, perde controle de versão)
+- Termo sem traduções para mercados onde a empresa opera (LGPD ≠ GDPR — texto pode precisar variar)

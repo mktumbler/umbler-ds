@@ -3,6 +3,13 @@
     "date": "2026-06-05",
     "type": "feat",
     "scope": "docs",
+    "title": "Marketing › Page Types — catálogo dos 9 tipos de LP",
+    "description": "Receitas reutilizáveis para os 9 tipos de landing: Home (vitrine de marca), Produto (com 3 padrões narrativos por maturidade da persona), Solução por segmento (com 8 setores documentados + linguagem específica), Use Case (resultado-foco + verbos concretos), Pricing (anatomia da tabela + FAQ obrigatório), Contato/Demo (princípios de form mínimo), Institucional (visão sobre produto), Free Tool (a tool funciona na página + upsell sutil), Legal (TOC + anchor links + tipografia confortável). Cada tipo: objetivo, seções obrigatórias/opcionais, SEO, padrão narrativo, anti-patterns. Decisão de escopo: tipos genéricos reutilizáveis em qualquer projeto que adote o DS — o mapa específico das 74 páginas Umbler fica no projeto consumer, não no DS. Fix bonus: `<3s` em use-case.mdx interpretado como JSX tag pelo MDX, trocado por 'menos de 3s'."
+  },
+  {
+    "date": "2026-06-05",
+    "type": "feat",
+    "scope": "docs",
     "title": "Marketing › Conversion — playbook completo de LP",
     "description": "Migração do CONVERSION-PLAYBOOK em 7 páginas de aprofundamento operacional dentro de Marketing › Conversion. 1) Personas — as 4 personas-alvo (Gerente, Empresário, Head de Growth, Operação) com dor primária + o que cada uma quer ouvir. 2) Mensagem — 10 pilares transversais + mensagens-chave por tema (crescimento, IA, WhatsApp, CRM, ambição) + above-the-fold (5 segundos, hierarquia, validação). 3) Estrutura — sequência por awareness (unaware/solution-aware/product-aware) + lógica de persuasão de 10 passos + tension-release + 4 padrões observados + mobile-first. 4) Headlines — frameworks expert (Schwartz/Hopkins/Halbert/Ogilvy/Sugarman) + 5 fórmulas pt-BR + 5 lead types por awareness + teste final de 4 perguntas. 5) Storytelling — padrão Manifesto + Yes Ladder + Tension-Release + persuasão visual (whitespace, wow moments, hierarquia). 6) CTAs e Objeções — tabela canônica de CTAs + social proof hierarchy + as 5 objeções principais contornadas + urgência sem cinismo. 7) Checklist — review humano em 7 seções (hero, social proof, estrutura, voz, CTAs, mobile, técnico) + anti-patterns gerais. Toda a metodologia que orienta o como compor LPs que convertem."
   },
