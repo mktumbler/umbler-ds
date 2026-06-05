@@ -1,0 +1,94 @@
+---
+title: Imagery
+description: Direção visual para fotografia, vídeo, screenshots e mockups da marca — além dos tokens.
+---
+
+Tokens cobrem cor, tipo, sombra, gradiente. Mas a marca também aparece em **imagens** — e essas têm regras próprias que tokens não capturam. Esta página é a direção visual.
+
+## Product shots
+
+A maioria das imagens da Umbler é **screenshot real do produto** (interface WhatsApp, dashboard CRM, builder de chatbot, conversa com agente IA). Imagem inventada (mockup decorativo sem relação com o produto) está fora.
+
+### Características
+
+- **Fundo escuro** sob a interface, mesmo quando o produto é light. O contraste vem da imagem flutuando sobre o gradient da landing.
+- **Sombras sutis** (`shadow-lg` ou `shadow-xl` da escala dark) — não bordas pretas duras.
+- **Mock-ups de conversas WhatsApp**: usar nomes brasileiros realistas (Carlos, Ana, Júlia, Roberto), horários `HH:mm`, tempo curto entre mensagens. Conteúdo da conversa precisa fazer sentido na vertical mostrada.
+- **Recorte limpo**: nada de captura desfocada, scroll cortado pela metade, nav aparecendo pela metade. Se a tela não cabe, recorta com intenção.
+
+## Hero images
+
+Layout padrão de hero: **texto à esquerda (60%), visual à direita (40%)**. O visual é tipicamente:
+
+| Tipo | Quando usar |
+| --- | --- |
+| Screenshot do produto + chat WhatsApp flutuante | LP de produto (Agente IA, Chatbot, CRM) |
+| Dashboard com gráfico/métrica em destaque | LP institucional, home, pricing |
+| Composição abstrata (gradients, blocos) | LP de segmento (não há produto-tela por segmento) |
+| Mock-up de conversa com IA explicada | LP de use case (SDR AI, Agendamento) |
+
+Mobile: texto **acima**, visual **abaixo** — sempre.
+
+## Vídeo
+
+Quando existir vídeo:
+
+- **Sem áudio por default** (autoplay muted). Som só com clique do usuário.
+- **Loop curto** (8-15s) pra demonstrações; vídeo institucional mais longo só com poster cuidado.
+- **Tom**: premium, **forte, convincente** — software sério mas excitante. Sem trilha sonora épica de blockbuster; sem voiceover narração.
+- **Edição direta** — não corta entre 5 telas por segundo. Deixa cada ação respirar.
+
+## Mood
+
+A direção emocional, em três palavras:
+
+> **Premium · forte · convincente.**
+
+Não é:
+
+- ❌ Friendly cartoon (ilustração arredondada, mascote)
+- ❌ Stock photo com sorrisos em escritório iluminado
+- ❌ Futurismo vazio (linhas neon, holograma, partículas voando)
+- ❌ Tech bro corporativo (gravata, aperto de mão, gráfico subindo)
+
+É:
+
+- ✓ Software como ferramenta de poder
+- ✓ Interface real, com complexidade controlada
+- ✓ Pessoas em situação de trabalho concreto (gestor olhando dashboard, vendedor respondendo cliente)
+- ✓ Tons noturnos, profundos, com pontos de azul brand vibrante
+
+## Formatos técnicos
+
+| Uso | Dimensão | Formato |
+| --- | --- | --- |
+| Hero image | ~1920×1080 | WebP otimizado |
+| Card thumbnail | ~1200×800 | WebP otimizado |
+| Avatar / logo cliente | quadrado | SVG quando disponível, senão WebP |
+| Open Graph / share | 1200×630 | PNG ou WebP |
+| Vídeo hero | 1920×1080 | MP4 H.264, sem áudio default |
+
+## Ícones
+
+Usar exclusivamente **Phosphor Icons** (`@phosphor-icons/react`):
+
+- Variante **regular** (outline) para estados normais
+- Variante **fill** para estados selecionados/ativos
+- Cor: `currentColor` na maior parte; `text-brand-500` em destaques pontuais
+- Tamanho default `16px`; `20px` em UI maior; `24px+` em ilustração
+
+Não misturar com Lucide, Heroicons, custom SVGs avulsos — quebra coerência visual.
+
+## Logos de clientes (logo cloud)
+
+Lista canônica (estado atual): Unimed · Triider · Cora · Óticas Carol · CNA · Cartão de Todos · UNIPAR · Ânima · Linker · Uniasselvi.
+
+- **Grayscale** sobre fundo escuro (ou cor original sobre fundo claro)
+- **Marquee horizontal** (scroll automático) ou grid estático centralizado
+- **Tamanho uniforme** — todos os logos com a mesma altura visual, mesmo que isso signifique escalar diferente cada um
+
+## Quando faltar imagem real
+
+Se ainda não há screenshot/foto pra um caso (LP nova, produto em pré-lançamento, segmento novo), o fallback é **composição abstrata** com gradientes + blocos do DS. Nunca um stock photo decorativo "que serve" só pra não deixar vazio.
+
+Se precisar de vazio, prefira **vazio limpo**. White space é parte da marca premium.

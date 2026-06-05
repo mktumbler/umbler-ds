@@ -3,6 +3,13 @@
     "date": "2026-06-05",
     "type": "feat",
     "scope": "docs",
+    "title": "Marketing › Brand — voice por contexto, decision framework, anti-patterns, imagery",
+    "description": "Migração do BRAND-GUIDE para guidelines operacionais dentro de Marketing › Brand. Cinco páginas novas: 1) Voice — tom por contexto (headline/sub-headline/CTA/feature/FAQ/institucional) + mistura ideal 40/25/20/10/5 + palavras de poder + regra dura sem em-dash. 2) Voice Examples — tabela ampliada certo vs errado, por contexto. 3) Decision Framework — as 5 perguntas que decidem entre duas mensagens. 4) Anti-patterns — riscos de má interpretação (reduzir Umbler a chatbot/CRM, IA como buzzword, marca heroína da narrativa, promessas vagas). 5) Imagery — direção visual para fotografia, vídeo, screenshots, mockups, logos clientes — onde tokens não chegam. /docs/brand continua sendo a síntese essencial; Marketing › Brand é o aprofundamento operacional pra quem está escrevendo copy."
+  },
+  {
+    "date": "2026-06-05",
+    "type": "feat",
+    "scope": "docs",
     "title": "Seção Marketing na sidebar — guidelines de marca, conversão e page types",
     "description": "Nova entrada na sidebar do DS entre 'Patterns' e 'Email'. Marketing é onde mora a camada de orientação para landings: como compor, qual a voz, qual a sequência persuasiva, qual o tipo de página. Index introdutório com mapa de o que vem (Brand, Conversion, Page Types) e tabela de 'quando consultar cada coisa'. As sub-seções (brand/, conversion/, page-types/) entram nos próximos lotes. Decisão de escopo: foundations + components + blocks continuam compartilhados produto/marketing (mesma fonte de verdade); marketing é a camada de método sobre essa base."
   },
