@@ -102,7 +102,7 @@ export default function ProdutoLanding() {
           </Badge>
 
           <h1 className="mb-6 font-heading text-display-lg text-white text-balance md:text-display-xl">
-            Atendimento que não dorme.<br />Time que não cansa.
+            Atendimento que não dorme,<br />time que não cansa
           </h1>
 
           <p className="mb-10 max-w-2xl text-body-lg text-white/70 text-pretty">
@@ -115,11 +115,7 @@ export default function ProdutoLanding() {
               Testar 7 dias grátis
               <ArrowRight size={20} weight="bold" />
             </Button>
-            <Button
-              size="xl"
-              variant="ghost"
-              className="text-white hover:bg-white/10 hover:text-white"
-            >
+            <Button size="xl" variant="ghost">
               Ver demo de 2 min
             </Button>
           </div>
@@ -194,7 +190,7 @@ export default function ProdutoLanding() {
           <div className="mx-auto mb-16 max-w-2xl text-center">
             <p className="eyebrow mb-4">Por que Agente IA Umbler</p>
             <h2 className="font-heading text-display text-foreground text-balance">
-              Três coisas que chatbot tradicional não faz.
+              Três coisas que chatbot tradicional não faz
             </h2>
           </div>
 
@@ -226,7 +222,7 @@ export default function ProdutoLanding() {
             <div>
               <p className="eyebrow mb-4">Conhecimento</p>
               <h3 className="mb-6 font-heading text-display text-foreground text-balance">
-                Aprende com o que sua empresa já tem.
+                Aprende com o que sua empresa já tem
               </h3>
               <p className="mb-6 text-body-lg text-foreground-muted text-pretty">
                 Sobe PDFs de produto, site institucional, planilha de preços, FAQ interno.
@@ -322,7 +318,7 @@ export default function ProdutoLanding() {
             <div className="order-1 md:order-2">
               <p className="eyebrow mb-4">Handoff inteligente</p>
               <h3 className="mb-6 font-heading text-display text-foreground text-balance">
-                Sabe quando passar pra humano.
+                Sabe quando passar pra humano
               </h3>
               <p className="mb-6 text-body-lg text-foreground-muted text-pretty">
                 Você define os gatilhos: assunto crítico, intenção de compra, frustração detectada.
@@ -355,7 +351,7 @@ export default function ProdutoLanding() {
           <div className="mx-auto mb-16 max-w-2xl text-center">
             <p className="eyebrow mb-4">Como começa</p>
             <h2 className="font-heading text-display text-foreground text-balance">
-              Do upload ao primeiro atendimento, em uma tarde.
+              Do upload ao primeiro atendimento, em uma tarde
             </h2>
           </div>
 
@@ -382,7 +378,7 @@ export default function ProdutoLanding() {
           <div className="mx-auto mb-12 max-w-2xl text-center">
             <p className="eyebrow mb-4">Agente IA vs. Chatbot tradicional</p>
             <h2 className="font-heading text-display text-foreground text-balance">
-              Mesma caixa de mensagem, resultado diferente.
+              Mesma caixa de mensagem, resultado diferente
             </h2>
           </div>
 
@@ -480,7 +476,7 @@ export default function ProdutoLanding() {
           <div className="mb-12 text-center">
             <p className="eyebrow mb-4">Dúvidas honestas</p>
             <h2 className="font-heading text-display text-foreground text-balance">
-              O que perguntam antes de assinar.
+              O que perguntam antes de assinar
             </h2>
           </div>
 
@@ -514,7 +510,7 @@ export default function ProdutoLanding() {
             <ShieldCheck size={14} weight="fill" /> 7 dias grátis · sem cartão
           </div>
           <h2 className="mb-6 font-heading text-display-lg text-white text-balance">
-            Coloque um agente atendendo<br />ainda esta semana.
+            Coloque um agente atendendo<br />ainda esta semana
           </h2>
           <p className="mb-10 text-body-lg text-white/70 text-pretty">
             Você sobe a base, define o tom, conecta o WhatsApp. A gente cuida do resto.
@@ -524,11 +520,7 @@ export default function ProdutoLanding() {
               Começar agora
               <ArrowRight size={20} weight="bold" />
             </Button>
-            <Button
-              size="xl"
-              variant="ghost"
-              className="text-white hover:bg-white/10 hover:text-white"
-            >
+            <Button size="xl" variant="ghost">
               <Lightning size={20} weight="duotone" /> Ver demo de 2 min
             </Button>
           </div>

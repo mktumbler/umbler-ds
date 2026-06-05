@@ -107,6 +107,18 @@ const RULES = [
     // Escopo: rotas de landing reais + showcase. /docs (doc técnica) fica livre.
     scope: /(?:^|\/)(?:app\/\(landing\)\/|app\/\(home\)\/|content\/docs\/marketing\/showcase\/)/,
   },
+  {
+    id: 'heading-period',
+    label: 'título com ponto final — heading não leva "." na voz Umbler (brand guide § Pontuação)',
+    // <h1-6 ...> ... letra/acentuada . </h1-6>. Captura ponto final imediatamente antes do fechamento.
+    // Aceita <br /> antes do conteúdo final (multi-linha) e ignora "?", "!" e "...".
+    // Multiline porque conteúdo de heading pode quebrar linha.
+    pattern: /<h[1-6][^>]*>[\s\S]*?[a-záéíóúâêôãõçÁÉÍÓÚÂÊÔÃÕÇ]\.\s*<\/h[1-6]>/g,
+    multiline: true,
+    // Escopo: apenas rotas de landing onde a voz Umbler é aplicada.
+    // /docs continua livre (títulos técnicos podem fechar com ponto).
+    scope: /(?:^|\/)(?:app\/\(landing\)\/|app\/\(home\)\/)/,
+  },
 ];
 
 // ── Walker ──────────────────────────────────────────────────────────────────
@@ -158,6 +170,35 @@ for (const file of files) {
     // Regra com escopo restrito: pula arquivos fora do escopo
     if (rule.scope && !rule.scope.test(relPath)) continue;
     rule.pattern.lastIndex = 0;
+
+    // Modo multiline: aplica o pattern ao source inteiro e calcula a linha do match.
+    // Útil pra padrões que atravessam quebras (ex.: heading-period em tags multi-line).
+    if (rule.multiline) {
+      const ignoreTag = new RegExp(`audit-ignore:\\s*${rule.id}\\b`);
+      let m;
+      const localPattern = new RegExp(rule.pattern.source, rule.pattern.flags.includes('g') ? rule.pattern.flags : rule.pattern.flags + 'g');
+      while ((m = localPattern.exec(src)) !== null) {
+        const upTo = src.slice(0, m.index);
+        const lineNo = upTo.split('\n').length;
+        const line = lines[lineNo - 1] ?? '';
+        const prev = lines[lineNo - 2] ?? '';
+        // Honra o pragma audit-ignore (mesma linha ou anterior à abertura do match)
+        if (ignoreTag.test(line) || ignoreTag.test(prev)) continue;
+        // Snippet: pega a linha do final do match (mais perto do ponto problemático)
+        const matchEndLine = m.index + m[0].length;
+        const endLineNo = src.slice(0, matchEndLine).split('\n').length;
+        const snippetLine = lines[endLineNo - 1] ?? line;
+        findings.push({
+          file: relPath,
+          line: endLineNo,
+          rule: rule.id,
+          label: rule.label,
+          snippet: snippetLine.trim().slice(0, 140),
+        });
+      }
+      continue;
+    }
+
     for (let i = 0; i < lines.length; i++) {
       const line = lines[i];
       // skip mecânico por substring
@@ -171,7 +212,7 @@ for (const file of files) {
       rule.pattern.lastIndex = 0;
       if (rule.pattern.test(line)) {
         findings.push({
-          file: file.slice(ROOT.length + 1).replaceAll(sep, '/'),
+          file: relPath,
           line: i + 1,
           rule: rule.id,
           label: rule.label,

@@ -21,7 +21,7 @@ export default function ShowcasePage() {
           <p className="eyebrow mb-6">Plataforma de crescimento · CRM · IA</p>
 
           <h1 className="mb-6 font-heading text-display-lg text-white text-balance md:text-display-xl">
-            A estrutura sempre<br />à altura da ambição.
+            A estrutura sempre<br />à altura da ambição
           </h1>
 
           <p className="mb-10 max-w-2xl text-body-lg text-white/70 text-pretty">
@@ -34,7 +34,7 @@ export default function ShowcasePage() {
               Experimente por 7 dias
               <ArrowRight size={20} weight="bold" />
             </Button>
-            <Button size="xl" variant="ghost" className="text-white hover:bg-white/10 hover:text-white">
+            <Button size="xl" variant="ghost">
               Falar com vendas
             </Button>
           </div>
@@ -63,7 +63,7 @@ export default function ShowcasePage() {
           <div className="mx-auto mb-16 max-w-2xl text-center">
             <p className="eyebrow mb-4">Como funciona</p>
             <h2 className="font-heading text-display text-foreground text-balance">
-              Três peças, uma operação inteligente.
+              Três peças, uma operação inteligente
             </h2>
             <p className="mt-4 text-body-lg text-foreground-muted text-pretty">
               Não é uma stack de ferramentas. É uma camada única, projetada para conversar.
@@ -128,7 +128,7 @@ export default function ShowcasePage() {
               Experimente por 7 dias
               <ArrowRight size={20} weight="bold" />
             </Button>
-            <Button size="xl" variant="ghost" className="text-white hover:bg-white/10 hover:text-white">
+            <Button size="xl" variant="ghost">
               Agendar demo
             </Button>
           </div>
