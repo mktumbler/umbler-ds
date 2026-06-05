@@ -84,7 +84,7 @@ Documentação visual: https://umbler-ds.vercel.app/docs
 - Sombras: `shadow-xs`, `shadow-sm`, `shadow-md`, `shadow-lg`, `shadow-glow`
 - Radius: `rounded-sm` (6px), `rounded-md` (10px), `rounded-lg` (16px), `rounded-full`
 - Espaçamento: escala de 4px — use classes padrão Tailwind (`p-4`, `gap-6`, etc.)
-- Motion: durations via `duration-[var(--duration-fast/normal/slow/slower/instant)]`; easings via `ease-out`, `ease-in`, `ease-spring` (mapeados do @theme)
+- Motion: durations via `duration-[var(--duration-fast)]` (ou `normal`, `slow`, `slower`, `slowest`, `instant`); easings via `ease-out`, `ease-in`, `ease-spring`, `ease-out-expo`, `ease-out-quart`, `ease-in-out-cubic` (mapeados do @theme)
 - Eyebrow/caption com gradiente da marca: `<p className="eyebrow">TEXTO</p>`
 - Dark mode: automático via tokens semânticos — não use `dark:` manualmente nos componentes
 

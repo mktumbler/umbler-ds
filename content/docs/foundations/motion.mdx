@@ -12,11 +12,25 @@ Motion no Umbler DS é discreto e funcional. Toda transição deve ter um propó
 <TokenTable
   columns={['Nome', 'Valor', 'Token']}
   rows={[
-    ['Instant', '80ms',  '--duration-instant'],
-    ['Fast',    '150ms', '--duration-fast'],
-    ['Normal',  '250ms', '--duration-normal'],
-    ['Slow',    '400ms', '--duration-slow'],
-    ['Slower',  '600ms', '--duration-slower'],
+    ['Instant', '80ms',   '--duration-instant'],
+    ['Fast',    '150ms',  '--duration-fast'],
+    ['Normal',  '250ms',  '--duration-normal'],
+    ['Slow',    '400ms',  '--duration-slow'],
+    ['Slower',  '600ms',  '--duration-slower'],
+    ['Slowest', '1000ms', '--duration-slowest'],
+  ]}
+/>
+
+### Stagger (delay base para sequências)
+
+Quando vários itens entram em série (cards de feature, linhas de tabela, palavras de um hero), use stagger como **delay incremental por índice**. Cada item começa após `stagger × index`.
+
+<TokenTable
+  columns={['Nome', 'Valor', 'Uso']}
+  rows={[
+    ['Tight',   '40ms',  '--stagger-tight — lista densa, ícones em linha'],
+    ['Default', '80ms',  '--stagger-default — card grid, feature list'],
+    ['Relaxed', '140ms', '--stagger-relaxed — manifesto, hero copy reveals'],
   ]}
 />
 
@@ -29,10 +43,13 @@ Todas as curvas abaixo rodam com `600ms` para facilitar a comparação visual.
 <TokenTable
   columns={['Curva', 'Valor', 'Uso']}
   rows={[
-    ['ease-out',     'cubic-bezier(0.22, 1, 0.36, 1)',    'Entradas — modais abrindo, elementos aparecendo'],
-    ['ease-in',      'cubic-bezier(0.55, 0, 0.78, 0)',    'Saídas — modais fechando, elementos sumindo'],
-    ['ease-in-out',  'cubic-bezier(0.45, 0, 0.55, 1)',    'Transições contínuas — toggles, slides'],
-    ['ease-spring',  'cubic-bezier(0.34, 1.56, 0.64, 1)', 'Bounce sutil — checkboxes, switches, confirmações'],
+    ['ease-out',          'cubic-bezier(0.22, 1, 0.36, 1)',    'Entradas — modais abrindo, elementos aparecendo'],
+    ['ease-in',           'cubic-bezier(0.55, 0, 0.78, 0)',    'Saídas — modais fechando, elementos sumindo'],
+    ['ease-in-out',       'cubic-bezier(0.45, 0, 0.55, 1)',    'Transições contínuas — toggles, slides'],
+    ['ease-spring',       'cubic-bezier(0.34, 1.56, 0.64, 1)', 'Bounce sutil — checkboxes, switches, confirmações'],
+    ['ease-out-expo',     'cubic-bezier(0.16, 1, 0.3, 1)',     'Hero text reveal — saída rápida, settle longo'],
+    ['ease-out-quart',    'cubic-bezier(0.25, 1, 0.5, 1)',     'Card hover, out de força média'],
+    ['ease-in-out-cubic', 'cubic-bezier(0.65, 0, 0.35, 1)',    'Scroll-linked, panel toggle simétrico'],
   ]}
 />
 
@@ -64,16 +81,17 @@ Padrão geral: **estado = fast + ease-out · transição = normal + ease-out · 
 <TokenTable
   columns={['Caso de uso', 'Duração', 'Token']}
   rows={[
-    ['Hover feedback, tooltips',                   '150ms', '--duration-fast'],
-    ['Button press, focus rings, dropdowns',       '250ms', '--duration-normal'],
-    ['Modal open, drawer slide, page transitions', '400ms', '--duration-slow'],
-    ['Onboarding animations, splash screens',      '600ms', '--duration-slower'],
+    ['Hover feedback, tooltips',                       '150ms',  '--duration-fast'],
+    ['Button press, focus rings, dropdowns',           '250ms',  '--duration-normal'],
+    ['Modal open, drawer slide, page transitions',     '400ms',  '--duration-slow'],
+    ['Onboarding animations, splash screens',          '600ms',  '--duration-slower'],
+    ['Hero reveals, landing splash, manifesto entrada','1000ms', '--duration-slowest'],
   ]}
 />
 
 ## Princípios
 
-1. **Nunca acima de 600ms** em UI funcional. Animações longas frustram usuários repetidos.
+1. **Nunca acima de 600ms** em UI funcional do produto. `--duration-slowest` é reservado pra landing/marketing — hero reveals, manifesto, splashes onde o tempo de tela é mais longo.
 2. **Sempre `ease-out` para entradas** — sensação de chegada natural.
 3. **Use `prefers-reduced-motion`** para respeitar acessibilidade:
 

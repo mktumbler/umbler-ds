@@ -165,15 +165,33 @@
   --duration-normal: 250ms;
   --duration-slow: 400ms;
   --duration-slower: 600ms;
+  --duration-slowest: 1000ms;   /* hero reveals, splash transitions */
 
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-in: cubic-bezier(0.55, 0, 0.78, 0);
   --ease-in-out: cubic-bezier(0.45, 0, 0.55, 1);
   --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);     /* hero text reveal — fast in, long settle */
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);    /* card hover, mid-strength out */
+  --ease-in-out-cubic: cubic-bezier(0.65, 0, 0.35, 1); /* scroll-linked, panel toggle */
+
+  /* -------- Stagger (delay base para sequências) -------- */
+  --stagger-tight:   40ms;      /* lista densa, ícones em linha */
+  --stagger-default: 80ms;      /* card grid, feature list */
+  --stagger-relaxed: 140ms;     /* manifesto, hero copy reveals */
+
+  /* -------- Blur (backdrop, glass effects) -------- */
+  --blur-sm: 4px;
+  --blur-md: 8px;
+  --blur-lg: 16px;
+  --blur-xl: 32px;
 
   /* -------- Loader (gradiente da marca) -------- */
   --color-loader-a: #8bbcf8;    /* azul claro */
   --color-loader-b: #f8c4b8;    /* salmão */
+
+  /* -------- Brand auxiliar — WhatsApp -------- */
+  --color-whatsapp: #25d366;    /* verde oficial WhatsApp — preservado */
 
   /* -------- Layout -------- */
   --container-max: 1200px;
@@ -213,6 +231,21 @@
   --shadow-lg:   var(--shadow-lg-val);
   --shadow-xl:   var(--shadow-xl-val);
   --shadow-glow: var(--shadow-glow-val);
+  --shadow-cta:  var(--shadow-cta-val);
+}
+
+/* ============================================================
+   GRADIENTES NOMEADOS (dark-premium first)
+   Cores fixas — funcionam em ambos os modos porque alguns são
+   transparências sobre o que estiver atrás. Usados em landings
+   (hero, glow decorativo, premium surfaces). Em produto, podem
+   aparecer pontualmente (empty state premium, splash de onboarding).
+   ============================================================ */
+:root {
+  --gradient-glow:    radial-gradient(ellipse at 50% 0%, rgb(26 92 255 / 0.12), transparent 60%);
+  --gradient-premium: linear-gradient(135deg, #1a2240 0%, #0a0f20 50%, #111733 100%);
+  --gradient-hero:    linear-gradient(180deg, #030614 0%, #111733 50%, #0a0f20 100%);
+  --gradient-surface-dark: linear-gradient(180deg, #0a0f20 0%, #030614 100%);
 }
 
 /* Light mode (padrão) */
@@ -243,6 +276,7 @@
   --shadow-lg-val:   0 10px 15px -3px rgb(74 82 120 / 0.2), 0 4px 6px -4px rgb(74 82 120 / 0.18);
   --shadow-xl-val:   0 20px 25px -5px rgb(74 82 120 / 0.22), 0 8px 10px -6px rgb(74 82 120 / 0.18);
   --shadow-glow-val: 0 0 32px 0 rgb(26 92 255 / 0.35);
+  --shadow-cta-val:  0 8px 24px -8px rgb(26 92 255 / 0.45), 0 4px 12px -4px rgb(26 92 255 / 0.3);
 }
 
 /* Dark mode */
@@ -273,6 +307,7 @@
   --shadow-lg-val:   0 10px 15px -3px rgb(10 15 32 / 0.45), 0 4px 6px -4px rgb(10 15 32 / 0.4);
   --shadow-xl-val:   0 20px 25px -5px rgb(10 15 32 / 0.5), 0 8px 10px -6px rgb(10 15 32 / 0.4);
   --shadow-glow-val: 0 0 32px 0 rgb(26 92 255 / 0.35);
+  --shadow-cta-val:  0 12px 32px -8px rgb(26 92 255 / 0.55), 0 6px 16px -4px rgb(26 92 255 / 0.4);
 }
 
 /* ============================================================

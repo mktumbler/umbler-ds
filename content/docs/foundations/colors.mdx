@@ -136,9 +136,9 @@ O verde fica reservado pra _comunicar_ que algo foi confirmado depois — em um 
 
 ## Brand Gradient
 
-O gradient de marca é usado em hero sections, destaques e elementos decorativos pontuais.
+O gradient de marca é usado em hero sections, destaques e elementos decorativos pontuais. Em **dark mode**, ele é o linear azul→salmão (`#8BBCF8 → #F8C4B8`). Em **light mode**, o eyebrow cai pra azul sólido `#1A5CFF` (mantém contraste em superfícies claras).
 
-<ComponentPreview title="Brand gradient" background="dark">
+<ComponentPreview title="Brand gradient (dark)" background="dark">
   <div
     style={{
       width: '100%',
@@ -152,6 +152,53 @@ O gradient de marca é usado em hero sections, destaques e elementos decorativos
 
 ```css
 --gradient-brand: linear-gradient(90deg, #8BBCF8 0%, #F8C4B8 100%);
+```
+
+## Gradientes nomeados (landings premium)
+
+Conjunto de gradientes fixos pensados pra estética **dark-premium** de landings. Cores próprias, não adaptativas — funcionam consistentemente sobre qualquer fundo.
+
+<TokenTable
+  columns={['Token', 'Valor', 'Uso']}
+  rows={[
+    ['--gradient-glow',         'radial 50% 0% rgb(26 92 255 / 0.12)',      'Halo decorativo sobre hero, glow de destaque'],
+    ['--gradient-premium',      'linear 135°  #1A2240 → #0A0F20 → #111733', 'Background de seções premium, cards de tier alto'],
+    ['--gradient-hero',         'linear 180°  #030614 → #111733 → #0A0F20', 'Hero full-bleed, splash de abertura'],
+    ['--gradient-surface-dark', 'linear 180°  #0A0F20 → #030614',           'Transição entre seções escuras'],
+  ]}
+/>
+
+```tsx
+// Em CSS
+<div style={{ background: 'var(--gradient-hero)' }}>...</div>
+
+// Em Tailwind v4 via arbitrary value
+<div className="bg-[image:var(--gradient-hero)]">...</div>
+```
+
+## Shadow CTA
+
+Sombra colorida no azul da marca, pensada pra **CTAs primários de landing** (CTAs de produto continuam com `shadow-sm`/`shadow-md`). Em dark a sombra é mais intensa para compensar a luminosidade do fundo.
+
+```tsx
+<Button className="shadow-cta">Experimente por 7 dias</Button>
+```
+
+## WhatsApp
+
+Cor oficial do WhatsApp, preservada como token nomeado para componentes específicos do canal (badge de status, ícone, CTAs de contato).
+
+<ComponentPreview title="WhatsApp green">
+  <div className="flex items-center gap-3">
+    <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[var(--color-whatsapp)] text-caption font-semibold text-white">
+      WA
+    </span>
+    <code className="text-body-sm text-foreground-muted">--color-whatsapp · #25D366</code>
+  </div>
+</ComponentPreview>
+
+```tsx
+<span className="bg-whatsapp text-white">…</span>
 ```
 
 ## Usando no código
