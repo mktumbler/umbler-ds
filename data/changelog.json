@@ -2,6 +2,13 @@
   {
     "date": "2026-06-05",
     "type": "feat",
+    "scope": "showcase",
+    "title": "Showcase /showcase (MVP) — landing real montada com o Umbler DS",
+    "description": "Primeira landing demonstrativa em rota standalone. MVP com 4 seções: Hero (HeroBackground sweep + Button pill xl com shadow-cta + eyebrow + display headline canalizando desejo Schwartz), Logo Cloud (grid 6-up grayscale + número anchor '+60 mil empresas'), Feature Grid (3 cards com verbos concretos — responde, registra, distribui), CTA Banner (gradient-premium + gradient-glow + tom anti-urgência 'Sem cartão, cancele quando quiser'). Layout dark fixo via app/(landing)/layout.tsx — sem cromo Fumadocs, sem toggle. A regra em-dash-copy entrou em ação (3 disparos em comentários removidos para manter o sinal honesto). Página Marketing › Showcase introduz o conceito + botão 'Abrir em tela cheia' levando pra /showcase. Próximas iterações vão adicionar Problem/Solution, Steps, Manifesto, Pricing, Testimonial, FAQ."
+  },
+  {
+    "date": "2026-06-05",
+    "type": "feat",
     "scope": "button",
     "title": "BREAKING (v0.2.0): Button vira pill default + shadow-cta em sizes grandes",
     "description": "Decisão de identidade do brand guide ('todos os botões em formato pill') aplicada. Mudanças: 1) Todos os sizes (sm/md/lg/xl) ganham radius pill (rounded-full) em vez de rounded-sm/md/lg. 2) Padding horizontal aumentado em lg (px-5 → px-6) e xl (px-6 → px-8) para o conteúdo respirar nas curvas pill. 3) Variant primary em sizes lg/xl ganha shadow-cta (sombra colorida azul brand) via compoundVariants — premium para CTAs de landing. Sizes sm/md mantêm shadow-xs (UI de produto, sem ostentação). Sem alias de deprecation: o DS está em v0.x e quebra livremente. Versão bumped 0.1.0 → 0.2.0. Consumers via shadcn precisam rodar `npx shadcn@latest add` para receber a nova versão. Documentado o breaking change no topo da página de Button + tabela de sizes atualizada explicitando shadow por size."

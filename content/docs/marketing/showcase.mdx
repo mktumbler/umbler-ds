@@ -1,0 +1,57 @@
+---
+title: Showcase
+description: Landing real construída com o Umbler DS — prova viva do que o sistema entrega em produção.
+---
+
+A página `/showcase` é uma **landing demonstrativa** montada com componentes, patterns, tokens e guidelines do Umbler DS. Não é mockup nem maquete — é código real, rodando em produção, com layout dark fixo, sem cromo de doc, exatamente como uma landing Umbler ficaria num projeto consumer.
+
+<Callout type="info">
+A landing vive em **tela cheia** (rota separada da doc). Clique no botão abaixo para abrir.
+</Callout>
+
+<div className="not-prose my-8 flex justify-center">
+  <a
+    href="/showcase"
+    target="_blank"
+    rel="noopener"
+    className="inline-flex h-14 items-center gap-2 rounded-full bg-brand-500 px-8 text-body-lg font-medium text-white shadow-cta no-underline transition-colors duration-[var(--duration-fast)] hover:bg-brand-600"
+  >
+    Abrir landing em tela cheia →
+  </a>
+</div>
+
+## O que está demonstrado (MVP)
+
+Esta primeira versão tem 4 seções, todas usando peças do DS:
+
+<TokenTable
+  columns={['Seção', 'Componentes/patterns usados', 'Decisões de copy']}
+  rows={[
+    ['Hero', 'HeroBackground (sweep) + Button (pill xl) + eyebrow + display headline', 'Headline "A estrutura sempre à altura da ambição" canaliza desejo Schwartz; sub-headline operacional'],
+    ['Logo Cloud', 'Grid 6-up grayscale com nomes fictícios de clientes', '+60 mil empresas como número anchor antes do 3º scroll'],
+    ['Feature Grid', '3 cards icon+title+desc com hover sutil', 'Verbos concretos por feature (responde, registra, distribui)'],
+    ['CTA Banner', 'Section com gradient-premium + gradient-glow + Button shadow-cta', 'Tom anti-urgência ("Sem cartão. Cancele quando quiser")'],
+  ]}
+/>
+
+## O que ainda não está
+
+Iteração futura — cada uma vira commit separado quando entrar:
+
+- **Problem/Solution** (pares dor → resposta)
+- **Steps 01/02/03** (como ativar)
+- **Manifesto** (pico emocional pré-pricing)
+- **Pricing Table** (toggle anual + plano destacado)
+- **Testimonial** (depoimentos específicos)
+- **FAQ** (objeções desarmadas)
+- **Wow moments** (max 2-3 — possivelmente shine border em CTA, gradient text no manifesto)
+
+## Por que showcase importa
+
+Doc de DS sem prova viva sofre o **"funcionará na minha LP?"** silencioso. O showcase responde:
+
+- **Visualmente** — quem chega vê o resultado, não slide
+- **Tecnicamente** — código está aqui no repo, copiável
+- **Em produção** — rota real, build real, deploy real
+
+Quando um time avalia se adota o Umbler DS, manda o link do showcase. Se a landing convence, o DS vendeu sozinho.
