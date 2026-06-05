@@ -11,6 +11,10 @@
  *   - button-like  → <Button variant=…>
  *   - alert-like   → <Alert variant=…>
  *
+ * Regras de copy (escopo restrito):
+ *   - em-dash-copy → "—" em copy de landing pt-BR (brand guide § 10)
+ *                    Escopo: app/(landing)/**, app/(home)/**, content/docs/marketing/showcase/**
+ *
  * Fora de escopo (whitelist):
  *   - components/ui/**           — o próprio DS
  *   - components/ui/*-variants.* — definições de variantes
@@ -95,6 +99,14 @@ const RULES = [
     // <div … border-(success|warning|error|brand|info)-200 … bg-…-50  (callout clássico)
     pattern: /<div\b[^>]*\bclassName\s*=\s*[`"'{][^`"'}]*\bborder-(success|warning|error|brand|info)-(?:200|300)\b[^`"'}]*\bbg-\1-50\b/g,
   },
+  {
+    id: 'em-dash-copy',
+    label: 'em-dash (—) em copy pt-BR — use vírgula, ponto ou parênteses (brand guide § Voz)',
+    // Em-dash literal (U+2014). Hífen comum (-) e en-dash (–) não disparam.
+    pattern: /—/g,
+    // Escopo: rotas de landing reais + showcase. /docs (doc técnica) fica livre.
+    scope: /(?:^|\/)(?:app\/\(landing\)\/|app\/\(home\)\/|content\/docs\/marketing\/showcase\/)/,
+  },
 ];
 
 // ── Walker ──────────────────────────────────────────────────────────────────
@@ -140,8 +152,11 @@ const findings = [];
 for (const file of files) {
   const src = readFileSync(file, 'utf-8');
   const lines = src.split('\n');
+  const relPath = file.slice(ROOT.length + 1).replaceAll(sep, '/');
 
   for (const rule of RULES) {
+    // Regra com escopo restrito: pula arquivos fora do escopo
+    if (rule.scope && !rule.scope.test(relPath)) continue;
     rule.pattern.lastIndex = 0;
     for (let i = 0; i < lines.length; i++) {
       const line = lines[i];

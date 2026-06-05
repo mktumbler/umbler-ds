@@ -121,5 +121,5 @@ Hífen curto `-` em palavras compostas (multi-canal, pós-venda) continua permit
 A regra vale para **toda copy visível** ao usuário: headlines, sub-headlines, manifestos, body, CTAs, meta tags, tooltips. A doc do DS pode usar em-dash livremente (é texto técnico, não marketing).
 
 <Callout type="info">
-Esta regra é validada automaticamente pelo `audit-antipatterns.mjs` em arquivos MDX dentro de `content/docs/marketing/`. Para exceções pedagógicas, use a pragma `{/* audit-ignore: em-dash — motivo */}`.
+Esta regra é validada automaticamente pelo `audit-antipatterns.mjs` (regra `em-dash-copy`) em rotas de landing real — `app/(landing)/**`, `app/(home)/**`, `content/docs/marketing/showcase/**`. A doc técnica (`content/docs/**`) fica livre porque não é copy visível ao usuário final, é material de referência. Para exceções pedagógicas em landing, use a pragma `{/* audit-ignore: em-dash-copy */}`.
 </Callout>

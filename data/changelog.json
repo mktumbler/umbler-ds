@@ -2,6 +2,13 @@
   {
     "date": "2026-06-05",
     "type": "feat",
+    "scope": "audit",
+    "title": "Regra em-dash-copy no audit-antipatterns",
+    "description": "Adiciona checagem da regra dura do brand guide ('sem em-dash em copy pt-BR') ao audit-antipatterns.mjs. Escopo restrito a rotas de landing real (app/(landing)/**, app/(home)/**, content/docs/marketing/showcase/**) — a doc técnica do DS (/docs/**) fica livre, porque é material de referência, não copy visível ao usuário. Suporte adicionado ao motor de regras: propriedade `scope: RegExp` na regra filtra por path do arquivo antes de aplicar. Pragma de exceção: `{/* audit-ignore: em-dash-copy */}`. Hoje a regra entra em standby (não há landing real ainda); ativa naturalmente quando o showcase chegar no Lote 8."
+  },
+  {
+    "date": "2026-06-05",
+    "type": "feat",
     "scope": "docs",
     "title": "Marketing › Page Types — catálogo dos 9 tipos de LP",
     "description": "Receitas reutilizáveis para os 9 tipos de landing: Home (vitrine de marca), Produto (com 3 padrões narrativos por maturidade da persona), Solução por segmento (com 8 setores documentados + linguagem específica), Use Case (resultado-foco + verbos concretos), Pricing (anatomia da tabela + FAQ obrigatório), Contato/Demo (princípios de form mínimo), Institucional (visão sobre produto), Free Tool (a tool funciona na página + upsell sutil), Legal (TOC + anchor links + tipografia confortável). Cada tipo: objetivo, seções obrigatórias/opcionais, SEO, padrão narrativo, anti-patterns. Decisão de escopo: tipos genéricos reutilizáveis em qualquer projeto que adote o DS — o mapa específico das 74 páginas Umbler fica no projeto consumer, não no DS. Fix bonus: `<3s` em use-case.mdx interpretado como JSX tag pelo MDX, trocado por 'menos de 3s'."
