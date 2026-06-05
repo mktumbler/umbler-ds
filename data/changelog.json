@@ -3,6 +3,13 @@
     "date": "2026-06-05",
     "type": "feat",
     "scope": "docs",
+    "title": "Marketing › Conversion — playbook completo de LP",
+    "description": "Migração do CONVERSION-PLAYBOOK em 7 páginas de aprofundamento operacional dentro de Marketing › Conversion. 1) Personas — as 4 personas-alvo (Gerente, Empresário, Head de Growth, Operação) com dor primária + o que cada uma quer ouvir. 2) Mensagem — 10 pilares transversais + mensagens-chave por tema (crescimento, IA, WhatsApp, CRM, ambição) + above-the-fold (5 segundos, hierarquia, validação). 3) Estrutura — sequência por awareness (unaware/solution-aware/product-aware) + lógica de persuasão de 10 passos + tension-release + 4 padrões observados + mobile-first. 4) Headlines — frameworks expert (Schwartz/Hopkins/Halbert/Ogilvy/Sugarman) + 5 fórmulas pt-BR + 5 lead types por awareness + teste final de 4 perguntas. 5) Storytelling — padrão Manifesto + Yes Ladder + Tension-Release + persuasão visual (whitespace, wow moments, hierarquia). 6) CTAs e Objeções — tabela canônica de CTAs + social proof hierarchy + as 5 objeções principais contornadas + urgência sem cinismo. 7) Checklist — review humano em 7 seções (hero, social proof, estrutura, voz, CTAs, mobile, técnico) + anti-patterns gerais. Toda a metodologia que orienta o como compor LPs que convertem."
+  },
+  {
+    "date": "2026-06-05",
+    "type": "feat",
+    "scope": "docs",
     "title": "Marketing › Brand — voice por contexto, decision framework, anti-patterns, imagery",
     "description": "Migração do BRAND-GUIDE para guidelines operacionais dentro de Marketing › Brand. Cinco páginas novas: 1) Voice — tom por contexto (headline/sub-headline/CTA/feature/FAQ/institucional) + mistura ideal 40/25/20/10/5 + palavras de poder + regra dura sem em-dash. 2) Voice Examples — tabela ampliada certo vs errado, por contexto. 3) Decision Framework — as 5 perguntas que decidem entre duas mensagens. 4) Anti-patterns — riscos de má interpretação (reduzir Umbler a chatbot/CRM, IA como buzzword, marca heroína da narrativa, promessas vagas). 5) Imagery — direção visual para fotografia, vídeo, screenshots, mockups, logos clientes — onde tokens não chegam. /docs/brand continua sendo a síntese essencial; Marketing › Brand é o aprofundamento operacional pra quem está escrevendo copy."
   },
