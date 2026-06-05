@@ -1,5 +1,19 @@
 [
   {
+    "date": "2026-06-05",
+    "type": "refactor",
+    "scope": "docs",
+    "title": "Varredura UI lote A — landing sem inline styles + helpers da doc tokenizados",
+    "description": "Primeiro lote da varredura de boas práticas. 1) Landing (app/(home)/page.tsx) reescrita sem inline styles — agora usa text-display-xl, text-body-lg, text-foreground-muted via classes Tailwind. 2) Spacing/Radius showcases trocaram bg-[#1a5cff] hardcoded por bg-brand-500. 3) Helpers da doc (ComponentPreview, TokenTable, TypeScale, ShadowShowcase) eliminaram todo `dark:` manual — passam a usar tokens semânticos (border-border, bg-surface, bg-surface-subtle, text-foreground, text-foreground-muted). Novo token --surface-subtle (neutral-50 light / neutral-950 dark) para painéis aninhados/headers."
+  },
+  {
+    "date": "2026-06-03",
+    "type": "chore",
+    "scope": "docs",
+    "title": "Limpa menções ao protótipo HTML antigo",
+    "description": "Removidas referências a `umbler-design-system.vercel.app` do CLAUDE.md, README.md, tokens.css header, sobre.mdx e do allowlist de WebFetch em .claude/settings.json. O DS vive por conta própria — o protótipo virou ruído histórico."
+  },
+  {
     "date": "2026-06-03",
     "type": "refactor",
     "scope": "blocks",

@@ -14,7 +14,7 @@ export function RadiusShowcase({ items }: RadiusShowcaseProps) {
       {items.map((i) => (
         <div key={i.name} className="flex flex-col items-center gap-2 text-sm">
           <div
-            className="w-20 h-20 bg-[#1a5cff]/15 border border-[#1a5cff]/40"
+            className="w-20 h-20 bg-brand-500/15 border border-brand-500/40"
             style={{ borderRadius: i.value }}
           />
           <div className="flex flex-col items-center">

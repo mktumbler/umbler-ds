@@ -195,6 +195,7 @@
 
 @theme inline {
   --color-surface:               var(--surface);
+  --color-surface-subtle:        var(--surface-subtle);
   --color-border:                var(--border);
   --color-border-strong:         var(--border-strong);
   --color-foreground:            var(--foreground);
@@ -221,6 +222,7 @@
   --logo-show-dark: none;
 
   --surface:              #ffffff;
+  --surface-subtle:       var(--color-neutral-50);
   --border:               color-mix(in srgb, var(--color-neutral-600) 18%, transparent);
   --border-strong:        color-mix(in srgb, var(--color-neutral-600) 35%, transparent);
   --foreground:           var(--color-neutral-800);
@@ -250,6 +252,7 @@
   --logo-show-dark: block;
 
   --surface:              var(--color-neutral-900);
+  --surface-subtle:       var(--color-neutral-950);
   --border:               color-mix(in srgb, var(--color-neutral-600) 70%, transparent);
   --border-strong:        var(--color-neutral-500);
   --foreground:           var(--color-neutral-100);

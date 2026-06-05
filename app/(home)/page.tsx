@@ -5,49 +5,15 @@ import { cn } from '@/lib/utils';
 
 export default function HomePage() {
   return (
-    <main
-      style={{
-        minHeight: '100vh',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: '2rem',
-        background:
-          'radial-gradient(ellipse at top, rgb(26 92 255 / 0.08) 0%, transparent 60%)',
-      }}
-    >
-      <div style={{ maxWidth: '640px', textAlign: 'center' }}>
-        <h1
-          style={{
-            fontSize: 'var(--text-display-xl)',
-            fontWeight: 'var(--text-display-xl--font-weight)',
-            letterSpacing: 'var(--text-display-xl--letter-spacing)',
-            lineHeight: 'var(--text-display-xl--line-height)',
-            marginBottom: '1.5rem',
-          }}
-        >
-          Design System
-        </h1>
+    <main className="flex min-h-screen items-center justify-center bg-[radial-gradient(ellipse_at_top,_rgb(26_92_255_/_0.08)_0%,_transparent_60%)] p-8">
+      <div className="mx-auto max-w-[640px] text-center">
+        <h1 className="mb-6 text-display-xl">Design System</h1>
 
-        <p
-          style={{
-            fontSize: '1.125rem',
-            lineHeight: 1.6,
-            opacity: 0.7,
-            marginBottom: '2.5rem',
-          }}
-        >
+        <p className="mb-10 text-body-lg text-foreground-muted text-pretty">
           Tokens, componentes e padrões. Sempre à altura da ambição.
         </p>
 
-        <div
-          style={{
-            display: 'flex',
-            gap: '0.75rem',
-            justifyContent: 'center',
-            flexWrap: 'wrap',
-          }}
-        >
+        <div className="flex flex-wrap justify-center gap-3">
           <Link
             href="/docs"
             className={cn(buttonVariants({ variant: 'primary', size: 'lg' }), 'no-underline')}

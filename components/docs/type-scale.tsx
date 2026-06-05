@@ -15,7 +15,7 @@ interface TypeScaleProps {
 
 export function TypeScale({ rows }: TypeScaleProps) {
   return (
-    <div className="not-prose flex flex-col divide-y divide-black/5 dark:divide-white/5 border-t border-b border-black/5 dark:border-white/5">
+    <div className="not-prose flex flex-col divide-y divide-border border-y border-border">
       {rows.map((r) => (
         <div
           key={r.name}

@@ -19,9 +19,9 @@ export function ComponentPreview({
       : '';
 
   return (
-    <div className="not-prose my-6 rounded-lg border border-black/10 dark:border-white/10 overflow-hidden">
+    <div className="not-prose my-6 rounded-lg border border-border overflow-hidden">
       {title ? (
-        <div className="px-4 py-2 text-xs font-medium opacity-60 border-b border-black/5 dark:border-white/5 bg-black/[0.02] dark:bg-white/[0.02]">
+        <div className="px-4 py-2 text-caption font-medium text-foreground-muted border-b border-border bg-surface-subtle">
           {title}
         </div>
       ) : null}

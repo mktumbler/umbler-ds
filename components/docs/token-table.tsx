@@ -8,7 +8,7 @@ export function TokenTable({ columns, rows }: TokenTableProps) {
     <div className="not-prose my-6 overflow-x-auto">
       <table className="w-full text-sm border-collapse">
         <thead>
-          <tr className="border-b border-black/10 dark:border-white/10">
+          <tr className="border-b border-border">
             {columns.map((c) => (
               <th
                 key={c}
@@ -23,7 +23,7 @@ export function TokenTable({ columns, rows }: TokenTableProps) {
           {rows.map((row, i) => (
             <tr
               key={i}
-              className="border-b border-black/5 dark:border-white/5"
+              className="border-b border-border"
             >
               {row.map((cell, j) => (
                 <td
