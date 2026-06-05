@@ -22,8 +22,8 @@ export function TypeScale({ rows }: TypeScaleProps) {
           className="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-4 py-6 items-baseline"
         >
           <div className="flex flex-col gap-0.5">
-            <span className="text-sm font-medium">{r.name}</span>
-            <span className="text-xs font-mono opacity-60">
+            <span className="text-body-sm font-medium text-foreground">{r.name}</span>
+            <span className="text-caption font-mono text-foreground-muted">
               {r.size} · {r.weight}
             </span>
           </div>

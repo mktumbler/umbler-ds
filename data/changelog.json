@@ -3,6 +3,13 @@
     "date": "2026-06-05",
     "type": "refactor",
     "scope": "docs",
+    "title": "Varredura UI lote B — fd-tokens, motion-demo via Button, opacity → tokens",
+    "description": "Segundo lote. 1) Helpers da doc trocaram tokens do Fumadocs (text-fd-foreground/X, bg-fd-muted, ring-offset-fd-background) pelos do DS (text-foreground/muted/subtle, bg-surface-subtle, ring-offset-surface) — consistência com o resto do DS. 2) MotionDemo agora usa <Button size=sm variant=primary> em vez de hand-rolling botão com bg-brand-500 (auto-consistência). 3) Texto via opacity-60/70/80 (com problemas de contraste WCAG em dark) substituído por tokens explícitos text-foreground-muted/subtle. 4) text-[0.8125rem] e text-[10px] arbitrários trocados por text-body-sm e text-caption (escala). 5) transition-duration: 150ms literal → duration-[var(--duration-fast)]."
+  },
+  {
+    "date": "2026-06-05",
+    "type": "refactor",
+    "scope": "docs",
     "title": "Varredura UI lote A — landing sem inline styles + helpers da doc tokenizados",
     "description": "Primeiro lote da varredura de boas práticas. 1) Landing (app/(home)/page.tsx) reescrita sem inline styles — agora usa text-display-xl, text-body-lg, text-foreground-muted via classes Tailwind. 2) Spacing/Radius showcases trocaram bg-[#1a5cff] hardcoded por bg-brand-500. 3) Helpers da doc (ComponentPreview, TokenTable, TypeScale, ShadowShowcase) eliminaram todo `dark:` manual — passam a usar tokens semânticos (border-border, bg-surface, bg-surface-subtle, text-foreground, text-foreground-muted). Novo token --surface-subtle (neutral-50 light / neutral-950 dark) para painéis aninhados/headers."
   },

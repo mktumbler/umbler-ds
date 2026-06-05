@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { Button } from '@/components/ui/button';
 
 // ── Duration demo ─────────────────────────────────────────────────────────────
 
@@ -32,10 +33,10 @@ export function DurationDemo() {
         {durations.map((d) => (
           <div key={d.name} className="flex items-center gap-4">
             <div className="w-20 shrink-0">
-              <p className="text-xs font-semibold text-fd-foreground/80">{d.name}</p>
-              <p className="text-[10px] font-mono text-fd-foreground/45">{d.value}</p>
+              <p className="text-xs font-semibold text-foreground">{d.name}</p>
+              <p className="text-caption font-mono text-foreground-subtle">{d.value}</p>
             </div>
-            <div className="relative flex-1 h-10 bg-fd-muted rounded-lg overflow-hidden">
+            <div className="relative flex-1 h-10 bg-surface-subtle rounded-lg overflow-hidden">
               <div
                 className="absolute top-1/2 w-5 h-5 rounded-full bg-brand-500 shadow-sm"
                 style={{
@@ -50,14 +51,16 @@ export function DurationDemo() {
           </div>
         ))}
       </div>
-      <button
+      <Button
         type="button"
         onClick={play}
         disabled={animated}
-        className="mt-4 px-4 py-1.5 text-xs font-semibold rounded-lg bg-brand-500 text-white hover:bg-brand-600 disabled:opacity-50 disabled:cursor-default cursor-pointer transition-colors duration-150"
+        size="sm"
+        variant="primary"
+        className="mt-4"
       >
         {animated ? 'Animando…' : '▶ Play'}
-      </button>
+      </Button>
     </div>
   );
 }
@@ -107,10 +110,10 @@ export function EasingDemo() {
         {easings.map((e) => (
           <div key={e.name} className="flex items-center gap-4">
             <div className="w-32 shrink-0">
-              <p className="text-xs font-semibold text-fd-foreground/80">{e.name}</p>
-              <p className="text-[10px] text-fd-foreground/45 leading-tight mt-0.5">{e.description}</p>
+              <p className="text-xs font-semibold text-foreground">{e.name}</p>
+              <p className="text-caption text-foreground-subtle leading-tight mt-0.5">{e.description}</p>
             </div>
-            <div className="relative flex-1 h-10 bg-fd-muted rounded-lg overflow-hidden">
+            <div className="relative flex-1 h-10 bg-surface-subtle rounded-lg overflow-hidden">
               <div
                 className="absolute top-1/2 w-5 h-5 rounded-full bg-brand-500 shadow-sm"
                 style={{
@@ -125,14 +128,16 @@ export function EasingDemo() {
           </div>
         ))}
       </div>
-      <button
+      <Button
         type="button"
         onClick={play}
         disabled={animated}
-        className="mt-4 px-4 py-1.5 text-xs font-semibold rounded-lg bg-brand-500 text-white hover:bg-brand-600 disabled:opacity-50 disabled:cursor-default cursor-pointer transition-colors duration-150"
+        size="sm"
+        variant="primary"
+        className="mt-4"
       >
         {animated ? 'Animando…' : '▶ Play'}
-      </button>
+      </Button>
     </div>
   );
 }

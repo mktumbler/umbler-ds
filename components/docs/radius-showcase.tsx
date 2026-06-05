@@ -18,9 +18,9 @@ export function RadiusShowcase({ items }: RadiusShowcaseProps) {
             style={{ borderRadius: i.value }}
           />
           <div className="flex flex-col items-center">
-            <span className="font-medium">{i.name}</span>
-            <code className="text-xs opacity-60">{i.value}</code>
-            <code className="text-xs opacity-50 mt-0.5">{i.token}</code>
+            <span className="font-medium text-foreground">{i.name}</span>
+            <code className="text-caption text-foreground-muted">{i.value}</code>
+            <code className="text-caption text-foreground-subtle mt-0.5">{i.token}</code>
           </div>
         </div>
       ))}

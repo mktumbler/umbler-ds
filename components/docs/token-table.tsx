@@ -12,7 +12,7 @@ export function TokenTable({ columns, rows }: TokenTableProps) {
             {columns.map((c) => (
               <th
                 key={c}
-                className="text-left font-medium px-3 py-2 opacity-70"
+                className="text-left font-medium px-3 py-2 text-foreground-muted"
               >
                 {c}
               </th>
@@ -29,7 +29,7 @@ export function TokenTable({ columns, rows }: TokenTableProps) {
                 <td
                   key={j}
                   className={`px-3 py-2.5 ${
-                    j > 0 ? 'font-mono text-[0.8125rem] opacity-80' : ''
+                    j > 0 ? 'font-mono text-body-sm text-foreground-secondary' : ''
                   }`}
                 >
                   {cell}
