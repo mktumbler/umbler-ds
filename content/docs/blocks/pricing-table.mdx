@@ -1,0 +1,99 @@
+---
+title: PricingTable
+description: Tabela de preços com toggle mensal/anual, 3 cards e feature list. Data-driven — troque os planos sem tocar na UI.
+---
+
+import {
+  PricingTableUmblerDemo,
+  PricingTableSaasDemo,
+} from '@/components/demos/blocks/pricing-table-variants';
+import { VariantGrid, VariantCard } from '@/components/docs/variant-grid';
+
+`PricingTable` é um bloco client-side que encapsula o estado do toggle mensal/anual. A página pai pode ser Server Component.
+
+## Planos Umbler
+
+Configuração padrão do produto: Starter / Pro (destacado) / Enterprise.
+
+<VariantGrid columns={1}>
+  <VariantCard label="Umbler — Starter / Pro / Enterprise" hint="Toggle anual ativo por padrão, badge brand-solid no popular" minHeight={600}>
+    <PricingTableUmblerDemo />
+  </VariantCard>
+</VariantGrid>
+
+## Planos SaaS genérico
+
+O mesmo bloco com `SAAS_PLANS` — Free / Growth / Scale. Mostra que a UI não muda, só os dados.
+
+<VariantGrid columns={1}>
+  <VariantCard label="SaaS — Free / Growth / Scale" hint="defaultPeriod='monthly', plano Free com preço zero" minHeight={600}>
+    <PricingTableSaasDemo />
+  </VariantCard>
+</VariantGrid>
+
+## API
+
+```tsx
+import {
+  PricingTable,
+  UMBLER_PLANS,
+  type Plan,
+} from '@/components/blocks/pricing-table';
+
+// Uso direto com planos padrão
+<PricingTable plans={UMBLER_PLANS} />
+
+// Com planos customizados
+const MY_PLANS: Plan[] = [
+  {
+    id: 'free',
+    name: 'Free',
+    pitch: 'Para começar sem compromisso',
+    priceMonthly: 0,
+    priceYearly: 0,
+    ctaLabel: 'Criar conta grátis',
+    features: [
+      { label: '1 projeto ativo',    included: true  },
+      { label: 'Exportação CSV',     included: false },
+    ],
+  },
+  {
+    id: 'pro',
+    name: 'Pro',
+    pitch: 'Para times que precisam de mais',
+    priceMonthly: 99,
+    priceYearly: 89,
+    popular: true,
+    ctaLabel: 'Testar 14 dias grátis',
+    features: [
+      { label: 'Projetos ilimitados', included: true },
+      { label: 'Exportação CSV',      included: true },
+    ],
+  },
+];
+
+<PricingTable
+  plans={MY_PLANS}
+  defaultPeriod="monthly"
+  footer={<p className="text-center text-caption text-foreground-muted">Sem cartão de crédito.</p>}
+/>
+```
+
+| Prop            | Tipo              | Padrão      | Descrição                                          |
+| --------------- | ----------------- | ----------- | -------------------------------------------------- |
+| `plans`         | `Plan[]`          | —           | Array de planos. Obrigatório.                      |
+| `defaultPeriod` | `monthly \| yearly` | `'yearly'` | Estado inicial do toggle.                          |
+| `footer`        | `ReactNode`       | Nota padrão | Conteúdo após os cards (trial note, compliance...) |
+
+### Tipo `Plan`
+
+| Campo           | Tipo                           | Descrição                                                           |
+| --------------- | ------------------------------ | ------------------------------------------------------------------- |
+| `id`            | `string`                       | Slug único (key React).                                             |
+| `name`          | `string`                       | Nome exibido no card.                                               |
+| `pitch`         | `string`                       | Frase de posicionamento.                                            |
+| `priceMonthly`  | `number \| null`               | Preço/mês no ciclo mensal. `null` = "Sob consulta".                |
+| `priceYearly`   | `number \| null`               | Preço/mês no ciclo anual. `null` = "Sob consulta".                 |
+| `popular`       | `boolean`                      | Destaca o card: borda brand + badge + `lg:scale-[1.02]`.           |
+| `ctaLabel`      | `string`                       | Label do botão principal.                                           |
+| `features`      | `PlanFeature[]`                | Lista de capacidades com `included: boolean`.                       |
