@@ -8,6 +8,7 @@ import { SpacingScale } from '@/components/docs/spacing-scale';
 import { RadiusShowcase } from '@/components/docs/radius-showcase';
 import { ShadowShowcase } from '@/components/docs/shadow-showcase';
 import { ComponentPreview } from '@/components/docs/component-preview';
+import { VariantGrid, VariantCard } from '@/components/docs/variant-grid';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { DurationDemo, EasingDemo } from '@/components/docs/motion-demo';
@@ -57,6 +58,8 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     RadiusShowcase,
     ShadowShowcase,
     ComponentPreview,
+    VariantGrid,
+    VariantCard,
     Button,
     Badge,
     DurationDemo,

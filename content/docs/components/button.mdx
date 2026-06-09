@@ -1,90 +1,177 @@
 ---
 title: Button
-description: Elemento de ação primária do Umbler DS — 5 variantes, 4 tamanhos, suporte a ícones e estado de loading.
+description: Elemento de ação do Umbler DS — 5 variantes, 4 tamanhos, suporte a ícones, loading e composições reais.
 ---
 
 import {
-  ButtonVariantsDemo,
-  ButtonSizesDemo,
-  ButtonIconsDemo,
-  ButtonStatesDemo,
+  ButtonVariantPrimary,
+  ButtonVariantSecondary,
+  ButtonVariantGhost,
+  ButtonVariantOutline,
+  ButtonVariantDanger,
+  ButtonSizeSm,
+  ButtonSizeMd,
+  ButtonSizeLg,
+  ButtonSizeXl,
+  ButtonIconLeading,
+  ButtonIconTrailing,
+  ButtonIconBoth,
+  ButtonIconOnly,
+  ButtonIconOnlyVariants,
+  ButtonStateDefault,
+  ButtonStateHover,
+  ButtonStateFocus,
+  ButtonStateLoading,
+  ButtonStateDisabled,
+  ButtonCtaPrimaryXl,
+  ButtonCtaCluster,
+  ButtonCtaWithBadge,
+  ButtonFormFooter,
+  ButtonDangerConfirm,
+  ButtonToolbar,
+  ButtonWithKbdHint,
 } from '@/components/demos/button-variants';
+import { VariantGrid, VariantCard } from '@/components/docs/variant-grid';
 
-O `Button` cobre todas as ações do produto: confirmação, cancelamento, ações destrutivas e navegação. Sem dependência de Radix — React + Tailwind puro.
+O `Button` cobre toda ação clicável do produto: CTA, confirmação, cancelamento, ação destrutiva e navegação. Sem Radix — React + Tailwind puro.
 
 <Callout type="warn" title="Breaking change v0.x — pill default">
-A partir desta versão, o Button tem **radius pill em todos os tamanhos** (decisão do [brand guide](/docs/marketing/brand)). CTAs primários em sizes `lg`/`xl` ganham `shadow-cta` (sombra azul brand). Quem instalou via shadcn antes da mudança precisa rodar `npx shadcn@latest add` de novo para receber a nova versão.
+A partir desta versão, o Button tem **radius pill em todos os tamanhos** (decisão do [brand guide](/docs/marketing/brand)). CTAs em `lg`/`xl` ganham `shadow-cta` (sombra azul brand). Quem instalou via shadcn antes precisa rodar `npx shadcn@latest add` novamente.
 </Callout>
 
 ## Variantes
 
-<ComponentPreview title="Variants">
-  <ButtonVariantsDemo />
-</ComponentPreview>
+Cinco variantes cobrem a hierarquia de ação: do CTA principal ao destrutivo.
 
-| Variante    | Uso                                      |
-| ----------- | ---------------------------------------- |
-| `primary`   | Ação principal da tela (CTA)             |
-| `secondary` | Ação secundária, cancelamento            |
-| `ghost`     | Ação terciária, toolbars, ícones inline  |
-| `outline`   | Alternativa ao secondary em fundos claros |
-| `danger`    | Ações destrutivas (excluir, revogar)     |
+<VariantGrid columns={3}>
+  <VariantCard label="Primary" hint="CTA da tela, ação principal">
+    <ButtonVariantPrimary />
+  </VariantCard>
+  <VariantCard label="Secondary" hint="Ação secundária, cancelamento">
+    <ButtonVariantSecondary />
+  </VariantCard>
+  <VariantCard label="Ghost" hint="Ação terciária, toolbars">
+    <ButtonVariantGhost />
+  </VariantCard>
+  <VariantCard label="Outline" hint="Alternativa ao secondary em fundos claros">
+    <ButtonVariantOutline />
+  </VariantCard>
+  <VariantCard label="Danger" hint="Ações destrutivas (excluir, revogar)">
+    <ButtonVariantDanger />
+  </VariantCard>
+</VariantGrid>
 
 ## Tamanhos
 
-<ComponentPreview title="Sizes">
-  <ButtonSizesDemo />
-</ComponentPreview>
+Em landing/marketing, prefira `lg` ou `xl` (a `shadow-cta` é o sinal premium). Em produto, `md` é o default funcional. `sm` é para densidade alta (tabelas).
 
-| Prop       | Altura | Padding H | Sombra (primary) | Uso típico                |
-| ---------- | ------ | --------- | ---------------- | ------------------------- |
-| `size="sm"` | 32px  | 12px      | `shadow-xs`      | Tabelas, inline           |
-| `size="md"` | 40px  | 16px      | `shadow-xs`      | Padrão (default)          |
-| `size="lg"` | 48px  | 24px      | `shadow-cta`     | Formulários, modais, CTAs |
-| `size="xl"` | 56px  | 32px      | `shadow-cta`     | Hero de landing           |
-
-Em landings/marketing, prefira `size="lg"` ou `size="xl"` — o `shadow-cta` (sombra azul brand) é o sinal premium do CTA. Em produto, `md` é o default funcional.
+<VariantGrid columns={4}>
+  <VariantCard label="sm — 32px" hint="Tabelas, inline">
+    <ButtonSizeSm />
+  </VariantCard>
+  <VariantCard label="md — 40px" hint="Padrão de produto">
+    <ButtonSizeMd />
+  </VariantCard>
+  <VariantCard label="lg — 48px" hint="Forms, modais, CTAs">
+    <ButtonSizeLg />
+  </VariantCard>
+  <VariantCard label="xl — 56px" hint="Hero de landing">
+    <ButtonSizeXl />
+  </VariantCard>
+</VariantGrid>
 
 ## Com ícones
 
-Use os ícones do `@phosphor-icons/react`. Para botão só com ícone, passe `iconOnly` e um `aria-label`.
+Ícones do `@phosphor-icons/react`. Para botão só com ícone, passe `iconOnly` + `aria-label`.
 
-<ComponentPreview title="With Icons">
-  <ButtonIconsDemo />
-</ComponentPreview>
+<VariantGrid columns={2}>
+  <VariantCard label="Ícone à esquerda" hint="Ação de criação, adicionar">
+    <ButtonIconLeading />
+  </VariantCard>
+  <VariantCard label="Ícone à direita" hint="Continuar, avançar, CTA">
+    <ButtonIconTrailing />
+  </VariantCard>
+  <VariantCard label="Ícones nas duas pontas" hint="Ação composta (origem → destino)">
+    <ButtonIconBoth />
+  </VariantCard>
+  <VariantCard label="Icon-only" hint="Ações em toolbar — exige aria-label">
+    <ButtonIconOnly />
+  </VariantCard>
+</VariantGrid>
+
+<VariantGrid columns={1}>
+  <VariantCard label="Icon-only em todas as variantes" hint="A escala de hierarquia funciona também sem texto" minHeight={100}>
+    <ButtonIconOnlyVariants />
+  </VariantCard>
+</VariantGrid>
 
 ## Estados
 
-<ComponentPreview title="States">
-  <ButtonStatesDemo />
-</ComponentPreview>
+<VariantGrid columns={3}>
+  <VariantCard label="Default">
+    <ButtonStateDefault />
+  </VariantCard>
+  <VariantCard label="Hover" hint="brand-500 → brand-600">
+    <ButtonStateHover />
+  </VariantCard>
+  <VariantCard label="Focus" hint="outline brand-500 com offset">
+    <ButtonStateFocus />
+  </VariantCard>
+  <VariantCard label="Loading" hint="prop loading — spinner + disabled">
+    <ButtonStateLoading />
+  </VariantCard>
+  <VariantCard label="Disabled" hint="opacity 50%, pointer-events off">
+    <ButtonStateDisabled />
+  </VariantCard>
+</VariantGrid>
 
-| Prop / Estado | Comportamento                                 |
-| ------------- | --------------------------------------------- |
-| `loading`     | Mostra spinner, desabilita o botão            |
-| `disabled`    | Opacity 50%, pointer-events desativado        |
+## CTAs de landing
 
-## Uso
+Padrões de uso em hero de marketing. Esses são os clusters que aparecem em `/showcase`.
+
+<VariantGrid columns={3}>
+  <VariantCard label="CTA único xl" hint="Hero minimalista" tone="dark">
+    <ButtonCtaPrimaryXl />
+  </VariantCard>
+  <VariantCard label="Cluster CTA + ghost" hint="Primary + ação secundária" tone="dark">
+    <ButtonCtaCluster />
+  </VariantCard>
+  <VariantCard label="CTA com badge" hint="Anúncio de feature acima" tone="dark" minHeight={160}>
+    <ButtonCtaWithBadge />
+  </VariantCard>
+</VariantGrid>
+
+## Composições reais
+
+Padrões prontos para reuso em telas de produto.
+
+<VariantGrid columns={2}>
+  <VariantCard label="Form footer" hint="Cancelar à esquerda, salvar à direita" minHeight={140}>
+    <ButtonFormFooter />
+  </VariantCard>
+  <VariantCard label="Confirmação destrutiva" hint="Padrão de delete em modal" minHeight={140}>
+    <ButtonDangerConfirm />
+  </VariantCard>
+  <VariantCard label="Toolbar" hint="Cluster de icon-only ghost com separador" minHeight={140}>
+    <ButtonToolbar />
+  </VariantCard>
+  <VariantCard label="Com atalho de teclado" hint="Kbd inline para affordance de power user" minHeight={140}>
+    <ButtonWithKbdHint />
+  </VariantCard>
+</VariantGrid>
+
+## API
 
 ```tsx
 import { Button } from '@/components/ui/button';
 
-// Básico
 <Button>Salvar</Button>
-
-// Variante e tamanho
 <Button variant="danger" size="lg">Excluir conta</Button>
-
-// Com loading
 <Button loading>Salvando...</Button>
-
-// Icon only
 <Button variant="ghost" iconOnly aria-label="Configurações">
   <Gear size={20} />
 </Button>
 ```
-
-## Props
 
 | Prop       | Tipo                                                  | Padrão      |
 | ---------- | ----------------------------------------------------- | ----------- |
