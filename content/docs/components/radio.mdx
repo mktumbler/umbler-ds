@@ -1,19 +1,43 @@
 ---
 title: Radio
-description: Controle de seleção exclusiva em grupos, com orientação vertical ou horizontal.
+description: Seleção exclusiva em grupos com orientação vertical ou horizontal e suporte a descriptions.
 ---
 
-Radio usa a API nativa `<input type="radio">` com `appearance-none` e um dot central animado via classes `peer-*` do Tailwind. Use `RadioGroup` para agrupar opções semanticamente.
+import {
+  RadioVerticalPlans, RadioHorizontalBilling, RadioVerticalRegion, RadioPricingSelector,
+} from '@/components/demos/radio-variants';
+import { VariantGrid, VariantCard } from '@/components/docs/variant-grid';
 
-## Grupo vertical com descriptions
+## Orientações
 
-<RadioGroupDemo />
+<VariantGrid columns={2}>
+  <VariantCard label="Vertical com descriptions" hint="3 opções, uma disabled" minHeight={200}>
+    <RadioVerticalPlans />
+  </VariantCard>
+  <VariantCard label="Horizontal" hint="Ciclo de cobrança, 3 opções compactas" minHeight={120}>
+    <RadioHorizontalBilling />
+  </VariantCard>
+</VariantGrid>
 
-## Orientação horizontal
+## Variação de conteúdo
 
-<RadioOrientationDemo />
+<VariantGrid columns={1}>
+  <VariantCard label="Grupo de regiões" hint="Vertical sem description, opções curtas">
+    <RadioVerticalRegion />
+  </VariantCard>
+</VariantGrid>
 
 ## Composição
+
+Seletor de plano com borda de highlight via `has-[:checked]` do Tailwind. Nenhum estado JavaScript necessário.
+
+<VariantGrid columns={1}>
+  <VariantCard label="Seletor de plano com preço" hint="has-[:checked] + border-brand-500 + bg-brand-500/5" minHeight={200}>
+    <RadioPricingSelector />
+  </VariantCard>
+</VariantGrid>
+
+## API
 
 ```tsx
 import { Radio, RadioGroup } from '@/components/ui/radio';
@@ -25,25 +49,14 @@ import { Radio, RadioGroup } from '@/components/ui/radio';
 </RadioGroup>
 ```
 
-## Props — Radio
+| Prop (Radio)   | Tipo                    | Padrão      | Descrição                              |
+| -------------- | ----------------------- | ----------- | -------------------------------------- |
+| `label`        | `string`                | —           | Texto principal ao lado do radio.     |
+| `description`  | `string`                | —           | Texto auxiliar abaixo do label.       |
+| `disabled`     | `boolean`               | `false`     | Desabilita o radio.                   |
+| `...input`     | `InputHTMLAttributes`   | —           | Atributos nativos de input.           |
 
-<TokenTable
-  columns={['Prop', 'Tipo', 'Default', 'Descrição']}
-  rows={[
-    ['label',       'string',              '—',     'Texto principal ao lado do radio'],
-    ['description', 'string',              '—',     'Texto auxiliar abaixo do label'],
-    ['disabled',    'boolean',             'false', 'Desabilita o radio'],
-    ['...input',    'InputHTMLAttributes', '—',     'Todos os atributos nativos de input'],
-  ]}
-/>
-
-## Props — RadioGroup
-
-<TokenTable
-  columns={['Prop', 'Tipo', 'Default', 'Descrição']}
-  rows={[
-    ['label',       'string',                        '—',          'Título do grupo'],
-    ['orientation', "'horizontal' | 'vertical'",    "'vertical'", 'Direção de layout dos itens'],
-    ['...div',      'HTMLAttributes<HTMLDivElement>', '—',          'Atributos nativos de div'],
-  ]}
-/>
+| Prop (RadioGroup)  | Tipo                         | Padrão       | Descrição                              |
+| ------------------ | ---------------------------- | ------------ | -------------------------------------- |
+| `label`            | `string`                     | —            | Label do grupo (visualmente exposto). |
+| `orientation`      | `'vertical' \| 'horizontal'` | `'vertical'` | Direção do layout dos radios.         |

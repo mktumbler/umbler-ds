@@ -1,19 +1,58 @@
 ---
 title: Select
-description: Dropdown nativo estilizado com estados de validação e caret customizado.
+description: Dropdown nativo estilizado com estados de validação, 3 tamanhos e caret customizado.
 ---
 
-Select usa o elemento nativo `<select>` com `appearance-none` para estilização completa via Tailwind, mantendo acessibilidade e comportamento padrão do sistema operacional. Compõe com `InputLabel` e `InputHint` do Input.
+import {
+  SelectDefault, SelectError, SelectSuccess, SelectDisabled,
+  SelectSizeSm, SelectSizeMd, SelectSizeLg,
+  SelectTableFilter, SelectDeployForm,
+} from '@/components/demos/select-variants';
+import { VariantGrid, VariantCard } from '@/components/docs/variant-grid';
 
 ## Estados
 
-<SelectStatesDemo />
+<VariantGrid columns={2}>
+  <VariantCard label="Default" hint="Borda sutil, hover brand-400" minHeight={120}>
+    <SelectDefault />
+  </VariantCard>
+  <VariantCard label="Error" hint="Borda error-500 + hint vermelho" minHeight={120}>
+    <SelectError />
+  </VariantCard>
+  <VariantCard label="Success" hint="Borda success-500 + hint verde" minHeight={120}>
+    <SelectSuccess />
+  </VariantCard>
+  <VariantCard label="Disabled" hint="Opacity 50%, não interativo" minHeight={120}>
+    <SelectDisabled />
+  </VariantCard>
+</VariantGrid>
 
 ## Tamanhos
 
-<SelectSizesDemo />
+<VariantGrid columns={3}>
+  <VariantCard label="sm — 32px" hint="Filtros inline, density alta">
+    <SelectSizeSm />
+  </VariantCard>
+  <VariantCard label="md — 40px" hint="Padrão de produto (default)">
+    <SelectSizeMd />
+  </VariantCard>
+  <VariantCard label="lg — 48px" hint="Formulários de cadastro, LPs">
+    <SelectSizeLg />
+  </VariantCard>
+</VariantGrid>
 
-## Uso
+## Composições
+
+<VariantGrid columns={2}>
+  <VariantCard label="Filtros em tabela" hint="Dois selects sm lado a lado — filtro + período" minHeight={100}>
+    <SelectTableFilter />
+  </VariantCard>
+  <VariantCard label="Formulário de deploy" hint="Dois selects em InputGroup — região + PHP" minHeight={200}>
+    <SelectDeployForm />
+  </VariantCard>
+</VariantGrid>
+
+## API
 
 ```tsx
 import { Select } from '@/components/ui/select';
@@ -29,14 +68,9 @@ import { InputGroup, InputLabel, InputHint } from '@/components/ui/input';
 </InputGroup>
 ```
 
-## Props
-
-<TokenTable
-  columns={['Prop', 'Tipo', 'Default', 'Descrição']}
-  rows={[
-    ['state',    "'default' | 'error' | 'success'", "'default'", 'Estado de validação visual'],
-    ['size',     "'sm' | 'md' | 'lg'",              "'md'",      'Altura do campo'],
-    ['disabled', 'boolean',                          'false',     'Desabilita o select'],
-    ['...select','SelectHTMLAttributes',             '—',         'Atributos nativos de select'],
-  ]}
-/>
+| Prop       | Tipo                                | Padrão      | Descrição                             |
+| ---------- | ----------------------------------- | ----------- | ------------------------------------- |
+| `state`    | `'default' \| 'error' \| 'success'` | `'default'` | Estado de validação visual.          |
+| `size`     | `'sm' \| 'md' \| 'lg'`             | `'md'`      | Altura do campo.                     |
+| `disabled` | `boolean`                           | `false`     | Desabilita o select.                 |
+| `...select`| `SelectHTMLAttributes`              | —           | Atributos nativos de select.         |

@@ -1,47 +1,86 @@
 ---
 title: Toggle
-description: Switch acessível com track animado, suporte a controlled e uncontrolled, e dois tamanhos.
+description: Switch animado com thumb spring, 2 tamanhos e suporte a label e description.
 ---
 
-Toggle renderiza um `<button role="switch">` semântico — não um input — com track e thumb animados via Tailwind. Suporta modo **controlled** (`checked` + `onChange`) e **uncontrolled** (`defaultChecked`).
+import {
+  ToggleSm, ToggleMd,
+  ToggleOn, ToggleOff, ToggleDisabledOn, ToggleDisabledOff,
+  ToggleWithLabel, ToggleWithDescription, ToggleSettingsCard,
+} from '@/components/demos/toggle-variants';
+import { VariantGrid, VariantCard } from '@/components/docs/variant-grid';
 
 ## Tamanhos
 
-<ToggleSizesDemo />
-
-## Com label e description
-
-<ToggleWithLabelDemo />
+<VariantGrid columns={2}>
+  <VariantCard label="sm — 20px" hint="Density alta, tabelas, cards compactos">
+    <ToggleSm />
+  </VariantCard>
+  <VariantCard label="md — 24px" hint="Padrão de produto (default)">
+    <ToggleMd />
+  </VariantCard>
+</VariantGrid>
 
 ## Estados
 
-<ToggleStatesDemo />
+<VariantGrid columns={4}>
+  <VariantCard label="On" hint="Ligado — bg-brand-500">
+    <ToggleOn />
+  </VariantCard>
+  <VariantCard label="Off" hint="Desligado — bg-border">
+    <ToggleOff />
+  </VariantCard>
+  <VariantCard label="Disabled on" hint="Ligado, não interativo">
+    <ToggleDisabledOn />
+  </VariantCard>
+  <VariantCard label="Disabled off" hint="Desligado, não interativo">
+    <ToggleDisabledOff />
+  </VariantCard>
+</VariantGrid>
+
+## Com label e description
+
+<VariantGrid columns={2}>
+  <VariantCard label="Com label" hint="Toggle + texto à direita">
+    <ToggleWithLabel />
+  </VariantCard>
+  <VariantCard label="Com description" hint="Label + texto auxiliar abaixo — padrão de settings">
+    <ToggleWithDescription />
+  </VariantCard>
+</VariantGrid>
 
 ## Composição
+
+<VariantGrid columns={1}>
+  <VariantCard label="Card de configurações" hint="3 settings em lista dividida — padrão de preferences" minHeight={220}>
+    <ToggleSettingsCard />
+  </VariantCard>
+</VariantGrid>
+
+## API
 
 ```tsx
 import { Toggle } from '@/components/ui/toggle';
 
 // Uncontrolled
-<Toggle defaultChecked label="Notificações" description="Receba alertas por e-mail." />
+<Toggle
+  label="Notificações por e-mail"
+  description="Alertas e resumos diretamente no e-mail."
+  defaultChecked
+/>
 
 // Controlled
-const [enabled, setEnabled] = useState(false);
-<Toggle checked={enabled} onChange={setEnabled} label="Tema escuro" />
+<Toggle
+  checked={isEnabled}
+  onChange={(e) => setEnabled(e.target.checked)}
+  size="sm"
+/>
 ```
 
-## Props — Toggle
-
-<TokenTable
-  columns={['Prop', 'Tipo', 'Default', 'Descrição']}
-  rows={[
-    ['checked',        'boolean',                  '—',      'Valor controlado (controlled mode)'],
-    ['defaultChecked', 'boolean',                  'false',  'Valor inicial (uncontrolled mode)'],
-    ['onChange',       '(checked: boolean) => void', '—',   'Callback ao alternar'],
-    ['disabled',       'boolean',                  'false',  'Desabilita o toggle'],
-    ['size',           "'sm' | 'md'",              "'md'",   'Tamanho do track e thumb'],
-    ['label',          'string',                   '—',      'Texto principal ao lado do toggle'],
-    ['description',    'string',                   '—',      'Texto auxiliar abaixo do label'],
-    ['className',      'string',                   '—',      'Classes extras no wrapper ou button'],
-  ]}
-/>
+| Prop          | Tipo                         | Padrão  | Descrição                              |
+| ------------- | ---------------------------- | ------- | -------------------------------------- |
+| `size`        | `'sm' \| 'md'`               | `'md'`  | Tamanho do switch.                    |
+| `label`       | `string`                     | —       | Texto à direita do switch.            |
+| `description` | `string`                     | —       | Texto auxiliar abaixo do label.       |
+| `disabled`    | `boolean`                    | `false` | Desabilita o toggle.                  |
+| `...input`    | `InputHTMLAttributes`        | —       | Atributos nativos de input checkbox.  |

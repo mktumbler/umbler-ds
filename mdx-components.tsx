@@ -43,10 +43,27 @@ import {
 } from '@/components/demos/input-variants';
 import { AlertVariantsDemo, AlertSimpleDemo, AlertDismissibleDemo, AlertNoIconDemo } from '@/components/demos/alert-variants';
 import { TextareaStatesDemo, TextareaResizeDemo } from '@/components/demos/textarea-variants';
-import { CheckboxStatesDemo, CheckboxGroupDemo, CheckboxErrorDemo, CheckboxIndeterminateDemo } from '@/components/demos/checkbox-variants';
-import { RadioGroupDemo, RadioOrientationDemo } from '@/components/demos/radio-variants';
-import { ToggleSizesDemo, ToggleWithLabelDemo, ToggleStatesDemo } from '@/components/demos/toggle-variants';
-import { SelectStatesDemo, SelectSizesDemo } from '@/components/demos/select-variants';
+import {
+  CheckboxStatesDemo, CheckboxGroupDemo, CheckboxErrorDemo, CheckboxIndeterminateDemo,
+  CheckboxDefault, CheckboxChecked, CheckboxDisabled, CheckboxDisabledChecked,
+  CheckboxError, CheckboxWithDescription, CheckboxIndeterminate,
+  CheckboxGroupNotifications, CheckboxFormConsent, CheckboxFilterPanel,
+} from '@/components/demos/checkbox-variants';
+import {
+  RadioGroupDemo, RadioOrientationDemo,
+  RadioVerticalPlans, RadioHorizontalBilling, RadioVerticalRegion, RadioPricingSelector,
+} from '@/components/demos/radio-variants';
+import {
+  ToggleSizesDemo, ToggleWithLabelDemo, ToggleStatesDemo,
+  ToggleSm, ToggleMd, ToggleOn, ToggleOff, ToggleDisabledOn, ToggleDisabledOff,
+  ToggleWithLabel, ToggleWithDescription, ToggleSettingsCard,
+} from '@/components/demos/toggle-variants';
+import {
+  SelectStatesDemo, SelectSizesDemo,
+  SelectDefault, SelectError, SelectSuccess, SelectDisabled,
+  SelectSizeSm, SelectSizeMd, SelectSizeLg,
+  SelectTableFilter, SelectDeployForm,
+} from '@/components/demos/select-variants';
 import { SkeletonPrimitivesDemo, SkeletonCardDemo, SkeletonToggleDemo } from '@/components/demos/skeleton-variants';
 import { KbdSizes, KbdSingleKeys, KbdSequences } from '@/components/demos/kbd-variants';
 import { TooltipBasic, TooltipSides, TooltipRich } from '@/components/demos/tooltip-variants';
@@ -128,13 +145,45 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     CheckboxGroupDemo,
     CheckboxErrorDemo,
     CheckboxIndeterminateDemo,
+    CheckboxDefault,
+    CheckboxChecked,
+    CheckboxDisabled,
+    CheckboxDisabledChecked,
+    CheckboxError,
+    CheckboxWithDescription,
+    CheckboxIndeterminate,
+    CheckboxGroupNotifications,
+    CheckboxFormConsent,
+    CheckboxFilterPanel,
     RadioGroupDemo,
     RadioOrientationDemo,
+    RadioVerticalPlans,
+    RadioHorizontalBilling,
+    RadioVerticalRegion,
+    RadioPricingSelector,
     ToggleSizesDemo,
     ToggleWithLabelDemo,
     ToggleStatesDemo,
+    ToggleSm,
+    ToggleMd,
+    ToggleOn,
+    ToggleOff,
+    ToggleDisabledOn,
+    ToggleDisabledOff,
+    ToggleWithLabel,
+    ToggleWithDescription,
+    ToggleSettingsCard,
     SelectStatesDemo,
     SelectSizesDemo,
+    SelectDefault,
+    SelectError,
+    SelectSuccess,
+    SelectDisabled,
+    SelectSizeSm,
+    SelectSizeMd,
+    SelectSizeLg,
+    SelectTableFilter,
+    SelectDeployForm,
     SkeletonPrimitivesDemo,
     SkeletonCardDemo,
     SkeletonToggleDemo,

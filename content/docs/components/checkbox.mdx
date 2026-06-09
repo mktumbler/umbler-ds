@@ -1,65 +1,99 @@
 ---
 title: Checkbox
-description: Controle de seleção binária com suporte a estados indeterminate, erro e grupos.
+description: Controle de seleção binária com 4 estados, suporte a indeterminate e grupos com fieldset.
 ---
 
-Checkbox usa a API nativa `<input type="checkbox">` com `appearance-none` e classes `peer-*` do Tailwind para a aparência personalizada. Suporta os estados `checked`, `indeterminate` e `disabled` sem JavaScript extra (exceto `indeterminate`, que requer uma ref no cliente).
+import {
+  CheckboxDefault, CheckboxChecked, CheckboxDisabled, CheckboxDisabledChecked,
+  CheckboxError, CheckboxWithDescription, CheckboxIndeterminate,
+  CheckboxGroupNotifications, CheckboxFormConsent, CheckboxFilterPanel,
+} from '@/components/demos/checkbox-variants';
+import { VariantGrid, VariantCard } from '@/components/docs/variant-grid';
 
 ## Estados
 
-<CheckboxStatesDemo />
+<VariantGrid columns={4}>
+  <VariantCard label="Default" hint="Desmarcado, estado padrão">
+    <CheckboxDefault />
+  </VariantCard>
+  <VariantCard label="Checked" hint="Marcado, tick animado">
+    <CheckboxChecked />
+  </VariantCard>
+  <VariantCard label="Disabled" hint="Não interativo">
+    <CheckboxDisabled />
+  </VariantCard>
+  <VariantCard label="Disabled checked" hint="Bloqueado marcado">
+    <CheckboxDisabledChecked />
+  </VariantCard>
+</VariantGrid>
+
+## Validação e description
+
+<VariantGrid columns={2}>
+  <VariantCard label="Error" hint="Borda error-500 + hint abaixo">
+    <CheckboxError />
+  </VariantCard>
+  <VariantCard label="Com description" hint="Label + texto auxiliar abaixo">
+    <CheckboxWithDescription />
+  </VariantCard>
+</VariantGrid>
 
 ## Indeterminate
 
-O estado `indeterminate` requer uma ref em um client component — use `CheckboxIndeterminateDemo` como referência.
+Requer uma `ref` em um client component para setar `input.indeterminate = true`. Comum em "Selecionar todos" quando parte dos itens está marcada.
 
-<CheckboxIndeterminateDemo />
+<VariantGrid columns={1}>
+  <VariantCard label="Indeterminate" hint="Sinal visual de seleção parcial — requer useRef + useEffect">
+    <CheckboxIndeterminate />
+  </VariantCard>
+</VariantGrid>
 
-## Grupo com labels e descriptions
+## Grupos
 
-<CheckboxGroupDemo />
+<VariantGrid columns={2}>
+  <VariantCard label="Grupo de notificações" hint="fieldset + legend + 4 opções com description" minHeight={220}>
+    <CheckboxGroupNotifications />
+  </VariantCard>
+  <VariantCard label="Painel de filtros" hint="Lista compacta sem description — density alta" minHeight={220}>
+    <CheckboxFilterPanel />
+  </VariantCard>
+</VariantGrid>
 
-## Estado de erro
+## Composições
 
-<CheckboxErrorDemo />
+<VariantGrid columns={1}>
+  <VariantCard label="Consentimento em formulário" hint="Termos obrigatórios + opt-in opcional — padrão de cadastro" minHeight={160}>
+    <CheckboxFormConsent />
+  </VariantCard>
+</VariantGrid>
 
-## Composição
+## API
 
 ```tsx
 import { Checkbox } from '@/components/ui/checkbox';
 
 // Simples
-<Checkbox label="Aceito os termos de uso" />
+<Checkbox label="Aceitar os termos de uso" />
 
 // Com description e estado de erro
 <Checkbox
   state="error"
-  label="Aceito os termos de uso"
-  description="Você precisa aceitar os termos para continuar."
+  label="Aceitar os termos"
+  description="Obrigatório para continuar."
 />
 
-// Indeterminate (client component)
-'use client';
-import { useEffect, useRef } from 'react';
-
-function IndeterminateExample() {
-  const ref = useRef<HTMLInputElement>(null);
-  useEffect(() => {
-    if (ref.current) ref.current.indeterminate = true;
-  }, []);
-  return <input ref={ref} type="checkbox" />;
-}
+// Grupo com fieldset
+<fieldset>
+  <legend>Notificações</legend>
+  <Checkbox label="E-mails de marketing" />
+  <Checkbox label="Alertas de segurança" defaultChecked />
+</fieldset>
 ```
 
-## Props — Checkbox
-
-<TokenTable
-  columns={['Prop', 'Tipo', 'Default', 'Descrição']}
-  rows={[
-    ['label',       'string',                  '—',         'Texto principal ao lado do checkbox'],
-    ['description', 'string',                  '—',         'Texto auxiliar abaixo do label'],
-    ['state',       "'default' | 'error'",     "'default'", 'Estado de validação visual'],
-    ['disabled',    'boolean',                 'false',     'Desabilita o checkbox'],
-    ['...input',    'InputHTMLAttributes',     '—',         'Todos os atributos nativos de input'],
-  ]}
-/>
+| Prop          | Tipo                      | Padrão       | Descrição                              |
+| ------------- | ------------------------- | ------------ | -------------------------------------- |
+| `label`       | `string`                  | —            | Texto principal ao lado do checkbox.  |
+| `description` | `string`                  | —            | Texto auxiliar abaixo do label.       |
+| `state`       | `'default' \| 'error'`    | `'default'`  | Estado de validação visual.           |
+| `disabled`    | `boolean`                 | `false`      | Desabilita o checkbox.                |
+| `...input`    | `InputHTMLAttributes`     | —            | Todos os atributos nativos de input.  |
