@@ -38,10 +38,6 @@ export const buttonVariants = cva(
       { iconOnly: true, size: 'md', className: 'w-10' },
       { iconOnly: true, size: 'lg', className: 'w-12' },
       { iconOnly: true, size: 'xl', className: 'w-14' },
-      // CTAs premium — primary em sizes grandes (lg/xl) ganha shadow-cta colorida.
-      // Sizes pequenas (sm/md) mantêm shadow-xs (UI de produto, sem ostentação).
-      { variant: 'primary', size: 'lg', className: 'shadow-cta hover:shadow-cta' },
-      { variant: 'primary', size: 'xl', className: 'shadow-cta hover:shadow-cta' },
     ],
     defaultVariants: {
       variant: 'primary',

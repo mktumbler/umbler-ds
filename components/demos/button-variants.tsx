@@ -86,7 +86,7 @@ export function ButtonStateHover()    {
   // num exemplo estático. Em produção, o Button real aplica isso com :hover.
   return (
     /* audit-ignore: button-hand-roll: visual estático do estado :hover, não é botão real */
-    <button className="inline-flex h-10 items-center justify-center gap-2 rounded-full bg-brand-600 px-4 text-body-sm font-medium text-white shadow-cta">
+    <button className="inline-flex h-10 items-center justify-center gap-2 rounded-full bg-brand-600 px-4 text-body-sm font-medium text-white">
       Salvar alterações
     </button>
   );
@@ -94,7 +94,7 @@ export function ButtonStateHover()    {
 export function ButtonStateFocus()    {
   return (
     /* audit-ignore: button-hand-roll: visual estático do estado :focus, não é botão real */
-    <button className="inline-flex h-10 items-center justify-center gap-2 rounded-full bg-brand-500 px-4 text-body-sm font-medium text-white shadow-cta outline-2 outline-offset-2 outline-brand-500">
+    <button className="inline-flex h-10 items-center justify-center gap-2 rounded-full bg-brand-500 px-4 text-body-sm font-medium text-white outline-2 outline-offset-2 outline-brand-500">
       Salvar alterações
     </button>
   );

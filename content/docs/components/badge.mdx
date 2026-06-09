@@ -1,53 +1,161 @@
 ---
 title: Badge
-description: Rótulo compacto para status, categorias e contadores — 5 variantes semânticas e suporte a dot indicator.
+description: Rótulo compacto para status, categorias e contadores — 9 variantes, 2 shapes, dot indicator e suporte a ícone.
 ---
 
-import { BadgeVariantsDemo, BadgeDotsDemo, BadgeShapesDemo } from '@/components/demos/badge-variants';
+import {
+  BadgePillBrand, BadgePillSuccess, BadgePillWarning, BadgePillError, BadgePillNeutral,
+  BadgeSolidBrand, BadgeSolidSuccess, BadgeSolidWarning, BadgeSolidError,
+  BadgeTagNeutral, BadgeTagBrand, BadgeTagSuccess, BadgeTagWarning, BadgeTagError,
+  BadgeDotBrand, BadgeDotSuccess, BadgeDotWarning, BadgeDotError, BadgeDotNeutral,
+  BadgeIconSuccess, BadgeIconError, BadgeIconWarning, BadgeIconBrand, BadgeIconPending,
+  BadgeInTableRow, BadgeNotificationCounter, BadgeFloatingOnCard, BadgeReleaseLog, BadgeTaskCard,
+} from '@/components/demos/badge-variants';
+import { VariantGrid, VariantCard } from '@/components/docs/variant-grid';
 
-O `Badge` é usado para classificar ou indicar o status de um item. Use variantes semânticas (`success`, `error`, `warning`) para estados do sistema e `brand` ou `neutral` para categorização.
+O `Badge` classifica, sinaliza estado ou rotula categorias. Use variantes semânticas (`success`, `error`, `warning`) para estados do sistema; `brand` para destaques; `neutral` para rótulos sem carga semântica. A variante `solid` é para badges flutuantes sobre superfícies coloridas.
 
-## Variantes
+## Pill — 5 semânticas
 
-<ComponentPreview title="Variants">
-  <BadgeVariantsDemo />
-</ComponentPreview>
+<VariantGrid columns={3}>
+  <VariantCard label="Brand" hint="Destaque, lançamento, feature nova">
+    <BadgePillBrand />
+  </VariantCard>
+  <VariantCard label="Success" hint="Aprovado, ativo, concluído, online">
+    <BadgePillSuccess />
+  </VariantCard>
+  <VariantCard label="Warning" hint="Pendente, atenção, beta, limitado">
+    <BadgePillWarning />
+  </VariantCard>
+  <VariantCard label="Error" hint="Falha, recusado, expirado, crítico">
+    <BadgePillError />
+  </VariantCard>
+  <VariantCard label="Neutral" hint="Inativo, rascunho, genérico">
+    <BadgePillNeutral />
+  </VariantCard>
+</VariantGrid>
+
+## Solid — fundo opaco
+
+Use quando o badge flutua sobre uma borda colorida ou superfície escura. O fundo translucente das variantes default deixa a superfície vazar atrás do badge.
+
+<VariantGrid columns={4}>
+  <VariantCard label="Brand solid" hint="Sobre borda brand-500">
+    <BadgeSolidBrand />
+  </VariantCard>
+  <VariantCard label="Success solid" hint="Sobre fundo success">
+    <BadgeSolidSuccess />
+  </VariantCard>
+  <VariantCard label="Warning solid">
+    <BadgeSolidWarning />
+  </VariantCard>
+  <VariantCard label="Error solid">
+    <BadgeSolidError />
+  </VariantCard>
+</VariantGrid>
+
+## Shape: tag
+
+`shape="tag"` é para rótulos técnicos: versões, releases, environments, categorias. Uppercase + letter-spacing por design.
+
+<VariantGrid columns={3}>
+  <VariantCard label="Neutral tag" hint="Draft, WIP, Pending">
+    <BadgeTagNeutral />
+  </VariantCard>
+  <VariantCard label="Brand tag" hint="Versão, release">
+    <BadgeTagBrand />
+  </VariantCard>
+  <VariantCard label="Success tag" hint="Produção, aprovado">
+    <BadgeTagSuccess />
+  </VariantCard>
+  <VariantCard label="Warning tag" hint="Beta, experimental">
+    <BadgeTagWarning />
+  </VariantCard>
+  <VariantCard label="Error tag" hint="Deprecated, quebrado">
+    <BadgeTagError />
+  </VariantCard>
+</VariantGrid>
 
 ## Com dot indicator
 
-<ComponentPreview title="Dot Indicator">
-  <BadgeDotsDemo />
-</ComponentPreview>
+Dot indica estado "ao vivo" — presença, conexão, processo em andamento.
 
-## Shapes
+<VariantGrid columns={3}>
+  <VariantCard label="Ativo" hint="Success dot — online, em uso">
+    <BadgeDotSuccess />
+  </VariantCard>
+  <VariantCard label="Pendente" hint="Warning dot — aguardando, em fila">
+    <BadgeDotWarning />
+  </VariantCard>
+  <VariantCard label="Falhou" hint="Error dot — desconectado, erro">
+    <BadgeDotError />
+  </VariantCard>
+  <VariantCard label="Inativo" hint="Neutral dot — pausado, desligado">
+    <BadgeDotNeutral />
+  </VariantCard>
+  <VariantCard label="Online" hint="Brand dot — ao vivo, broadcasting">
+    <BadgeDotBrand />
+  </VariantCard>
+</VariantGrid>
 
-A prop `shape="tag"` troca a pílula arredondada por uma etiqueta retangular em caps + tracking. É o formato usado em changelogs, status de roadmap e release tags — leitura mais "log" do que "UI label".
+## Com ícone
 
-<ComponentPreview title="Shapes">
-  <BadgeShapesDemo />
-</ComponentPreview>
+Ícone do `@phosphor-icons/react` size=12, weight="fill". Use apenas 1 ícone por badge.
 
-## Props
+<VariantGrid columns={3}>
+  <VariantCard label="Aprovado">
+    <BadgeIconSuccess />
+  </VariantCard>
+  <VariantCard label="Recusado">
+    <BadgeIconError />
+  </VariantCard>
+  <VariantCard label="Atenção">
+    <BadgeIconWarning />
+  </VariantCard>
+  <VariantCard label="Novo">
+    <BadgeIconBrand />
+  </VariantCard>
+  <VariantCard label="Em análise">
+    <BadgeIconPending />
+  </VariantCard>
+</VariantGrid>
 
-<TokenTable
-  columns={['Prop', 'Tipo', 'Default', 'Descrição']}
-  rows={[
-    ['variant', '"brand" | "success" | "warning" | "error" | "neutral"', '"neutral"', 'Cor semântica do badge'],
-    ['shape', '"pill" | "tag"', '"pill"', 'pill = arredondado (UI geral) · tag = retangular caps (release/changelog)'],
-    ['dot', 'boolean', 'false', 'Exibe um círculo colorido antes do texto'],
-    ['className', 'string', '—', 'Classes extras'],
-  ]}
-/>
+## Composições em contexto
 
-## Uso
+<VariantGrid columns={2}>
+  <VariantCard label="Status em linha de tabela" hint="Badge dot ao lado de dados" minHeight={100}>
+    <BadgeInTableRow />
+  </VariantCard>
+  <VariantCard label="Contador de notificações" hint="Span manual — não é Badge, mas é contexto relacionado" minHeight={100}>
+    <BadgeNotificationCounter />
+  </VariantCard>
+  <VariantCard label="Badge flutuante em card" hint="Solid sobre borda brand-500 — caso clássico do variant solid" minHeight={180}>
+    <BadgeFloatingOnCard />
+  </VariantCard>
+  <VariantCard label="Release log" hint="Tags shape=tag num changelog" minHeight={180}>
+    <BadgeReleaseLog />
+  </VariantCard>
+</VariantGrid>
+
+<VariantGrid columns={1}>
+  <VariantCard label="Card de tarefa com múltiplos badges" hint="Prioridade (icon) + status (dot) + categoria (tag)" minHeight={120}>
+    <BadgeTaskCard />
+  </VariantCard>
+</VariantGrid>
+
+## API
 
 ```tsx
 import { Badge } from '@/components/ui/badge';
 
-// Status
 <Badge variant="success">Ativo</Badge>
-<Badge variant="error">Cancelado</Badge>
-
-// Com dot
-<Badge variant="warning" dot>Em revisão</Badge>
+<Badge variant="brand" dot>Online</Badge>
+<Badge variant="warning" shape="tag">Beta</Badge>
+<Badge variant="brand-solid" shape="pill">Mais popular</Badge>
 ```
+
+| Prop      | Tipo                                                                                          | Padrão      |
+| --------- | --------------------------------------------------------------------------------------------- | ----------- |
+| `variant` | `brand \| success \| warning \| error \| neutral \| brand-solid \| success-solid \| warning-solid \| error-solid` | `neutral`   |
+| `shape`   | `pill \| tag`                                                                                 | `pill`      |
+| `dot`     | `boolean`                                                                                     | `false`     |

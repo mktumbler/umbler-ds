@@ -13,14 +13,34 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { DurationDemo, EasingDemo } from '@/components/docs/motion-demo';
 import { SpinnerSizes, SpinnerColors } from '@/components/demos/spinner-variants';
-import { BadgeVariantsDemo, BadgeDotsDemo, BadgeShapesDemo } from '@/components/demos/badge-variants';
+import {
+  BadgeVariantsDemo, BadgeDotsDemo, BadgeShapesDemo,
+  BadgePillBrand, BadgePillSuccess, BadgePillWarning, BadgePillError, BadgePillNeutral,
+  BadgeSolidBrand, BadgeSolidSuccess, BadgeSolidWarning, BadgeSolidError,
+  BadgeTagNeutral, BadgeTagBrand, BadgeTagSuccess, BadgeTagWarning, BadgeTagError,
+  BadgeDotBrand, BadgeDotSuccess, BadgeDotWarning, BadgeDotError, BadgeDotNeutral,
+  BadgeIconSuccess, BadgeIconError, BadgeIconWarning, BadgeIconBrand, BadgeIconPending,
+  BadgeInTableRow, BadgeNotificationCounter, BadgeFloatingOnCard, BadgeReleaseLog, BadgeTaskCard,
+} from '@/components/demos/badge-variants';
 import { TagVariantsDemo } from '@/components/demos/tag-variants';
 import { TagInputDemo, TagInputWithInputDemo, TagInputStatesDemo } from '@/components/demos/tag-input-variants';
 import { AvatarSizesDemo, AvatarFallbacksDemo, AvatarGroupDemo } from '@/components/demos/avatar-variants';
-import { CardVariantsDemo, CardCompositionDemo, CardProductsDemo, CardHorizontalDemo } from '@/components/demos/card-variants';
+import {
+  CardVariantsDemo, CardCompositionDemo, CardProductsDemo, CardHorizontalDemo,
+  CardDefault, CardElevated, CardGhost, CardOutline,
+  CardStat, CardStatGrid, CardProduct, CardNotification, CardAgent,
+  CardHorizontal, CardProductGrid,
+} from '@/components/demos/card-variants';
 import { CardAuroraRotationsDemo, CardAuroraPrismDemo, CardAuroraBentoDemo } from '@/components/demos/card-aurora-demo';
 import { SeparatorDemo } from '@/components/demos/separator-kbd-variants';
-import { InputStatesDemo, InputSizesDemo, InputSlotsDemo } from '@/components/demos/input-variants';
+import {
+  InputStatesDemo, InputSizesDemo, InputSlotsDemo,
+  InputDefault, InputError, InputSuccess, InputDisabled,
+  InputSizeSm, InputSizeMd, InputSizeLg,
+  InputIconLeft, InputIconRight, InputIconBoth, InputIconCurrency,
+  InputPassword, InputSearch,
+  InputLoginForm, InputProfileForm, InputSettingsRow,
+} from '@/components/demos/input-variants';
 import { AlertVariantsDemo, AlertSimpleDemo, AlertDismissibleDemo, AlertNoIconDemo } from '@/components/demos/alert-variants';
 import { TextareaStatesDemo, TextareaResizeDemo } from '@/components/demos/textarea-variants';
 import { CheckboxStatesDemo, CheckboxGroupDemo, CheckboxErrorDemo, CheckboxIndeterminateDemo } from '@/components/demos/checkbox-variants';
@@ -66,9 +86,13 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     EasingDemo,
     SpinnerSizes,
     SpinnerColors,
-    BadgeVariantsDemo,
-    BadgeDotsDemo,
-    BadgeShapesDemo,
+    BadgeVariantsDemo, BadgeDotsDemo, BadgeShapesDemo,
+    BadgePillBrand, BadgePillSuccess, BadgePillWarning, BadgePillError, BadgePillNeutral,
+    BadgeSolidBrand, BadgeSolidSuccess, BadgeSolidWarning, BadgeSolidError,
+    BadgeTagNeutral, BadgeTagBrand, BadgeTagSuccess, BadgeTagWarning, BadgeTagError,
+    BadgeDotBrand, BadgeDotSuccess, BadgeDotWarning, BadgeDotError, BadgeDotNeutral,
+    BadgeIconSuccess, BadgeIconError, BadgeIconWarning, BadgeIconBrand, BadgeIconPending,
+    BadgeInTableRow, BadgeNotificationCounter, BadgeFloatingOnCard, BadgeReleaseLog, BadgeTaskCard,
     TagVariantsDemo,
     TagInputDemo,
     TagInputWithInputDemo,
@@ -76,17 +100,20 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     AvatarSizesDemo,
     AvatarFallbacksDemo,
     AvatarGroupDemo,
-    CardVariantsDemo,
-    CardCompositionDemo,
-    CardProductsDemo,
-    CardHorizontalDemo,
+    CardVariantsDemo, CardCompositionDemo, CardProductsDemo, CardHorizontalDemo,
+    CardDefault, CardElevated, CardGhost, CardOutline,
+    CardStat, CardStatGrid, CardProduct, CardNotification, CardAgent,
+    CardHorizontal, CardProductGrid,
     CardAuroraRotationsDemo,
     CardAuroraPrismDemo,
     CardAuroraBentoDemo,
     SeparatorDemo,
-    InputStatesDemo,
-    InputSizesDemo,
-    InputSlotsDemo,
+    InputStatesDemo, InputSizesDemo, InputSlotsDemo,
+    InputDefault, InputError, InputSuccess, InputDisabled,
+    InputSizeSm, InputSizeMd, InputSizeLg,
+    InputIconLeft, InputIconRight, InputIconBoth, InputIconCurrency,
+    InputPassword, InputSearch,
+    InputLoginForm, InputProfileForm, InputSettingsRow,
     AlertVariantsDemo,
     AlertSimpleDemo,
     AlertDismissibleDemo,

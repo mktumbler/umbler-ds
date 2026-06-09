@@ -1,104 +1,111 @@
 ---
 title: Card
-description: Container de conteúdo com variantes de elevação e composição flexível.
+description: Container de conteúdo com 4 variantes de elevação e composição livre via sub-componentes.
 ---
 
-Cards organizam informações em unidades discretas e auto-contidas. São compostos por sub-componentes que podem ser combinados livremente — header, content e footer são todos opcionais.
+import {
+  CardDefault, CardElevated, CardGhost, CardOutline,
+  CardStat, CardStatGrid, CardProduct, CardNotification, CardAgent,
+  CardHorizontal, CardProductGrid,
+} from '@/components/demos/card-variants';
+import { VariantGrid, VariantCard } from '@/components/docs/variant-grid';
+
+Cards organizam informações em unidades discretas. São compostos por sub-componentes encaixáveis: `CardHeader`, `CardContent` e `CardFooter` são todos opcionais.
 
 ## Variantes
 
-<CardVariantsDemo />
+<VariantGrid columns={2}>
+  <VariantCard label="Default" hint="Uso geral: dashboards, listas, painéis" minHeight={180}>
+    <CardDefault />
+  </VariantCard>
+  <VariantCard label="Elevated" hint="Destaque, features, hero de seção" minHeight={180}>
+    <CardElevated />
+  </VariantCard>
+  <VariantCard label="Ghost" hint="Agrupamento sutil, sem peso visual" minHeight={180}>
+    <CardGhost />
+  </VariantCard>
+  <VariantCard label="Outline" hint="Borda explícita, fundo transparente" minHeight={180}>
+    <CardOutline />
+  </VariantCard>
+</VariantGrid>
 
-| Variante | Quando usar |
-|---|---|
-| `default` | Uso geral — dashboards, listas de itens |
-| `elevated` | Destaques e features com maior hierarquia visual |
-| `ghost` | Agrupamento sutil sem peso visual excessivo |
-| `outline` | Borda explícita com fundo transparente |
+## Cards de métrica
 
-## Composição
+<VariantGrid columns={2}>
+  <VariantCard label="Stat card simples" hint="Número grande + tendência + ícone" minHeight={160}>
+    <CardStat />
+  </VariantCard>
+  <VariantCard label="Grid de 4 métricas" hint="2x2 — padrão de dashboard overview" minHeight={200}>
+    <CardStatGrid />
+  </VariantCard>
+</VariantGrid>
 
-<CardCompositionDemo />
+## Cards de produto
 
-Cards seguem um padrão de composição com sub-componentes encaixáveis:
+<VariantGrid columns={2}>
+  <VariantCard label="Card de produto" hint="Ícone + badge + feature list + CTA" minHeight={280}>
+    <CardProduct />
+  </VariantCard>
+  <VariantCard label="Card de agente IA" hint="Elevated + métricas inline + CTA outline" minHeight={280}>
+    <CardAgent />
+  </VariantCard>
+</VariantGrid>
 
-```tsx
-<Card>
-  <CardHeader>
-    <CardTitle>Título</CardTitle>
-    <CardDescription>Descrição complementar</CardDescription>
-  </CardHeader>
-  <CardContent>
-    {/* conteúdo livre */}
-  </CardContent>
-  <CardFooter>
-    <Button size="sm">Ação</Button>
-  </CardFooter>
-</Card>
-```
+<VariantGrid columns={1}>
+  <VariantCard label="Grade 3-up de produtos" hint="Catálogo de serviços com ícone, badge e preço" minHeight={300}>
+    <CardProductGrid />
+  </VariantCard>
+</VariantGrid>
 
-## Exemplo de produto
+## Card de notificação
 
-Cards com ícone, badge e CTA — padrão de catálogo de serviços.
-
-<CardProductsDemo />
+<VariantGrid columns={1}>
+  <VariantCard label="Notificação" hint="Avatar área + título + excerpt + badge de status" minHeight={140}>
+    <CardNotification />
+  </VariantCard>
+</VariantGrid>
 
 ## Card horizontal
 
 Para listas compactas com dados estruturados.
 
-<CardHorizontalDemo />
+<VariantGrid columns={1}>
+  <VariantCard label="Horizontal" hint="Ícone à esquerda com borda divisória + dados + badge" minHeight={120}>
+    <CardHorizontal />
+  </VariantCard>
+</VariantGrid>
 
-## Props — Card
-
-<TokenTable
-  columns={['Prop', 'Tipo', 'Default', 'Descrição']}
-  rows={[
-    ['variant', "'default' | 'elevated' | 'ghost' | 'outline'", "'default'", 'Estilo visual do container'],
-    ['className', 'string', '—', 'Classes extras via cn()'],
-    ['...div', 'HTMLAttributes<HTMLDivElement>', '—', 'Todos os atributos nativos de div'],
-  ]}
-/>
-
-## Sub-componentes
-
-| Componente | Comportamento padrão |
-|---|---|
-| `CardHeader` | `px-6 pt-6 pb-4` — cabeçalho sem divisor |
-| `CardTitle` | sans, medium, `text-foreground` (18px < H3, fora do P22) |
-| `CardDescription` | `text-sm text-neutral-400` |
-| `CardContent` | `px-6 py-4 flex-1` — cresce para ocupar espaço disponível |
-| `CardFooter` | `px-6 pt-4 pb-6` com `border-t` automático |
-
-## Uso
+## API
 
 ```tsx
 import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-  CardContent,
-  CardFooter,
+  Card, CardHeader, CardTitle, CardDescription,
+  CardContent, CardFooter,
 } from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
 
-export function PlanCard() {
-  return (
-    <Card variant="elevated" className="max-w-xs">
-      <CardHeader>
-        <CardTitle>Plano Pro</CardTitle>
-        <CardDescription>Para agências que precisam de escala.</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <p className="text-3xl font-semibold text-neutral-50">
-          R$ 99<span className="text-sm font-normal text-neutral-400">/mês</span>
-        </p>
-      </CardContent>
-      <CardFooter>
-        <Button className="w-full">Assinar agora</Button>
-      </CardFooter>
-    </Card>
-  );
-}
+<Card variant="elevated" className="max-w-xs">
+  <CardHeader>
+    <CardTitle>Plano Pro</CardTitle>
+    <CardDescription>Para agências que precisam de escala.</CardDescription>
+  </CardHeader>
+  <CardContent>
+    <p className="font-heading text-h2 text-foreground tabular-nums">R$ 497</p>
+  </CardContent>
+  <CardFooter>
+    <Button className="w-full">Assinar agora</Button>
+  </CardFooter>
+</Card>
 ```
+
+| Prop       | Tipo                                              | Padrão      |
+| ---------- | ------------------------------------------------- | ----------- |
+| `variant`  | `default \| elevated \| ghost \| outline`         | `default`   |
+| `className`| `string`                                          | —           |
+
+| Sub-componente     | Padding padrão                         |
+| ------------------ | -------------------------------------- |
+| `CardHeader`       | `px-6 pt-6 pb-4`                       |
+| `CardTitle`        | `text-body-lg font-semibold`           |
+| `CardDescription`  | `text-body-sm text-foreground-muted`   |
+| `CardContent`      | `px-6 py-4 flex-1`                     |
+| `CardFooter`       | `px-6 pt-4 pb-6` com `border-t`        |

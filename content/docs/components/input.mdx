@@ -1,33 +1,105 @@
 ---
 title: Input
-description: Campo de texto com estados de validação e slots para ícones.
+description: Campo de texto com 3 estados de validação, 3 tamanhos e slots para ícones e ações.
 ---
 
-Input é o bloco fundamental de formulários. Compõe-se com `InputLabel`, `InputHint` e `InputGroup` para criar campos completos com validação visual.
+import {
+  InputDefault, InputError, InputSuccess, InputDisabled,
+  InputSizeSm, InputSizeMd, InputSizeLg,
+  InputIconLeft, InputIconRight, InputIconBoth, InputIconCurrency,
+  InputPassword, InputSearch,
+  InputLoginForm, InputProfileForm, InputSettingsRow,
+} from '@/components/demos/input-variants';
+import { VariantGrid, VariantCard } from '@/components/docs/variant-grid';
+
+O `Input` compõe-se com `InputLabel`, `InputHint` e `InputGroup` para criar campos com validação visual completa.
 
 ## Estados
 
-<InputStatesDemo />
+<VariantGrid columns={2}>
+  <VariantCard label="Default" hint="Borda sutil, hover brand-400" minHeight={140}>
+    <InputDefault />
+  </VariantCard>
+  <VariantCard label="Error" hint="Borda error-500 + hint vermelho" minHeight={140}>
+    <InputError />
+  </VariantCard>
+  <VariantCard label="Success" hint="Borda success-500 + hint verde" minHeight={140}>
+    <InputSuccess />
+  </VariantCard>
+  <VariantCard label="Disabled" hint="Opacity 50%, sem interação" minHeight={140}>
+    <InputDisabled />
+  </VariantCard>
+</VariantGrid>
 
 ## Tamanhos
 
-<InputSizesDemo />
+<VariantGrid columns={3}>
+  <VariantCard label="sm — 32px" hint="Tabelas, filtros inline, density alta">
+    <InputSizeSm />
+  </VariantCard>
+  <VariantCard label="md — 40px" hint="Padrão de produto (default)">
+    <InputSizeMd />
+  </VariantCard>
+  <VariantCard label="lg — 48px" hint="Landing pages, formulários de cadastro">
+    <InputSizeLg />
+  </VariantCard>
+</VariantGrid>
 
-## Com ícones e ações
+## Com ícones (slots)
 
-O `rightElement` aceita elementos interativos — o exemplo abaixo implementa um toggle de visibilidade de senha.
+`leftElement` e `rightElement` aceitam ícones ou elementos interativos. O slot direito é `pointer-events-none` por padrão — passe `pointer-events-auto` quando for botão clicável.
 
-<InputSlotsDemo />
+<VariantGrid columns={2}>
+  <VariantCard label="Ícone à esquerda" hint="Busca, nome, campo identificado">
+    <InputIconLeft />
+  </VariantCard>
+  <VariantCard label="Ícone à direita" hint="Sufixo, domínio, unidade">
+    <InputIconRight />
+  </VariantCard>
+  <VariantCard label="Ícones nas duas pontas" hint="E-mail + lock (leitura somente)">
+    <InputIconBoth />
+  </VariantCard>
+  <VariantCard label="Prefixo de moeda" hint="Campos numéricos de valor">
+    <InputIconCurrency />
+  </VariantCard>
+</VariantGrid>
 
-## Composição
+## Toggle de senha
+
+`rightElement` com `pointer-events-auto` e `onClick` para alternar `type`.
+
+<VariantGrid columns={1}>
+  <VariantCard label="Password com toggle" hint="Eye / EyeSlash — acessível com aria-label" minHeight={140}>
+    <InputPassword />
+  </VariantCard>
+</VariantGrid>
+
+## Search com clear
+
+<VariantGrid columns={1}>
+  <VariantCard label="Search bar com botão de limpar" hint="X aparece quando há texto, desaparece quando vazio" minHeight={100}>
+    <InputSearch />
+  </VariantCard>
+</VariantGrid>
+
+## Composições reais
+
+<VariantGrid columns={1}>
+  <VariantCard label="Formulário de login" hint="InputGroup + dois campos + Button em card" minHeight={300}>
+    <InputLoginForm />
+  </VariantCard>
+  <VariantCard label="Formulário de perfil" hint="Grid 2 colunas + campo validado + footer inline" minHeight={340}>
+    <InputProfileForm />
+  </VariantCard>
+  <VariantCard label="Settings row inline" hint="Input sm + Button sm ao lado — padrão de settings" minHeight={120}>
+    <InputSettingsRow />
+  </VariantCard>
+</VariantGrid>
+
+## API
 
 ```tsx
-import {
-  Input,
-  InputGroup,
-  InputLabel,
-  InputHint,
-} from '@/components/ui/input';
+import { Input, InputGroup, InputLabel, InputHint } from '@/components/ui/input';
 import { Envelope } from '@phosphor-icons/react';
 
 <InputGroup>
@@ -43,25 +115,10 @@ import { Envelope } from '@phosphor-icons/react';
 </InputGroup>
 ```
 
-## Props — Input
-
-<TokenTable
-  columns={['Prop', 'Tipo', 'Default', 'Descrição']}
-  rows={[
-    ['state',        "'default' | 'error' | 'success'", "'default'", 'Estado de validação visual'],
-    ['size',         "'sm' | 'md' | 'lg'",              "'md'",      'Altura do campo'],
-    ['leftElement',  'ReactNode',                        '—',         'Ícone ou elemento à esquerda'],
-    ['rightElement', 'ReactNode',                        '—',         'Ícone ou botão à direita'],
-    ['disabled',     'boolean',                          'false',     'Desabilita o campo'],
-    ['...input',     'InputHTMLAttributes',              '—',         'Todos os atributos nativos de input'],
-  ]}
-/>
-
-## Props — InputHint
-
-<TokenTable
-  columns={['Prop', 'Tipo', 'Default', 'Descrição']}
-  rows={[
-    ['state', "'default' | 'error' | 'success'", "'default'", 'Cor do texto auxiliar'],
-  ]}
-/>
+| Prop           | Tipo                             | Padrão      |
+| -------------- | -------------------------------- | ----------- |
+| `state`        | `default \| error \| success`    | `default`   |
+| `size`         | `sm \| md \| lg`                 | `md`        |
+| `leftElement`  | `ReactNode`                      | —           |
+| `rightElement` | `ReactNode`                      | —           |
+| `disabled`     | `boolean`                        | `false`     |
