@@ -1,0 +1,141 @@
+---
+title: HeroBlock
+description: Seção hero composable — 6 variantes de abertura para landing pages. Do minimal ao split com mock de produto.
+---
+
+import {
+  HeroBlockMinimal,
+  HeroBlockDualCTA,
+  HeroBlockSweep,
+  HeroBlockWithBackground,
+  HeroBlockSplit,
+  HeroBlockAnnouncement,
+} from '@/components/demos/blocks/hero-block-variants';
+import { VariantGrid, VariantCard } from '@/components/docs/variant-grid';
+
+O `HeroBlock` é um conjunto de sub-componentes composable. Cada variante combina layout, fundo e conteúdo de forma independente — sem props de configuração excessivas.
+
+## Minimal
+
+Eyebrow de texto + headline + subtexto + 1 CTA. Para páginas internas, produtos secundários ou LPs simples onde o conteúdo fala por si.
+
+<VariantGrid columns={1}>
+  <VariantCard label="Minimal" hint="Eyebrow texto + 1 CTA primary" tone="dark" minHeight={320}>
+    <HeroBlockMinimal />
+  </VariantCard>
+</VariantGrid>
+
+## Dual CTA
+
+Headline direta + subtexto + CTA primário e ghost. O padrão mais usado em LPs de produto: a ação principal à esquerda, a ação de curiosidade à direita.
+
+<VariantGrid columns={1}>
+  <VariantCard label="Dual CTA" hint="Primary xl + Ghost xl lado a lado" tone="dark" minHeight={300}>
+    <HeroBlockDualCTA />
+  </VariantCard>
+</VariantGrid>
+
+## Sweep — gradiente brand
+
+Radial gradient suave no topo (`background="sweep"`) + badge eyebrow + headline com span colorida. Para lançamentos e heroes principais de LP.
+
+<VariantGrid columns={1}>
+  <VariantCard label="Sweep" hint="Gradiente radial brand-500/18% + badge + headline colorida" tone="dark" minHeight={320}>
+    <HeroBlockSweep />
+  </VariantCard>
+</VariantGrid>
+
+## Com HeroBackground
+
+Blob decorativo orgânico (`<HeroBackground variant="cap">`) sobreposto ao fundo escuro. Mais presença visual sem peso. Ideal para hero de agente IA, produto principal.
+
+<VariantGrid columns={1}>
+  <VariantCard label="Com HeroBackground" hint="Blob cap + badge brand-solid + dual CTA" tone="dark" minHeight={320}>
+    <HeroBlockWithBackground />
+  </VariantCard>
+</VariantGrid>
+
+## Split — texto + mock
+
+Layout de duas colunas: texto à esquerda, visual de produto à direita. Maior taxa de conversão quando o produto tem UI reconhecível. O mock é construído com tokens do DS — sem imagem externa.
+
+<VariantGrid columns={1}>
+  <VariantCard label="Split" hint="Grid 2-col: texto esquerda + pipeline mock direita" tone="dark" minHeight={360}>
+    <HeroBlockSplit />
+  </VariantCard>
+</VariantGrid>
+
+## Announcement
+
+Pill de anúncio (badge + texto + seta) acima do título. Para lançamentos de feature, promoções sazonais ou campanhas pontuais. O pill cria curiosidade sem poluir o título.
+
+<VariantGrid columns={1}>
+  <VariantCard label="Announcement" hint="Pill de anuncio + sweep + social proof" tone="dark" minHeight={360}>
+    <HeroBlockAnnouncement />
+  </VariantCard>
+</VariantGrid>
+
+## API
+
+```tsx
+import {
+  HeroBlock,
+  HeroContent,
+  HeroEyebrow,
+  HeroHeadline,
+  HeroSubtext,
+  HeroCTAGroup,
+  HeroVisual,
+  HeroText,
+} from '@/components/blocks/hero-block';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
+import { HeroBackground } from '@/components/ui/hero-background';
+
+// Centered com sweep
+<HeroBlock background="sweep" className="px-6 py-20 sm:py-28">
+  <HeroContent>
+    <HeroEyebrow>
+      <Badge variant="brand">v3.0 disponível</Badge>
+    </HeroEyebrow>
+    <HeroHeadline>
+      Fale com todos,<br />
+      <span className="text-brand-400">de um lugar</span>
+    </HeroHeadline>
+    <HeroSubtext>
+      Inbox único para WhatsApp, e-mail e chat.
+    </HeroSubtext>
+    <HeroCTAGroup>
+      <Button size="xl">Criar conta grátis</Button>
+      <Button size="xl" variant="ghost">Ver planos</Button>
+    </HeroCTAGroup>
+  </HeroContent>
+</HeroBlock>
+
+// Split
+<HeroBlock className="px-6 py-20">
+  <div className="mx-auto grid max-w-6xl grid-cols-1 items-center gap-12 lg:grid-cols-2">
+    <HeroText>
+      <HeroHeadline className="text-left">Headline à esquerda</HeroHeadline>
+      <HeroSubtext className="text-left">Subtexto de suporte.</HeroSubtext>
+      <HeroCTAGroup className="justify-start">
+        <Button size="lg">CTA principal</Button>
+      </HeroCTAGroup>
+    </HeroText>
+    <HeroVisual className="mt-0">
+      {/* seu mock / screenshot / ilustração */}
+    </HeroVisual>
+  </div>
+</HeroBlock>
+```
+
+| Componente       | Props principais                                                 |
+| ---------------- | ---------------------------------------------------------------- |
+| `HeroBlock`      | `background?: 'none' \| 'sweep' \| 'glow'`, `className`        |
+| `HeroContent`    | Centraliza e limita `max-w-3xl`, `className`                    |
+| `HeroEyebrow`    | Wrapper flex centralizado para badge/texto acima do título      |
+| `HeroHeadline`   | `<h1>` com `font-heading text-h1`, `className`                  |
+| `HeroSubtext`    | `<p>` com `text-body-lg text-foreground-muted`, `className`     |
+| `HeroCTAGroup`   | Flex row centralizado com `gap-3`, `className`                  |
+| `HeroVisual`     | Wrapper relativo para mock/imagem, `mt-12` padrão               |
+| `HeroText`       | Flex column `items-start` para o lado esquerdo do split         |

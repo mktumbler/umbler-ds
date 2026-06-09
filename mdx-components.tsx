@@ -59,6 +59,7 @@ import { UserRowBasicDemo, UserRowSelectableDemo, UserRowInteractiveDemo } from 
 import { DataListPageFullDemo, DataListPageMinimalDemo, PageHeaderSoloDemo } from '@/components/demos/blocks/data-list-page-variants';
 import { EmptyStateDnsDemo, EmptyStateInfoOnlyDemo, EmptyStateCompactDemo, EmptyStateLargeDemo } from '@/components/demos/blocks/empty-state-variants';
 import { FormPanelGroupDemo, FormPanelFilterDemo, FormPanelInlineFooterDemo } from '@/components/demos/blocks/form-panel-variants';
+import { HeroBlockMinimal, HeroBlockDualCTA, HeroBlockSweep, HeroBlockWithBackground, HeroBlockSplit, HeroBlockAnnouncement } from '@/components/demos/blocks/hero-block-variants';
 import { HeroBgGridDemo, HeroBgSweepDemo } from '@/components/demos/patterns/site/backgrounds';
 import { EmailPreview } from '@/components/docs/email-preview';
 import { DSStack } from '@/components/docs/ds-stack';
@@ -168,6 +169,12 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     FormPanelGroupDemo,
     FormPanelFilterDemo,
     FormPanelInlineFooterDemo,
+    HeroBlockMinimal,
+    HeroBlockDualCTA,
+    HeroBlockSweep,
+    HeroBlockWithBackground,
+    HeroBlockSplit,
+    HeroBlockAnnouncement,
     HeroBgGridDemo,
     HeroBgSweepDemo,
     EmailPreview,
