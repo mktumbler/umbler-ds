@@ -4,30 +4,23 @@ description: Janela modal centralizada para fluxos críticos — confirmações,
 ---
 
 import { DialogBasic, DialogDestructive, DialogWithForm } from '@/components/demos/dialog-variants';
+import { VariantGrid, VariantCard } from '@/components/docs/variant-grid';
 
 Use `Dialog` quando precisar **interromper o fluxo do usuário** e exigir uma decisão antes de continuar — confirmar uma exclusão, completar um cadastro curto, exibir um aviso crítico. Para conteúdo que pode coexistir com a página, prefira `Popover` ou navegação inline.
 
-## Confirmação simples
+## Variantes
 
-<ComponentPreview title="Confirmação">
-  <DialogBasic />
-</ComponentPreview>
-
-## Ação destrutiva
-
-Combine com `Button variant="danger"` no trigger e na confirmação. Deixe o texto explícito sobre o que será perdido.
-
-<ComponentPreview title="Excluir com confirmação">
-  <DialogDestructive />
-</ComponentPreview>
-
-## Formulário em modal
-
-Bom para edições curtas (perfil, configurações de item). Para formulários longos ou multi-etapa, prefira página dedicada.
-
-<ComponentPreview title="Editar perfil">
-  <DialogWithForm />
-</ComponentPreview>
+<VariantGrid columns={3}>
+  <VariantCard label="Confirmação" hint="Ação reversível — ghost + primary">
+    <DialogBasic />
+  </VariantCard>
+  <VariantCard label="Ação destrutiva" hint="Trigger danger + confirmação explícita do risco">
+    <DialogDestructive />
+  </VariantCard>
+  <VariantCard label="Formulário em modal" hint="Edição curta — inputs dentro do DialogContent">
+    <DialogWithForm />
+  </VariantCard>
+</VariantGrid>
 
 ## Anatomia
 
@@ -55,17 +48,12 @@ Bom para edições curtas (perfil, configurações de item). Para formulários l
 - `DialogTitle` e `DialogDescription` são anunciados como `aria-labelledby` e `aria-describedby` automaticamente.
 - O scroll do `body` é travado enquanto o dialog está aberto.
 
-## Props
+## API — DialogContent
 
-### DialogContent
-
-<TokenTable
-  columns={['Prop', 'Tipo', 'Default', 'Descrição']}
-  rows={[
-    ['showClose', 'boolean', 'true', 'Exibe o botão X no canto superior direito'],
-    ['className', 'string', '—', 'Classes extras (ex.: max-w-2xl para dialogs maiores)'],
-  ]}
-/>
+| Prop        | Tipo      | Default | Descrição                                          |
+| ----------- | --------- | ------- | -------------------------------------------------- |
+| `showClose` | `boolean` | `true`  | Exibe o botão × no canto superior direito          |
+| `className` | `string`  | —       | Classes extras (ex.: `max-w-2xl` para dialogs maiores) |
 
 Aceita também todas as props de `Dialog.Content` do Radix (`onOpenAutoFocus`, `onEscapeKeyDown`, etc.).
 

@@ -3,52 +3,82 @@ title: Avatar
 description: Representação visual do usuário — foto, iniciais ou ícone de fallback, com suporte a grupos sobrepostos.
 ---
 
-import { AvatarSizesDemo, AvatarFallbacksDemo, AvatarGroupDemo } from '@/components/demos/avatar-variants';
+import {
+  AvatarXs, AvatarSm, AvatarMd, AvatarLg, AvatarXl,
+  AvatarPhoto, AvatarInitials, AvatarIcon,
+  AvatarGroupMax3, AvatarGroupSm,
+} from '@/components/demos/avatar-variants';
+import { VariantGrid, VariantCard } from '@/components/docs/variant-grid';
 
 O `Avatar` exibe a identidade do usuário em três níveis de fallback: foto → iniciais → ícone. Use `AvatarGroup` para representar múltiplos participantes de forma compacta.
 
 ## Tamanhos
 
-<ComponentPreview title="Sizes">
-  <AvatarSizesDemo />
-</ComponentPreview>
+<VariantGrid columns={5}>
+  <VariantCard label="xs — 24px" hint="Density máxima, badges">
+    <AvatarXs />
+  </VariantCard>
+  <VariantCard label="sm — 32px" hint="Tabelas, listas compactas">
+    <AvatarSm />
+  </VariantCard>
+  <VariantCard label="md — 40px" hint="Padrão de produto (default)">
+    <AvatarMd />
+  </VariantCard>
+  <VariantCard label="lg — 48px" hint="Páginas de perfil, cards">
+    <AvatarLg />
+  </VariantCard>
+  <VariantCard label="xl — 64px" hint="Hero, onboarding">
+    <AvatarXl />
+  </VariantCard>
+</VariantGrid>
 
 ## Fallbacks
 
-<ComponentPreview title="Foto / Iniciais / Ícone">
-  <AvatarFallbacksDemo />
-</ComponentPreview>
+O Avatar usa a foto quando disponível. Se `src` falhar ou não existir, gera iniciais a partir de `name`. Sem `name`, exibe um ícone genérico.
 
-## Avatar Group
+<VariantGrid columns={3}>
+  <VariantCard label="Foto" hint="src com URL válida">
+    <AvatarPhoto />
+  </VariantCard>
+  <VariantCard label="Iniciais" hint="name sem src — até 2 letras">
+    <AvatarInitials />
+  </VariantCard>
+  <VariantCard label="Ícone" hint="Sem src nem name — fallback genérico">
+    <AvatarIcon />
+  </VariantCard>
+</VariantGrid>
 
-<ComponentPreview title="Avatar Group (max=3)">
-  <AvatarGroupDemo />
-</ComponentPreview>
+## Grupo
 
-## Props — Avatar
+`AvatarGroup` exibe avatars sobrepostos com um overflow `+N` quando a lista ultrapassa `max`.
 
-<TokenTable
-  columns={['Prop', 'Tipo', 'Default', 'Descrição']}
-  rows={[
-    ['src', 'string', '—', 'URL da imagem. Ao falhar, usa o fallback'],
-    ['alt', 'string', '—', 'Texto alternativo da imagem'],
-    ['name', 'string', '—', 'Nome completo — gera até 2 iniciais'],
-    ['size', '"xs" | "sm" | "md" | "lg" | "xl"', '"md"', 'Tamanho: 24 / 32 / 40 / 48 / 64px'],
-    ['className', 'string', '—', 'Classes extras'],
-  ]}
-/>
+<VariantGrid columns={2}>
+  <VariantCard label="md · max=3" hint="5 participantes, 3 visíveis + +2">
+    <AvatarGroupMax3 />
+  </VariantCard>
+  <VariantCard label="sm · max=4" hint="5 participantes, 4 visíveis + +1">
+    <AvatarGroupSm />
+  </VariantCard>
+</VariantGrid>
 
-## Props — AvatarGroup
+## API — Avatar
 
-<TokenTable
-  columns={['Prop', 'Tipo', 'Default', 'Descrição']}
-  rows={[
-    ['avatars', 'AvatarProps[]', '—', 'Lista de avatars'],
-    ['max', 'number', '—', 'Máximo de avatars visíveis; o resto vira "+N"'],
-    ['size', 'AvatarProps["size"]', '"md"', 'Tamanho aplicado a todos os avatars do grupo'],
-    ['className', 'string', '—', 'Classes extras no wrapper'],
-  ]}
-/>
+| Prop        | Tipo                                     | Default | Descrição                           |
+| ----------- | ---------------------------------------- | ------- | ----------------------------------- |
+| `src`       | `string`                                 | —       | URL da imagem. Ao falhar, usa fallback |
+| `alt`       | `string`                                 | —       | Texto alternativo da imagem         |
+| `name`      | `string`                                 | —       | Nome completo — gera até 2 iniciais |
+| `size`      | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'`  | Tamanho: 24 / 32 / 40 / 48 / 64px  |
+| `className` | `string`                                 | —       | Classes extras                      |
+
+## API — AvatarGroup
+
+| Prop        | Tipo              | Default | Descrição                                   |
+| ----------- | ----------------- | ------- | ------------------------------------------- |
+| `avatars`   | `AvatarProps[]`   | —       | Lista de avatars                            |
+| `max`       | `number`          | —       | Máximo visível; o resto vira `+N`           |
+| `size`      | `AvatarProps["size"]` | `'md'` | Tamanho aplicado a todos no grupo       |
+| `className` | `string`          | —       | Classes extras no wrapper                   |
 
 ## Uso
 
@@ -60,9 +90,6 @@ import { Avatar, AvatarGroup } from '@/components/ui/avatar';
 
 // Apenas iniciais
 <Avatar name="Bruno Costa" size="lg" />
-
-// Sem dados (ícone)
-<Avatar size="sm" />
 
 // Grupo com overflow
 <AvatarGroup

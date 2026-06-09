@@ -3,22 +3,52 @@ title: Textarea
 description: Campo de texto multilinha com estados de validação e controle de resize.
 ---
 
+import {
+  TextareaDefault, TextareaError, TextareaSuccess, TextareaDisabled,
+  TextareaRows3, TextareaRows6, TextareaNoResize,
+} from '@/components/demos/textarea-variants';
+import { VariantGrid, VariantCard } from '@/components/docs/variant-grid';
+
 Textarea segue as mesmas convenções visuais do `Input` — tokens de cor idênticos, estados de validação e sub-componentes de composição (`InputLabel`, `InputHint`, `InputGroup`) importados diretamente.
 
 ## Estados
 
-<TextareaStatesDemo />
+<VariantGrid columns={2}>
+  <VariantCard label="Default" hint="Placeholder + hint auxiliar" minHeight={160}>
+    <TextareaDefault />
+  </VariantCard>
+  <VariantCard label="Error" hint="Borda error-500 + hint vermelho" minHeight={160}>
+    <TextareaError />
+  </VariantCard>
+  <VariantCard label="Success" hint="Borda success-500 + hint verde" minHeight={160}>
+    <TextareaSuccess />
+  </VariantCard>
+  <VariantCard label="Disabled" hint="Opacity 50%, não interativo" minHeight={160}>
+    <TextareaDisabled />
+  </VariantCard>
+</VariantGrid>
 
-## Resize e linhas
+## Tamanhos e resize
 
-Use `rows` para definir a altura inicial e `className="resize-none"` para desabilitar o redimensionamento manual.
+Use `rows` para a altura inicial; `className="resize-none"` para travar o redimensionamento manual.
 
-<TextareaResizeDemo />
+<VariantGrid columns={3}>
+  <VariantCard label="3 linhas" hint="rows=3 — mensagens curtas" minHeight={140}>
+    <TextareaRows3 />
+  </VariantCard>
+  <VariantCard label="6 linhas" hint="rows=6 — descrições médias" minHeight={210}>
+    <TextareaRows6 />
+  </VariantCard>
+  <VariantCard label="Sem resize" hint="resize-none — altura fixa" minHeight={160}>
+    <TextareaNoResize />
+  </VariantCard>
+</VariantGrid>
 
 ## Composição
 
 ```tsx
-import { Textarea, InputGroup, InputLabel, InputHint } from '@/components/ui/textarea';
+import { Textarea } from '@/components/ui/textarea';
+import { InputGroup, InputLabel, InputHint } from '@/components/ui/input';
 
 <InputGroup>
   <InputLabel htmlFor="bio">Biografia</InputLabel>
@@ -32,14 +62,11 @@ import { Textarea, InputGroup, InputLabel, InputHint } from '@/components/ui/tex
 </InputGroup>
 ```
 
-## Props — Textarea
+## API
 
-<TokenTable
-  columns={['Prop', 'Tipo', 'Default', 'Descrição']}
-  rows={[
-    ['state',    "'default' | 'error' | 'success'", "'default'", 'Estado de validação visual'],
-    ['rows',     'number',                           '—',         'Número de linhas visíveis'],
-    ['disabled', 'boolean',                          'false',     'Desabilita o campo'],
-    ['...textarea', 'TextareaHTMLAttributes',        '—',         'Todos os atributos nativos de textarea'],
-  ]}
-/>
+| Prop          | Tipo                                    | Default     | Descrição                               |
+| ------------- | --------------------------------------- | ----------- | --------------------------------------- |
+| `state`       | `'default' \| 'error' \| 'success'`    | `'default'` | Estado de validação visual              |
+| `rows`        | `number`                                | —           | Número de linhas visíveis               |
+| `disabled`    | `boolean`                               | `false`     | Desabilita o campo                      |
+| `...textarea` | `TextareaHTMLAttributes`                | —           | Todos os atributos nativos de textarea  |

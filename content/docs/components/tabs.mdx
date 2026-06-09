@@ -4,26 +4,29 @@ description: Navegação entre painéis de conteúdo relacionados. Construído s
 ---
 
 import { TabsBasic, TabsWithIcons, TabsDisabled } from '@/components/demos/tabs-variants';
+import { VariantGrid, VariantCard } from '@/components/docs/variant-grid';
 
 Use `Tabs` para alternar entre seções **paralelas** de um mesmo contexto — quando o usuário não precisa ver tudo ao mesmo tempo, mas pode querer comparar rapidamente. Evite tabs para fluxos sequenciais (use steps/wizard) ou para o que cabe simultaneamente na tela (use seções com headings).
 
-## Básico
+## Variantes
 
-<ComponentPreview title="Tabs simples">
-  <TabsBasic />
-</ComponentPreview>
+<VariantGrid columns={1}>
+  <VariantCard label="Básico" hint="3 tabs com conteúdo simples — padrão segmented control" minHeight={180}>
+    <TabsBasic />
+  </VariantCard>
+</VariantGrid>
 
-## Com ícones
+<VariantGrid columns={1}>
+  <VariantCard label="Com ícones" hint="Phosphor icons + conteúdo contextual por tab" minHeight={220}>
+    <TabsWithIcons />
+  </VariantCard>
+</VariantGrid>
 
-<ComponentPreview title="Tabs com ícones e conteúdo em card">
-  <TabsWithIcons />
-</ComponentPreview>
-
-## Item desabilitado
-
-<ComponentPreview title="Tab disabled">
-  <TabsDisabled />
-</ComponentPreview>
+<VariantGrid columns={1}>
+  <VariantCard label="Tab desabilitado" hint="disabled no TabsTrigger — não interativo, opacity reduzida" minHeight={180}>
+    <TabsDisabled />
+  </VariantCard>
+</VariantGrid>
 
 ## Anatomia
 
@@ -40,11 +43,11 @@ Use `Tabs` para alternar entre seções **paralelas** de um mesmo contexto — q
 
 ## Acessibilidade
 
-- ↔ setas navegam entre triggers; Home/End vão para primeiro/último.
+- ↔ setas navegam entre triggers; `Home`/`End` vão para primeiro/último.
 - `Enter` ou `Space` ativam o tab focado (automático por padrão; controle via `activationMode="manual"`).
 - A relação trigger ↔ painel é exposta como `role="tab"` / `role="tabpanel"` com `aria-controls`/`aria-labelledby` automáticos.
 
-## Uso controlado
+## Controlado
 
 ```tsx
 const [tab, setTab] = useState('overview');
@@ -54,9 +57,9 @@ const [tab, setTab] = useState('overview');
 </Tabs>
 ```
 
-## Variações de estilo
+## Underline tabs
 
-O `TabsList` por padrão é um *segmented control* (fundo `surface`, item ativo realçado). Se preferir o visual de *underline tabs*, sobrescreva `className` em `TabsList` e `TabsTrigger`:
+O `TabsList` por padrão é um *segmented control*. Para o visual de *underline tabs*, sobrescreva `className`:
 
 ```tsx
 <TabsList className="border-0 border-b border-border bg-transparent rounded-none p-0">

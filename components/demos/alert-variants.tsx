@@ -3,7 +3,87 @@
 import { useState } from 'react';
 import { Alert } from '@/components/ui/alert';
 
-// ── Variantes ─────────────────────────────────────────────────────────────────
+// ── Individuais — variantes semânticas com título ──────────────────────────────
+
+export function AlertInfo() {
+  return (
+    <Alert variant="info" title="Informação">
+      Sua conta foi migrada para o novo painel. Nenhuma ação é necessária.
+    </Alert>
+  );
+}
+
+export function AlertSuccess() {
+  return (
+    <Alert variant="success" title="Publicado com sucesso">
+      O site <strong>meusite.com.br</strong> está no ar e já pode ser acessado.
+    </Alert>
+  );
+}
+
+export function AlertWarning() {
+  return (
+    <Alert variant="warning" title="Renovação próxima">
+      Seu domínio expira em <strong>7 dias</strong>. Renove para evitar interrupção.
+    </Alert>
+  );
+}
+
+export function AlertError() {
+  return (
+    <Alert variant="error" title="Falha no deploy">
+      Não foi possível conectar ao repositório. Verifique as permissões do webhook.
+    </Alert>
+  );
+}
+
+// ── Individuais — sem título ───────────────────────────────────────────────────
+
+export function AlertInfoSimple() {
+  return <Alert variant="info">Sua sessão expira em 30 minutos.</Alert>;
+}
+
+export function AlertSuccessSimple() {
+  return <Alert variant="success">Backup concluído às 03:00.</Alert>;
+}
+
+export function AlertWarningSimple() {
+  return <Alert variant="warning">SSL pendente — verificação de DNS em andamento.</Alert>;
+}
+
+export function AlertErrorSimple() {
+  return <Alert variant="error">Sem créditos disponíveis para envio de SMS.</Alert>;
+}
+
+// ── Individuais — dismissível (estático) ──────────────────────────────────────
+
+export function AlertDismissibleStatic() {
+  return (
+    <Alert variant="info" title="Novidade" onClose={() => {}}>
+      O painel agora suporta múltiplas contas. Explore em Configurações.
+    </Alert>
+  );
+}
+
+// ── Individuais — sem ícone ───────────────────────────────────────────────────
+
+export function AlertInfoNoIcon() {
+  return (
+    <Alert variant="info" icon={false} title="Informação sem ícone">
+      Útil quando o ícone é redundante ou o contexto já transmite o tom.
+    </Alert>
+  );
+}
+
+export function AlertErrorNoIcon() {
+  return (
+    <Alert variant="error" icon={false}>
+      Token de autenticação inválido ou expirado.
+    </Alert>
+  );
+}
+
+// ── Legacy — mantidos para retrocompat ───────────────────────────────────────
 
 export function AlertVariantsDemo() {
   return (
@@ -24,8 +104,6 @@ export function AlertVariantsDemo() {
   );
 }
 
-// ── Sem título ────────────────────────────────────────────────────────────────
-
 export function AlertSimpleDemo() {
   return (
     <div className="flex flex-col gap-3">
@@ -36,8 +114,6 @@ export function AlertSimpleDemo() {
     </div>
   );
 }
-
-// ── Dismissível ───────────────────────────────────────────────────────────────
 
 const initialAlerts = [
   { id: 1, variant: 'info'    as const, title: 'Novidade',         text: 'O painel agora suporta múltiplas contas. Explore em Configurações.' },
@@ -77,8 +153,6 @@ export function AlertDismissibleDemo() {
     </div>
   );
 }
-
-// ── Sem ícone ─────────────────────────────────────────────────────────────────
 
 export function AlertNoIconDemo() {
   return (

@@ -4,38 +4,37 @@ description: Texto auxiliar não-intrusivo exibido no hover ou focus de um eleme
 ---
 
 import { TooltipBasic, TooltipSides, TooltipRich } from '@/components/demos/tooltip-variants';
+import { VariantGrid, VariantCard } from '@/components/docs/variant-grid';
 
 Use `Tooltip` para descrever ações abreviadas (ícones, botões sem rótulo) ou explicar um termo. Mantenha o texto curto — para conteúdo rico ou clicável, prefira `Popover`.
 
 Envolva sua árvore (ou o trecho que usa tooltips) em `TooltipProvider` uma única vez.
 
-## Básico
+## Variantes
 
-<ComponentPreview title="Tooltip simples">
-  <TooltipBasic />
-</ComponentPreview>
+<VariantGrid columns={1}>
+  <VariantCard label="Básico" hint="Hover ou focus no botão — texto curto descritivo" minHeight={100}>
+    <TooltipBasic />
+  </VariantCard>
+</VariantGrid>
 
-## Posicionamento
+<VariantGrid columns={1}>
+  <VariantCard label="Posicionamento — 4 lados" hint="side: top, right, bottom, left — Radix reposiciona se faltar viewport" minHeight={120}>
+    <TooltipSides />
+  </VariantCard>
+</VariantGrid>
 
-Use `side` para indicar a direção preferencial. O Radix recoloca automaticamente se faltar espaço na viewport.
-
-<ComponentPreview title="side: top, right, bottom, left">
-  <TooltipSides />
-</ComponentPreview>
-
-## Conteúdo rico
-
-Apesar do `Tooltip` ser pensado para texto curto, ele aceita qualquer ReactNode quando necessário.
-
-<ComponentPreview title="Conteúdo com título + descrição">
-  <TooltipRich />
-</ComponentPreview>
+<VariantGrid columns={1}>
+  <VariantCard label="Conteúdo rico" hint="Aceita qualquer ReactNode — título + descrição" minHeight={100}>
+    <TooltipRich />
+  </VariantCard>
+</VariantGrid>
 
 ## Acessibilidade
 
 - `TooltipTrigger` deve envolver um elemento focusável (botão, link). Use `asChild` para herdar o elemento filho ao invés de inserir um wrapper.
 - O tooltip abre no `hover` e no `focus` do trigger, e fecha no `blur` ou `Escape`.
-- Para um ícone-only, lembre de fornecer `aria-label` no botão — o texto do tooltip não é exposto como nome acessível.
+- Para um ícone-only, forneça `aria-label` no botão — o texto do tooltip não é exposto como nome acessível.
 
 ## Uso
 

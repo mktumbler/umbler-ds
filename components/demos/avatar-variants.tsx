@@ -2,6 +2,69 @@
 
 import { Avatar, AvatarGroup } from '@/components/ui/avatar';
 
+// ── Individuais — tamanhos ────────────────────────────────────────────────────
+
+export function AvatarXs() {
+  return <Avatar size="xs" name="Ana Lima" />;
+}
+
+export function AvatarSm() {
+  return <Avatar size="sm" name="Ana Lima" />;
+}
+
+export function AvatarMd() {
+  return <Avatar size="md" name="Ana Lima" />;
+}
+
+export function AvatarLg() {
+  return <Avatar size="lg" name="Ana Lima" />;
+}
+
+export function AvatarXl() {
+  return <Avatar size="xl" name="Ana Lima" />;
+}
+
+// ── Individuais — fallbacks ───────────────────────────────────────────────────
+
+export function AvatarPhoto() {
+  return (
+    <Avatar
+      size="md"
+      src="https://i.pravatar.cc/150?img=3"
+      alt="Foto de perfil"
+      name="João Silva"
+    />
+  );
+}
+
+export function AvatarInitials() {
+  return <Avatar size="md" name="Ana Lima" />;
+}
+
+export function AvatarIcon() {
+  return <Avatar size="md" />;
+}
+
+// ── Individuais — grupo ───────────────────────────────────────────────────────
+
+const groupAvatars = [
+  { name: 'Ana Lima', src: 'https://i.pravatar.cc/150?img=1' },
+  { name: 'Bruno Costa' },
+  { name: 'Carla Dias', src: 'https://i.pravatar.cc/150?img=5' },
+  { name: 'Diego Melo' },
+  { name: 'Eva Rocha', src: 'https://i.pravatar.cc/150?img=9' },
+];
+
+export function AvatarGroupMax3() {
+  return <AvatarGroup avatars={groupAvatars} max={3} size="md" />;
+}
+
+export function AvatarGroupSm() {
+  return <AvatarGroup avatars={groupAvatars} max={4} size="sm" />;
+}
+
+// ── Legacy — mantidos para retrocompat ───────────────────────────────────────
+
 const sizes = ['xs', 'sm', 'md', 'lg', 'xl'] as const;
 
 export function AvatarSizesDemo() {
@@ -40,14 +103,6 @@ export function AvatarFallbacksDemo() {
     </div>
   );
 }
-
-const groupAvatars = [
-  { name: 'Ana Lima', src: 'https://i.pravatar.cc/150?img=1' },
-  { name: 'Bruno Costa' },
-  { name: 'Carla Dias', src: 'https://i.pravatar.cc/150?img=5' },
-  { name: 'Diego Melo' },
-  { name: 'Eva Rocha', src: 'https://i.pravatar.cc/150?img=9' },
-];
 
 export function AvatarGroupDemo() {
   return (

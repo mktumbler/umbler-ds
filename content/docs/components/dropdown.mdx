@@ -4,30 +4,23 @@ description: Menu de ações ou opções acionado por um trigger. Construído so
 ---
 
 import { DropdownBasic, DropdownWithLabel, DropdownCheckboxesAndRadios } from '@/components/demos/dropdown-variants';
+import { VariantGrid, VariantCard } from '@/components/docs/variant-grid';
 
 Use `DropdownMenu` para **ações secundárias** de um item (editar/duplicar/excluir), **opções rápidas** de configuração, ou **filtros**. Para seleção primária de valor em formulário, use `Select`.
 
-## Básico
+## Variantes
 
-<ComponentPreview title="Dropdown de ações com item destrutivo">
-  <DropdownBasic />
-</ComponentPreview>
-
-Aplique `destructive` no `DropdownMenuItem` que tem consequência irreversível.
-
-## Com label e seções
-
-<ComponentPreview title="Dropdown com labels e separadores">
-  <DropdownWithLabel />
-</ComponentPreview>
-
-## Checkbox e Radio
-
-Para opções que alternam estado (toggle) use `DropdownMenuCheckboxItem`. Para escolha única entre N use `DropdownMenuRadioGroup` + `DropdownMenuRadioItem`.
-
-<ComponentPreview title="Checkbox + Radio em mesmo menu">
-  <DropdownCheckboxesAndRadios />
-</ComponentPreview>
+<VariantGrid columns={3}>
+  <VariantCard label="Ações com destrutivo" hint="Item vermelho para ação irreversível" minHeight={120}>
+    <DropdownBasic />
+  </VariantCard>
+  <VariantCard label="Labels e seções" hint="DropdownMenuLabel + DropdownMenuSeparator" minHeight={120}>
+    <DropdownWithLabel />
+  </VariantCard>
+  <VariantCard label="Checkbox e Radio" hint="CheckboxItem + RadioGroup — estado controlado" minHeight={120}>
+    <DropdownCheckboxesAndRadios />
+  </VariantCard>
+</VariantGrid>
 
 ## Anatomia
 
@@ -55,7 +48,7 @@ Para opções que alternam estado (toggle) use `DropdownMenuCheckboxItem`. Para 
 
 ## Atalhos de teclado
 
-`DropdownMenuShortcut` é apenas visual — ele não registra um listener global. Para o atalho funcionar de fato, use um hook tipo `useHotkeys`/`react-hotkeys-hook` ou um listener `keydown` no escopo certo. O componente só renderiza a representação:
+`DropdownMenuShortcut` é apenas visual — não registra um listener global. Use `useHotkeys`/`react-hotkeys-hook` para o atalho funcionar de fato:
 
 ```tsx
 <DropdownMenuItem onSelect={handleEdit}>

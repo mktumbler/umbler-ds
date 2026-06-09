@@ -3,42 +3,82 @@ title: Alert
 description: Banner de feedback com variantes semânticas, título, ícone e dismiss.
 ---
 
+import {
+  AlertInfo, AlertSuccess, AlertWarning, AlertError,
+  AlertInfoSimple, AlertSuccessSimple, AlertWarningSimple, AlertErrorSimple,
+  AlertDismissibleStatic, AlertDismissibleDemo,
+  AlertInfoNoIcon, AlertErrorNoIcon,
+} from '@/components/demos/alert-variants';
+import { VariantGrid, VariantCard } from '@/components/docs/variant-grid';
+
 Alerts comunicam mensagens contextuais — informações, sucessos, avisos e erros. São estáticos por padrão; use `onClose` para torná-los dismissíveis.
 
-## Variantes
+## Variantes semânticas
 
-<AlertVariantsDemo />
+<VariantGrid columns={2}>
+  <VariantCard label="Info" hint="Informativo neutro — migração, anúncio" minHeight={100}>
+    <AlertInfo />
+  </VariantCard>
+  <VariantCard label="Success" hint="Confirmação — deploy, publicação" minHeight={100}>
+    <AlertSuccess />
+  </VariantCard>
+  <VariantCard label="Warning" hint="Atenção necessária, sem bloqueio" minHeight={100}>
+    <AlertWarning />
+  </VariantCard>
+  <VariantCard label="Error" hint="Falha ou bloqueio — ação requerida" minHeight={100}>
+    <AlertError />
+  </VariantCard>
+</VariantGrid>
 
 ## Sem título
 
 Para mensagens curtas que não precisam de cabeçalho.
 
-<AlertSimpleDemo />
+<VariantGrid columns={2}>
+  <VariantCard label="Info simples" hint="Uma linha, sem título">
+    <AlertInfoSimple />
+  </VariantCard>
+  <VariantCard label="Success simples" hint="Confirmação compacta">
+    <AlertSuccessSimple />
+  </VariantCard>
+  <VariantCard label="Warning simples" hint="Aviso inline">
+    <AlertWarningSimple />
+  </VariantCard>
+  <VariantCard label="Error simples" hint="Erro inline sem título">
+    <AlertErrorSimple />
+  </VariantCard>
+</VariantGrid>
 
 ## Dismissível
 
-Passe `onClose` para exibir o botão de fechar.
+Passe `onClose` para exibir o botão de fechar. No exemplo estático o callback é `() => {}` — veja a demo interativa abaixo para o padrão com estado.
 
-<AlertDismissibleDemo />
+<VariantGrid columns={1}>
+  <VariantCard label="Com botão fechar" hint="onClose exibe o ×; fechar requer gerenciar estado no pai">
+    <AlertDismissibleStatic />
+  </VariantCard>
+</VariantGrid>
+
+<VariantGrid columns={1}>
+  <VariantCard label="Dismissível interativo" hint="3 alertas — clique × para dispensar, botão Restaurar para repor" minHeight={200}>
+    <AlertDismissibleDemo />
+  </VariantCard>
+</VariantGrid>
 
 ## Sem ícone
 
-<AlertNoIconDemo />
+Use `icon={false}` quando o ícone for redundante ou o contexto já comunica o tom.
 
-## Props
+<VariantGrid columns={2}>
+  <VariantCard label="Info sem ícone" hint="icon={false} com título">
+    <AlertInfoNoIcon />
+  </VariantCard>
+  <VariantCard label="Error sem ícone" hint="icon={false} simples">
+    <AlertErrorNoIcon />
+  </VariantCard>
+</VariantGrid>
 
-<TokenTable
-  columns={['Prop', 'Tipo', 'Default', 'Descrição']}
-  rows={[
-    ['variant', "'info' | 'success' | 'warning' | 'error'", "'info'",  'Cor e ícone semântico'],
-    ['title',   'string',                                    '—',       'Cabeçalho em negrito'],
-    ['icon',    'boolean',                                   'true',    'Exibe ou oculta o ícone'],
-    ['onClose', '() => void',                               '—',       'Callback do botão fechar'],
-    ['...div',  'HTMLAttributes<HTMLDivElement>',            '—',       'Atributos nativos de div'],
-  ]}
-/>
-
-## Uso
+## API
 
 ```tsx
 import { Alert } from '@/components/ui/alert';
@@ -55,3 +95,11 @@ import { Alert } from '@/components/ui/alert';
   Seu domínio <strong>umbler.com</strong> expira em 7 dias.
 </Alert>
 ```
+
+| Prop      | Tipo                                            | Default  | Descrição                          |
+| --------- | ----------------------------------------------- | -------- | ---------------------------------- |
+| `variant` | `'info' \| 'success' \| 'warning' \| 'error'`  | `'info'` | Cor e ícone semântico              |
+| `title`   | `string`                                        | —        | Cabeçalho em negrito               |
+| `icon`    | `boolean`                                       | `true`   | Exibe ou oculta o ícone            |
+| `onClose` | `() => void`                                    | —        | Callback do botão fechar           |
+| `...div`  | `HTMLAttributes<HTMLDivElement>`                | —        | Atributos nativos de div           |

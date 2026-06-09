@@ -24,7 +24,12 @@ import {
 } from '@/components/demos/badge-variants';
 import { TagVariantsDemo } from '@/components/demos/tag-variants';
 import { TagInputDemo, TagInputWithInputDemo, TagInputStatesDemo } from '@/components/demos/tag-input-variants';
-import { AvatarSizesDemo, AvatarFallbacksDemo, AvatarGroupDemo } from '@/components/demos/avatar-variants';
+import {
+  AvatarSizesDemo, AvatarFallbacksDemo, AvatarGroupDemo,
+  AvatarXs, AvatarSm, AvatarMd, AvatarLg, AvatarXl,
+  AvatarPhoto, AvatarInitials, AvatarIcon,
+  AvatarGroupMax3, AvatarGroupSm,
+} from '@/components/demos/avatar-variants';
 import {
   CardVariantsDemo, CardCompositionDemo, CardProductsDemo, CardHorizontalDemo,
   CardDefault, CardElevated, CardGhost, CardOutline,
@@ -41,8 +46,17 @@ import {
   InputPassword, InputSearch,
   InputLoginForm, InputProfileForm, InputSettingsRow,
 } from '@/components/demos/input-variants';
-import { AlertVariantsDemo, AlertSimpleDemo, AlertDismissibleDemo, AlertNoIconDemo } from '@/components/demos/alert-variants';
-import { TextareaStatesDemo, TextareaResizeDemo } from '@/components/demos/textarea-variants';
+import {
+  AlertVariantsDemo, AlertSimpleDemo, AlertDismissibleDemo, AlertNoIconDemo,
+  AlertInfo, AlertSuccess, AlertWarning, AlertError,
+  AlertInfoSimple, AlertSuccessSimple, AlertWarningSimple, AlertErrorSimple,
+  AlertDismissibleStatic, AlertInfoNoIcon, AlertErrorNoIcon,
+} from '@/components/demos/alert-variants';
+import {
+  TextareaStatesDemo, TextareaResizeDemo,
+  TextareaDefault, TextareaError, TextareaSuccess, TextareaDisabled,
+  TextareaRows3, TextareaRows6, TextareaNoResize,
+} from '@/components/demos/textarea-variants';
 import {
   CheckboxStatesDemo, CheckboxGroupDemo, CheckboxErrorDemo, CheckboxIndeterminateDemo,
   CheckboxDefault, CheckboxChecked, CheckboxDisabled, CheckboxDisabledChecked,
@@ -121,6 +135,16 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     AvatarSizesDemo,
     AvatarFallbacksDemo,
     AvatarGroupDemo,
+    AvatarXs,
+    AvatarSm,
+    AvatarMd,
+    AvatarLg,
+    AvatarXl,
+    AvatarPhoto,
+    AvatarInitials,
+    AvatarIcon,
+    AvatarGroupMax3,
+    AvatarGroupSm,
     CardVariantsDemo, CardCompositionDemo, CardProductsDemo, CardHorizontalDemo,
     CardDefault, CardElevated, CardGhost, CardOutline,
     CardStat, CardStatGrid, CardProduct, CardNotification, CardAgent,
@@ -139,8 +163,26 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     AlertSimpleDemo,
     AlertDismissibleDemo,
     AlertNoIconDemo,
+    AlertInfo,
+    AlertSuccess,
+    AlertWarning,
+    AlertError,
+    AlertInfoSimple,
+    AlertSuccessSimple,
+    AlertWarningSimple,
+    AlertErrorSimple,
+    AlertDismissibleStatic,
+    AlertInfoNoIcon,
+    AlertErrorNoIcon,
     TextareaStatesDemo,
     TextareaResizeDemo,
+    TextareaDefault,
+    TextareaError,
+    TextareaSuccess,
+    TextareaDisabled,
+    TextareaRows3,
+    TextareaRows6,
+    TextareaNoResize,
     CheckboxStatesDemo,
     CheckboxGroupDemo,
     CheckboxErrorDemo,
