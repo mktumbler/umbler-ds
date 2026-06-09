@@ -144,7 +144,7 @@ export function PricingPlans() {
             >
               {isPro && (
                 <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                  <Badge variant="brand" shape="pill" className="px-3 py-1 text-xs shadow-md">
+                  <Badge variant="brand-solid" shape="pill" className="px-3 py-1 text-xs shadow-md">
                     <Star size={12} weight="fill" /> Mais escolhido
                   </Badge>
                 </div>
@@ -160,7 +160,7 @@ export function PricingPlans() {
               <div className="mt-6 mb-8">
                 {price === null ? (
                   <>
-                    <p className="font-heading text-display text-foreground">
+                    <p className="font-heading text-h1 text-foreground">
                       Sob consulta
                     </p>
                     <p className="mt-2 text-body-sm text-foreground-muted">
@@ -171,7 +171,7 @@ export function PricingPlans() {
                   <>
                     <div className="flex items-baseline gap-2">
                       <span className="text-body-sm font-medium text-foreground-muted">R$</span>
-                      <span className="font-heading text-display text-foreground tabular-nums">
+                      <span className="font-heading text-h1 text-foreground tabular-nums">
                         {formatPrice(price)}
                       </span>
                       <span className="text-body text-foreground-muted">/mês</span>
