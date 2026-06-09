@@ -62,6 +62,7 @@ import { FormPanelGroupDemo, FormPanelFilterDemo, FormPanelInlineFooterDemo } fr
 import { HeroBlockMinimal, HeroBlockDualCTA, HeroBlockSweep, HeroBlockWithBackground, HeroBlockSplit, HeroBlockAnnouncement } from '@/components/demos/blocks/hero-block-variants';
 import { PricingTableUmblerDemo, PricingTableSaasDemo } from '@/components/demos/blocks/pricing-table-variants';
 import { CTABannerPremium, CTABannerGlow, CTABannerSimple, CTABannerBrand } from '@/components/demos/blocks/cta-banner-variants';
+import { FAQSectionProdutoDemo, FAQSectionPricingDemo, StatGrid4UpDemo, StatGrid3UpDemo, TestimonialCenteredDemo, TestimonialCardDemo } from '@/components/demos/blocks/section-blocks-variants';
 import { HeroBgGridDemo, HeroBgSweepDemo } from '@/components/demos/patterns/site/backgrounds';
 import { EmailPreview } from '@/components/docs/email-preview';
 import { DSStack } from '@/components/docs/ds-stack';
@@ -183,6 +184,12 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     CTABannerGlow,
     CTABannerSimple,
     CTABannerBrand,
+    FAQSectionProdutoDemo,
+    FAQSectionPricingDemo,
+    StatGrid4UpDemo,
+    StatGrid3UpDemo,
+    TestimonialCenteredDemo,
+    TestimonialCardDemo,
     HeroBgGridDemo,
     HeroBgSweepDemo,
     EmailPreview,

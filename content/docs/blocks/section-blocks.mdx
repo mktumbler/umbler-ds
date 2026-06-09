@@ -1,0 +1,146 @@
+---
+title: Section Blocks
+description: FAQSection, StatGrid e TestimonialBlock — os três blocos de suporte presentes em toda LP Umbler.
+---
+
+import {
+  FAQSectionProdutoDemo,
+  FAQSectionPricingDemo,
+  StatGrid4UpDemo,
+  StatGrid3UpDemo,
+  TestimonialCenteredDemo,
+  TestimonialCardDemo,
+} from '@/components/demos/blocks/section-blocks-variants';
+import { VariantGrid, VariantCard } from '@/components/docs/variant-grid';
+
+Três blocos recorrentes nas LPs: `FAQSection` reduz objeções, `StatGrid` prova resultado com números, `TestimonialBlock` traz voz do cliente. Todos aceitam dados via props — nenhum texto está hardcoded.
+
+---
+
+## FAQSection
+
+Accordion aberto (`type="single" collapsible`) com cabeçalho opcional de eyebrow + headline. Fundo `surface-subtle` por padrão.
+
+<VariantGrid columns={1}>
+  <VariantCard label="Com eyebrow" hint="Accordion + eyebrow + headline — padrão /showcase/produto" minHeight={420}>
+    <FAQSectionProdutoDemo />
+  </VariantCard>
+</VariantGrid>
+
+<VariantGrid columns={1}>
+  <VariantCard label="Sem eyebrow" hint="Só headline — mais compacto, para páginas de preços" minHeight={360}>
+    <FAQSectionPricingDemo />
+  </VariantCard>
+</VariantGrid>
+
+### API — FAQSection
+
+```tsx
+import { FAQSection, type FAQItem } from '@/components/blocks/faq-section';
+
+const faqs: FAQItem[] = [
+  { q: 'Posso cancelar?',    a: 'Sim, a qualquer momento.' },
+  { q: 'Tem trial gratuito?', a: '7 dias, sem cartão.' },
+];
+
+<FAQSection
+  eyebrow="Dúvidas frequentes"
+  headline="O que perguntam antes de assinar"
+  items={faqs}
+/>
+```
+
+| Prop       | Tipo        | Padrão | Descrição                           |
+| ---------- | ----------- | ------ | ----------------------------------- |
+| `eyebrow`  | `string`    | —      | Texto pequeno acima do headline.    |
+| `headline` | `string`    | —      | Obrigatório. Título da seção.       |
+| `items`    | `FAQItem[]` | —      | Array de `{ q: string; a: string }` |
+
+---
+
+## StatGrid
+
+Grid de métricas com número grande (brand) e label uppercase. Colunas deduzidas automaticamente pelo número de stats (2, 3 ou 4).
+
+<VariantGrid columns={1}>
+  <VariantCard label="4-up — métricas de produto" hint="Grid de 4 colunas, tone brand" minHeight={200}>
+    <StatGrid4UpDemo />
+  </VariantCard>
+</VariantGrid>
+
+<VariantGrid columns={1}>
+  <VariantCard label="3-up com nota de contexto" hint="3 stats + nota de rodapé acima do grid" minHeight={220}>
+    <StatGrid3UpDemo />
+  </VariantCard>
+</VariantGrid>
+
+### API — StatGrid
+
+```tsx
+import { StatGrid, type Stat } from '@/components/blocks/stat-grid';
+
+<StatGrid
+  stats={[
+    { n: '72%', label: 'conversas resolvidas sem humano' },
+    { n: '4s',  label: 'tempo médio de resposta' },
+    { n: '3x',  label: 'mais leads qualificados' },
+  ]}
+  note="Média de clientes Pro após 90 dias"
+/>
+```
+
+| Prop      | Tipo              | Padrão     | Descrição                                           |
+| --------- | ----------------- | ---------- | --------------------------------------------------- |
+| `stats`   | `Stat[]`          | —          | Array de `{ n: string; label: string }`             |
+| `note`    | `string`          | —          | Nota de contexto acima do grid.                     |
+| `columns` | `2 \| 3 \| 4`    | auto       | Deduzido pelo `stats.length` se não informado.      |
+| `tone`    | `brand \| muted`  | `'brand'`  | Cor do número. `muted` usa `text-foreground`.       |
+
+---
+
+## TestimonialBlock
+
+Blockquote centrado com estrelas e atribuição. Variante `card` adiciona borda e padding em card.
+
+<VariantGrid columns={1}>
+  <VariantCard label="Centered — padrão LP" hint="Blockquote font-heading text-display + 5 estrelas" minHeight={320}>
+    <TestimonialCenteredDemo />
+  </VariantCard>
+</VariantGrid>
+
+<VariantGrid columns={1}>
+  <VariantCard label="Card — com borda e avatar" hint="Rounded-2xl border + avatarInitials" minHeight={320}>
+    <TestimonialCardDemo />
+  </VariantCard>
+</VariantGrid>
+
+### API — TestimonialBlock
+
+```tsx
+import { TestimonialBlock, type TestimonialData } from '@/components/blocks/testimonial-block';
+
+const testimonial: TestimonialData = {
+  quote:   'O agente qualifica e agenda. Minha equipe fecha mais sem trabalhar mais.',
+  author:  'Renata M.',
+  role:    'Diretora Comercial',
+  company: 'Imobiliária Premium SP',
+};
+
+<TestimonialBlock testimonial={testimonial} stars={5} variant="centered" />
+```
+
+| Prop          | Tipo                     | Padrão       | Descrição                                 |
+| ------------- | ------------------------ | ------------ | ----------------------------------------- |
+| `testimonial` | `TestimonialData`        | —            | Obrigatório. Dados do depoimento.         |
+| `stars`       | `1\|2\|3\|4\|5`          | `5`          | Quantidade de estrelas exibidas.          |
+| `variant`     | `centered \| card`       | `'centered'` | Layout — aberto ou dentro de card.        |
+
+**Tipo `TestimonialData`:**
+
+| Campo             | Tipo     | Descrição                                                 |
+| ----------------- | -------- | --------------------------------------------------------- |
+| `quote`           | `string` | Texto do depoimento (sem aspas — o bloco adiciona).      |
+| `author`          | `string` | Nome da pessoa.                                           |
+| `role`            | `string` | Cargo.                                                    |
+| `company`         | `string` | Empresa (opcional).                                       |
+| `avatarInitials`  | `string` | Iniciais para avatar (opcional, só usado em `variant="card"`). |
