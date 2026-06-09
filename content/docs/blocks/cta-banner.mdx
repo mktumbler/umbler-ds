@@ -1,0 +1,110 @@
+---
+title: CTABanner
+description: Seção de conversão com 4 variantes de background. Composable — eyebrow, headline, subtext e actions encaixam livremente.
+---
+
+import {
+  CTABannerPremium,
+  CTABannerGlow,
+  CTABannerSimple,
+  CTABannerBrand,
+} from '@/components/demos/blocks/cta-banner-variants';
+import { VariantGrid, VariantCard } from '@/components/docs/variant-grid';
+
+O `CTABanner` é o bloco de fechamento de conversão das LPs Umbler. Quatro variantes cobrem desde o fechamento de alta-pressão até o CTA sutil de meio de página.
+
+## Premium
+
+O padrão das LPs `/showcase/produto` e `/showcase/solucao`: `gradient-premium` (azul-escuro) com `gradient-glow` sobreposto. Para fechamentos de página que exigem impacto máximo.
+
+<VariantGrid columns={1}>
+  <VariantCard label="Premium" hint="gradient-premium + glow + pill de trust + dual CTA" tone="dark" minHeight={380}>
+    <CTABannerPremium />
+  </VariantCard>
+</VariantGrid>
+
+## Glow
+
+`neutral-950` com radial brand sutil ao centro. Menos pesado que o premium, mantém o clima dark sem dominar a página.
+
+<VariantGrid columns={1}>
+  <VariantCard label="Glow" hint="neutral-950 + radial glow brand + badge + 1 CTA" tone="dark" minHeight={340}>
+    <CTABannerGlow />
+  </VariantCard>
+</VariantGrid>
+
+## Simple
+
+Fundo `surface-subtle` com borda topo. Adapta-se a light e dark. Para CTAs inseridos no meio de páginas de conteúdo, documentação ou blog.
+
+<VariantGrid columns={1}>
+  <VariantCard label="Simple" hint="surface-subtle + borda — adapta light/dark — 2 CTAs" minHeight={300}>
+    <CTABannerSimple />
+  </VariantCard>
+</VariantGrid>
+
+## Brand
+
+`brand-600` sólido. Máximo contraste da marca. Reservar para campanhas pontuais, banners de upsell ou upgrade urgente. Não usar como fechamento padrão de LP.
+
+<VariantGrid columns={1}>
+  <VariantCard label="Brand" hint="brand-600 sólido + CTA branco — para campanhas e upsell" tone="dark" minHeight={320}>
+    <CTABannerBrand />
+  </VariantCard>
+</VariantGrid>
+
+## API
+
+```tsx
+import {
+  CTABanner,
+  CTAEyebrow,
+  CTATrustPill,
+  CTAHeadline,
+  CTAHeadlineMuted,
+  CTASubtext,
+  CTASubtextMuted,
+  CTAActions,
+} from '@/components/blocks/cta-banner';
+import { Button } from '@/components/ui/button';
+import { ShieldCheck } from '@phosphor-icons/react/dist/ssr';
+
+// Variante premium (fechamento de LP)
+<CTABanner variant="premium" className="px-6 py-32">
+  <CTAEyebrow>
+    <CTATrustPill icon={<ShieldCheck size={14} weight="fill" />}>
+      7 dias grátis, sem cartão
+    </CTATrustPill>
+  </CTAEyebrow>
+  <CTAHeadline>
+    Coloque um agente atendendo<br />ainda esta semana
+  </CTAHeadline>
+  <CTASubtext>
+    Você sobe a base, define o tom, conecta o WhatsApp.
+  </CTASubtext>
+  <CTAActions>
+    <Button size="xl">Começar agora</Button>
+    <Button size="xl" variant="ghost">Ver demo</Button>
+  </CTAActions>
+</CTABanner>
+
+// Variante simple (meio de página, light/dark)
+<CTABanner variant="simple" className="px-6 py-20">
+  <CTAHeadlineMuted>Experimente sem compromisso</CTAHeadlineMuted>
+  <CTASubtextMuted>14 dias completos, sem cartão.</CTASubtextMuted>
+  <CTAActions>
+    <Button size="lg">Testar grátis</Button>
+  </CTAActions>
+</CTABanner>
+```
+
+| Componente          | Uso                                                                  |
+| ------------------- | -------------------------------------------------------------------- |
+| `CTABanner`         | Wrapper `<section>` — `variant?: 'premium' \| 'glow' \| 'simple' \| 'brand'` |
+| `CTAEyebrow`        | Flex row centralizado para pill ou badge                             |
+| `CTATrustPill`      | Pill glass (border-white/10 + bg-white/5) com ícone e texto         |
+| `CTAHeadline`       | `<h2>` branco, `text-display-lg` — variantes premium/glow/brand     |
+| `CTAHeadlineMuted`  | `<h2>` semântico (`text-foreground`) — para variant="simple"        |
+| `CTASubtext`        | `<p>` branco/70 — variantes escuras                                 |
+| `CTASubtextMuted`   | `<p>` `text-foreground-muted` — para variant="simple"               |
+| `CTAActions`        | Flex row centralizado para os botões                                 |

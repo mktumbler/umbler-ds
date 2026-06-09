@@ -1,4 +1,4 @@
 {
   "title": "Blocks",
-  "pages": ["index", "hero-block", "pricing-table", "data-list-page", "user-row", "feature-card-grid", "empty-state", "form-panel"]
+  "pages": ["index", "hero-block", "pricing-table", "cta-banner", "data-list-page", "user-row", "feature-card-grid", "empty-state", "form-panel"]
 }
