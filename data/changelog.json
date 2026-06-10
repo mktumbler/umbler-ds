@@ -1,6 +1,13 @@
 [
   {
     "date": "2026-06-10",
+    "type": "feat",
+    "scope": "plugin",
+    "title": "Plugin v0.3.0 — 4 → 2 comandos",
+    "description": "Simplificação do mecanismo: /umbler-init foi fundido no /umbler-add (que agora detecta se o projeto precisa de bootstrap — components.json, tokens, Tailwind v4 — e resolve antes de instalar) e /umbler-block virou seção da skill (fluxo Interface Inventory + regra do 3 segue disponível pedindo 'quero criar um bloco'). Sobram 2 comandos com ações claras: /umbler-add instala, /umbler-audit verifica. A doc de início também ganhou a distinção explícita 'projeto novo (init + add) vs. já usa shadcn (só add)'."
+  },
+  {
+    "date": "2026-06-10",
     "type": "chore",
     "scope": "ds",
     "title": "Auditoria: consistência, enxugamento, blocks no registry e reequilíbrio LP/e-mail",

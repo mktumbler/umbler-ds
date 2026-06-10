@@ -36,8 +36,8 @@ O código é **copiado** para `components/ui/` (sem dependência de runtime, tot
 Guia completo de adoção (projeto novo vs. existente, limpeza do `globals.css`, catálogo):
 **[/docs](https://umbler-ds.vercel.app/docs)** · catálogo p/ agentes: **[/llms.txt](https://umbler-ds.vercel.app/llms.txt)**.
 
-> Usando Claude Code? O plugin `.claude-plugin/` traz skill + slash commands (`/umbler-init`,
-> `/umbler-add`, `/umbler-audit`, `/umbler-block`) + hook de auto-audit. Ver [ANALISE.md](./ANALISE.md).
+> Usando Claude Code? O plugin `.claude-plugin/` traz skill + 2 slash commands
+> (`/umbler-add`, `/umbler-audit`) + hook de auto-audit. Ver [ANALISE.md](./ANALISE.md).
 
 ## Estrutura
 

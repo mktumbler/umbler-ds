@@ -59,14 +59,21 @@ Componentes são copiados pra `components/ui/<componente>.tsx` no projeto consum
 
 ## Quando usar slash commands
 
-Esse plugin expõe comandos pra automatizar:
+Esse plugin expõe 2 comandos:
 
-- `/umbler-init` — bootstrap completo num projeto novo (tokens + cn util + components.json)
-- `/umbler-add <componente>` — instala um componente da registry e valida adoção
+- `/umbler-add <componente>` — instala um componente ou block da registry (com bootstrap automático se o projeto ainda não tem o DS) e valida adoção
 - `/umbler-audit` — varre o repo atual atrás de hand-rolls que duplicam o DS
-- `/umbler-block` — fluxo de criação de bloco (Interface Inventory → regra do 3 → implementação)
 
 Use esses comandos sempre que possível — eles encapsulam o procedimento certo e evitam erros comuns.
+
+## Criando um bloco novo (mantenedores do DS)
+
+Blocos só viram parte do DS quando passam pelo critério objetivo: o padrão aparece **3+ vezes** em telas/produtos diferentes (regra de Polaris/Primer). Nunca crie bloco "por achismo".
+
+1. **Inventory** — colete prints das telas onde o padrão aparece (3-5 mínimo), liste o que cada uma contém e conte frequência por padrão. 1 ocorrência = escreva no código da página; 2 = duplicação suspeita, ainda não bloco; 3+ = vira bloco.
+2. **Implemente** — `components/blocks/<nome>.tsx` compondo componentes do DS existentes (nunca hand-roll), `cva` pra variants, `cn` pra merge. Demo em `components/demos/blocks/<nome>-variants.tsx` (2-3 variantes reais), doc em `content/docs/blocks/<nome>.mdx`.
+3. **Registre** — slug em `content/docs/blocks/meta.json`, demos em `mdx-components.tsx`, linha na tabela do `content/docs/blocks/index.mdx`, item em `scripts/registry.manifest.mjs` (`type: 'registry:block'`).
+4. **Valide** — `npx tsc --noEmit` + `node scripts/audit-antipatterns.mjs` + `npm run build`. Entrada em `data/changelog.json`, commit, deploy.
 
 ## Regras tipográficas
 

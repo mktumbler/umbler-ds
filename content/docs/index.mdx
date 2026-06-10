@@ -12,12 +12,16 @@ Tudo é distribuído via registry `shadcn`: o código é **copiado** para o seu 
 Projeto **Next.js (App Router)** com **Tailwind CSS v4** e **TypeScript**. Os tokens usam a diretiva `@theme` do Tailwind v4 — **não funciona no v3**.
 </Callout>
 
-## Instalar — um comando
+## Instalar
+
+**Projeto novo** (primeira vez com shadcn):
 
 ```bash
 npx shadcn@latest init
 npx shadcn@latest add https://umbler-ds.vercel.app/r/umbler-ui
 ```
+
+**Já usa shadcn?** Pule o `init` — rode só o `add`.
 
 Instala **tudo de uma vez**: tokens da marca (`app/tokens.css`), o utilitário `cn` e todos os componentes. Depois é só usar:
 
@@ -51,7 +55,7 @@ Escolha pelo que você quer fazer:
 
 ## Outros cenários
 
-- **Usa Claude Code?** Instale o [plugin](/docs/plugin) — skill + comandos `/umbler-init`, `/umbler-add`, `/umbler-audit`.
+- **Usa Claude Code?** Instale o [plugin](/docs/plugin) — skill + comandos `/umbler-add` e `/umbler-audit`.
 - **Só um item avulso?** `npx shadcn@latest add https://umbler-ds.vercel.app/r/<nome>` — ex.: `button`, `hero-block`, `pricing-table`. Blocks caem em `components/blocks/` e puxam o que usam.
 - **Projeto que já existe?** Não instale por cima às cegas: rode o DS lado-a-lado, migre **uma tela piloto** primeiro e adote a regra "código novo usa DS, antigo migra quando tocado" — cada fase em um PR curto.
 - **Atualizar depois?** Rode o `add` de novo (sobrescreve o arquivo local — revise o diff numa branch).

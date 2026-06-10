@@ -103,6 +103,6 @@ O propósito original (encurtar caminho de LPs, centralizar a marca, tokens pra 
 ## 6. Próximos passos sugeridos (pra validar com você)
 
 1. **Adoção:** montar 1 LP real da Umbler 100% no DS (maior alavanca de valor).
-2. **Plugin:** fundir `/umbler-init` em `/umbler-add`; mover `/umbler-block` pra skill (4 → 2 comandos).
+2. ~~**Plugin:** fundir `/umbler-init` em `/umbler-add`; mover `/umbler-block` pra skill (4 → 2 comandos).~~ ✅ Feito (plugin v0.3.0).
 3. **E-mail/materiais:** expandir templates + página de tokens pra Figma/IA.
 4. **Atualização versionada:** decidir se o canal `@umbler/ui` (npm) vira oficial ou se copy-based basta.

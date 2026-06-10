@@ -1,30 +1,40 @@
 ---
-description: Instala um componente do Umbler DS via registry shadcn e valida a adoção
-argument-hint: <componente>
+description: Instala componentes/blocks do Umbler DS via registry shadcn — faz bootstrap automático se o projeto ainda não tem o DS
+argument-hint: <componente | umbler-ui>
 ---
 
-Adicione o componente `$1` do Umbler DS ao projeto atual.
+Adicione `$1` do Umbler DS ao projeto atual. Se o projeto ainda não tem o DS configurado, faça o bootstrap automaticamente antes (passo 2).
 
 ## 1. Valide a existência
 
-Antes de tudo, busque `https://umbler-ds.vercel.app/llms.txt` via WebFetch e verifique se `$1` existe na lista de componentes ou blocks. Se não existir:
+Busque `https://umbler-ds.vercel.app/llms.txt` via WebFetch e verifique se `$1` existe na lista de componentes ou blocks. Casos:
 
-- Sugira componentes com nome parecido
-- Se for um caso de **bloco** (organismo composto), sugira que o usuário rode `/umbler-block` em vez disso
-- Pare aqui
+- **Não existe** → sugira nomes parecidos do catálogo e pare aqui
+- **`$1` = `umbler-ui`** → instala TODOS os componentes + tokens de uma vez (não inclui blocks; eles são avulsos)
+- **É um padrão que ainda não virou bloco** → a skill `umbler-ds` tem o fluxo de criação de bloco (Interface Inventory + regra do 3)
 
-## 2. Verifique stack
+## 2. Bootstrap automático (só se precisar)
 
-Confirme que o projeto:
-- Tem `components.json` configurado (rode `/umbler-init` primeiro se não tiver)
-- Tem `app/tokens.css` (ou equivalente) importado
-- É Tailwind v4
+Verifique se o projeto já tem o DS. Detecção:
 
-Se algum requisito faltar, pare e oriente o usuário.
+| Falta | Ação |
+|---|---|
+| `components.json` | rode `npx shadcn@latest init` antes do add |
+| `tokens.css` (procure em `app/`) | o add de `umbler-ui` já traz; pra item avulso, rode antes: `npx shadcn@latest add https://umbler-ds.vercel.app/r/tokens.json` |
+| Tailwind v4 (`@tailwindcss/postcss` ou `@tailwindcss/vite` no package.json) | **pare** e avise: o DS não funciona em Tailwind v3 |
+
+Se rodou `shadcn init`, corrija o CSS de entrada (o init injeta um tema concorrente). Deixe o `app/globals.css` apenas com:
+
+```css
+@import 'tailwindcss';
+@import './tokens.css';
+```
+
+Se já tem `components.json` + tokens, pule direto pro passo 3.
 
 ## 3. Instale
 
-Componentes e blocks compartilham o mesmo namespace flat do registry — sempre `/r/<nome>.json`:
+Componentes e blocks compartilham o mesmo namespace flat — sempre `/r/<nome>.json`:
 
 ```bash
 npx shadcn@latest add https://umbler-ds.vercel.app/r/$1.json
@@ -35,13 +45,12 @@ Componentes caem em `components/ui/`; blocks (`type: registry:block`) caem em `c
 ## 4. Verifique adoção correta
 
 Após instalar:
-- Abra o arquivo recém-criado em `components/ui/$1.tsx`
-- Liste no chat as **dependências** que ele importa (outros componentes do DS)
+- Abra o arquivo recém-criado e liste no chat as **dependências** que ele importa (outros componentes do DS)
 - Se houver dependências não instaladas, ofereça instalar em sequência
 
 ## 5. Exemplo de uso
 
-Mostre 1 exemplo curto de uso do componente, com import correto:
+Mostre 1 exemplo curto de uso, com import correto:
 
 ```tsx
 import { ComponentName } from '@/components/ui/$1';

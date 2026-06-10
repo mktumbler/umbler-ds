@@ -6,7 +6,7 @@ description: Instale o Umbler DS como plugin do Claude Code — skill, slash com
 O Umbler DS é distribuído também como **plugin do Claude Code**. Quem instala, ganha:
 
 - O Claude já sabe **todas as convenções** do DS (não precisa explicar)
-- **4 slash commands** que automatizam bootstrap, adição de componentes, auditoria e criação de blocos
+- **2 slash commands**: instalar (com bootstrap automático) e auditar
 - **Hook automático** que avisa de hand-rolls toda vez que você edita `.tsx` ou `.mdx`
 
 ## Instalação
@@ -23,10 +23,10 @@ Ou via comando:
 
 | Comando | Função |
 |---|---|
-| `/umbler-init` | Bootstrap completo num projeto novo — instala tokens, cn util, configura `components.json` |
-| `/umbler-add <componente>` | Adiciona um componente da registry e valida adoção |
+| `/umbler-add <componente>` | Adiciona um componente ou block da registry e valida adoção. Se o projeto ainda não tem o DS, faz o bootstrap automaticamente (`shadcn init` + tokens) |
 | `/umbler-audit` | Varre o repo atrás de hand-rolls (button/badge/eyebrow/alert) |
-| `/umbler-block` | Fluxo de criação de bloco — Interface Inventory + regra do 3 + implementação |
+
+O fluxo de criação de blocos (Interface Inventory + regra do 3) vive na **skill** — peça "quero criar um bloco novo" e o Claude conduz.
 
 ## Hook
 
@@ -42,7 +42,7 @@ A skill `umbler-ds` está configurada para baixar `https://umbler-ds.vercel.app/
 .claude-plugin/
 ├── plugin.json          ← manifest
 ├── skills/umbler-ds/    ← contexto + regras
-├── commands/            ← 4 slash commands
+├── commands/            ← 2 slash commands
 ├── hooks/               ← auto-audit
 └── scripts/             ← audit portátil
 ```

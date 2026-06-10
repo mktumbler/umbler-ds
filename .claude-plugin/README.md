@@ -2,8 +2,8 @@
 
 Plugin oficial do Umbler Design System para Claude Code. Empacota:
 
-- **1 skill** — contexto completo do DS (convenções, tokens, regras críticas, catálogo)
-- **4 slash commands** — `/umbler-init`, `/umbler-add`, `/umbler-audit`, `/umbler-block`
+- **1 skill** — contexto completo do DS (convenções, tokens, regras críticas, catálogo, fluxo de criação de blocos)
+- **2 slash commands** — `/umbler-add` (com bootstrap automático), `/umbler-audit`
 - **1 hook** — auto-audit após edição de `.tsx`/`.mdx`
 - **1 script** — `audit-antipatterns.mjs` portátil
 
@@ -22,17 +22,13 @@ Ou via CLI:
 Em um projeto Next.js + Tailwind v4:
 
 ```
-/umbler-init                    # bootstrap (tokens + cn + components.json)
-/umbler-add button              # adiciona um componente
+/umbler-add umbler-ui           # primeira vez: bootstrap automático + tudo
+/umbler-add hero-block          # blocks avulsos
 /umbler-add dialog
 /umbler-audit                   # verifica hand-rolls
 ```
 
-Quando precisar de um organismo composto:
-
-```
-/umbler-block                   # fluxo Interface Inventory → bloco
-```
+Pra criar um bloco novo no DS, peça "quero criar um bloco" — o fluxo (Interface Inventory + regra do 3) está na skill.
 
 ## Estrutura
 
@@ -43,10 +39,8 @@ Quando precisar de um organismo composto:
 ├── skills/
 │   └── umbler-ds/SKILL.md       contexto do DS
 ├── commands/
-│   ├── umbler-init.md
 │   ├── umbler-add.md
-│   ├── umbler-audit.md
-│   └── umbler-block.md
+│   └── umbler-audit.md
 ├── hooks/
 │   └── hooks.json               auto-audit on edit
 └── scripts/
