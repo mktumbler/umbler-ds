@@ -1,5 +1,12 @@
 [
   {
+    "date": "2026-06-10",
+    "type": "chore",
+    "scope": "ds",
+    "title": "Auditoria: consistência, enxugamento, blocks no registry e reequilíbrio LP/e-mail",
+    "description": "Sweep de manutenção em 3 frentes. Consistência: versões alinhadas em 0.2.0 (plugin, marketplace, @umbler/ui); README reescrito de ~200 linhas stale para versão enxuta e factual (tokens.css, fontes Mackinac, Fumadocs 15, roadmap real); CLAUDE.md corrigido (caminho do registry, passo de criação); registry ressincronizado com a fonte (badge ganhou variantes *-solid, button alinhado); arquivo-lixo .nexterr.html removido do versionamento. Consumibilidade: os 11 blocks (hero-block, cta-banner, pricing-table, faq-section, stat-grid, testimonial-block, feature-card-grid, empty-state, form-panel, user-row, data-list-page) entraram no registry como type:registry:block — eram documentados mas davam 404; agora instaláveis via `npx shadcn add .../r/<bloco>` e listados no llms.txt para descoberta por IA; corrigido o caminho /r/blocks inexistente no /umbler-add. Reequilíbrio para o propósito original (LP, e-mail, marca, tokens p/ IA): sidebar reordenada (Foundations → Marketing → Email → Blocks → Components), tela de início simplificada de ~5 formas de instalar para 1 comando + guia por objetivo, home e índice de Blocks reenquadrados liderando com landing/marketing. ANALISE.md documenta a validação de skill-vs-plugin, consumibilidade e valor."
+  },
+  {
     "date": "2026-06-05",
     "type": "feat",
     "scope": "showcase",
