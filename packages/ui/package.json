@@ -1,6 +1,6 @@
 {
   "name": "@umbler/ui",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Umbler Design System — componentes React + tokens Tailwind v4.",
   "license": "UNLICENSED",
   "type": "module",

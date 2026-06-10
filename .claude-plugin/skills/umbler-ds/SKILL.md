@@ -55,6 +55,8 @@ npx shadcn@latest add https://umbler-ds.vercel.app/r/dialog.json
 
 Componentes são copiados pra `components/ui/<componente>.tsx` no projeto consumer.
 
+**Blocks** (organismos compostos: hero-block, pricing-table, cta-banner, user-row, form-panel, empty-state, faq-section, stat-grid, testimonial-block, feature-card-grid, data-list-page) usam o **mesmo namespace flat** — `https://umbler-ds.vercel.app/r/<bloco>.json`. Caem em `components/blocks/` e puxam automaticamente os componentes do DS que compõem. Não fazem parte do agregador `umbler-ui` (instale o bloco que precisar, avulso).
+
 ## Quando usar slash commands
 
 Esse plugin expõe comandos pra automatizar:

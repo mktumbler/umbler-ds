@@ -1,209 +1,58 @@
 ---
 title: Início
-description: Como consumir o Umbler DS em outros projetos — caminho recomendado por cenário.
+description: Comece aqui — a base de marca da Umbler para montar landing pages, e-mails e produtos no mesmo padrão.
 ---
 
-O Umbler DS é distribuído via **registry compatível com `shadcn`**: o código é copiado para dentro do seu projeto (em `components/ui/`), sem dependência de runtime e totalmente customizável.
+O Umbler DS é a base de marca da Umbler: **design tokens**, **componentes** e **blocks** prontos
+para montar **landing pages**, **e-mails** e **produtos** — todos no mesmo padrão visual, sem reinventar.
 
-<Callout title="Pré-requisitos">
-Um projeto **Next.js 15+ (App Router)** com **Tailwind CSS v4** e **TypeScript**. Os componentes usam React 19 e os tokens dependem da diretiva `@theme` do Tailwind v4 — **não funciona no v3**.
+Tudo é distribuído via registry `shadcn`: o código é **copiado** para o seu projeto, sem dependência de runtime e totalmente editável.
+
+<Callout title="Pré-requisito único">
+Projeto **Next.js (App Router)** com **Tailwind CSS v4** e **TypeScript**. Os tokens usam a diretiva `@theme` do Tailwind v4 — **não funciona no v3**.
 </Callout>
 
-## Foundations
-
-A base do DS — os 6 grupos de tokens que sustentam tudo. Comece por aqui se está conhecendo o DS pela primeira vez.
-
-<FoundationsOverview />
-
-## Caminho mais rápido — plugin do Claude Code
-
-Se você está usando **Claude Code**, instale o plugin oficial. Ele traz:
-
-- Skill `umbler-ds` com **todo o contexto** do DS (convenções, princípios, catálogo via WebFetch)
-- **4 slash commands**: `/umbler-init`, `/umbler-add`, `/umbler-audit`, `/umbler-block`
-- **Hook automático** que avisa de hand-rolls a cada Edit/Write
-
-```
-/plugin add umbler-ds
-```
-
-Depois, num projeto novo ou existente:
-
-```
-/umbler-init
-```
-
-Faz bootstrap completo (shadcn init, instala tokens, importa `umbler-ui`, ajusta `globals.css`). Pronto. Veja [docs do plugin](/docs/plugin) pra detalhes.
-
----
-
-## Alternativas — sem plugin
-
-Quem **não** está no Claude Code (Cursor, Windsurf, agente próprio) ou prefere fluxo manual segue um dos dois caminhos abaixo. O melhor é o que tem **menos atrito** pro seu cenário:
-
-| Cenário                                              | Caminho recomendado                |
-| ---------------------------------------------------- | ---------------------------------- |
-| **Projeto novo** (não tem código ainda ou bem inicial) | [Setup direto com IA](#projeto-novo--setup-com-ia) |
-| **Projeto existente** (já tem UI, CSS, componentes)   | [Audit + adoção progressiva](#projeto-existente--audit-antes-de-adotar)  |
-
-Os dois usam o mesmo registry — o que muda é a **ordem** de quem mexe no que.
-
----
-
-## Projeto novo — setup com IA
-
-**Cole o prompt abaixo no agente do seu projeto** (Cursor, Windsurf, etc.). Ele lê o `llms.txt`, instala tudo, importa os tokens e começa a montar a UI.
-
-````text
-Leia https://umbler-ds.vercel.app/llms.txt — ele descreve todos os
-componentes, tokens, convenções e como instalar o Umbler Design System.
-
-Depois, siga os passos de instalação e monte a UI do projeto usando
-os componentes e tokens documentados. Não use cores, fontes ou
-espaçamentos fora dos tokens da marca.
-````
-
-Sem agente nenhum? Vá pra [setup manual](#setup-manual).
-
----
-
-## Projeto existente — audit antes de adotar
-
-Em projeto que já tem código, **não saia instalando direto** — o DS pode colidir com tokens, classes e componentes locais. O caminho seguro é audit + adoção progressiva.
-
-<Callout title="Branch por fase, não uma só">
-O **audit não precisa de branch** (é read-only). Mas cada fase que muda código — migrar Tailwind, instalar o DS, migrar a tela piloto — deve ser uma **branch curta com seu próprio PR**, mergeada rápido na main. Evite a armadilha da branch única `adopt-design-system` que tenta fazer tudo e vive por semanas: ela diverge, dá conflito e vira um big-bang disfarçado. Em especial, **a migração do Tailwind (se precisar) é um PR separado** do install do DS.
-</Callout>
-
-### Passo 1 — Audit com IA
-
-Cole o prompt abaixo. Ele faz a varredura e te apresenta um **plano**; nada é alterado ainda.
-
-````text
-Vou adotar o Umbler Design System neste projeto. Antes de instalar
-qualquer coisa, faça um compat audit do estado atual e me apresente:
-
-1. Versão do Tailwind (DS exige v4 — se for v3, listar o que precisa pra migrar)
-2. App Router ou Pages Router (DS é App Router)
-3. Tokens CSS já definidos no projeto (--brand, --surface, --primary, etc) que podem colidir
-4. Componentes locais com nomes que vão conflitar (Button, Card, Input, etc) e onde são usados
-5. Como o dark mode é gerenciado hoje (theme provider, classes, data-attrs)
-6. Onde mora o CSS global (globals.css, _app.scss, styled-components, etc)
-
-Depois leia https://umbler-ds.vercel.app/llms.txt e proponha um plano
-de adoção progressiva, com CADA fase de mudança em seu próprio PR curto
-(migração do Tailwind isolada do install do DS): instalar lado-a-lado,
-escolher UMA tela piloto pra migrar, e regra "novo código usa DS, antigo
-migra quando tocado".
-
-NÃO migre nada ainda e NÃO commite na main. Só me apresente o relatório
-e o plano de PRs.
-````
-
-### Passo 2 — Resolver bloqueios
-
-Com o relatório em mãos (cada item abaixo, se aplicável, em **seu próprio PR**):
-
-- **Tailwind v3?** Migre pro v4 primeiro (é pré-requisito) — PR isolado, antes de tudo. Sem isso, o DS não roda.
-- **Tokens colidindo?** Renomeie os do projeto ou consuma o DS namespaceado.
-- **Componente local com mesmo nome?** Mantenha o legado por um tempo importando aliasado (`import { Button as DsButton } from '@/components/ui/button'`).
-
-### Passo 3 — Instalar lado-a-lado
-
-Em uma branch `chore/ds-install`: rode `npx shadcn@latest add https://umbler-ds.vercel.app/r/umbler-ui`, importe os tokens em `globals.css` e **só compile**. Ninguém usa ainda. Se subiu sem quebrar, o DS coexiste — abra o PR.
-
-### Passo 4 — Migrar 1 tela piloto
-
-Em uma branch `chore/ds-pilot-<tela>`: escolha uma página de baixo risco (configurações, perfil, uma tela interna pouco trafegada) e troque tudo dela pelo DS. O objetivo é **aprender o atrito real**, não migrar o produto inteiro.
-
-### Passo 5 — Regra "novo = DS"
-
-A partir daí: toda feature/componente novo usa DS. O antigo fica até precisar ser tocado — quando for, migra junto. Sem big bang, sem rewrite.
-
----
-
-## Setup manual
-
-Se preferir fazer na mão (em projeto novo ou após resolver os bloqueios do audit):
-
-### 1. Inicialize o shadcn (uma vez por projeto)
+## Instalar — um comando
 
 ```bash
 npx shadcn@latest init
-```
-
-Cria `components.json` + aliases `@/components` e `@/lib`.
-
-### 2. Instale o DS completo
-
-```bash
 npx shadcn@latest add https://umbler-ds.vercel.app/r/umbler-ui
 ```
 
-O agregador `umbler-ui` instala **todos os componentes + utilitário `cn` + tokens** (`app/tokens.css`) de uma vez. Dependências entre componentes resolvem sozinhas.
-
-### 3. Limpe o CSS de entrada (passo crítico)
-
-<Callout type="warn" title="O shadcn init injeta um tema concorrente">
-O `shadcn init` moderno escreve um tema próprio no seu `app/globals.css` (tokens oklch, blocos `:root`/`.dark`, `@theme inline`). Ele **conflita** com os tokens da Umbler e sobrescreve cores da marca (`--foreground`, `--border`). Como o DS já traz o sistema de tokens completo, substitua **todo** o conteúdo do `globals.css`.
-</Callout>
-
-Deixe o `app/globals.css` exatamente assim:
-
-```css
-@import 'tailwindcss';
-@import './tokens.css';
-
-@layer base {
-  body {
-    @apply bg-surface text-foreground;
-  }
-}
-```
-
-Se o seu `globals.css` não fica em `app/`, ajuste o caminho relativo do `@import './tokens.css'`.
-
-### 4. Use um componente
+Instala **tudo de uma vez**: tokens da marca (`app/tokens.css`), o utilitário `cn` e todos os componentes. Depois é só usar:
 
 ```tsx
 import { Button } from '@/components/ui/button';
 
-export default function Page() {
-  return <Button variant="primary">Começar</Button>;
-}
+<Button>Começar</Button>
 ```
 
----
+<Callout type="warn" title="Um único ajuste depois do init">
+O `shadcn init` injeta um tema concorrente no CSS de entrada. Como o DS já traz o sistema de tokens completo, deixe o seu `app/globals.css` apenas com:
 
-## Instalar componentes avulsos
-
-Pra puxar só o que precisa, use o slug de cada componente:
-
-```bash
-npx shadcn@latest add https://umbler-ds.vercel.app/r/button
-npx shadcn@latest add https://umbler-ds.vercel.app/r/card https://umbler-ds.vercel.app/r/badge
+```css
+@import 'tailwindcss';
+@import './tokens.css';
 ```
-
-Cada item declara suas dependências: `button` traz `spinner` + `utils`; `textarea` traz `input`. O `tokens` também pode ser instalado isolado.
-
-## Atualizando o DS no seu projeto
-
-Como o código é **copiado**, ele não muda sozinho quando o DS evolui. Pra receber a versão mais recente, rode o `add` de novo — sobrescreve o arquivo local:
-
-```bash
-npx shadcn@latest add https://umbler-ds.vercel.app/r/button
-```
-
-<Callout type="info">
-Se você customizou o arquivo localmente, faça o re-`add` em uma branch pra revisar o diff antes de aceitar. Um canal de atualização versionada via pacote npm (`npm update`) está no roadmap.
 </Callout>
 
-## Catálogo do registry
+## Por onde começar
 
-Lista completa de itens instaláveis:
+Escolha pelo que você quer fazer:
 
-```
-https://umbler-ds.vercel.app/r/index.json
-```
+| Quero… | Vá para |
+| --- | --- |
+| **Montar uma landing page** | [Marketing](/docs/marketing) (voz, sequência, tipos de página) + [Blocks](/docs/blocks) (hero, pricing, CTA, FAQ) |
+| **Criar um e-mail** | [Email](/docs/email) — templates react-email com os tokens da marca |
+| **Usar os tokens da marca** (produto, IA, materiais) | [Foundations](/docs/foundations/colors) — cor, tipografia, espaçamento, motion |
+| **Pegar um componente** (Button, Card, Input…) | [Components](/docs/components/button) |
 
-Útil pra agentes de IA descobrirem o que existe antes de montar a UI.
+<FoundationsOverview />
+
+## Outros cenários
+
+- **Usa Claude Code?** Instale o [plugin](/docs/plugin) — skill + comandos `/umbler-init`, `/umbler-add`, `/umbler-audit`.
+- **Só um item avulso?** `npx shadcn@latest add https://umbler-ds.vercel.app/r/<nome>` — ex.: `button`, `hero-block`, `pricing-table`. Blocks caem em `components/blocks/` e puxam o que usam.
+- **Projeto que já existe?** Não instale por cima às cegas: rode o DS lado-a-lado, migre **uma tela piloto** primeiro e adote a regra "código novo usa DS, antigo migra quando tocado" — cada fase em um PR curto.
+- **Atualizar depois?** Rode o `add` de novo (sobrescreve o arquivo local — revise o diff numa branch).
+- **Catálogo para IA/agentes:** [`/llms.txt`](https://umbler-ds.vercel.app/llms.txt) lista componentes, blocks e tokens para um agente consumir.

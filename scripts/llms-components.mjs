@@ -581,4 +581,136 @@ import { HeroBackground } from '@/components/ui/hero-background';
 - variant: \`sweep\` | \`cloud\` | \`wedge\` | \`arc\` | \`cap\` | \`arc-flip\` | \`sweep-invert\` | \`cap-mirror\` — padrão: \`sweep\`
 - Fundo escuro fixo \`rgb(3,6,20)\` com glow SVG azul (blur + mix-blend-mode)
 - Coloque conteúdo em \`relative z-10\` para ficar sobre o blob`,
+
+  // ── Blocks — organismos compostos (instale avulso; caem em components/blocks/) ──
+
+  'hero-block': `Abertura de landing. Instale: \`npx shadcn add https://umbler-ds.vercel.app/r/hero-block\`
+\`\`\`tsx
+import { HeroBlock, HeroContent, HeroEyebrow, HeroHeadline, HeroSubtext, HeroCTAGroup, HeroVisual } from '@/components/blocks/hero-block';
+import { Button } from '@/components/ui/button';
+
+<HeroBlock background="glow">
+  <HeroContent>
+    <HeroEyebrow>Umbler Talk</HeroEyebrow>
+    <HeroHeadline>Atenda no WhatsApp com seu time</HeroHeadline>
+    <HeroSubtext>Centralize conversas e venda mais.</HeroSubtext>
+    <HeroCTAGroup><Button size="lg">Testar grátis</Button></HeroCTAGroup>
+  </HeroContent>
+  <HeroVisual><img src="/print.png" alt="" /></HeroVisual>
+</HeroBlock>
+\`\`\`
+- background: \`none\` | \`sweep\` | \`glow\` — padrão: \`none\`
+- Compound: HeroContent, HeroEyebrow, HeroHeadline, HeroSubtext, HeroCTAGroup, HeroVisual`,
+
+  'cta-banner': `Faixa de conversão pra fim de seção. Instale: \`npx shadcn add https://umbler-ds.vercel.app/r/cta-banner\`
+\`\`\`tsx
+import { CTABanner, CTAHeadline, CTASubtext, CTAActions } from '@/components/blocks/cta-banner';
+import { Button } from '@/components/ui/button';
+
+<CTABanner variant="premium">
+  <CTAHeadline>Pronto pra começar?</CTAHeadline>
+  <CTASubtext>7 dias grátis, sem cartão.</CTASubtext>
+  <CTAActions><Button size="lg">Criar conta</Button></CTAActions>
+</CTABanner>
+\`\`\`
+- variant: \`premium\` | \`glow\` | \`simple\` | \`brand\` — padrão: \`premium\`
+- Compound: CTAEyebrow, CTATrustPill, CTAHeadline, CTAHeadlineMuted, CTASubtext, CTAActions`,
+
+  'pricing-table': `Tabela de planos com toggle mensal/anual. Instale: \`npx shadcn add https://umbler-ds.vercel.app/r/pricing-table\`
+\`\`\`tsx
+import { PricingTable, UMBLER_PLANS } from '@/components/blocks/pricing-table';
+
+<PricingTable plans={UMBLER_PLANS} defaultPeriod="yearly" />
+\`\`\`
+- plans: Plan[] — \`{ id, name, pitch, priceMonthly, priceYearly, popular?, ctaLabel, features: { label, included }[] }\`
+- defaultPeriod: \`monthly\` | \`yearly\` — padrão: \`monthly\` · footer?: ReactNode
+- UMBLER_PLANS exportado como exemplo pronto`,
+
+  'faq-section': `Seção de FAQ (Accordion) — reduz objeção. Instale: \`npx shadcn add https://umbler-ds.vercel.app/r/faq-section\`
+\`\`\`tsx
+import { FAQSection } from '@/components/blocks/faq-section';
+
+<FAQSection eyebrow="Dúvidas" headline="Perguntas frequentes" items={[{ q: 'Tem teste grátis?', a: 'Sim, 7 dias.' }]} />
+\`\`\`
+- headline: string (obrigatório) · eyebrow?: string
+- items: \`{ q: string, a: string }[]\``,
+
+  'stat-grid': `Grade de métricas (prova com números). Instale: \`npx shadcn add https://umbler-ds.vercel.app/r/stat-grid\`
+\`\`\`tsx
+import { StatGrid } from '@/components/blocks/stat-grid';
+
+<StatGrid columns={3} stats={[{ n: '+40%', label: 'conversão' }, { n: '2k', label: 'clientes' }, { n: '24/7', label: 'suporte' }]} />
+\`\`\`
+- stats: \`{ n: string, label: string }[]\`
+- columns: \`2\` | \`3\` | \`4\` — padrão: 4 · tone: \`brand\` | \`muted\` · note?: string`,
+
+  'testimonial-block': `Depoimento de cliente. Instale: \`npx shadcn add https://umbler-ds.vercel.app/r/testimonial-block\`
+\`\`\`tsx
+import { TestimonialBlock } from '@/components/blocks/testimonial-block';
+
+<TestimonialBlock variant="card" stars={5} testimonial={{ quote: 'Mudou nosso atendimento.', author: 'Ana Lima', role: 'CEO', company: 'Acme', avatarInitials: 'AL' }} />
+\`\`\`
+- testimonial: \`{ quote, author, role, company?, avatarInitials? }\`
+- variant: \`centered\` | \`card\` — padrão: centered · stars?: 1–5`,
+
+  'feature-card-grid': `Grade de cards de feature. Instale: \`npx shadcn add https://umbler-ds.vercel.app/r/feature-card-grid\`
+\`\`\`tsx
+import { FeatureCardGrid, FeatureCard } from '@/components/blocks/feature-card-grid';
+import { ChatCircle } from '@phosphor-icons/react/dist/ssr';
+
+<FeatureCardGrid columns={3}>
+  <FeatureCard icon={<ChatCircle />} title="Multiatendimento" description="Vários atendentes, um número." />
+</FeatureCardGrid>
+\`\`\`
+- FeatureCardGrid columns: \`2\` | \`3\` | \`4\` — padrão: 3
+- FeatureCard: title (obrigatório), icon?, description?, asChild? (vira link)`,
+
+  'empty-state': `Estado vazio (listagem sem dados / primeiro uso). Instale: \`npx shadcn add https://umbler-ds.vercel.app/r/empty-state\`
+\`\`\`tsx
+import { EmptyState } from '@/components/blocks/empty-state';
+import { Button } from '@/components/ui/button';
+import { Tray } from '@phosphor-icons/react/dist/ssr';
+
+<EmptyState media={<Tray size={40} />} title="Nenhum contato ainda" description="Importe ou crie o primeiro." actions={<Button>Novo contato</Button>} />
+\`\`\`
+- title (obrigatório) · media?, description?, actions?
+- size: \`sm\` | \`md\` | \`lg\` — padrão: md · as: \`h2\`|\`h3\`|\`h4\`|\`p\``,
+
+  'form-panel': `Painel de formulário em Card. Instale: \`npx shadcn add https://umbler-ds.vercel.app/r/form-panel\`
+\`\`\`tsx
+import { FormPanel } from '@/components/blocks/form-panel';
+import { Input, InputGroup, InputLabel } from '@/components/ui/input';
+import { Button } from '@/components/ui/button';
+
+<FormPanel title="Novo filtro" actions={<Button>Salvar</Button>}>
+  <InputGroup><InputLabel>Nome</InputLabel><Input /></InputGroup>
+</FormPanel>
+\`\`\`
+- title (obrigatório) · description?, actions? (footer), actionsFullWidth?
+- children = os campos do formulário`,
+
+  'user-row': `Linha de contato/usuário (padrão Umbler Talk). Instale: \`npx shadcn add https://umbler-ds.vercel.app/r/user-row\`
+\`\`\`tsx
+import { UserRow } from '@/components/blocks/user-row';
+import { Tag } from '@/components/ui/tag';
+
+<UserRow avatar={{ name: 'Ana Lima' }} name="Ana Lima" meta="há 5 min" subtitle="Última mensagem…" tags={<Tag variant="brand">Proposta</Tag>} selectable onSelectedChange={(s) => {}} />
+\`\`\`
+- name (obrigatório) · avatar?: AvatarProps, meta?, subtitle?, tags?, actions?
+- selectable?, selected?, onSelectedChange? · asChild? (vira link)`,
+
+  'data-list-page': `Esqueleto de tela de listagem CRUD: header + toolbar + corpo. Instale: \`npx shadcn add https://umbler-ds.vercel.app/r/data-list-page\`
+\`\`\`tsx
+import { DataListPage, PageHeader, DataToolbar } from '@/components/blocks/data-list-page';
+import { Button } from '@/components/ui/button';
+
+<DataListPage
+  header={<PageHeader title="Contatos" count={128} actions={<Button>Novo</Button>} />}
+  toolbar={<DataToolbar actions={<Button variant="ghost">Filtrar</Button>}>{/* busca */}</DataToolbar>}
+>
+  {/* <Table> ou <List> aqui */}
+</DataListPage>
+\`\`\`
+- DataListPage: header?, toolbar?, children (a lista/tabela)
+- PageHeader: title (obrigatório), count?, description?, actions? · DataToolbar: children, actions?`,
 };

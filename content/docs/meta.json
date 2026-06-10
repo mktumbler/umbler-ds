@@ -1,4 +1,4 @@
 {
   "title": "Umbler DS",
-  "pages": ["index", "foundations", "components", "blocks", "patterns", "marketing", "email", "plugin"]
+  "pages": ["index", "foundations", "marketing", "email", "blocks", "components", "patterns", "plugin"]
 }

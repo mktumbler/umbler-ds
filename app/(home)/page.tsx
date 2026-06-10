@@ -10,7 +10,8 @@ export default function HomePage() {
         <h1 className="mb-6 text-display-xl">Design System</h1>
 
         <p className="mb-10 text-body-lg text-foreground-muted text-pretty">
-          Tokens, componentes e padrões. Sempre à altura da ambição.
+          A base de marca da Umbler. Tokens, componentes e blocks para montar
+          landing pages, e-mails e produtos. Rápido e sempre no padrão.
         </p>
 
         <div className="flex flex-wrap justify-center gap-3">

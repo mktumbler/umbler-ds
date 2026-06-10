@@ -1,6 +1,6 @@
 {
   "name": "umbler-ds",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Umbler Design System — tokens, componentes, blocks e padrões para projetos Umbler. Inclui skill, slash commands e auditoria de hand-rolls.",
   "author": {
     "name": "Umbler",

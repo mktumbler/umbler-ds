@@ -1,200 +1,83 @@
 # Umbler Design System
 
-Design system Umbler — diretrizes de marca, tokens, componentes e padrões.
-Servirá como **fonte de verdade** e contexto curado para construir outros produtos Umbler com Claude Code.
+Tokens, componentes, blocks e padrões da Umbler — distribuídos via registry shadcn e
+documentados em **[umbler-ds.vercel.app](https://umbler-ds.vercel.app)**.
 
-> **Status:** scaffold inicial — Onda 1 (Foundations) pronta. Componentes serão adicionados progressivamente.
-
----
+Este repo é o **app de documentação** (Next.js + Fumadocs) **e** a fonte de distribuição:
+as mesmas `.tsx` que a doc renderiza são as que outros projetos instalam.
 
 ## Stack
 
-- **Next.js 15** (App Router) + TypeScript
-- **Tailwind v4** — tokens em `@theme` (CSS-first, sem JS config)
-- **Fumadocs 15** — sidebar + MDX + search + dark/light toggle
-- **shadcn registry** — distribuição de componentes via `npx shadcn add <url>`
-- **Phosphor Icons React**
+- **Next.js 15** (App Router) + **React 19** + TypeScript
+- **Tailwind v4** — tokens em `app/tokens.css` (`@theme` / `@theme inline`, CSS-first, sem JS config)
+- **Fumadocs 15** (UI/core) + fumadocs-mdx 11 — sidebar, MDX, busca, dark/light
+- **Registry shadcn** servido em `/r/[component]` — distribuição via `npx shadcn add <url>`
+- **Phosphor Icons** · fontes Inter (sans), P22 Mackinac Pro (display), JetBrains Mono (mono)
 
----
-
-## Setup
+## Rodar local
 
 ```bash
-# 1. Instalar dependências
 npm install
-
-# 2. Rodar em dev
-npm run dev
-
-# 3. Abrir
-http://localhost:3000
+npm run dev      # http://localhost:3000  (landing em /, docs em /docs)
 ```
 
-A landing fica em `/`, a documentação em `/docs`.
+## Consumir o DS em outro projeto
 
----
+Pré-requisito: Next.js 15 + Tailwind **v4** + TypeScript (não funciona no Tailwind v3).
+
+```bash
+npx shadcn@latest init
+npx shadcn@latest add https://umbler-ds.vercel.app/r/umbler-ui   # tudo de uma vez
+# ou avulso:
+npx shadcn@latest add https://umbler-ds.vercel.app/r/button
+```
+
+O código é **copiado** para `components/ui/` (sem dependência de runtime, totalmente editável).
+Guia completo de adoção (projeto novo vs. existente, limpeza do `globals.css`, catálogo):
+**[/docs](https://umbler-ds.vercel.app/docs)** · catálogo p/ agentes: **[/llms.txt](https://umbler-ds.vercel.app/llms.txt)**.
+
+> Usando Claude Code? O plugin `.claude-plugin/` traz skill + slash commands (`/umbler-init`,
+> `/umbler-add`, `/umbler-audit`, `/umbler-block`) + hook de auto-audit. Ver [ANALISE.md](./ANALISE.md).
 
 ## Estrutura
 
 ```
-umbler-ds/
-├── app/
-│   ├── (home)/              → Landing page (sem chrome de docs)
-│   ├── docs/[[...slug]]/    → Rotas Fumadocs/MDX
-│   ├── api/search/          → Endpoint de busca do Fumadocs
-│   └── r/[component]/       → Endpoint do registry shadcn
-│
-├── content/docs/            → MDX (source da documentação)
-│   ├── foundations/         → ✅ Colors, Typography, Spacing, Radius, Shadows, Motion
-│   ├── components/          → 🚧 Componentes React (a serem adicionados)
-│   └── patterns/            → 🚧 Composições prontas
-│
-├── components/
-│   ├── ui/                  → Componentes do DS (Button, Card, Input...)
-│   ├── docs/                → Helpers de docs (ColorSwatch, TypeScale...)
-│   └── demos/               → Demos vivas embutidas em MDX
-│
-├── registry/                → JSON files servidos via /r/[component]
-├── lib/                     → utils, source loader
-├── app/global.css           → 🎯 TODOS OS TOKENS UMBLER (@theme)
-└── mdx-components.tsx       → Registro de componentes MDX
+app/
+  tokens.css              ← FONTE DA VERDADE dos tokens (cores, tipo, espaço, radius, sombra, motion)
+  global.css              ← importa tokens.css + Tailwind + base
+  r/[component]/route.ts  ← endpoint do registry shadcn
+components/
+  ui/                     ← componentes do DS
+  blocks/                 ← organismos compostos (Hero, PricingTable, UserRow…)
+  demos/                  ← demos vivas embutidas nas páginas MDX
+  docs/                   ← helpers de doc (VariantGrid, ColorSwatch, TypeScale…)
+content/docs/             ← MDX: foundations, components, blocks, marketing, email
+registry/                 ← JSONs shadcn GERADOS (não editar à mão)
+scripts/
+  registry.manifest.mjs   ← fonte da verdade do que entra no registry
+  build-registry.mjs      ← gera registry/*.json a partir do manifest
+  build-llms.mjs          ← gera public/llms.txt
+  check-component-sync.mjs ← audita sincronia componente↔doc↔demo↔registry
+  audit-antipatterns.mjs  ← detecta hand-rolls (pre-commit)
+.claude-plugin/           ← plugin Claude Code (skill + commands + hook)
 ```
 
----
+## Adicionar um componente
 
-## Como adicionar uma página de documentação
+1. `components/ui/<nome>.tsx` — usa tokens de `app/tokens.css`, zero valores hardcoded
+2. `components/demos/<nome>-variants.tsx` — variantes nomeadas pra galeria
+3. `content/docs/components/<nome>.mdx` — usa `<VariantGrid>` + `<VariantCard>`
+4. Slug em `content/docs/components/meta.json`
+5. Item em `scripts/registry.manifest.mjs` (o JSON do registry é **gerado**)
+6. Import/export dos demos em `mdx-components.tsx`
 
-1. Criar arquivo MDX em `content/docs/<categoria>/<slug>.mdx`:
-
-```mdx
----
-title: Meu novo doc
-description: Breve descrição.
----
-
-Conteúdo da página em markdown ou JSX.
-```
-
-2. Adicionar o slug no `meta.json` da categoria, na ordem desejada.
-3. Salvar — Fumadocs detecta automaticamente em dev.
-
----
-
-## Como adicionar um componente novo (Onda 2+)
-
-O fluxo para cada componente:
-
-### 1. Criar o componente React
-
-`components/ui/button.tsx` — código fonte do componente, com variants (CVA), TypeScript types, e tokens do `@theme`.
-
-### 2. Documentar em MDX
-
-`content/docs/components/button.mdx`:
-
-```mdx
----
-title: Button
-description: Botão de ação primária.
----
-
-import { Button } from '@/components/ui/button';
-import { ButtonVariantsDemo } from '@/components/demos/button-variants';
-
-## Variantes
-
-<ComponentPreview>
-  <ButtonVariantsDemo />
-</ComponentPreview>
-
-## API
-
-| Prop | Tipo | Default |
-|------|------|---------|
-| variant | `'primary' \| 'secondary' \| 'ghost' \| 'outline' \| 'danger'` | `'primary'` |
-| size | `'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` |
-```
-
-### 3. Adicionar ao meta.json
-
-`content/docs/components/meta.json` — incluir `"button"` na lista.
-
-### 4. Expor no registry
-
-Criar `registry/button.json` no formato shadcn — outros projetos consomem com:
-
-```bash
-npx shadcn@latest add https://<seu-deploy>/r/button
-```
-
----
-
-## Como consumir os componentes em outros projetos
-
-```bash
-npx shadcn@latest add https://<deploy-do-ds>/r/button
-npx shadcn@latest add https://<deploy-do-ds>/r/input
-```
-
-O código fonte é **copiado** para `/components/ui/` do projeto consumidor.
-Sem dependência runtime. Totalmente customizável.
-O Claude Code lê esse código e usa como referência para construir features.
-
----
-
-## Tokens — onde estão
-
-**Tudo em `app/global.css`**, dentro do bloco `@theme`.
-
-- Cores: brand (azul Umbler), neutral, success, warning, error, info
-- Tipografia: Inter (sans), JetBrains Mono (mono), 10 níveis de escala
-- Espaçamento: 4px base, 16 steps de 2px a 128px
-- Radius: sm, md, lg, xl, full
-- Shadows: xs, sm, md, lg, xl, glow
-- Motion: 4 durations + 3 easing curves
-- Breakpoints: sm, md, lg, xl
-
-Para adicionar um token novo:
-
-```css
-@theme {
-  --color-novo-token: #abc123;
-}
-```
-
-Tailwind expõe automaticamente como `bg-novo-token`, `text-novo-token`, etc.
-
----
-
-## Próximos passos (roadmap)
-
-**Onda 1 — Foundations** ✅
-Colors · Typography · Spacing · Radius · Shadows · Motion
-
-**Onda 2 — Primitivas** 🔜
-Button · Badge · Tag · Avatar · Separator · Kbd · Spinner
-
-**Onda 3 — Inputs**
-Input · Textarea · Select · Checkbox · Radio · Switch · Slider · OTP · Date Picker · File Upload
-
-**Onda 4 — Containers e feedback**
-Card · Alert · Banner · Toast · Tooltip · Popover · Skeleton · Progress · Empty State · Stat Card
-
-**Onda 5 — Overlays e navegação**
-Modal · Alert Dialog · Sheet · Dropdown · Tabs · Accordion · Breadcrumb · Pagination · Sidebar Nav · Navbar · Command Palette
-
-**Onda 6 — Específicos Umbler / Talk**
-Channel Badge · Conversation Item · Filter Bar · Kanban · Tree View · Notification Center · Timeline
-
-**Onda 7 — Patterns**
-Login · Dashboard · Pricing · Onboarding · Hero · Settings · Empty State Pages · Modal Destrutiva · Upgrade
-
----
+Validar antes de commitar: `npx tsc --noEmit` · `npm run check:antipatterns` · `npm run build`.
 
 ## Deploy
 
 ```bash
-npm run build && npm run start
+npm run build        # regenera registry + llms.txt + next build
+npx vercel --prod    # deploy de produção
 ```
 
-Recomendado: **Vercel** (deploy automático, edge functions, ótima integração com Next.js).
+Mais contexto operacional em [`CLAUDE.md`](./CLAUDE.md).

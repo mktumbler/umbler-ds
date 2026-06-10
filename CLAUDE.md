@@ -8,8 +8,9 @@ Plugin Claude Code: `.claude-plugin/` (instalável via marketplace Umbler)
 ## Stack
 - Next.js 15 (App Router) + TypeScript
 - Tailwind v4 — tokens de design em `app/tokens.css` via `@theme` e `@theme inline`
-- Fumadocs 11 (sidebar + MDX) — API com destructuring `{ docs, meta }`
-- Registry shadcn em `/r/[component]` para distribuição de componentes
+- Fumadocs 15 (UI + core) com fumadocs-mdx 11 (sidebar + MDX) — API com destructuring `{ docs, meta }`
+- Registry shadcn servido em `/r/[component]` (rota dinâmica lê `registry/*.json`) para distribuição de componentes
+- Fontes: Inter (sans), P22 Mackinac Pro (display/headings H1–H3), JetBrains Mono (mono)
 
 ## Estrutura de arquivos
 ```
@@ -23,9 +24,10 @@ components/
 content/docs/
   foundations/        ← Colors, Typography, Spacing, Radius, Shadows, Motion
   components/         ← uma página MDX por componente
-registry/             ← JSONs no formato shadcn para distribuição
+registry/             ← JSONs shadcn GERADOS (não editar à mão; saída de build-registry)
 scripts/
-  build-registry.mjs  ← gera os arquivos de registry em /public/r/
+  registry.manifest.mjs ← fonte da verdade: lista itens + deps do registry
+  build-registry.mjs  ← lê o manifest + os .tsx e gera registry/*.json
   build-package.mjs   ← gera o pacote @umbler/ui
 ```
 
@@ -46,21 +48,26 @@ scripts/
 - **Auto-consistência**: o DS é fonte E consumidor (a doc usa o DS). Se já existe componente, **importe — nunca recrie**. `<Badge>` não é `<span className="rounded ...">`; `<Button>` não é `<button className="bg-brand-500 ...">`; eyebrow é `.eyebrow`, não `uppercase tracking-wide` hand-rolled. Guarda automática: `scripts/audit-antipatterns.mjs` (roda no pre-commit). Exceções pedagógicas legítimas: comentário inline `{/* audit-ignore: <rule-id> — motivo */}`.
 
 ## Roadmap
-- ✅ Onda 1 — Foundations (Colors, Typography, Spacing, Radius, Shadows, Motion)
-- ✅ Onda 2 — Button, Badge, Tag, Avatar, Separator, Kbd, Spinner
-- ✅ Onda 3 (parcial) — Checkbox, Radio, Toggle, Input, Textarea
-- ✅ Onda 5 (parcial) — Tooltip, Dialog, Tabs, Dropdown
-- 🔜 Onda 3 (restante) — Select, Combobox, DatePicker
-- 🔜 Onda 4 — Card, Alert, Toast, Progress, Skeleton
-- 🔜 Onda 6 — Específicos Umbler/Talk
-- 🔜 Onda 7 — Patterns
+- ✅ Foundations — Colors, Typography, Spacing, Radius, Shadows, Motion
+- ✅ Primitivas — Button, Badge, Tag, Avatar, Separator, Kbd, Spinner
+- ✅ Inputs — Input, Textarea, Select, Checkbox, Radio, Toggle, TagInput
+- ✅ Feedback/containers — Card, Alert, Toast, Progress, Skeleton
+- ✅ Overlays/nav — Dialog, Sheet, Popover, Dropdown, Tooltip, Tabs, Accordion, Breadcrumbs, Pagination
+- ✅ Dados — Table, List, Timeline
+- ✅ Blocks — Hero, CTABanner, PricingTable, FAQSection, StatGrid, Testimonial, DataListPage, UserRow, EmptyState, FormPanel, FeatureCardGrid
+- ✅ Marketing/Brand/Email — guidelines, page-types, email templates
+- 🔜 Faltando — Select Combobox, DatePicker, Slider, OTP, File Upload, Command Palette
+- 🔜 Específicos Umbler/Talk — Channel Badge, Conversation Item, Filter Bar, Kanban, Tree View, Notification Center
+
+Blocks são instaláveis avulso via registry (`type: registry:block`, caem em `components/blocks/`), fora do agregador `umbler-ui`.
 
 ## Como construir um componente novo
 1. Cria `components/ui/<nome>.tsx` (React + Tailwind, usa tokens de `app/tokens.css`)
 2. Cria demo em `components/demos/<nome>-variants.tsx`
 3. Cria página MDX em `content/docs/components/<nome>.mdx`
 4. Adiciona slug em `content/docs/components/meta.json`
-5. Cria `registry/<nome>.json` no formato shadcn
+5. Adiciona o item em `scripts/registry.manifest.mjs` (o `registry/<nome>.json` é gerado por `npm run build:registry`)
+6. Importa/exporta os demos em `mdx-components.tsx`
 
 ## Deploy
 ```bash
@@ -72,5 +79,6 @@ npm run build       # build local (também regenera o registry)
 ```bash
 npm run dev         # servidor local em localhost:3000
 npx tsc --noEmit    # verificar tipos sem compilar
-node scripts/build-registry.mjs   # regenerar /public/r/*.json
+npm run build:registry            # regenerar registry/*.json a partir do manifest
+npm run check:sync                # auditar sincronia componente↔doc↔demo↔registry
 ```

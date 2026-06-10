@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "testimonial-block",
+  "type": "registry:block",
+  "description": "Depoimento de cliente com citação, autor, avatar e logo. Variantes de destaque.",
+  "dependencies": [
+    "@phosphor-icons/react"
+  ],
+  "registryDependencies": [
+    "https://umbler-ds.vercel.app/r/utils"
+  ],
+  "files": [
+    {
+      "path": "components/blocks/testimonial-block.tsx",
+      "type": "registry:component",
+      "content": "/**\n * TestimonialBlock — depoimento único com estrelas, blockquote e autor.\n *\n * Composição:\n *   <TestimonialBlock testimonial={{ quote, author, role, company }} />\n *\n * Props:\n *   testimonial — { quote, author, role, company? }\n *   stars       — 1-5 (padrão: 5)\n *   variant     — 'centered' | 'card' (padrão: 'centered')\n *\n * Aparece em:\n *   • /showcase/solucao (centered, text-display, 5 estrelas)\n */\n\nimport * as React from 'react';\nimport { Star } from '@phosphor-icons/react/dist/ssr';\nimport { cn } from '@/lib/utils';\n\nexport interface TestimonialData {\n  quote: string;\n  author: string;\n  role: string;\n  company?: string;\n  avatarInitials?: string;\n}\n\nexport interface TestimonialBlockProps extends React.HTMLAttributes<HTMLElement> {\n  testimonial: TestimonialData;\n  stars?: 1 | 2 | 3 | 4 | 5;\n  /** centered — blockquote grande centrado (padrão). card — card com borda. */\n  variant?: 'centered' | 'card';\n}\n\nexport function TestimonialBlock({\n  testimonial,\n  stars = 5,\n  variant = 'centered',\n  className,\n  ...props\n}: TestimonialBlockProps) {\n  const { quote, author, role, company, avatarInitials } = testimonial;\n\n  const starRow = (\n    <div className=\"mb-6 flex justify-center gap-1\">\n      {Array.from({ length: stars }).map((_, i) => (\n        <Star key={i} size={20} className=\"text-warning-400\" weight=\"fill\" />\n      ))}\n    </div>\n  );\n\n  const authorRow = (\n    <div className=\"flex flex-col items-center gap-1\">\n      {avatarInitials && (\n        <div className=\"mb-3 flex size-10 items-center justify-center rounded-full bg-brand-500/10 text-sm font-semibold text-brand-500\">\n          {avatarInitials}\n        </div>\n      )}\n      <p className=\"text-body font-medium text-foreground\">{author}</p>\n      <p className=\"text-body-sm text-foreground-muted\">\n        {role}{company ? ` · ${company}` : ''}\n      </p>\n    </div>\n  );\n\n  if (variant === 'card') {\n    return (\n      <section className={cn('px-6 py-16', className)} {...props}>\n        <div className=\"mx-auto max-w-2xl rounded-2xl border border-border bg-surface p-10 shadow-sm\">\n          {starRow}\n          <blockquote className=\"font-heading text-display text-foreground text-balance text-center\">\n            &ldquo;{quote}&rdquo;\n          </blockquote>\n          <div className=\"mt-8 text-center\">{authorRow}</div>\n        </div>\n      </section>\n    );\n  }\n\n  // variant === 'centered' (default)\n  return (\n    <section className={cn('px-6 py-24', className)} {...props}>\n      <div className=\"mx-auto max-w-3xl text-center\">\n        {starRow}\n        <blockquote className=\"font-heading text-display text-foreground text-balance\">\n          &ldquo;{quote}&rdquo;\n        </blockquote>\n        <div className=\"mt-8\">{authorRow}</div>\n      </div>\n    </section>\n  );\n}\n",
+      "target": "components/blocks/testimonial-block.tsx"
+    }
+  ]
+}

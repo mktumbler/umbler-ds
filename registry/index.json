@@ -182,6 +182,61 @@
       "description": "Fundo de hero com glow SVG (blur + mix-blend-mode). 8 variantes de blob para seções de marketing."
     },
     {
+      "name": "hero-block",
+      "type": "registry:block",
+      "description": "Hero de marketing com eyebrow, título, subtítulo, CTAs e mídia. Variantes de alinhamento e layout split/centered."
+    },
+    {
+      "name": "cta-banner",
+      "type": "registry:block",
+      "description": "Banner de chamada para ação com variantes premium/glow/simple. Faixa de conversão para fim de página."
+    },
+    {
+      "name": "pricing-table",
+      "type": "registry:block",
+      "description": "Tabela de planos com destaque de plano popular, lista de features e CTA por tier."
+    },
+    {
+      "name": "faq-section",
+      "type": "registry:block",
+      "description": "Seção de perguntas frequentes em cima do Accordion, com título e copy de apoio."
+    },
+    {
+      "name": "stat-grid",
+      "type": "registry:block",
+      "description": "Grade de métricas/indicadores (número + label + delta) para landings e dashboards."
+    },
+    {
+      "name": "testimonial-block",
+      "type": "registry:block",
+      "description": "Depoimento de cliente com citação, autor, avatar e logo. Variantes de destaque."
+    },
+    {
+      "name": "feature-card-grid",
+      "type": "registry:block",
+      "description": "Grade de cards de feature (ícone + título + descrição) em cima do Card. Variantes de coluna e ênfase."
+    },
+    {
+      "name": "empty-state",
+      "type": "registry:block",
+      "description": "Estado vazio com ícone/ilustração, título, descrição e ação. Variantes de tamanho e a prop `as`."
+    },
+    {
+      "name": "form-panel",
+      "type": "registry:block",
+      "description": "Painel de formulário em cima do Card — header, corpo de campos e footer de ações."
+    },
+    {
+      "name": "user-row",
+      "type": "registry:block",
+      "description": "Linha de usuário/contato com avatar, nome, metadados, checkbox de seleção e ações (padrão Umbler Talk)."
+    },
+    {
+      "name": "data-list-page",
+      "type": "registry:block",
+      "description": "Composto de página de listagem: header com título/ações + corpo de lista/tabela. Esqueleto reutilizável de telas CRUD."
+    },
+    {
       "name": "umbler-ui",
       "type": "registry:ui",
       "description": "Instala todo o Umbler DS de uma vez: componentes, utilitários e tokens. Use para bootstrapar um projeto novo."

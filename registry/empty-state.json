@@ -1,0 +1,20 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "empty-state",
+  "type": "registry:block",
+  "description": "Estado vazio com ícone/ilustração, título, descrição e ação. Variantes de tamanho e a prop `as`.",
+  "dependencies": [
+    "class-variance-authority"
+  ],
+  "registryDependencies": [
+    "https://umbler-ds.vercel.app/r/utils"
+  ],
+  "files": [
+    {
+      "path": "components/blocks/empty-state.tsx",
+      "type": "registry:component",
+      "content": "/**\n * EmptyState — bloco pra comunicar \"ainda não há nada aqui\" ou\n * \"essa coisa não está conectada/configurada\".\n *\n * Estrutura: ícone/ilustração + título + descrição + ações.\n *\n * Aparece em:\n *   • Console → DNS \"Seus emails não estão conectados à Umbler\"\n *   • Modal \"Para usar sites e emails você vai precisar de um domínio\"\n *   • UmblerClub → Backup promo (variação marketing)\n *   • Talk → listagens vazias (sem conversas, sem contatos)\n *\n * Não é Marketing — pra promo card com split + ilustração + benefits,\n * use o futuro <MarketingBanner/>.\n *\n * Rhythm vertical: gap-5 (20px, escala \"médio\") — ver /docs/foundations/spacing.\n */\n\nimport * as React from 'react';\nimport { cva, type VariantProps } from 'class-variance-authority';\nimport { cn } from '@/lib/utils';\n\nconst emptyStateVariants = cva(\n  'flex flex-col items-center justify-center gap-5 text-center',\n  {\n    variants: {\n      size: {\n        sm: 'py-8 px-4',\n        md: 'py-12 px-6',\n        lg: 'py-20 px-8',\n      },\n    },\n    defaultVariants: { size: 'md' },\n  },\n);\n\nexport interface EmptyStateProps\n  extends Omit<React.HTMLAttributes<HTMLDivElement>, 'title'>,\n    VariantProps<typeof emptyStateVariants> {\n  /** Ícone ou ilustração no topo. Recomendado: ícone 48–64px ou SVG. */\n  media?: React.ReactNode;\n  /** Título principal. Required. */\n  title: React.ReactNode;\n  /** Descrição abaixo do título. Opcional. */\n  description?: React.ReactNode;\n  /** Slot de ações (botões). Renderiza em linha, centralizado. */\n  actions?: React.ReactNode;\n  /**\n   * Nível semântico do título. Use de acordo com a hierarquia da página:\n   * `h2` no topo de uma rota, `h3` (default) em tabs/sections, `h4` em cards.\n   */\n  as?: 'h2' | 'h3' | 'h4' | 'p';\n}\n\nexport function EmptyState({\n  media,\n  title,\n  description,\n  actions,\n  size,\n  as: Heading = 'h3',\n  className,\n  ...props\n}: EmptyStateProps) {\n  return (\n    <div className={cn(emptyStateVariants({ size }), className)} {...props}>\n      {media && (\n        <div className=\"flex items-center justify-center text-foreground-muted\" aria-hidden=\"true\">\n          {media}\n        </div>\n      )}\n      <div className=\"max-w-prose space-y-2\">\n        <Heading className=\"font-sans text-h4 text-foreground\">{title}</Heading>\n        {description && (\n          <p className=\"text-body-sm text-foreground-muted leading-relaxed text-pretty\">\n            {description}\n          </p>\n        )}\n      </div>\n      {actions && (\n        <div className=\"flex flex-wrap items-center justify-center gap-2\">\n          {actions}\n        </div>\n      )}\n    </div>\n  );\n}\n",
+      "target": "components/blocks/empty-state.tsx"
+    }
+  ]
+}

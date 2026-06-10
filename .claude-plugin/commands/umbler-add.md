@@ -24,15 +24,13 @@ Se algum requisito faltar, pare e oriente o usuário.
 
 ## 3. Instale
 
-Execute (uma das duas, dependendo se é componente ou bloco):
+Componentes e blocks compartilham o mesmo namespace flat do registry — sempre `/r/<nome>.json`:
 
 ```bash
-# Componente
 npx shadcn@latest add https://umbler-ds.vercel.app/r/$1.json
-
-# Bloco (se aplicável)
-npx shadcn@latest add https://umbler-ds.vercel.app/r/blocks/$1.json
 ```
+
+Componentes caem em `components/ui/`; blocks (`type: registry:block`) caem em `components/blocks/` e puxam os componentes do DS que usam.
 
 ## 4. Verifique adoção correta
 

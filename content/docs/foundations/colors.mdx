@@ -97,11 +97,9 @@ Cores semânticas seguem o padrão oficial da Umbler (Frontify). Use **500** com
 
 ## Cor para ação vs. estado
 
-Regra simples — e que vale **independente do que cada produto faz hoje**:
+> **Verde é estado, não ação.** Use `success-*` em badges, toasts, status pills e ícones de feedback positivo. Para chamar ação (salvar, confirmar, enviar, publicar), use sempre `Button variant="primary"`.
 
-> **Verde é estado, não ação.** Use `success-*` em badges, toasts, status pills e ícones de feedback positivo. Para chamar ação (salvar, confirmar, criar, enviar, publicar), use sempre `Button variant="primary"`.
-
-Isso vale tanto pra paridade visual entre produtos quanto pra acessibilidade: usuários daltônicos e leitores de tela dependem da **forma + texto** do CTA, não da cor. Quando o "salvar" de um lugar é verde e o de outro é azul, o sinal de "ação primária" fica diluído.
+Vale pra paridade entre produtos e pra acessibilidade — daltônicos e leitores de tela leem a **forma + texto** do CTA, não a cor.
 
 ### Intenção → componente
 
@@ -116,23 +114,19 @@ Isso vale tanto pra paridade visual entre produtos quanto pra acessibilidade: us
 
 ### Faça / Não faça
 
-<ComponentPreview title="Confirmar pagamento — ação primária">
-  <div className="flex items-center gap-4">
-    <div className="flex flex-col items-center gap-2">
-      <Button>Confirmar pagamento</Button>
-      <span className="text-caption text-success-500">✓ Faça</span>
-    </div>
-    <div className="flex flex-col items-center gap-2">
-      {/* audit-ignore: button-hand-roll — ilustração de misuse para a regra "verde nunca é CTA" */}
-      <Button className="!bg-success-500 hover:!bg-success-600 opacity-60 line-through decoration-2">
-        Confirmar pagamento
-      </Button>
-      <span className="text-caption text-error-500">✗ Não faça</span>
-    </div>
-  </div>
-</ComponentPreview>
+<VariantGrid columns={2}>
+  <VariantCard label="✓ Faça" hint="Ação primária em azul brand">
+    <Button>Confirmar pagamento</Button>
+  </VariantCard>
+  <VariantCard label="✗ Não faça" hint="Verde como CTA dilui o sinal de ação">
+    {/* audit-ignore: button-hand-roll — ilustração de misuse para a regra "verde nunca é CTA" */}
+    <Button className="!bg-success-500 hover:!bg-success-600 opacity-60 line-through decoration-2">
+      Confirmar pagamento
+    </Button>
+  </VariantCard>
+</VariantGrid>
 
-O verde fica reservado pra _comunicar_ que algo foi confirmado depois — em um `Badge variant="success"` na fatura, num toast de sucesso, num check-icon na linha do tempo. Nunca no botão que dispara a ação.
+O verde fica reservado pra _comunicar_ sucesso depois — `Badge variant="success"`, toast de sucesso, check-icon. Nunca no botão que dispara a ação.
 
 ## Brand Gradient
 

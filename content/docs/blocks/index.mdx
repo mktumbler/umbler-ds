@@ -1,35 +1,41 @@
 ---
 title: Blocks
-description: Organismos reutilizáveis — composições de componentes que aparecem 3+ vezes em produtos Umbler.
+description: Organismos prontos — seções de landing e composições de produto montadas com os componentes do DS.
 ---
 
-**Blocks** ocupam a camada entre **Components** (átomos e moléculas como Button, Card, Input) e **Patterns** (templates de página inteiros como Hero, Feature Section). São **organismos**, no vocabulário de Atomic Design — pedaços de UI grandes o suficiente pra ter identidade própria, mas pequenos o suficiente pra serem reutilizados em vários contextos.
+**Blocks** são organismos: pedaços de UI grandes o suficiente pra ter identidade própria (uma seção de hero, uma tabela de preços, uma linha de contato), montados a partir dos [Components](/docs/components/button). São o atalho para montar uma página rápido sem reinventar.
 
-## Como um bloco entra aqui
+Todos são **instaláveis avulso** — caem em `components/blocks/` e puxam os componentes que usam:
 
-Critério objetivo, vindo de Polaris (Shopify) e Primer (GitHub):
+```bash
+npx shadcn@latest add https://umbler-ds.vercel.app/r/hero-block
+```
 
-> **Algo só vira bloco quando aparece 3+ vezes em telas/produtos diferentes.**
+## Landing / Marketing
 
-- 1x = página única → escreva direto no código do produto
-- 2x = duplicação suspeita → vale conversa, ainda não bloco
-- 3+ = padrão → vira bloco
+A maior parte de uma LP Umbler sai daqui. Combine na ordem da [sequência de conversão](/docs/marketing/conversion).
 
-Antes de cada bloco virar página aqui, ele passa por um **Interface Inventory** (metodologia Brad Frost): screenshots dos produtos Umbler agrupados por similaridade, contagem de frequência, decisão baseada em evidência — não em "achei legal ter".
-
-## O que tem aqui
-
-| Bloco | Composto de | Aparece em |
+| Bloco | Para que serve | Slug |
 |---|---|---|
-| [DataListPage](/docs/blocks/data-list-page) | PageHeader + DataToolbar + Table | Contatos, Chatbots, Agentes de IA, Campanhas, Relatórios (Talk) |
-| [UserRow](/docs/blocks/user-row) | Avatar + texto + Badge + ações | Conversas, Contatos, Nova conversa, Notificações (Talk) |
-| [FeatureCardGrid](/docs/blocks/feature-card-grid) | Card + ícone + heading + body | Site arquivos, Dashboard ações, landing features |
-| [EmptyState](/docs/blocks/empty-state) | Ícone + heading + body + Button | DNS sem email, Subdomínio modal, listagens vazias |
-| [FormPanel](/docs/blocks/form-panel) | Card + Input/Select + Button | Novo filtro, Novo grupo, Modal Subdomínio |
+| [HeroBlock](/docs/blocks/hero-block) | Abertura da página: eyebrow, headline, subcopy, CTAs e mídia | `hero-block` |
+| [PricingTable](/docs/blocks/pricing-table) | Planos lado-a-lado com destaque de plano popular | `pricing-table` |
+| [CTABanner](/docs/blocks/cta-banner) | Faixa de conversão (premium/glow/simple) pra fim de seção | `cta-banner` |
+| [Section Blocks](/docs/blocks/section-blocks) | FAQ (reduz objeção), StatGrid (prova com números), Testimonial (voz do cliente) | `faq-section` · `stat-grid` · `testimonial-block` |
+| [FeatureCardGrid](/docs/blocks/feature-card-grid) | Grade de features com ícone + título + descrição | `feature-card-grid` |
+
+## Produto
+
+Composições recorrentes nas telas de produto (Talk, Hosting, Console).
+
+| Bloco | Para que serve | Slug |
+|---|---|---|
+| [DataListPage](/docs/blocks/data-list-page) | Esqueleto de tela de listagem: header + toolbar + tabela | `data-list-page` |
+| [UserRow](/docs/blocks/user-row) | Linha de contato/usuário: avatar + texto + ações | `user-row` |
+| [FormPanel](/docs/blocks/form-panel) | Painel de formulário em Card (header + campos + ações) | `form-panel` |
+| [EmptyState](/docs/blocks/empty-state) | Estado vazio: ícone + título + descrição + ação | `empty-state` |
 
 ## Princípios
 
-- **Bloco não reinventa componente.** Se um bloco precisa de um botão, ele usa `<Button>`. Não é `<button className="bg-brand-500 ...">`. Esse princípio é guardado por `scripts/audit-antipatterns.mjs`.
-- **Bloco não cria token novo.** Bloco compõe tokens existentes. Se você precisa de uma cor ou espaçamento que não existe, primeiro abre PR em Foundations.
-- **Bloco mostra contexto real.** Cada página linka pra screenshot do produto onde o bloco aparece, e quais componentes ele combina.
-- **Bloco evolui com a evidência.** Se um padrão deixou de aparecer 3+ vezes (ou foi substituído), o bloco morre.
+- **Bloco não reinventa componente nem cria token.** Compõe `<Button>`, `<Card>`, `<Avatar>` e tokens existentes. Guardado por `scripts/audit-antipatterns.mjs`.
+- **Bloco de produto segue a regra do 3** (Polaris/Primer): só vira bloco o padrão que aparece em 3+ telas diferentes. Blocos de landing seguem a taxonomia padrão de seções de LP.
+- **Dados via props** — nenhum texto fica hardcoded; o bloco recebe conteúdo de fora.

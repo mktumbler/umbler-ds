@@ -291,6 +291,90 @@ export const items = [
     files: ['components/ui/hero-background.tsx'],
     registryDependencies: ['utils'],
   },
+
+  // --- Blocks — organismos compostos (instaláveis avulso; fora do agregador umbler-ui) ---
+  // Cada bloco cai em components/blocks/<nome>.tsx e puxa os componentes do DS que usa.
+  {
+    name: 'hero-block',
+    type: 'registry:block',
+    description: 'Hero de marketing com eyebrow, título, subtítulo, CTAs e mídia. Variantes de alinhamento e layout split/centered.',
+    files: [{ src: 'components/blocks/hero-block.tsx', target: 'components/blocks/hero-block.tsx', type: 'registry:component' }],
+    registryDependencies: ['utils'],
+  },
+  {
+    name: 'cta-banner',
+    type: 'registry:block',
+    description: 'Banner de chamada para ação com variantes premium/glow/simple. Faixa de conversão para fim de página.',
+    files: [{ src: 'components/blocks/cta-banner.tsx', target: 'components/blocks/cta-banner.tsx', type: 'registry:component' }],
+    registryDependencies: ['utils'],
+  },
+  {
+    name: 'pricing-table',
+    type: 'registry:block',
+    description: 'Tabela de planos com destaque de plano popular, lista de features e CTA por tier.',
+    files: [{ src: 'components/blocks/pricing-table.tsx', target: 'components/blocks/pricing-table.tsx', type: 'registry:component' }],
+    dependencies: [PHOSPHOR],
+    registryDependencies: ['utils', 'badge', 'button'],
+  },
+  {
+    name: 'faq-section',
+    type: 'registry:block',
+    description: 'Seção de perguntas frequentes em cima do Accordion, com título e copy de apoio.',
+    files: [{ src: 'components/blocks/faq-section.tsx', target: 'components/blocks/faq-section.tsx', type: 'registry:component' }],
+    registryDependencies: ['utils', 'accordion'],
+  },
+  {
+    name: 'stat-grid',
+    type: 'registry:block',
+    description: 'Grade de métricas/indicadores (número + label + delta) para landings e dashboards.',
+    files: [{ src: 'components/blocks/stat-grid.tsx', target: 'components/blocks/stat-grid.tsx', type: 'registry:component' }],
+    registryDependencies: ['utils'],
+  },
+  {
+    name: 'testimonial-block',
+    type: 'registry:block',
+    description: 'Depoimento de cliente com citação, autor, avatar e logo. Variantes de destaque.',
+    files: [{ src: 'components/blocks/testimonial-block.tsx', target: 'components/blocks/testimonial-block.tsx', type: 'registry:component' }],
+    dependencies: [PHOSPHOR],
+    registryDependencies: ['utils'],
+  },
+  {
+    name: 'feature-card-grid',
+    type: 'registry:block',
+    description: 'Grade de cards de feature (ícone + título + descrição) em cima do Card. Variantes de coluna e ênfase.',
+    files: [{ src: 'components/blocks/feature-card-grid.tsx', target: 'components/blocks/feature-card-grid.tsx', type: 'registry:component' }],
+    dependencies: [CVA],
+    registryDependencies: ['utils', 'card'],
+  },
+  {
+    name: 'empty-state',
+    type: 'registry:block',
+    description: 'Estado vazio com ícone/ilustração, título, descrição e ação. Variantes de tamanho e a prop `as`.',
+    files: [{ src: 'components/blocks/empty-state.tsx', target: 'components/blocks/empty-state.tsx', type: 'registry:component' }],
+    dependencies: [CVA],
+    registryDependencies: ['utils'],
+  },
+  {
+    name: 'form-panel',
+    type: 'registry:block',
+    description: 'Painel de formulário em cima do Card — header, corpo de campos e footer de ações.',
+    files: [{ src: 'components/blocks/form-panel.tsx', target: 'components/blocks/form-panel.tsx', type: 'registry:component' }],
+    registryDependencies: ['utils', 'card'],
+  },
+  {
+    name: 'user-row',
+    type: 'registry:block',
+    description: 'Linha de usuário/contato com avatar, nome, metadados, checkbox de seleção e ações (padrão Umbler Talk).',
+    files: [{ src: 'components/blocks/user-row.tsx', target: 'components/blocks/user-row.tsx', type: 'registry:component' }],
+    registryDependencies: ['utils', 'avatar', 'checkbox'],
+  },
+  {
+    name: 'data-list-page',
+    type: 'registry:block',
+    description: 'Composto de página de listagem: header com título/ações + corpo de lista/tabela. Esqueleto reutilizável de telas CRUD.',
+    files: [{ src: 'components/blocks/data-list-page.tsx', target: 'components/blocks/data-list-page.tsx', type: 'registry:component' }],
+    registryDependencies: ['utils'],
+  },
 ];
 
 /** Itens do tipo registry:ui que entram no agregador "umbler-ui". */
