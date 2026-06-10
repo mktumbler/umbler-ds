@@ -9,54 +9,61 @@ import {
   ProgressAnimated,
   ProgressCircleDemo,
 } from '@/components/demos/progress-variants';
+import { VariantGrid, VariantCard } from '@/components/docs/variant-grid';
 
 Use Progress quando o usuário precisa saber **quanto falta** ou que **algo está acontecendo**. Para feedback transitório de conclusão use [Toast](/docs/components/toast); para loading inline de botões/links use [Spinner](/docs/components/spinner).
 
 ## Linear — determinado
 
-<ComponentPreview title="3 barras com tones diferentes">
-  <ProgressLinear />
-</ComponentPreview>
+<VariantGrid columns={1}>
+  <VariantCard label="brand / warning / success" hint="tone prop muda a cor da barra — percentual via tabular-nums" minHeight={200}>
+    <ProgressLinear />
+  </VariantCard>
+</VariantGrid>
 
 ## Linear — indeterminado
 
 Omita `value` (ou passe `null`) quando o progresso não pode ser medido — sincronização, indexação, requisições sem ETA.
 
-<ComponentPreview title="Loop infinito">
-  <ProgressIndeterminate />
-</ComponentPreview>
+<VariantGrid columns={1}>
+  <VariantCard label="Indeterminado" hint="Sem value → shimmer em loop infinito">
+    <ProgressIndeterminate />
+  </VariantCard>
+</VariantGrid>
 
 ## Linear — animado
 
-<ComponentPreview title="Avança 7% a cada 350ms">
-  <ProgressAnimated />
-</ComponentPreview>
+<VariantGrid columns={1}>
+  <VariantCard label="Animado" hint="value sobe 7% a cada 350ms — transição CSS de 300ms suaviza o salto">
+    <ProgressAnimated />
+  </VariantCard>
+</VariantGrid>
 
 ## Circular
 
-<ComponentPreview title="Tamanhos sm / md / lg + indeterminado">
-  <ProgressCircleDemo />
-</ComponentPreview>
+<VariantGrid columns={1}>
+  <VariantCard label="ProgressCircle" hint="sm / md com showLabel / lg success / indeterminado" minHeight={160}>
+    <ProgressCircleDemo />
+  </VariantCard>
+</VariantGrid>
 
-## Props
+## API — Progress
 
-### `<Progress>`
+| Prop    | Tipo                                            | Default   | Descrição                          |
+| ------- | ----------------------------------------------- | --------- | ---------------------------------- |
+| `value` | `number \| null`                                | —         | 0–`max`. Omita para indeterminado. |
+| `max`   | `number`                                        | `100`     | Valor máximo.                      |
+| `size`  | `'sm' \| 'md' \| 'lg'`                         | `'md'`    | Espessura da barra.                |
+| `tone`  | `'brand' \| 'success' \| 'warning' \| 'error'` | `'brand'` | Cor do indicador.                  |
 
-| Prop | Tipo | Default | Descrição |
-|---|---|---|---|
-| `value` | `number \| null` | — | 0–`max`. Omita para indeterminado. |
-| `max` | `number` | `100` | Valor máximo. |
-| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Espessura da barra. |
-| `tone` | `'brand' \| 'success' \| 'warning' \| 'error'` | `'brand'` | Cor do indicador. |
+## API — ProgressCircle
 
-### `<ProgressCircle>`
-
-Mesmos `value` / `max` / `tone`. `size` muda o diâmetro (28/40/56px). `showLabel` mostra o percentual no centro.
+Mesmas props `value` / `max` / `tone`. `size` muda o diâmetro (28 / 40 / 56px). `showLabel` exibe o percentual no centro.
 
 ## Acessibilidade
 
 - Radix Progress aplica `role="progressbar"` + `aria-valuenow`/`min`/`max` automaticamente.
-- `ProgressCircle` aplica os mesmos atributos manualmente.
+- `ProgressCircle` aplica os mesmos atributos manualmente via SVG ARIA.
 - No modo indeterminado, `aria-valuenow` é omitido — leitores anunciam "carregando".
 
 ## Uso

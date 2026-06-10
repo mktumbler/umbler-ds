@@ -4,14 +4,19 @@ description: Notificação transitória empilhável sobre sonner. Variantes sem�
 ---
 
 import { ToastPlayground } from '@/components/demos/toast-variants';
+import { VariantGrid, VariantCard } from '@/components/docs/variant-grid';
 
 Toast é feedback **transitório** — confirma que algo aconteceu sem interromper o fluxo. Para mensagens persistentes que pedem atenção use [Alert](/docs/components/alert); para decisões críticas use [Dialog](/docs/components/dialog).
 
 ## Playground
 
-<ComponentPreview title="Variantes + ações">
-  <ToastPlayground />
-</ComponentPreview>
+Clique nos botões para disparar cada tipo de toast. Os toasts aparecem no canto inferior da tela.
+
+<VariantGrid columns={1}>
+  <VariantCard label="Variantes + ações" hint="default / success / warning / error / info — com ação e loading → success" minHeight={120}>
+    <ToastPlayground />
+  </VariantCard>
+</VariantGrid>
 
 ## Setup
 
@@ -44,18 +49,16 @@ toast.error('Falhou ao salvar', { description: 'Tente novamente em instantes.' }
 
 ## Variantes
 
-| Helper | Quando usar |
-|---|---|
-| `toast(msg)` | Confirmações neutras ("Mensagem enviada", "Item copiado"). |
-| `toast.success(msg)` | Operação concluída ("Domínio conectado", "Pago"). |
-| `toast.warning(msg)` | Atenção sem bloqueio ("Plano quase no limite"). |
-| `toast.error(msg)` | Falha — algo precisa ser refeito. |
-| `toast.info(msg)` | Aviso informativo ("Nova versão disponível"). |
-| `toast.loading(msg)` | Operação em andamento; atualize com `{ id }`. |
+| Helper          | Quando usar                                                 |
+| --------------- | ----------------------------------------------------------- |
+| `toast(msg)`    | Confirmações neutras ("Mensagem enviada", "Item copiado").  |
+| `toast.success` | Operação concluída ("Domínio conectado", "Pago").           |
+| `toast.warning` | Atenção sem bloqueio ("Plano quase no limite").             |
+| `toast.error`   | Falha — algo precisa ser refeito.                          |
+| `toast.info`    | Aviso informativo ("Nova versão disponível").               |
+| `toast.loading` | Operação em andamento; atualize com `{ id }`.              |
 
 ## Ação e cancelamento
-
-Passe `action` para um botão clicável dentro do toast:
 
 ```tsx
 toast('Convite enviado', {
@@ -63,11 +66,10 @@ toast('Convite enviado', {
 });
 ```
 
-## Loading → success/error
-
-Para feedback de operações assíncronas, capture o id do toast de loading e atualize:
+## Loading → success / error
 
 ```tsx
+// Manualmente via id
 const id = toast.loading('Publicando…');
 try {
   await publish();
@@ -75,11 +77,8 @@ try {
 } catch {
   toast.error('Falhou ao publicar', { id });
 }
-```
 
-Ou use `toast.promise()`:
-
-```tsx
+// Via promise
 toast.promise(publish(), {
   loading: 'Publicando…',
   success: 'Publicado!',
@@ -91,4 +90,4 @@ toast.promise(publish(), {
 
 - Sonner usa `role="status"` (`aria-live="polite"`) por padrão; erros usam `role="alert"`.
 - Botão de fechar tem `aria-label`.
-- Posicionamento padrão `bottom-right` — passe `position` no `<Toaster />` se quiser outro.
+- Posicionamento padrão `bottom-right` — passe `position` no `<Toaster />` para outro.

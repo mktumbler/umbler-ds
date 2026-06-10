@@ -8,65 +8,57 @@ import {
   SheetSides,
   SheetNotifications,
 } from '@/components/demos/sheet-variants';
+import { VariantGrid, VariantCard } from '@/components/docs/variant-grid';
 
-Mesmo paradigma do [`Dialog`](/docs/components/dialog), mas o conteúdo entra deslizando de uma das bordas em vez de aparecer centralizado. Útil pra:
+Mesmo paradigma do [`Dialog`](/docs/components/dialog), mas o conteúdo entra deslizando de uma das bordas em vez de aparecer centralizado. Útil para painéis de detalhe, drawers de notificação, menus mobile e formulários laterais.
 
-- **Painéis de detalhe** — abrir os detalhes de uma conversa, fatura ou domínio sem perder o contexto da lista.
-- **Drawer de notificações** — caso clássico do sininho.
-- **Menu mobile** — sidebar que abre da esquerda em telas pequenas.
-- **Formulários laterais** — criar/editar sem ir pra outra rota.
+Construído sobre `@radix-ui/react-dialog` — foco trap, `Esc` para fechar, scroll lock e `aria-*` corretos.
 
-Construído sobre `@radix-ui/react-dialog`, então ganha de graça: foco trap, fechar com `Esc`, scroll lock, `aria-*` corretos.
+## Variantes
 
-## Básico
+<VariantGrid columns={1}>
+  <VariantCard label="Básico — right" hint="Header + SheetBody rolável + Footer fixo — padrão de detalhe/edição">
+    <SheetBasic />
+  </VariantCard>
+</VariantGrid>
 
-`side="right"` é o padrão. `<SheetBody>` é uma área rolável entre o header e o footer fixos.
+<VariantGrid columns={1}>
+  <VariantCard label="Os 4 lados" hint="right / left / top / bottom — cada um com keyframe de slide próprio">
+    <SheetSides />
+  </VariantCard>
+</VariantGrid>
 
-<ComponentPreview title="Editar domínio">
-  <SheetBasic />
-</ComponentPreview>
+<VariantGrid columns={1}>
+  <VariantCard label="Drawer de notificações" hint="SheetBody com List interativa + -mx-6 para quebrar o padding">
+    <SheetNotifications />
+  </VariantCard>
+</VariantGrid>
 
-## Os 4 lados
+## API — SheetContent
 
-`side` aceita `right` (default), `left`, `top` ou `bottom`. Cada lado tem seu próprio keyframe de slide.
+| Prop        | Tipo                                              | Default   | Descrição                                                        |
+| ----------- | ------------------------------------------------- | --------- | ---------------------------------------------------------------- |
+| `side`      | `'right' \| 'left' \| 'top' \| 'bottom'`         | `'right'` | Borda de onde o painel desliza.                                  |
+| `showClose` | `boolean`                                         | `true`    | Exibe o × no canto superior direito.                             |
+| `className` | `string`                                          | —         | Default: `sm:max-w-md` (right/left) ou `max-h-[85vh]` (top/bottom). |
 
-<ComponentPreview title="Clique para abrir de cada lado">
-  <SheetSides />
-</ComponentPreview>
+## Slots
 
-## Caso real — drawer de notificações
-
-Composição típica com [`List`](/docs/components/list) dentro do `<SheetBody>`. O `-mx-6` na lista quebra o padding do body pra ela ocupar toda a largura — útil quando os itens da lista têm o próprio padding.
-
-<ComponentPreview title="Sininho de notificações">
-  <SheetNotifications />
-</ComponentPreview>
-
-## Props
-
-### `<SheetContent>`
-
-| Prop | Tipo | Default | Descrição |
-|---|---|---|---|
-| `side` | `'right' \| 'left' \| 'top' \| 'bottom'` | `'right'` | Borda de onde o painel desliza. |
-| `showClose` | `boolean` | `true` | Mostra o X no canto superior direito. |
-| `className` | `string` | — | Tamanho default em desktop: `sm:max-w-md` (right/left) ou `max-h-[85vh]` (top/bottom). Sobrescreva via className. |
-
-### Slots
-
-- `<SheetHeader>` — título + descrição, padding reservado pro X
-- `<SheetTitle>` — título acessível (vai pro `aria-labelledby` da Radix)
-- `<SheetDescription>` — texto auxiliar (vai pro `aria-describedby`)
-- `<SheetBody>` — área rolável entre header e footer. Já tem `overflow-y-auto`.
-- `<SheetFooter>` — ações sticky no rodapé, com borda separadora
-- `<SheetClose>` — wrapper Radix pra fechar o sheet (use com `asChild`)
+| Componente           | Função                                                       |
+| -------------------- | ------------------------------------------------------------ |
+| `<SheetHeader>`      | Título + descrição, padding reservado para o ×               |
+| `<SheetTitle>`       | Título acessível (`aria-labelledby` automático)              |
+| `<SheetDescription>` | Texto auxiliar (`aria-describedby` automático)               |
+| `<SheetBody>`        | Área rolável entre header e footer (`overflow-y-auto`)       |
+| `<SheetFooter>`      | Ações sticky no rodapé com borda separadora                  |
+| `<SheetClose>`       | Wrapper Radix que fecha o sheet (use com `asChild`)          |
 
 ## Acessibilidade
 
-- Foco trap automático: tab só circula dentro do sheet enquanto aberto.
+- Foco trap automático — `Tab` circula só dentro do sheet.
 - `Esc` fecha; clicar no overlay fecha.
-- Sempre forneça `<SheetTitle>` (mesmo que visualmente escondido com `sr-only`) — Radix avisa no console se faltar.
-- O X de fechar tem `aria-label="Fechar"`.
+- Sempre forneça `<SheetTitle>` (mesmo com `sr-only`) — Radix avisa no console se faltar.
+- O × de fechar tem `aria-label="Fechar"`.
 
 ## Uso
 

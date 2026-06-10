@@ -4,35 +4,28 @@ description: Overlay contextual com conteúdo rico — texto, ações, formulár
 ---
 
 import { PopoverBasic, PopoverWithForm, PopoverIconTrigger } from '@/components/demos/popover-variants';
+import { VariantGrid, VariantCard } from '@/components/docs/variant-grid';
 
 Diferente do `Tooltip` (texto curto, abre no hover) e do `Dropdown` (menu de ações navegável por setas), o `Popover` é um **container livre** clicável por dentro. Use para mini-formulários, picks, ações secundárias com explicação.
 
-## Básico
+## Variantes
 
-<ComponentPreview title="Popover simples">
-  <PopoverBasic />
-</ComponentPreview>
-
-## Com formulário
-
-Aceita qualquer ReactNode — inputs, botões, conteúdo rico. Use `PopoverClose` para fechar via ação interna.
-
-<ComponentPreview title="Mini-form de configuração">
-  <PopoverWithForm />
-</ComponentPreview>
-
-## Com arrow + ícone trigger
-
-A prop `arrow` adiciona uma setinha apontando pro trigger — útil quando o trigger é um ícone discreto.
-
-<ComponentPreview title="Help text com seta">
-  <PopoverIconTrigger />
-</ComponentPreview>
+<VariantGrid columns={3}>
+  <VariantCard label="Básico" hint="Texto ancorado — clique fora ou Esc fecha">
+    <PopoverBasic />
+  </VariantCard>
+  <VariantCard label="Com formulário" hint="Inputs + PopoverClose para fechar via ação interna">
+    <PopoverWithForm />
+  </VariantCard>
+  <VariantCard label="Arrow + ícone" hint="arrow={true} — seta apontando para trigger discreto">
+    <PopoverIconTrigger />
+  </VariantCard>
+</VariantGrid>
 
 ## Acessibilidade
 
 - Trigger ganha `aria-expanded` e `aria-controls` automaticamente.
-- Foco move pro conteúdo quando abre; volta pro trigger quando fecha.
+- Foco move para o conteúdo quando abre; volta ao trigger quando fecha.
 - Fecha em `Escape` ou clique fora.
 - Para trigger sem texto visível (ícone), forneça `aria-label` no botão.
 

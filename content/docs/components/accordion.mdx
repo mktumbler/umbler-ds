@@ -4,31 +4,33 @@ description: Seções de conteúdo expansíveis/colapsáveis verticalmente. Idea
 ---
 
 import { AccordionSingle, AccordionMultiple } from '@/components/demos/accordion-variants';
+import { VariantGrid, VariantCard } from '@/components/docs/variant-grid';
 
-Construído sobre Radix Accordion — gerencia foco, navegação por teclado e estado. Animação de altura aproveita `--radix-accordion-content-height` exposto pelo Radix.
+Construído sobre Radix Accordion — gerencia foco, navegação por teclado e estado. A animação de altura aproveita `--radix-accordion-content-height` exposta pelo Radix.
 
-## Single (uma aberta por vez)
+## Variantes
 
-Use `type="single"` quando apenas uma seção deve ficar aberta. Adicione `collapsible` se quiser permitir fechar a aberta (sem ela, sempre tem uma aberta).
+<VariantGrid columns={2}>
+  <VariantCard label="Single" hint="type='single' + collapsible — apenas uma aberta por vez" minHeight={240}>
+    <AccordionSingle />
+  </VariantCard>
+  <VariantCard label="Multiple" hint="type='multiple' — várias seções abertas simultaneamente" minHeight={240}>
+    <AccordionMultiple />
+  </VariantCard>
+</VariantGrid>
 
-<ComponentPreview title="FAQ — comportamento accordion clássico">
-  <AccordionSingle />
-</ComponentPreview>
+## Quando usar cada `type`
 
-## Multiple (várias simultâneas)
-
-Use `type="multiple"` quando o usuário pode abrir várias seções ao mesmo tempo. `defaultValue` aceita um array.
-
-<ComponentPreview title="Várias seções abertas">
-  <AccordionMultiple />
-</ComponentPreview>
+| `type`     | Quando                                                                    |
+| ---------- | ------------------------------------------------------------------------- |
+| `single`   | FAQ, conteúdo mutuamente exclusivo — uma aberta não ajuda entender outra  |
+| `multiple` | Configurações, checklist — usuário pode comparar seções abertas           |
 
 ## Acessibilidade
 
-- Trigger é um `<button>` dentro de `<h3>` (Radix Header) — boa hierarquia semântica.
-- Setas para cima/baixo navegam entre triggers.
-- `Home`/`End` vão pro primeiro/último.
-- `Space`/`Enter` abrem/fecham.
+- Trigger é um `<button>` dentro de `<h3>` (Radix Header) — hierarquia semântica correta.
+- ↑↓ navegam entre triggers; `Home`/`End` vão para o primeiro/último.
+- `Space`/`Enter` abrem/fecham a seção focada.
 
 ## Uso
 
@@ -40,10 +42,20 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion';
 
-<Accordion type="single" collapsible>
+// Single collapsible
+<Accordion type="single" collapsible defaultValue="item-1">
   <AccordionItem value="item-1">
     <AccordionTrigger>Pergunta 1</AccordionTrigger>
     <AccordionContent>Resposta 1</AccordionContent>
   </AccordionItem>
+  <AccordionItem value="item-2">
+    <AccordionTrigger>Pergunta 2</AccordionTrigger>
+    <AccordionContent>Resposta 2</AccordionContent>
+  </AccordionItem>
+</Accordion>
+
+// Multiple
+<Accordion type="multiple" defaultValue={['item-1', 'item-2']}>
+  ...
 </Accordion>
 ```
