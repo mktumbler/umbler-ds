@@ -4,36 +4,35 @@ description: Trilha de navegação hierárquica indicando a localização atual 
 ---
 
 import { BreadcrumbsBasic, BreadcrumbsCustomSeparator, BreadcrumbsWithIcon } from '@/components/demos/breadcrumbs-variants';
+import { VariantGrid, VariantCard } from '@/components/docs/variant-grid';
 
 Compõe um `<nav>` com `<ol>` semântico. Cada item é um link; o último (página atual) é texto com `aria-current="page"`.
 
-## Básico
+## Variantes
 
-<ComponentPreview title="Trilha clássica com chevron">
-  <BreadcrumbsBasic />
-</ComponentPreview>
+<VariantGrid columns={1}>
+  <VariantCard label="Básico" hint="Chevron padrão — BreadcrumbSeparator sem children">
+    <BreadcrumbsBasic />
+  </VariantCard>
+</VariantGrid>
 
-## Separador customizado
+<VariantGrid columns={1}>
+  <VariantCard label="Separador customizado" hint="BreadcrumbSeparator aceita qualquer ReactNode como children">
+    <BreadcrumbsCustomSeparator />
+  </VariantCard>
+</VariantGrid>
 
-`BreadcrumbSeparator` aceita children — passe qualquer ReactNode (ícone, caractere, divisor) pra substituir o chevron default.
-
-<ComponentPreview title="Separador com barra">
-  <BreadcrumbsCustomSeparator />
-</ComponentPreview>
-
-## Item-ícone
-
-Item pode conter ícone no lugar de texto — útil pro primeiro nível (home). Lembre de fornecer `aria-label`.
-
-<ComponentPreview title="Home como ícone">
-  <BreadcrumbsWithIcon />
-</ComponentPreview>
+<VariantGrid columns={1}>
+  <VariantCard label="Item com ícone" hint="Primeiro nível como ícone de casa — forneça aria-label no item">
+    <BreadcrumbsWithIcon />
+  </VariantCard>
+</VariantGrid>
 
 ## Acessibilidade
 
 - `<nav aria-label="Trilha de navegação">` agrupa a trilha.
 - `<ol>` indica ordem hierárquica.
-- Último item usa `aria-current="page"` no lugar de `<a>` — leitores de tela anunciam corretamente.
+- Último item usa `aria-current="page"` no lugar de `<a>` — leitores anunciam corretamente.
 
 ## Uso
 

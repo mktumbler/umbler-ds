@@ -8,69 +8,56 @@ import {
   TimelineChangelog,
   TimelineMinimal,
 } from '@/components/demos/timeline-variants';
+import { VariantGrid, VariantCard } from '@/components/docs/variant-grid';
 
-Compound semântico em cima de `<ol>`/`<li>`, com um indicador (dot) por evento e uma linha conectora vertical desenhada via pseudo-elemento. Cobre dois usos principais: **feed de atividade** (com ícones e texto rico) e **changelog compacto** (versão + data + descrição curta).
+Compound semântico em cima de `<ol>`/`<li>`, com um indicador (dot) por evento e uma linha conectora vertical. Cobre dois usos principais: **feed de atividade** (com ícones e texto rico) e **changelog compacto** (versão + data + descrição curta).
 
-## Activity feed
+## Variantes
 
-Dot maior com ícone Phosphor, título, timestamp relativo e descrição. Tons semânticos (`brand`, `success`, `warning`, `error`) destacam o tipo do evento.
+<VariantGrid columns={1}>
+  <VariantCard label="Activity feed" hint="Dots com ícones Phosphor, tons semânticos e texto rico" minHeight={460}>
+    <TimelineActivity />
+  </VariantCard>
+</VariantGrid>
 
-<ComponentPreview title="Log de deploys e mudanças">
-  <TimelineActivity />
-</ComponentPreview>
+<VariantGrid columns={1}>
+  <VariantCard label="Changelog compacto" hint="compact — espaçamento reduzido; Badge NEW/FIX + versão + data" minHeight={360}>
+    <TimelineChangelog />
+  </VariantCard>
+</VariantGrid>
 
-## Changelog compacto
+<VariantGrid columns={1}>
+  <VariantCard label="Minimal" hint="Sem ícones — dot simples; filled={false} indica step pendente">
+    <TimelineMinimal />
+  </VariantCard>
+</VariantGrid>
 
-`compact` aperta o espaçamento entre itens — bom pra mostrar muitos releases numa coluna estreita. Combina bem com `Badge` para marcar `NEW`/`FIX`/`BREAKING`.
+## API — Timeline
 
-<ComponentPreview title="Histórico de versões">
-  <TimelineChangelog />
-</ComponentPreview>
+| Prop      | Tipo      | Default | Descrição                                          |
+| --------- | --------- | ------- | -------------------------------------------------- |
+| `compact` | `boolean` | `false` | Reduz o espaçamento entre os itens via Context.    |
 
-## Minimal
+## API — TimelineDot
 
-Sem ícones, só o dot. Útil pra steps lineares (status de pedido, onboarding). O último dot com `filled={false}` indica "pendente".
-
-<ComponentPreview title="Status do pedido">
-  <TimelineMinimal />
-</ComponentPreview>
-
-## Props
-
-### `<Timeline>`
-
-| Prop | Tipo | Default | Descrição |
-|---|---|---|---|
-| `compact` | `boolean` | `false` | Reduz o espaçamento entre os itens. Propagado via Context. |
-
-### `<TimelineDot>`
-
-| Prop | Tipo | Default | Descrição |
-|---|---|---|---|
-| `tone` | `'default' \| 'brand' \| 'success' \| 'warning' \| 'error'` | `'default'` | Cor do anel (e do miolo / ícone). |
-| `filled` | `boolean` | `true` | Pinta o miolo do dot. `false` deixa só o anel — bom pra steps pendentes. |
-| `icon` | `ReactNode` | — | Ícone (Phosphor recomendado). Vira automaticamente um dot maior (24px). |
+| Prop     | Tipo                                                         | Default     | Descrição                                      |
+| -------- | ------------------------------------------------------------ | ----------- | ---------------------------------------------- |
+| `tone`   | `'default' \| 'brand' \| 'success' \| 'warning' \| 'error'` | `'default'` | Cor do anel (e do miolo / ícone).              |
+| `filled` | `boolean`                                                    | `true`      | Pinta o miolo. `false` → só anel (pendente).   |
+| `icon`   | `ReactNode`                                                  | —           | Ícone Phosphor — gera dot maior (24px).        |
 
 ## Acessibilidade
 
 - `<Timeline>` renderiza `<ol>` — leitores anunciam a ordem dos eventos.
-- O dot é `aria-hidden="true"` (decorativo) — toda a informação vive no conteúdo.
-- Use `<TimelineTime>` com `dateTime="2026-05-28T14:02:00Z"` quando tiver o timestamp absoluto, mesmo que exiba relativo: melhora SEO e leitura por máquinas.
-
-```tsx
-<TimelineTime dateTime="2026-05-28T14:02:00Z">há 5 min</TimelineTime>
-```
+- O dot é `aria-hidden="true"` (decorativo).
+- Use `<TimelineTime dateTime="...">` com o timestamp ISO para SEO e leitura por máquinas.
 
 ## Uso
 
 ```tsx
 import {
-  Timeline,
-  TimelineItem,
-  TimelineDot,
-  TimelineContent,
-  TimelineTitle,
-  TimelineTime,
+  Timeline, TimelineItem, TimelineDot,
+  TimelineContent, TimelineTitle, TimelineTime,
 } from '@/components/ui/timeline';
 import { Rocket } from '@phosphor-icons/react';
 

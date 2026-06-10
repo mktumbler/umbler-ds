@@ -4,32 +4,34 @@ description: Indicador de carregamento em arco giratório. Usa currentColor — 
 ---
 
 import { SpinnerSizes, SpinnerColors } from '@/components/demos/spinner-variants';
+import { VariantGrid, VariantCard } from '@/components/docs/variant-grid';
 
 O `Spinner` é um arco giratório que usa `currentColor`, adaptando-se a qualquer contexto pelo `text-*` do pai — botões, overlays, áreas de loading.
 
 ## Tamanhos
 
-<ComponentPreview title="sm / md / lg / xl">
-  <SpinnerSizes />
-</ComponentPreview>
+<VariantGrid columns={1}>
+  <VariantCard label="sm / md / lg / xl" hint="14 / 16 / 20 / 24px — controle via prop size">
+    <SpinnerSizes />
+  </VariantCard>
+</VariantGrid>
 
 ## Cores
 
-Controle via `className` com qualquer classe `text-*`.
+Controle via `className` com qualquer classe `text-*`. O SVG usa `currentColor`.
 
-<ComponentPreview title="Cores via currentColor">
-  <SpinnerColors />
-</ComponentPreview>
+<VariantGrid columns={1}>
+  <VariantCard label="brand / success / error / muted" hint="text-brand-400, text-success-500, text-error-500, text-foreground-muted">
+    <SpinnerColors />
+  </VariantCard>
+</VariantGrid>
 
-## Props
+## API
 
-<TokenTable
-  columns={['Prop', 'Tipo', 'Default', 'Descrição']}
-  rows={[
-    ['size', '"sm" | "md" | "lg" | "xl"', '"md"', 'Tamanho do ícone: 14 / 16 / 20 / 24px'],
-    ['className', 'string', '—', 'Classes extras — use text-* para cor'],
-  ]}
-/>
+| Prop        | Tipo                           | Default | Descrição                         |
+| ----------- | ------------------------------ | ------- | --------------------------------- |
+| `size`      | `'sm' \| 'md' \| 'lg' \| 'xl'`| `'md'`  | Tamanho: 14 / 16 / 20 / 24px     |
+| `className` | `string`                       | —       | Classes extras — `text-*` para cor |
 
 ## Uso
 

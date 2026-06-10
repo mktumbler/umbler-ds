@@ -3,11 +3,28 @@ title: Separator
 description: Divisor visual horizontal, vertical ou com label central.
 ---
 
+import { SeparatorDemo } from '@/components/demos/separator-kbd-variants';
+import { VariantGrid, VariantCard } from '@/components/docs/variant-grid';
+
 Separa seções de conteúdo com uma linha discreta. Suporta orientação horizontal e vertical, além de um label central para divisores textuais.
 
-## Exemplos
+## Variantes
 
-<SeparatorDemo />
+<VariantGrid columns={1}>
+  <VariantCard label="Horizontal / com label / vertical" hint="orientation='horizontal' (default), label central, orientation='vertical'">
+    <SeparatorDemo />
+  </VariantCard>
+</VariantGrid>
+
+## API
+
+| Prop          | Tipo                           | Default        | Descrição                        |
+| ------------- | ------------------------------ | -------------- | -------------------------------- |
+| `orientation` | `'horizontal' \| 'vertical'`  | `'horizontal'` | Direção do separador             |
+| `label`       | `string`                       | —              | Texto central (só horizontal)    |
+| `className`   | `string`                       | —              | Classes extras                   |
+
+## Uso
 
 ```tsx
 import { Separator } from '@/components/ui/separator';
@@ -18,21 +35,10 @@ import { Separator } from '@/components/ui/separator';
 // Com label
 <Separator label="ou continue com" />
 
-// Vertical (dentro de um flex container com altura definida)
+// Vertical (dentro de flex container com altura definida)
 <div className="flex items-center h-8">
   <span>Esquerda</span>
   <Separator orientation="vertical" />
   <span>Direita</span>
 </div>
 ```
-
-## Props
-
-<TokenTable
-  columns={['Prop', 'Tipo', 'Default', 'Descrição']}
-  rows={[
-    ['orientation', "'horizontal' | 'vertical'", "'horizontal'", 'Direção do separador'],
-    ['label',       'string',                    '—',            'Texto central (só horizontal)'],
-    ['className',   'string',                    '—',            'Classes extras'],
-  ]}
-/>

@@ -4,45 +4,44 @@ description: Navegação entre páginas de uma lista. Lógica de ellipsis dinâm
 ---
 
 import { PaginationBasic, PaginationMany, PaginationFew } from '@/components/demos/pagination-variants';
+import { VariantGrid, VariantCard } from '@/components/docs/variant-grid';
 
 Componente **controlado**: você passa `page` e `onPageChange`. Isso permite sincronizar com URL, estado global ou query params sem mágica.
 
-## Básico
+## Variantes
 
-<ComponentPreview title="10 páginas, 1 sibling de cada lado">
-  <PaginationBasic />
-</ComponentPreview>
+<VariantGrid columns={1}>
+  <VariantCard label="10 páginas" hint="1 sibling de cada lado da página ativa — prev/next + numeração">
+    <PaginationBasic />
+  </VariantCard>
+</VariantGrid>
 
-## Muitas páginas
+<VariantGrid columns={1}>
+  <VariantCard label="42 páginas — ellipsis dinâmico" hint="Reticências ocultam o trecho não-adjacente à página atual">
+    <PaginationMany />
+  </VariantCard>
+</VariantGrid>
 
-Com muitas páginas, o componente mostra reticências (`…`) escondendo o trecho não-adjacente à atual. Útil pra listagens grandes (logs, faturas, contatos).
+<VariantGrid columns={1}>
+  <VariantCard label="4 páginas — sem ellipsis" hint="Quando tudo cabe, mostra a sequência completa">
+    <PaginationFew />
+  </VariantCard>
+</VariantGrid>
 
-<ComponentPreview title="42 páginas — reticências dinâmicas">
-  <PaginationMany />
-</ComponentPreview>
+## API
 
-## Poucas páginas
-
-Se tudo cabe sem ellipsis, mostra a sequência completa.
-
-<ComponentPreview title="4 páginas — todas visíveis">
-  <PaginationFew />
-</ComponentPreview>
-
-## Props
-
-| Prop | Tipo | Default | Descrição |
-|---|---|---|---|
-| `page` | `number` | — | Página ativa (1-indexed). |
-| `totalPages` | `number` | — | Total de páginas. Se ≤ 1, não renderiza. |
-| `onPageChange` | `(n: number) => void` | — | Disparado quando o usuário troca de página. |
-| `siblings` | `number` | `1` | Quantas páginas visíveis ao redor da atual. |
+| Prop           | Tipo                    | Default | Descrição                                      |
+| -------------- | ----------------------- | ------- | ---------------------------------------------- |
+| `page`         | `number`                | —       | Página ativa (1-indexed).                      |
+| `totalPages`   | `number`                | —       | Total de páginas. Se ≤ 1, não renderiza.       |
+| `onPageChange` | `(n: number) => void`   | —       | Disparado quando o usuário troca de página.    |
+| `siblings`     | `number`                | `1`     | Quantas páginas visíveis ao redor da atual.    |
 
 ## Acessibilidade
 
 - `<nav aria-label="Paginação">` agrupa.
 - Página atual marcada com `aria-current="page"`.
-- Botões prev/next ganham `aria-label` e ficam `disabled` nos extremos.
+- Botões prev/next têm `aria-label` e ficam `disabled` nos extremos.
 
 ## Uso
 

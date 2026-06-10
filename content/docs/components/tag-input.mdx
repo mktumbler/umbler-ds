@@ -4,47 +4,43 @@ description: Campo de formulário que aceita múltiplas tags — dimensionado ig
 ---
 
 import { TagInputDemo, TagInputWithInputDemo, TagInputStatesDemo } from '@/components/demos/tag-input-variants';
+import { VariantGrid, VariantCard } from '@/components/docs/variant-grid';
 
-O `TagInput` é um campo controlado para entrada de múltiplas tags (palavras-chave, destinatários, filtros). Reúsa o componente `Tag` para os chips e é dimensionado **igual ao `Input`** (mesmos `size` e `state`), então encaixa lado-a-lado em formulários.
+O `TagInput` é um campo controlado para entrada de múltiplas tags (palavras-chave, destinatários, filtros). Reusa o componente `Tag` para os chips e é dimensionado **igual ao `Input`** (mesmos `size` e `state`), então encaixa lado-a-lado em formulários.
 
-## Básico
+## Variantes
 
-<ComponentPreview title="TagInput">
-  <TagInputDemo />
-</ComponentPreview>
+<VariantGrid columns={1}>
+  <VariantCard label="Básico" hint="Enter ou vírgula adiciona; Backspace com campo vazio remove a última" minHeight={160}>
+    <TagInputDemo />
+  </VariantCard>
+</VariantGrid>
 
-Enter ou vírgula adiciona a tag; Backspace com o campo vazio remove a última. O campo cresce em altura quando as tags quebram para a próxima linha.
+<VariantGrid columns={1}>
+  <VariantCard label="Paridade com Input" hint="Na primeira linha, TagInput md tem a mesma altura que Input md — 40px" minHeight={160}>
+    <TagInputWithInputDemo />
+  </VariantCard>
+</VariantGrid>
 
-## Paridade com o Input
+<VariantGrid columns={2}>
+  <VariantCard label="Success" hint="state='success' + tagVariant='success'">
+    <TagInputStatesDemo />
+  </VariantCard>
+</VariantGrid>
 
-Na primeira linha, o `TagInput md` tem a mesma altura do `Input md` (40px) — pode alinhar os dois no mesmo formulário.
+## API
 
-<ComponentPreview title="TagInput + Input">
-  <TagInputWithInputDemo />
-</ComponentPreview>
-
-## Estados
-
-<ComponentPreview title="Success e Error">
-  <TagInputStatesDemo />
-</ComponentPreview>
-
-## Props
-
-<TokenTable
-  columns={['Prop', 'Tipo', 'Default', 'Descrição']}
-  rows={[
-    ['value', 'string[]', '—', 'Tags atuais (controlado)'],
-    ['onChange', '(tags: string[]) => void', '—', 'Disparado quando a lista muda'],
-    ['size', '"sm" | "md" | "lg"', '"md"', 'Altura, igual ao Input'],
-    ['state', '"default" | "error" | "success"', '"default"', 'Estado de validação (borda + ring)'],
-    ['tagVariant', '"brand" | "success" | "warning" | "error" | "neutral"', '"brand"', 'Cor das tags'],
-    ['placeholder', 'string', '"Adicionar…"', 'Texto quando não há tags'],
-    ['dedupe', 'boolean', 'true', 'Impede tags duplicadas'],
-    ['disabled', 'boolean', 'false', 'Desabilita o campo'],
-    ['className', 'string', '—', 'Classes extras'],
-  ]}
-/>
+| Prop          | Tipo                                                         | Default          | Descrição                           |
+| ------------- | ------------------------------------------------------------ | ---------------- | ----------------------------------- |
+| `value`       | `string[]`                                                   | —                | Tags atuais (controlado)            |
+| `onChange`    | `(tags: string[]) => void`                                   | —                | Disparado quando a lista muda       |
+| `size`        | `'sm' \| 'md' \| 'lg'`                                      | `'md'`           | Altura, igual ao Input              |
+| `state`       | `'default' \| 'error' \| 'success'`                         | `'default'`      | Estado de validação (borda + ring)  |
+| `tagVariant`  | `'brand' \| 'success' \| 'warning' \| 'error' \| 'neutral'`| `'brand'`        | Cor das tags                        |
+| `placeholder` | `string`                                                     | `'Adicionar…'`   | Texto quando não há tags            |
+| `dedupe`      | `boolean`                                                    | `true`           | Impede tags duplicadas              |
+| `disabled`    | `boolean`                                                    | `false`          | Desabilita o campo                  |
+| `className`   | `string`                                                     | —                | Classes extras                      |
 
 ## Uso
 

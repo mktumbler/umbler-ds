@@ -4,51 +4,46 @@ description: Representa teclas e atalhos de teclado com tipografia monoespaçada
 ---
 
 import { KbdSizes, KbdSingleKeys, KbdSequences } from '@/components/demos/kbd-variants';
+import { VariantGrid, VariantCard } from '@/components/docs/variant-grid';
 
 Use `Kbd` para indicar uma tecla — `Esc`, `⌘`, `Tab`. Para combinações (`⌘ + K`, `Ctrl + Shift + P`), prefira `KbdSequence` que cuida do espaçamento e do separador.
 
-## Tamanhos
+## Variantes
 
-<ComponentPreview title="Sizes — sm, md, lg">
-  <KbdSizes />
-</ComponentPreview>
+<VariantGrid columns={1}>
+  <VariantCard label="Tamanhos — sm / md / lg" hint="Altura: 20 / 24 / 28px — use md como padrão inline">
+    <KbdSizes />
+  </VariantCard>
+</VariantGrid>
 
-## Teclas comuns
+<VariantGrid columns={1}>
+  <VariantCard label="Teclas comuns" hint="Modificadores, Enter, Backspace, Esc, Tab, Space">
+    <KbdSingleKeys />
+  </VariantCard>
+</VariantGrid>
 
-<ComponentPreview title="Single keys">
-  <KbdSingleKeys />
-</ComponentPreview>
+<VariantGrid columns={1}>
+  <VariantCard label="Sequências e atalhos" hint="KbdSequence — separator=' ' (macOS) ou '+' (Windows/Linux)">
+    <KbdSequences />
+  </VariantCard>
+</VariantGrid>
 
-## Sequências e atalhos
+## API — Kbd
 
-<ComponentPreview title="KbdSequence">
-  <KbdSequences />
-</ComponentPreview>
+| Prop        | Tipo                    | Default | Descrição                             |
+| ----------- | ----------------------- | ------- | ------------------------------------- |
+| `size`      | `'sm' \| 'md' \| 'lg'` | `'md'`  | Altura da tecla (20 / 24 / 28px)      |
+| `children`  | `ReactNode`             | —       | Conteúdo — texto curto ou símbolo     |
+| `className` | `string`                | —       | Classes extras                        |
 
-## Props
+## API — KbdSequence
 
-### Kbd
-
-<TokenTable
-  columns={['Prop', 'Tipo', 'Default', 'Descrição']}
-  rows={[
-    ['size', '"sm" | "md" | "lg"', '"md"', 'Altura da tecla (20/24/28px)'],
-    ['children', 'ReactNode', '—', 'Conteúdo da tecla — texto curto ou símbolo'],
-    ['className', 'string', '—', 'Classes extras'],
-  ]}
-/>
-
-### KbdSequence
-
-<TokenTable
-  columns={['Prop', 'Tipo', 'Default', 'Descrição']}
-  rows={[
-    ['keys', 'ReactNode[]', '—', 'Lista de teclas que compõem o atalho'],
-    ['separator', '"+" | " " | ReactNode', '" "', 'Separador entre teclas. " " para combinação visual (⌘ K), "+" para soma (Ctrl + S)'],
-    ['size', '"sm" | "md" | "lg"', '"md"', 'Propagado para cada Kbd'],
-    ['className', 'string', '—', 'Classes extras'],
-  ]}
-/>
+| Prop        | Tipo                              | Default | Descrição                                                      |
+| ----------- | --------------------------------- | ------- | -------------------------------------------------------------- |
+| `keys`      | `ReactNode[]`                     | —       | Lista de teclas que compõem o atalho                           |
+| `separator` | `'+' \| ' ' \| ReactNode`         | `' '`   | `' '` para combinação visual (⌘ K); `'+'` para soma (Ctrl + S) |
+| `size`      | `'sm' \| 'md' \| 'lg'`           | `'md'`  | Propagado para cada Kbd                                        |
+| `className` | `string`                          | —       | Classes extras                                                 |
 
 ## Uso
 

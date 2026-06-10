@@ -8,47 +8,44 @@ import {
   TableZebraDense,
   TableInteractive,
 } from '@/components/demos/table-variants';
+import { VariantGrid, VariantCard } from '@/components/docs/variant-grid';
 
-Tabela base do DS — compound semântico (`<Table>`, `<TableHeader>`, `<TableBody>`, `<TableRow>`, `<TableHead>`, `<TableCell>`, `<TableCaption>`, `<TableFooter>`) sobre elementos nativos do HTML. Para listas com filtros, ordenação e seleção, embrulhe com TanStack Table ou similar — os primitivos daqui cuidam só do visual e da acessibilidade base.
+Compound semântico (`<Table>`, `<TableHeader>`, `<TableBody>`, `<TableRow>`, `<TableHead>`, `<TableCell>`, `<TableCaption>`, `<TableFooter>`) sobre elementos nativos do HTML. Para listas com filtros, ordenação e seleção, embrulhe com TanStack Table — os primitivos daqui cuidam só do visual e da acessibilidade base.
 
-## Básico
+## Variantes
 
-<ComponentPreview title="Listagem de faturas com footer de total">
-  <TableBasic />
-</ComponentPreview>
+<VariantGrid columns={1}>
+  <VariantCard label="Básico" hint="Listagem de faturas com footer de total e Badges de status" minHeight={280}>
+    <TableBasic />
+  </VariantCard>
+</VariantGrid>
 
-## Zebra + dense
+<VariantGrid columns={1}>
+  <VariantCard label="Zebra + dense" hint="Fundo alternado nas linhas pares; padding compacto para listagens grandes" minHeight={240}>
+    <TableZebraDense />
+  </VariantCard>
+</VariantGrid>
 
-`zebra` alterna o fundo das linhas pares. `dense` reduz o padding — útil pra listagens grandes.
+<VariantGrid columns={1}>
+  <VariantCard label="Interativa" hint="interactive + onClick no TableRow — cursor pointer, hover highlight" minHeight={200}>
+    <TableInteractive />
+  </VariantCard>
+</VariantGrid>
 
-<ComponentPreview title="Listagem compacta">
-  <TableZebraDense />
-</ComponentPreview>
+## API — Table
 
-## Interativa
+| Prop          | Tipo      | Default | Descrição                                        |
+| ------------- | --------- | ------- | ------------------------------------------------ |
+| `zebra`       | `boolean` | `false` | Alterna o fundo das linhas pares.                |
+| `dense`       | `boolean` | `false` | Padding compacto.                                |
+| `bordered`    | `boolean` | `false` | Bordas internas verticais entre colunas.         |
+| `interactive` | `boolean` | `false` | Hover destaca a linha; cursor pointer.           |
 
-`interactive` muda o cursor e o hover da linha — combina com `onClick` no `<TableRow>` para listas clicáveis.
-
-<ComponentPreview title="Linhas clicáveis">
-  <TableInteractive />
-</ComponentPreview>
-
-## Props
-
-### `<Table>`
-
-| Prop | Tipo | Default | Descrição |
-|---|---|---|---|
-| `zebra` | `boolean` | `false` | Alterna o fundo das linhas pares. |
-| `dense` | `boolean` | `false` | Padding compacto. |
-| `bordered` | `boolean` | `false` | Bordas internas verticais entre colunas. |
-| `interactive` | `boolean` | `false` | Hover destaca a linha; cursor pointer. |
-
-As variantes são propagadas via Context — você define no `<Table>` e os filhos consomem automaticamente.
+As variantes são propagadas via Context — define no `<Table>` e os filhos consomem automaticamente.
 
 ## Estado selecionado
 
-Use `data-state="selected"` no `<TableRow>` pra marcar linhas com checkbox/seleção:
+Use `data-state="selected"` no `<TableRow>` para marcar linhas com checkbox/seleção:
 
 ```tsx
 <TableRow data-state={isSelected ? 'selected' : undefined}>
@@ -60,7 +57,7 @@ Use `data-state="selected"` no `<TableRow>` pra marcar linhas com checkbox/sele�
 
 - Elementos nativos: `<table>`, `<thead>`, `<tbody>`, `<th>`, `<td>` — leitores anunciam estrutura corretamente.
 - `<TableCaption>` vira `<caption>` semântico (resumo da tabela).
-- Em listas clicáveis com `interactive`, prefira embrulhar o conteúdo do `<TableCell>` em um `<a>` ou `<button>` real ao invés de só `onClick` no `<tr>` — assim mantém navegação por teclado e foco.
+- Em listas clicáveis com `interactive`, prefira embrulhar o conteúdo do `<TableCell>` em `<a>` ou `<button>` real.
 
 ## Uso
 

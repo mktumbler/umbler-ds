@@ -9,74 +9,61 @@ import {
   ListDense,
   ListFlat,
 } from '@/components/demos/list-variants';
+import { VariantGrid, VariantCard } from '@/components/docs/variant-grid';
 
-Compound semântico em cima de `<ul>` / `<li>`, pensado pro "list group" tradicional — pastas, conversas, configurações, atividades. Para tabelas com colunas e seleção use [`Table`](/docs/components/table); para feed de eventos no tempo use [`Timeline`](/docs/components/timeline).
+Compound semântico em cima de `<ul>` / `<li>`, pensado para o "list group" tradicional — pastas, conversas, configurações, atividades. Para tabelas com colunas e seleção use [`Table`](/docs/components/table); para feed de eventos no tempo use [`Timeline`](/docs/components/timeline).
 
-## Básico
+## Variantes
 
-`bordered` adiciona uma borda externa com cantos arredondados; `dividers` separa os itens com uma linha sutil.
+<VariantGrid columns={1}>
+  <VariantCard label="Básico" hint="bordered + dividers — lista de pastas com ícone, título, descrição e trailing">
+    <ListBasic />
+  </VariantCard>
+</VariantGrid>
 
-<ComponentPreview title="Lista de pastas">
-  <ListBasic />
-</ComponentPreview>
+<VariantGrid columns={1}>
+  <VariantCard label="Interativa" hint="interactive + onClick no ListItem — hover, cursor pointer, focus visível" minHeight={200}>
+    <ListInteractive />
+  </VariantCard>
+</VariantGrid>
 
-## Interativa
+<VariantGrid columns={1}>
+  <VariantCard label="Dense" hint="dense + interactive — padding reduzido para menus e sidebars">
+    <ListDense />
+  </VariantCard>
+</VariantGrid>
 
-Combine `interactive` com `onClick` no `<ListItem>` para listas clicáveis. O DS já cuida do hover, do cursor e do foco visível por teclado.
+<VariantGrid columns={1}>
+  <VariantCard label="Flat (sem borda)" hint="dividers sem bordered — fluido dentro de cards ou sections com borda própria">
+    <ListFlat />
+  </VariantCard>
+</VariantGrid>
 
-<ComponentPreview title="Caixa de entrada — clique em uma conversa">
-  <ListInteractive />
-</ComponentPreview>
+## API — List
 
-## Dense (sidebar / menu)
+| Prop          | Tipo      | Default | Descrição                                              |
+| ------------- | --------- | ------- | ------------------------------------------------------ |
+| `bordered`    | `boolean` | `false` | Borda externa + cantos arredondados.                   |
+| `dividers`    | `boolean` | `false` | Separador entre os itens.                              |
+| `dense`       | `boolean` | `false` | Padding reduzido.                                      |
+| `interactive` | `boolean` | `false` | Aplica hover/cursor em todos os itens via Context.     |
 
-`dense` reduz o padding — bom pra menus de navegação ou painéis estreitos.
+## API — ListItem
 
-<ComponentPreview title="Menu lateral compacto">
-  <ListDense />
-</ComponentPreview>
+| Prop          | Tipo      | Default  | Descrição                                                                    |
+| ------------- | --------- | -------- | ---------------------------------------------------------------------------- |
+| `interactive` | `boolean` | herda    | Sobrescreve o `interactive` do `<List>` para este item.                      |
+| `onClick`     | `fn`      | —        | Quando presente, o item ganha `role="button"` e `tabIndex={0}`.              |
 
-## Flat (sem borda)
+## Slots
 
-Sem `bordered`, a lista vira um bloco fluido — útil dentro de cards ou seções onde a borda já vem do container pai.
-
-<ComponentPreview title="Atividade recente dentro de um card">
-  <ListFlat />
-</ComponentPreview>
-
-## Props
-
-### `<List>`
-
-| Prop | Tipo | Default | Descrição |
-|---|---|---|---|
-| `bordered` | `boolean` | `false` | Borda externa + cantos arredondados. |
-| `dividers` | `boolean` | `false` | Separador entre os itens. |
-| `dense` | `boolean` | `false` | Padding reduzido. |
-| `interactive` | `boolean` | `false` | Aplica hover/cursor em todos os itens. |
-
-As variantes são propagadas via Context — define no `<List>` e os filhos consomem automaticamente.
-
-### `<ListItem>`
-
-| Prop | Tipo | Default | Descrição |
-|---|---|---|---|
-| `interactive` | `boolean` | herda | Sobrescreve o `interactive` do `<List>` para este item específico. Se houver `onClick`, fica interativo automaticamente. |
-
-Aceita também `onClick` — quando presente, o item ganha `role="button"` e `tabIndex={0}` pra navegação por teclado.
-
-### Slots
-
-- `<ListItemLeading>` — ícone ou avatar à esquerda
-- `<ListItemContent>` — bloco central (título + descrição), ocupa o espaço sobrando
-- `<ListItemTitle>` — título do item (truncado com `text-overflow: ellipsis`)
-- `<ListItemDescription>` — texto secundário
-- `<ListItemTrailing>` — ação, badge ou timestamp à direita
-
-## Acessibilidade
-
-- `<ul>` + `<li>` nativos: leitores anunciam "lista com N itens".
-- Itens com `onClick` viram focáveis por teclado e ganham `role="button"`. Para navegação real (links de página), prefira embrulhar o conteúdo do `<ListItemContent>` em um `<a>` real — assim mantém o comportamento de "abrir em nova aba", "copiar link", etc.
+| Componente            | Função                                         |
+| --------------------- | ---------------------------------------------- |
+| `<ListItemLeading>`   | Ícone ou avatar à esquerda                     |
+| `<ListItemContent>`   | Bloco central (título + descrição), flex-1     |
+| `<ListItemTitle>`     | Título truncado com text-overflow: ellipsis    |
+| `<ListItemDescription>` | Texto secundário                             |
+| `<ListItemTrailing>`  | Ação, badge ou timestamp à direita             |
 
 ## Uso
 

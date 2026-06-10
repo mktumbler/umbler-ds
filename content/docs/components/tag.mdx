@@ -4,31 +4,31 @@ description: Badge removível para seleções múltiplas, filtros e campos de en
 ---
 
 import { TagVariantsDemo } from '@/components/demos/tag-variants';
+import { VariantGrid, VariantCard } from '@/components/docs/variant-grid';
 
 A `Tag` é como um Badge, mas inclui um botão de remoção. Use em campos de multi-seleção, filtros ativos e listas de palavras-chave editáveis pelo usuário.
 
 ## Variantes com remoção
 
-<ComponentPreview title="Removable Tags">
-  <TagVariantsDemo />
-</ComponentPreview>
+<VariantGrid columns={1}>
+  <VariantCard label="brand / success / warning / error / neutral" hint="Clique × para remover — botão Restaurar recoloca todas">
+    <TagVariantsDemo />
+  </VariantCard>
+</VariantGrid>
 
 ## Campo de tags
 
 Para um campo de formulário que aceita múltiplas tags, use o componente dedicado [**TagInput**](/docs/components/tag-input) — dimensionado igual ao `Input`, com estados de validação.
 
-## Props
+## API
 
-<TokenTable
-  columns={['Prop', 'Tipo', 'Default', 'Descrição']}
-  rows={[
-    ['variant', '"brand" | "success" | "warning" | "error" | "neutral"', '"neutral"', 'Cor semântica da tag'],
-    ['size', '"sm" | "md"', '"md"', 'Tamanho: sm = 11px, md = 12px'],
-    ['onRemove', '() => void', '—', 'Callback ao clicar no botão ×. Se ausente, o botão não é renderizado'],
-    ['disabled', 'boolean', 'false', 'Desabilita o botão de remoção'],
-    ['className', 'string', '—', 'Classes extras'],
-  ]}
-/>
+| Prop        | Tipo                                                           | Default     | Descrição                                        |
+| ----------- | -------------------------------------------------------------- | ----------- | ------------------------------------------------ |
+| `variant`   | `'brand' \| 'success' \| 'warning' \| 'error' \| 'neutral'` | `'neutral'` | Cor semântica da tag                             |
+| `size`      | `'sm' \| 'md'`                                                | `'md'`      | Tamanho: sm = 11px, md = 12px                   |
+| `onRemove`  | `() => void`                                                   | —           | Callback ao clicar no ×. Se ausente, sem botão  |
+| `disabled`  | `boolean`                                                      | `false`     | Desabilita o botão de remoção                   |
+| `className` | `string`                                                       | —           | Classes extras                                   |
 
 ## Uso
 
