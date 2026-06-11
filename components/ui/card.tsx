@@ -7,8 +7,8 @@ import { cn } from '@/lib/utils';
 const cardVariants = cva('rounded-lg overflow-hidden flex flex-col', {
   variants: {
     variant: {
-      default:  'bg-surface border border-border shadow-sm transition-[box-shadow,transform] duration-[var(--duration-normal)] ease-out hover:-translate-y-0.5 hover:shadow-md',
-      elevated: 'bg-surface border border-border/60 shadow-xl transition-[box-shadow,transform] duration-[var(--duration-normal)] ease-out hover:-translate-y-1 hover:shadow-2xl',
+      default:  'bg-surface border border-border shadow-sm transition-[box-shadow] duration-[var(--duration-normal)] ease-out hover:shadow-md',
+      elevated: 'bg-surface border border-border/60 shadow-xl transition-[box-shadow] duration-[var(--duration-normal)] ease-out hover:shadow-2xl',
       ghost:    'bg-surface/40 border border-border/40',
       outline:  'bg-transparent border border-border-strong',
     },
