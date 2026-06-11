@@ -4,7 +4,7 @@
  * Renderiza um template de email para HTML e devolve como text/html.
  * Usado pelo EmailPreview nos docs (iframe) e para download direto.
  *
- * Templates disponíveis: welcome | campaign | notification
+ * Templates disponíveis: welcome | campaign | notification | password-reset | confirmation
  */
 
 import { render } from '@react-email/render';
@@ -18,6 +18,8 @@ const TEMPLATES: Record<string, () => Promise<React.ComponentType<Record<string,
   welcome:      () => import('@/emails/templates/welcome').then((m) => m.default),
   campaign:     () => import('@/emails/templates/campaign').then((m) => m.default),
   notification: () => import('@/emails/templates/notification').then((m) => m.default),
+  'password-reset': () => import('@/emails/templates/password-reset').then((m) => m.default),
+  confirmation: () => import('@/emails/templates/confirmation').then((m) => m.default),
 };
 
 export async function GET(

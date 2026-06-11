@@ -1,0 +1,72 @@
+---
+title: Tokens fora do código
+description: Como usar os tokens da marca em IA, Figma, apresentações e qualquer material que não seja código.
+---
+
+Os tokens de `app/tokens.css` são a fonte da verdade da marca — e ela não vale só para
+código. Esta página resume como levar os mesmos valores para **agentes de IA**, **Figma**,
+**apresentações** e materiais em geral.
+
+## Paleta essencial
+
+Para qualquer material, estas são as cores que definem a marca:
+
+| Papel | Token | Hex |
+| --- | --- | --- |
+| Azul da marca (CTA, destaque) | `brand-500` | `#1a5cff` |
+| Azul claro (sobre fundo escuro) | `brand-300` | `#6b99ff` |
+| Fundo escuro | `neutral-950` | `#030614` |
+| Fundo claro | `neutral-50` | `#f4f5fa` |
+| Sucesso | `success-500` | `#5cb85c` |
+| Atenção | `warning-500` | `#f2c94e` |
+| Erro | `error-500` | `#f2594e` |
+
+A escala completa (50–950 de cada família) está em [Colors](/docs/foundations/colors).
+Regra que vale em qualquer meio: **verde é estado, não ação** — botão e CTA são sempre
+azul brand.
+
+## Tipografia
+
+| Papel | Fonte | Onde |
+| --- | --- | --- |
+| Display/títulos grandes | **P22 Mackinac Pro** (peso 500) | H1–H3, capas de slide, peças de marca |
+| Texto e UI | **Inter** | Corpo, legendas, H4 pra baixo |
+| Código | **JetBrains Mono** | Trechos técnicos |
+
+Sem licença da Mackinac no ambiente (ex.: Google Slides)? Use Georgia como fallback de
+display e mantenha Inter no corpo. Em e-mail, nenhuma das duas: [system font stack](/docs/email/tokens-inline).
+
+## Para agentes de IA
+
+Um agente que vai gerar material da Umbler (LP, e-mail, UI, copy) precisa de duas coisas:
+
+1. **Catálogo**: aponte o agente para [`https://umbler-ds.vercel.app/llms.txt`](https://umbler-ds.vercel.app/llms.txt) — lista componentes, blocks, props e tokens, sempre atualizada.
+2. **Regras**: cole este bloco no prompt/contexto do agente:
+
+```text
+Você gera material para a Umbler. Regras:
+- Azul brand #1a5cff é a cor de ação (CTA, botão, link). Verde #5cb85c é só estado/sucesso, nunca CTA.
+- Fundo escuro padrão #030614; texto sobre escuro #c4cfe8 (principal) e #8b9cc8 (secundário).
+- Títulos grandes em P22 Mackinac Pro (serif, peso 500); todo o resto em Inter.
+- Catálogo de componentes e tokens: https://umbler-ds.vercel.app/llms.txt
+- Voz: a Umbler equipa o cliente (mentor), não se autocelebra. Sem em-dash em copy pt-BR.
+```
+
+Quem usa Claude Code não precisa disso: o [plugin](/docs/plugin) injeta as regras
+automaticamente via skill.
+
+## Para Figma
+
+Enquanto a biblioteca oficial está em construção, replique os tokens como **variables**:
+
+- Crie uma collection `Umbler` com as cores da paleta essencial acima (e as escalas completas de [Colors](/docs/foundations/colors) se precisar)
+- Espaçamento segue a escala do Tailwind: `4 / 8 / 12 / 16 / 24 / 32 / 48 / 64`
+- Radius: `8px` (controles), `12px` (cards), pill para botões
+- Quando o Figma divergir do que está aqui, **o DS ganha** — ele é a fonte da verdade
+
+## Para apresentações e peças
+
+- Capa e títulos em Mackinac sobre fundo `#030614`; corpo em Inter
+- Um único azul de destaque (`#1a5cff`) por slide — destaque disperso não destaca nada
+- Logos em SVG prontos: [símbolo](https://umbler-ds.vercel.app/brand/umbler-symbol-light.svg) e [wordmark](https://umbler-ds.vercel.app/brand/umbler-wordmark-light.svg) (versões `-light` para fundo escuro, `-dark` para fundo claro)
+- Diretrizes de imagem e o que evitar: [Imagery](/docs/marketing/brand/imagery) e [Anti-patterns](/docs/marketing/brand/anti-patterns)

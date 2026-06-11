@@ -60,5 +60,5 @@ Se você adotou o plugin, o catálogo de componentes vem sempre fresh via WebFet
 ## Convenções de evolução
 
 - **Não quebre slash commands existentes** — se mudar comportamento, libere flag `--legacy` ou versione o comando
-- **Skill é fonte da verdade** das regras — mantenha sincronizada com `CLAUDE.md` do repo
+- **Skill é fonte da verdade** das convenções de uso do DS — o `CLAUDE.md` do repo aponta pra cá e só guarda operação do repo (build, estrutura, criação de componente)
 - **Hook é warning, não bloqueio** — pre-commit no repo DS bloqueia, hook do plugin só avisa

@@ -2,6 +2,13 @@
   {
     "date": "2026-06-10",
     "type": "feat",
+    "scope": "email",
+    "title": "E-mail: +2 templates transacionais, guia de tokens inline e tokens fora do código",
+    "description": "Reforço do lado e-mail/marca do DS. Novos templates react-email: Recuperação de senha (link único com expiração, card de detalhes do pedido com data/IP, aviso anti-phishing) e Confirmação de e-mail (CTA + código numérico alternativo pra fluxo cross-device). Nova página 'Tokens em e-mail' com a tabela de conversão oficial tokens→CSS inline pra quem monta e-mail em qualquer ESP sem react-email (Mailchimp, HubSpot, RD Station), incluindo checklist pré-envio. Nova página 'Tokens fora do código' em Foundations: paleta essencial, tipografia, bloco de regras pronto pra colar em agentes de IA, guia de variables pro Figma e diretrizes pra apresentações. De quebra, corrigido um drift real: o espelho de tokens dos e-mails usava verdes/amarelos/vermelhos default do Tailwind (#22c55e etc.) em vez dos tokens do DS (#5cb85c, #f2c94e, #f2594e). CLAUDE.md e SKILL.md deduplicados: a skill é a fonte das convenções de uso; o CLAUDE.md guarda só operação do repo."
+  },
+  {
+    "date": "2026-06-10",
+    "type": "feat",
     "scope": "plugin",
     "title": "Plugin v0.3.0 — 4 → 2 comandos",
     "description": "Simplificação do mecanismo: /umbler-init foi fundido no /umbler-add (que agora detecta se o projeto precisa de bootstrap — components.json, tokens, Tailwind v4 — e resolve antes de instalar) e /umbler-block virou seção da skill (fluxo Interface Inventory + regra do 3 segue disponível pedindo 'quero criar um bloco'). Sobram 2 comandos com ações claras: /umbler-add instala, /umbler-audit verifica. A doc de início também ganhou a distinção explícita 'projeto novo (init + add) vs. já usa shadcn (só add)'."

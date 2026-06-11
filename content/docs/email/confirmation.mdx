@@ -1,0 +1,49 @@
+---
+title: Confirmação de e-mail
+description: Template transacional de onboarding — verificação de endereço com botão e código alternativo.
+---
+
+import { EmailPreview } from '@/components/docs/email-preview';
+
+Transacional de onboarding: confirma a posse do endereço com CTA direto e um **código
+numérico alternativo** (para quem abre o e-mail num dispositivo e digita no outro).
+
+## Preview
+
+<EmailPreview template="confirmation" height={680} />
+
+## Props
+
+<TokenTable
+  columns={['Prop', 'Tipo', 'Default', 'Descrição']}
+  rows={[
+    ['firstName',  'string', '"Rafael"',     'Nome do destinatário'],
+    ['confirmUrl', 'string', '"https://app.umbler.com/confirm?token=…"', 'Link único de confirmação'],
+    ['code',       'string', '"482 916"',    'Código numérico alternativo'],
+    ['expiresIn',  'string', '"24 horas"',   'Validade do link/código, em texto'],
+  ]}
+/>
+
+## Uso
+
+```tsx
+import { render } from '@react-email/render';
+import ConfirmationEmail from '@/emails/templates/confirmation';
+
+const html = await render(
+  <ConfirmationEmail
+    firstName="Ana"
+    confirmUrl={`https://app.umbler.com/confirm?token=${token}`}
+    code="482 916"
+    expiresIn="24 horas"
+  />
+);
+```
+
+## Estrutura do template
+
+- **Badge** — "Quase lá" em verde (estado positivo, não ação)
+- **Título** + parágrafo curto
+- **CTA** — "Confirmar e-mail"
+- **Card de código** — código numérico em mono, centralizado, pra fluxo cross-device
+- **Expiração** + nota "não criou conta? ignore"

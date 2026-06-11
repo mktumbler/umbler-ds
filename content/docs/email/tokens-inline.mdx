@@ -1,0 +1,68 @@
+---
+title: Tokens em e-mail
+description: Como levar os tokens da marca para HTML de e-mail — valores prontos para CSS inline em qualquer ESP.
+---
+
+Clientes de e-mail **não suportam CSS custom properties**, então os tokens do DS viram
+**valores literais** no CSS inline. Esta página é a tabela de conversão oficial — vale
+para Mailchimp, HubSpot, SendGrid, RD Station ou HTML escrito à mão.
+
+Se o seu fluxo é React, prefira os [templates react-email](/docs/email) — eles já
+embutem tudo isto via objeto `t` em `emails/components/layout.tsx`.
+
+## Cores
+
+| Uso no e-mail | Token do DS | Valor |
+| --- | --- | --- |
+| Fundo da página | `neutral-950` | `#030614` |
+| Card/container | `neutral-900` | `#0a0f20` |
+| Card elevado (detalhes, código) | — | `#111827` |
+| Bordas | — | `#1a2240` |
+| CTA sólido (fundo do botão) | `brand-500` | `#1a5cff` |
+| Links e destaques sobre fundo escuro | `brand-300` | `#6b99ff` |
+| Texto principal | `foreground` | `#c4cfe8` |
+| Texto secundário | `foreground-muted` | `#8b9cc8` |
+| Texto sutil (footer) | — | `#4a5a80` |
+| Sucesso (badge/status) | `success-500` | `#5cb85c` |
+| Atenção (badge/status) | `warning-500` | `#f2c94e` |
+| Erro (badge/status) | `error-500` | `#f2594e` |
+
+Regras de cor valem igual no e-mail: **verde é estado, não ação** — CTA é sempre azul
+brand. Sobre fundo escuro, use `brand-300` (`#6b99ff`) para links; `brand-500` só em
+fundos sólidos de botão.
+
+## Tipografia
+
+Webfonts não são confiáveis em e-mail (Outlook desktop e vários clients ignoram
+`@font-face` e caem em Times New Roman). Use a **system font stack**:
+
+```css
+font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+```
+
+| Elemento | Tamanho / peso |
+| --- | --- |
+| Título (h1) | `24px / 600`, line-height `32px`, cor `#ffffff` |
+| Corpo | `15px / 400`, line-height `24px`, cor `#c4cfe8` |
+| Texto pequeno | `13px / 400`, line-height `20px` |
+| Eyebrow/badge | `11px / 600`, uppercase, letter-spacing `0.05em` |
+| Código/OTP | mono, `28px / 600`, letter-spacing `0.15em` |
+
+Sem Mackinac em e-mail: o display da marca fica para web/LP, onde a fonte carrega.
+
+## Estrutura básica
+
+| Medida | Valor |
+| --- | --- |
+| Largura máxima do container | `600px` |
+| Padding do card principal | `40px` |
+| Radius do card | `12px` (cards internos: `10px`; botão: `8px`) |
+| Botão CTA | padding `12px 24px`, `14px / 600`, texto branco |
+
+## Checklist antes de enviar
+
+- CSS 100% inline (sem `<style>` no `<head>` além de resets)
+- Layout em tabelas ou componentes que compilam pra tabela (flexbox quebra no Outlook)
+- Imagens com `alt` e dimensões fixas; logo servido por URL absoluta
+- Link de cancelar inscrição no footer (obrigatório em marketing)
+- Teste no mínimo: Gmail web, Outlook desktop e um client mobile

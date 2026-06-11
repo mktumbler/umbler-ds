@@ -38,9 +38,9 @@ export const t = {
   fgMuted:      '#8b9cc8',
   fgSubtle:     '#4a5a80',
   white:        '#ffffff',
-  success:      '#22c55e',
-  warning:      '#f59e0b',
-  error:        '#ef4444',
+  success:      '#5cb85c',  /* success-500 */
+  warning:      '#f2c94e',  /* warning-500 */
+  error:        '#f2594e',  /* error-500 */
   /**
    * Stack de fontes do sistema — renderiza a fonte nativa do OS do destinatário
    * (SF Pro no macOS/iOS, Segoe UI no Windows, Roboto no Android). Mais

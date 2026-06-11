@@ -40,12 +40,13 @@ scripts/
 - Animações complexas: definir `@keyframes` + `@utility animate-*` em tokens.css
 
 ## Princípios
+
+**Convenções de uso do DS** (auto-consistência, zero hardcoded, regras de cor/tipografia, Badge vs Tag, quando usar Radix): a fonte da verdade é a skill — `.claude-plugin/skills/umbler-ds/SKILL.md`. Leia-a antes de gerar UI; não duplique as regras aqui.
+
+Específicos do repo:
 - Paridade 1:1 com o HTML original; melhorias só após paridade
-- Acessibilidade razoável — usar Radix só em interativos críticos (Modal, Dropdown, Combobox, Tabs, Tooltip, Popover, Command Palette)
-- Componentes simples direto, sem Radix
-- Zero hardcoded: cores → tokens semânticos, durações → var(--duration-*), easings → ease-out/ease-spring
 - Figma em construção; quando divergir do HTML, o HTML ganha
-- **Auto-consistência**: o DS é fonte E consumidor (a doc usa o DS). Se já existe componente, **importe — nunca recrie**. `<Badge>` não é `<span className="rounded ...">`; `<Button>` não é `<button className="bg-brand-500 ...">`; eyebrow é `.eyebrow`, não `uppercase tracking-wide` hand-rolled. Guarda automática: `scripts/audit-antipatterns.mjs` (roda no pre-commit). Exceções pedagógicas legítimas: comentário inline `{/* audit-ignore: <rule-id> — motivo */}`.
+- Guarda automática de hand-rolls: `scripts/audit-antipatterns.mjs` roda no **pre-commit** (no plugin, o mesmo script roda como hook em modo warning). Exceções pedagógicas: comentário inline `{/* audit-ignore: <rule-id> — motivo */}`
 
 ## Roadmap
 - ✅ Foundations — Colors, Typography, Spacing, Radius, Shadows, Motion
