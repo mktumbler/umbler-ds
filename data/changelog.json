@@ -1,5 +1,12 @@
 [
   {
+    "date": "2026-06-11",
+    "type": "fix",
+    "scope": "docs",
+    "title": "Light mode legível nos demos dark, Callout do DS e Marketing enxuto",
+    "description": "Três correções de leitura. (1) Demos com fundo escuro (heros, CTAs, logo cloud) ficavam ilegíveis com a doc em modo light: o canvas pintava neutral-950 mas não ativava a classe dark, então tokens semânticos como text-foreground resolviam pro valor claro do tema. Corrigido na raiz (VariantCard tone=dark e ComponentPreview background=dark agora aplicam a classe dark no canvas) — todas as galerias consertam de uma vez. (2) O Callout default do fumadocs-ui foi substituído pelo Alert do próprio DS (auto-consistência: a doc consome o DS), com mapeamento info/warn/error/success. (3) Seção Marketing enxuta visualmente: novo componente <Metodologia> (details/summary nativo, zero JS) colapsa a prosa explicativa mantendo visíveis tabelas, regras, fórmulas e checklists. ~50 blocos aplicados em 20+ páginas de brand, conversion e page-types; nada foi deletado — o conteúdo segue no DOM para agentes de IA, só sai da frente de quem escaneia. O índice do Marketing também foi reescrito orientado a tarefa (e o link do Showcase, que dizia 'em breve', agora aponta pras landings reais)."
+  },
+  {
     "date": "2026-06-10",
     "type": "feat",
     "scope": "blocks",

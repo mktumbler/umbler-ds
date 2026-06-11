@@ -3,7 +3,13 @@ title: Voice por contexto
 description: Como o tom Umbler se manifesta em cada tipo de copy — do hero ao FAQ.
 ---
 
+Aplicação do [tom de voz](/docs/brand#tom-de-voz) em cada contexto específico de copy.
+
+<Metodologia title="De onde vem este operacional">
+
 A [síntese de tom](/docs/brand#tom-de-voz) define o espírito: competente, ambicioso, premium, mentor sem rebaixar o cliente. Esta página é o **operacional**: como esse tom se aplica em cada contexto específico de copy.
+
+</Metodologia>
 
 ## Mistura ideal de tom
 
@@ -17,13 +23,23 @@ Em proporção, qualquer copy da Umbler deve ser:
 | Proximidade e humanidade | 10% |
 | Humor (quando couber) | 5% |
 
+<Metodologia title="Por que a mistura importa (diagnóstico de copy estranha)">
+
 Sai dessa mistura e a copy começa a soar genérica (faltou personalidade), ou pomposa (sobrou ambição), ou friozinha (faltou humanidade). Volta pra mistura quando a copy parecer ter "ficado estranha" e você não souber dizer por quê.
+
+</Metodologia>
 
 ## Espectro por tipo de conteúdo
 
 ### Headlines
 
-Fortes, claras, memoráveis, orientadas a benefício e resultado. Sem jargão. Devem fazer o leitor **querer ler a próxima linha** (Sugarman: a função do headline é vender o subheadline).
+Fortes, claras, memoráveis, orientadas a benefício e resultado. Sem jargão.
+
+<Metodologia title="Por que o headline só precisa vender a próxima linha">
+
+Devem fazer o leitor **querer ler a próxima linha** (Sugarman: a função do headline é vender o subheadline).
+
+</Metodologia>
 
 **Exemplos certos:**
 - "Clone seu melhor SDR com IA"
@@ -52,11 +68,23 @@ Diretos, orientados a ação, sem burocracia. Foco em **experimentar, ver, come�
 | Variante | "Quero experimentar" | Para destacar agência do leitor |
 | Enterprise | "Falar com vendas" | Contas maiores, leads quentes |
 
-**Anti-pattern absoluto:** nunca "Saiba mais" como CTA principal. Se a única coisa que você consegue prometer é "mais informação", a copy anterior falhou.
+**Anti-pattern absoluto:** nunca "Saiba mais" como CTA principal.
+
+<Metodologia title='Por que "Saiba mais" é proibido'>
+
+Se a única coisa que você consegue prometer é "mais informação", a copy anterior falhou.
+
+</Metodologia>
 
 ### Features
 
-Título curto (benefício) + descrição (2-3 linhas, como resolve). **Centrado em outcomes, não em specs.** O usuário não compra "API REST", compra "integra com qualquer sistema em minutos".
+Título curto (benefício) + descrição (2-3 linhas, como resolve). **Centrado em outcomes, não em specs.**
+
+<Metodologia title="Por que outcome e não spec">
+
+O usuário não compra "API REST", compra "integra com qualquer sistema em minutos".
+
+</Metodologia>
 
 | Componente | Conteúdo |
 | --- | --- |
@@ -72,9 +100,13 @@ Claras, tranquilizadoras, honestas, **anti-fricção**. Cada pergunta antecipa u
 
 ### Conteúdo institucional
 
-Seguro, aspiracional, consistente, **sem ser pomposo**. Aqui a marca pode soltar a ambição um pouco mais — mas continua provando, não anunciando.
+Seguro, aspiracional, consistente, **sem ser pomposo**. Institucional fala "quem somos e por que existimos"; produto fala "o que faz e o resultado". Nunca trocar os dois.
 
-Diferença prática vs. produto: institucional fala "quem somos e por que existimos"; produto fala "o que faz e o resultado". Nunca trocar os dois.
+<Metodologia title="Quanto de ambição cabe no institucional">
+
+Aqui a marca pode soltar a ambição um pouco mais — mas continua provando, não anunciando.
+
+</Metodologia>
 
 ## Palavras de poder
 
@@ -109,17 +141,25 @@ Use literalmente ou como ponto de partida para variações fiéis ao mesmo espí
 
 ## Regra dura — sem em-dash em pt-BR
 
-`—` (em-dash) **não é natural** em português brasileiro. Soa estrangeiro/acadêmico. Use vírgula, ponto, dois-pontos ou parênteses.
+Em copy visível ao usuário, use vírgula, ponto, dois-pontos ou parênteses — nunca `—`.
+
+<Metodologia title="Por que o em-dash está banido da copy pt-BR">
+
+`—` (em-dash) **não é natural** em português brasileiro. Soa estrangeiro/acadêmico.
+
+</Metodologia>
 
 | | Exemplo |
 | --- | --- |
 | ❌ | "Distribuição por regra, handoff IA↔humano no momento certo — e histórico no CRM sem copiar e colar." |
 | ✅ | "Distribuição por regra, handoff IA↔humano no momento certo, com histórico no CRM sem copiar e colar." |
 
-Hífen curto `-` em palavras compostas (multi-canal, pós-venda) continua permitido.
+- Hífen curto `-` em palavras compostas (multi-canal, pós-venda) continua permitido.
+- Escopo: **toda copy visível** ao usuário — headlines, sub-headlines, manifestos, body, CTAs, meta tags, tooltips.
+- A doc do DS pode usar em-dash livremente (é texto técnico, não marketing).
 
-A regra vale para **toda copy visível** ao usuário: headlines, sub-headlines, manifestos, body, CTAs, meta tags, tooltips. A doc do DS pode usar em-dash livremente (é texto técnico, não marketing).
+<Metodologia title="Como a regra do em-dash é validada (audit-antipatterns)">
 
-<Callout type="info">
 Esta regra é validada automaticamente pelo `audit-antipatterns.mjs` (regra `em-dash-copy`) em rotas de landing real — `app/(landing)/**`, `app/(home)/**`, `content/docs/marketing/showcase/**`. A doc técnica (`content/docs/**`) fica livre porque não é copy visível ao usuário final, é material de referência. Para exceções pedagógicas em landing, use a pragma `{/* audit-ignore: em-dash-copy */}`.
-</Callout>
+
+</Metodologia>

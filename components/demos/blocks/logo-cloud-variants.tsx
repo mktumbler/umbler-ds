@@ -19,7 +19,7 @@ const LOGOS = [
 
 export function LogoCloudGridDemo() {
   return (
-    <div className="w-full rounded-xl bg-neutral-950 px-6 py-12">
+    <div className="dark w-full rounded-xl bg-neutral-950 px-6 py-12">
       <LogoCloud label="+60 mil empresas confiam na Umbler" logos={LOGOS} />
     </div>
   );
@@ -27,7 +27,7 @@ export function LogoCloudGridDemo() {
 
 export function LogoCloudMarqueeDemo() {
   return (
-    <div className="w-full rounded-xl bg-neutral-950 px-6 py-12">
+    <div className="dark w-full rounded-xl bg-neutral-950 px-6 py-12">
       <LogoCloud
         variant="marquee"
         speed={25}

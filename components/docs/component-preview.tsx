@@ -15,7 +15,7 @@ export function ComponentPreview({
     background === 'grid'
       ? "bg-[linear-gradient(rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.04)_1px,transparent_1px)] bg-[size:24px_24px]"
       : background === 'dark'
-      ? 'bg-neutral-900'
+      ? 'dark bg-neutral-900'
       : '';
 
   return (

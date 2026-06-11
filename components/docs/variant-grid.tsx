@@ -55,9 +55,11 @@ export function VariantCard({
   tone = 'default',
   minHeight = 120,
 }: VariantCardProps) {
+  // `dark` junto do fundo escuro: os tokens semânticos dos filhos
+  // (text-foreground etc.) resolvem pros valores dark mesmo com a doc em light.
   const toneClass =
     tone === 'dark'
-      ? 'bg-[var(--color-neutral-950)]'
+      ? 'dark bg-[var(--color-neutral-950)]'
       : tone === 'grid'
       ? 'bg-surface bg-[linear-gradient(var(--color-border)_1px,transparent_1px),linear-gradient(90deg,var(--color-border)_1px,transparent_1px)] bg-[size:16px_16px]'
       : 'bg-surface-subtle';
