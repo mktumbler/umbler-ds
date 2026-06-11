@@ -353,6 +353,19 @@
 }
 
 /* ============================================================
+   MARQUEE — rolagem horizontal infinita (usada por logo-cloud)
+   A trilha contém o conteúdo duplicado; -50% reinicia sem corte.
+   Duração via --marquee-duration (inline no componente).
+   ============================================================ */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+@utility animate-marquee {
+  animation: marquee var(--marquee-duration, 30s) linear infinite;
+}
+
+/* ============================================================
    TOOLTIP — fade + scale + slide direcional
    O slide segue o lado em que o tooltip abre (data-side do Radix):
      side=top    → tooltip desliza pra cima ao aparecer

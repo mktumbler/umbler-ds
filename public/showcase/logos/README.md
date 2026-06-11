@@ -14,7 +14,7 @@ Coloque aqui os arquivos de logo de clientes que aparecem em
 ## Como o componente referencia
 
 ```tsx
-import { LogoCloud } from '@/components/ui/logo-cloud';
+import { LogoCloud } from '@/components/blocks/logo-cloud';
 
 <LogoCloud
   label="+60 mil empresas confiam"

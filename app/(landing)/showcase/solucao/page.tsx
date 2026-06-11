@@ -13,7 +13,7 @@ import {
 } from '@phosphor-icons/react/dist/ssr';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { LogoCloud } from '@/components/ui/logo-cloud';
+import { LogoCloud } from '@/components/blocks/logo-cloud';
 import {
   Accordion,
   AccordionContent,

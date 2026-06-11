@@ -192,6 +192,11 @@
       "description": "Banner de chamada para ação com variantes premium/glow/simple. Faixa de conversão para fim de página."
     },
     {
+      "name": "logo-cloud",
+      "type": "registry:block",
+      "description": "Logos de clientes para social proof em landings. Variantes grid (estática) e marquee (rolagem infinita CSS-only, pausa no hover). Requer os keyframes marquee de tokens.css (item tokens)."
+    },
+    {
       "name": "pricing-table",
       "type": "registry:block",
       "description": "Tabela de planos com destaque de plano popular, lista de features e CTA por tier."

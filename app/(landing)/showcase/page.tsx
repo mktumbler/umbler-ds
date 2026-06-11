@@ -1,7 +1,7 @@
 import { ArrowRight, Robot, ChartLineUp, Lightning } from '@phosphor-icons/react/dist/ssr';
 import { Button } from '@/components/ui/button';
 import { HeroBackground } from '@/components/ui/hero-background';
-import { LogoCloud } from '@/components/ui/logo-cloud';
+import { LogoCloud } from '@/components/blocks/logo-cloud';
 
 /**
  * /showcase: landing demonstrativa montada com o Umbler DS.
@@ -44,6 +44,8 @@ export default function ShowcasePage() {
       {/* ── Logo Cloud ──────────────────────────────────────── */}
       <section className="border-t border-white/5 bg-[var(--color-neutral-950)] px-6 py-16">
         <LogoCloud
+          variant="marquee"
+          speed={25}
           tone="dark"
           label="+60 mil empresas confiam na Umbler"
           logos={[

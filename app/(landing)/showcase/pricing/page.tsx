@@ -6,7 +6,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion';
-import { LogoCloud } from '@/components/ui/logo-cloud';
+import { LogoCloud } from '@/components/blocks/logo-cloud';
 import { PricingPlans } from './pricing-plans';
 
 /**

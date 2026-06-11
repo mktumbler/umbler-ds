@@ -1,0 +1,62 @@
+---
+title: LogoCloud
+description: Logos de clientes para social proof em landings — grade estática ou marquee infinito, sem dependência de motion.
+---
+
+import {
+  LogoCloudGridDemo,
+  LogoCloudMarqueeDemo,
+} from '@/components/demos/blocks/logo-cloud-variants';
+import { VariantGrid, VariantCard } from '@/components/docs/variant-grid';
+
+Social proof logo abaixo do hero: logos de clientes em grayscale que voltam à cor no
+hover. A variante `marquee` rola infinitamente com fade nas bordas e pausa no hover,
+em CSS puro (sem framer-motion).
+
+## Variantes
+
+<VariantGrid columns={1}>
+  <VariantCard label="Grid" hint="Grade estática — padrão dos showcases" minHeight={220}>
+    <LogoCloudGridDemo />
+  </VariantCard>
+</VariantGrid>
+
+<VariantGrid columns={1}>
+  <VariantCard label="Marquee" hint="Rolagem infinita, pausa no hover — bom com 6+ logos" minHeight={220}>
+    <LogoCloudMarqueeDemo />
+  </VariantCard>
+</VariantGrid>
+
+## API
+
+```tsx
+import { LogoCloud } from '@/components/blocks/logo-cloud';
+
+<LogoCloud
+  variant="marquee"
+  speed={25}
+  label="+60 mil empresas confiam na Umbler"
+  logos={[
+    { src: '/logos/unimed.svg', alt: 'Unimed' },
+    { src: '/logos/cora.svg', alt: 'Cora', maxHeight: 28 },
+  ]}
+/>
+```
+
+<TokenTable
+  columns={['Prop', 'Tipo', 'Default', 'Descrição']}
+  rows={[
+    ['logos',    'LogoCloudItem[]', '—', 'src + alt (+ maxHeight opcional, default 32px)'],
+    ['variant',  "'grid' | 'marquee'", "'grid'", 'Grade estática ou rolagem infinita'],
+    ['speed',    'number', '30', 'Só marquee: segundos por volta completa (menor = mais rápido)'],
+    ['label',    'string', '—', 'Texto curto acima dos logos'],
+    ['tone',     "'light' | 'dark'", "'dark'", 'Ajusta opacidade e cor do label ao fundo'],
+  ]}
+/>
+
+## Boas práticas
+
+- **SVG sempre que possível** — nítido em qualquer tamanho e responde bem ao grayscale
+- Grid funciona melhor com 4, 6 ou 8 logos (a grade se adapta); marquee brilha com 6+
+- Logos precisam de cor sólida com contraste — efeitos sutis somem em grayscale + opacity
+- Acompanhe de um número âncora no `label` ("+60 mil empresas") — logo sem contexto prova pouco

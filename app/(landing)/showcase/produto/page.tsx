@@ -13,7 +13,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { HeroBackground } from '@/components/ui/hero-background';
-import { LogoCloud } from '@/components/ui/logo-cloud';
+import { LogoCloud } from '@/components/blocks/logo-cloud';
 import {
   Accordion,
   AccordionContent,

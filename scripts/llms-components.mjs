@@ -616,6 +616,20 @@ import { Button } from '@/components/ui/button';
 - variant: \`premium\` | \`glow\` | \`simple\` | \`brand\` — padrão: \`premium\`
 - Compound: CTAEyebrow, CTATrustPill, CTAHeadline, CTAHeadlineMuted, CTASubtext, CTAActions`,
 
+  'logo-cloud': `Logos de clientes (social proof) pra landings. Instale: \`npx shadcn add https://umbler-ds.vercel.app/r/logo-cloud\`
+\`\`\`tsx
+import { LogoCloud } from '@/components/blocks/logo-cloud';
+
+<LogoCloud
+  variant="marquee"
+  label="+60 mil empresas confiam na Umbler"
+  logos={[{ src: '/logos/unimed.svg', alt: 'Unimed' }]}
+/>
+\`\`\`
+- variant: \`grid\` (grade estática) | \`marquee\` (rolagem infinita CSS, pausa no hover) — padrão: \`grid\`
+- speed: segundos por volta do marquee (padrão 30) · tone: \`dark\` | \`light\` · logos: src + alt + maxHeight?
+- Marquee usa os keyframes \`marquee\` de tokens.css (instale o item \`tokens\`)`,
+
   'pricing-table': `Tabela de planos com toggle mensal/anual. Instale: \`npx shadcn add https://umbler-ds.vercel.app/r/pricing-table\`
 \`\`\`tsx
 import { PricingTable, UMBLER_PLANS } from '@/components/blocks/pricing-table';

@@ -309,6 +309,13 @@ export const items = [
     registryDependencies: ['utils'],
   },
   {
+    name: 'logo-cloud',
+    type: 'registry:block',
+    description: 'Logos de clientes para social proof em landings. Variantes grid (estática) e marquee (rolagem infinita CSS-only, pausa no hover). Requer os keyframes marquee de tokens.css (item tokens).',
+    files: [{ src: 'components/blocks/logo-cloud.tsx', target: 'components/blocks/logo-cloud.tsx', type: 'registry:component' }],
+    registryDependencies: ['utils', 'tokens'],
+  },
+  {
     name: 'pricing-table',
     type: 'registry:block',
     description: 'Tabela de planos com destaque de plano popular, lista de features e CTA por tier.',
