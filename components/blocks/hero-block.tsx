@@ -101,7 +101,7 @@ export function HeroHeadline({
 }: React.HTMLAttributes<HTMLHeadingElement>) {
   return (
     <h1
-      className={cn('font-heading text-h1 text-foreground', className)}
+      className={cn('font-heading text-h1 md:text-display-lg text-foreground', className)}
       {...props}
     >
       {children}
