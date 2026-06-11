@@ -57,9 +57,9 @@ export function LogoCloud({
   const labelColor = tone === 'dark' ? 'text-white/40' : 'text-foreground-muted';
   const logoOpacity = tone === 'dark' ? 'opacity-50' : 'opacity-70';
 
-  const logoImg = (logo: LogoCloudItem) => (
+  const logoImg = (logo: LogoCloudItem, keySuffix = '') => (
     <img
-      key={logo.src}
+      key={`${logo.src}${keySuffix}`}
       src={logo.src}
       alt={logo.alt}
       style={{ maxHeight: logo.maxHeight ?? 32 }}
@@ -99,16 +99,16 @@ export function LogoCloud({
           style={{ '--marquee-duration': `${speed}s` } as React.CSSProperties}
         >
           <div className="flex w-max animate-marquee items-center gap-16 group-hover:[animation-play-state:paused]">
-            {logos.map(logoImg)}
+            {logos.map((l) => logoImg(l))}
             {/* segunda cópia fecha o loop sem corte; escondida de leitores de tela */}
             <div aria-hidden="true" className="flex items-center gap-16">
-              {logos.map(logoImg)}
+              {logos.map((l) => logoImg(l, '-dup'))}
             </div>
           </div>
         </div>
       ) : (
         <div className={cn('grid items-center justify-items-center gap-x-8 gap-y-10', cols)}>
-          {logos.map(logoImg)}
+          {logos.map((l) => logoImg(l))}
         </div>
       )}
     </div>
