@@ -237,6 +237,16 @@
       "description": "Linha de usuário/contato com avatar, nome, metadados, checkbox de seleção e ações (padrão Umbler Talk)."
     },
     {
+      "name": "feature-split",
+      "type": "registry:block",
+      "description": "Seção problema/solução em 2 colunas: texto (eyebrow, título, body, bullets, CTA) à esquerda, visual (slot livre) à direita. Padrão das LPs Umbler — alterne `reverse` entre seções consecutivas pra criar ritmo."
+    },
+    {
+      "name": "site-footer",
+      "type": "registry:block",
+      "description": "Rodapé de site/LP com logo, tagline, colunas de links, social e barra inferior de copyright/legal. Props-driven, dark por padrão."
+    },
+    {
       "name": "data-list-page",
       "type": "registry:block",
       "description": "Composto de página de listagem: header com título/ações + corpo de lista/tabela. Esqueleto reutilizável de telas CRUD."

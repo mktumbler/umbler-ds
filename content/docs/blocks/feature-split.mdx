@@ -1,0 +1,69 @@
+---
+title: FeatureSplit
+description: Seção de feature em duas colunas (texto + visual). Padrão problema/solução das LPs Umbler — alterne `reverse` entre seções consecutivas para criar ritmo visual.
+---
+
+import {
+  FeatureSplitDefaultDemo,
+  FeatureSplitReverseDemo,
+  FeatureSplitMinimalDemo,
+} from '@/components/demos/blocks/feature-split-variants';
+import { VariantGrid, VariantCard } from '@/components/docs/variant-grid';
+
+A maior parte das LPs da Umbler é uma sequência de seções problema/solução. O `FeatureSplit` dá o esqueleto: à esquerda, o argumento (eyebrow, título, parágrafo, bullets, CTA); à direita, o visual (mock, imagem, ilustração). O visual é um slot — você passa qualquer `ReactNode`.
+
+## Variantes
+
+<VariantGrid columns={1}>
+  <VariantCard label="Default" hint="Texto à esquerda, visual à direita" minHeight={420}>
+    <FeatureSplitDefaultDemo />
+  </VariantCard>
+</VariantGrid>
+
+<VariantGrid columns={1}>
+  <VariantCard label="Reverse" hint="Visual à esquerda — alterne entre seções consecutivas" minHeight={420}>
+    <FeatureSplitReverseDemo />
+  </VariantCard>
+</VariantGrid>
+
+<VariantGrid columns={1}>
+  <VariantCard label="Minimal" hint="Sem bullets, sem CTA — quando o ponto já está dito" minHeight={400}>
+    <FeatureSplitMinimalDemo />
+  </VariantCard>
+</VariantGrid>
+
+## API
+
+```tsx
+import { FeatureSplit } from '@/components/blocks/feature-split';
+
+<FeatureSplit
+  eyebrow="Times"
+  title="Quando um funcionário tira férias…"
+  body="O Umbler Talk distribui as conversas entre o time."
+  bullets={['Filas por equipe', 'Round-robin automático']}
+  cta={{ label: 'Experimente grátis', href: '/signup' }}
+  visual={<img src="/mock-teams.png" alt="Distribuição entre times" />}
+  reverse
+/>
+```
+
+<TokenTable
+  columns={['Prop', 'Tipo', 'Default', 'Descrição']}
+  rows={[
+    ['title',   'ReactNode',  '—',     'H2 obrigatório'],
+    ['visual',  'ReactNode',  '—',     'Slot do lado direito — qualquer conteúdo'],
+    ['eyebrow', 'string',     '—',     'Linha curta acima do título'],
+    ['body',    'ReactNode',  '—',     'Parágrafo de suporte'],
+    ['bullets', 'ReactNode[]','—',     'Lista de bullets com ícone de check'],
+    ['cta',     '{label, href}', '—',  'CTA inline (texto + seta)'],
+    ['reverse', 'boolean',    'false', 'Inverte os lados (visual à esquerda)'],
+  ]}
+/>
+
+## Boas práticas
+
+- **Alterne `reverse`** entre seções consecutivas — sequência sem alternância vira coluna monótona
+- **Visual conta uma história** — mock do produto, screenshot ou ilustração concreta. Evite imagem-stock genérica
+- **Bullets curtos** — 3-5 itens, cada um cabe em uma linha de leitura
+- Para muitas seções na mesma página (6+ no Umbler Talk), considere agrupá-las sob um título de "categoria" para o leitor não se perder

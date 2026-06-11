@@ -376,6 +376,21 @@ export const items = [
     registryDependencies: ['utils', 'avatar', 'checkbox'],
   },
   {
+    name: 'feature-split',
+    type: 'registry:block',
+    description: 'Seção problema/solução em 2 colunas: texto (eyebrow, título, body, bullets, CTA) à esquerda, visual (slot livre) à direita. Padrão das LPs Umbler — alterne `reverse` entre seções consecutivas pra criar ritmo.',
+    files: [{ src: 'components/blocks/feature-split.tsx', target: 'components/blocks/feature-split.tsx', type: 'registry:component' }],
+    dependencies: [PHOSPHOR],
+    registryDependencies: ['utils'],
+  },
+  {
+    name: 'site-footer',
+    type: 'registry:block',
+    description: 'Rodapé de site/LP com logo, tagline, colunas de links, social e barra inferior de copyright/legal. Props-driven, dark por padrão.',
+    files: [{ src: 'components/blocks/site-footer.tsx', target: 'components/blocks/site-footer.tsx', type: 'registry:component' }],
+    registryDependencies: ['utils'],
+  },
+  {
     name: 'data-list-page',
     type: 'registry:block',
     description: 'Composto de página de listagem: header com título/ações + corpo de lista/tabela. Esqueleto reutilizável de telas CRUD.',

@@ -1,0 +1,68 @@
+---
+title: SiteFooter
+description: Rodapé de site/LP com logo, tagline, colunas de links, social e barra inferior de copyright/legal. Tom dark por padrão.
+---
+
+import {
+  SiteFooterDarkDemo,
+  SiteFooterLightDemo,
+} from '@/components/demos/blocks/site-footer-variants';
+import { VariantGrid, VariantCard } from '@/components/docs/variant-grid';
+
+Footer institucional pronto para LPs e sites. Props-driven — passe logo, tagline, colunas de links, ícones sociais, copyright e links legais. O bloco fica no `<footer>` semântico e organiza tudo num grid de 12 colunas.
+
+## Variantes
+
+<VariantGrid columns={1}>
+  <VariantCard label="Dark (padrão)" hint="Fundo neutral-950 — combina com fechamento de LP" tone="dark" minHeight={420}>
+    <SiteFooterDarkDemo />
+  </VariantCard>
+</VariantGrid>
+
+<VariantGrid columns={1}>
+  <VariantCard label="Light" hint="Fundo claro com borda superior — para sites com header/footer claros" minHeight={420}>
+    <SiteFooterLightDemo />
+  </VariantCard>
+</VariantGrid>
+
+## API
+
+```tsx
+import { SiteFooter } from '@/components/blocks/site-footer';
+import { UmblerLogo } from '@/components/ui/umbler-logo';
+import { LinkedinLogo } from '@phosphor-icons/react/dist/ssr';
+
+<SiteFooter
+  logo={<UmblerLogo className="h-7 w-auto text-white" />}
+  tagline="A infraestrutura por trás dos negócios que crescem."
+  columns={[
+    { title: 'Produto', links: [{ label: 'Talk', href: '/talk' }] },
+    { title: 'Empresa', links: [{ label: 'Sobre', href: '/about' }] },
+  ]}
+  social={[
+    { label: 'LinkedIn', href: '#', icon: <LinkedinLogo size={16} weight="fill" /> },
+  ]}
+  copyright="© 2026 Umbler. Todos os direitos reservados."
+  legal={[{ label: 'Privacidade', href: '/privacy' }]}
+/>
+```
+
+<TokenTable
+  columns={['Prop', 'Tipo', 'Default', 'Descrição']}
+  rows={[
+    ['columns',   'SiteFooterColumn[]',  '—',      'Grupos de links com título — idealmente 3-4'],
+    ['copyright', 'string',              '—',      'Texto da barra inferior'],
+    ['logo',      'ReactNode',           '—',      'Marca à esquerda (passe <UmblerLogo />)'],
+    ['tagline',   'string',              '—',      'Linha curta abaixo do logo'],
+    ['social',    'SiteFooterSocial[]',  '—',      'Ícones sociais clicáveis'],
+    ['legal',     'SiteFooterLink[]',    '—',      'Links legais à direita da barra inferior'],
+    ['tone',      "'light' | 'dark'",    "'dark'", 'Fundo do footer'],
+  ]}
+/>
+
+## Boas práticas
+
+- **3-4 colunas funcionam melhor** — abaixo disso fica vazio, acima fica denso no mobile
+- **Tagline curta** — uma linha, voz da marca, não slogan publicitário
+- **Não duplique o header** — footer é navegação secundária; só inclua o que o header não cobre
+- **Copyright sempre atual** — gere a partir de `new Date().getFullYear()` no consumer, não hardcode

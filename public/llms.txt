@@ -825,6 +825,42 @@ import { Tag } from '@/components/ui/tag';
 - name (obrigatório) · avatar?: AvatarProps, meta?, subtitle?, tags?, actions?
 - selectable?, selected?, onSelectedChange? · asChild? (vira link)
 
+### FeatureSplit
+Seção problema/solução em 2 colunas (texto + visual). Instale: `npx shadcn add https://umbler-ds.vercel.app/r/feature-split`
+```tsx
+import { FeatureSplit } from '@/components/blocks/feature-split';
+
+<FeatureSplit
+  eyebrow="Times"
+  title="Quando alguém tira férias…"
+  body="O Umbler Talk distribui as conversas entre o time."
+  bullets={['Filas por equipe', 'Round-robin automático']}
+  cta={{ label: 'Experimente grátis', href: '/signup' }}
+  visual={<img src="/mock.png" alt="" />}
+  reverse
+/>
+```
+- title (obrigatório), visual (obrigatório) · eyebrow?, body?, bullets?, cta?: `{ label, href }`
+- reverse?: boolean — inverte os lados (alterne entre seções consecutivas)
+
+### SiteFooter
+Rodapé de site/LP com colunas de links, social e barra inferior. Instale: `npx shadcn add https://umbler-ds.vercel.app/r/site-footer`
+```tsx
+import { SiteFooter } from '@/components/blocks/site-footer';
+import { UmblerLogo } from '@/components/ui/umbler-logo';
+
+<SiteFooter
+  logo={<UmblerLogo className="h-7 w-auto text-white" />}
+  tagline="A infraestrutura por trás dos negócios."
+  columns={[{ title: 'Produto', links: [{ label: 'Talk', href: '/talk' }] }]}
+  copyright="© 2026 Umbler."
+  legal={[{ label: 'Privacidade', href: '/privacy' }]}
+/>
+```
+- columns: `{ title, links: { label, href }[] }[]` (obrigatório) · copyright (obrigatório)
+- logo?, tagline?, social?: `{ label, href, icon }[]`, legal?: `{ label, href }[]`
+- tone: `light` | `dark` — padrão: `dark`
+
 ### DataListPage
 Esqueleto de tela de listagem CRUD: header + toolbar + corpo. Instale: `npx shadcn add https://umbler-ds.vercel.app/r/data-list-page`
 ```tsx

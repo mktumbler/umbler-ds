@@ -94,6 +94,8 @@ import { HeroBlockMinimal, HeroBlockDualCTA, HeroBlockSweep, HeroBlockWithBackgr
 import { PricingTableUmblerDemo, PricingTableSaasDemo } from '@/components/demos/blocks/pricing-table-variants';
 import { CTABannerPremium, CTABannerGlow, CTABannerSimple, CTABannerBrand } from '@/components/demos/blocks/cta-banner-variants';
 import { LogoCloudGridDemo, LogoCloudMarqueeDemo } from '@/components/demos/blocks/logo-cloud-variants';
+import { FeatureSplitDefaultDemo, FeatureSplitReverseDemo, FeatureSplitMinimalDemo } from '@/components/demos/blocks/feature-split-variants';
+import { SiteFooterDarkDemo, SiteFooterLightDemo } from '@/components/demos/blocks/site-footer-variants';
 import { FAQSectionProdutoDemo, FAQSectionPricingDemo, StatGrid4UpDemo, StatGrid3UpDemo, TestimonialCenteredDemo, TestimonialCardDemo } from '@/components/demos/blocks/section-blocks-variants';
 import { HeroBgGridDemo, HeroBgSweepDemo } from '@/components/demos/patterns/site/backgrounds';
 import { EmailPreview } from '@/components/docs/email-preview';
@@ -311,6 +313,11 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     CTABannerBrand,
     LogoCloudGridDemo,
     LogoCloudMarqueeDemo,
+    FeatureSplitDefaultDemo,
+    FeatureSplitReverseDemo,
+    FeatureSplitMinimalDemo,
+    SiteFooterDarkDemo,
+    SiteFooterLightDemo,
     FAQSectionProdutoDemo,
     FAQSectionPricingDemo,
     StatGrid4UpDemo,
