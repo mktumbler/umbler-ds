@@ -13,7 +13,19 @@ Projeto **Next.js (App Router)** com **Tailwind CSS v4** e **TypeScript**. Os to
 
 ## Dois caminhos
 
-### Caminho A — Qualquer IA (Cursor, ChatGPT, Windsurf, Gemini, Copilot…)
+### Caminho A — Claude Code (recomendado)
+
+Um comando. A skill já carrega tokens, voz, regras e slash commands:
+
+```
+/plugin add umbler-ds
+```
+
+Depois fale em PT: *"Cria uma LP do produto X com hero, pricing e FAQ no padrão Umbler"*. O plugin reconhece os blocks, instala sob demanda, audita hand-rolls a cada `.tsx` editado, e dispensa qualquer outro passo.
+
+[Detalhes do plugin →](/docs/plugin)
+
+### Caminho B — Qualquer outra IA (Cursor, ChatGPT, Windsurf, Gemini, Copilot…)
 
 **1. Instale o DS** (no terminal do projeto):
 
@@ -38,18 +50,6 @@ O `init` injeta um tema concorrente. Como o DS já traz o sistema completo, deix
 @import './tokens.css';
 ```
 </Callout>
-
-### Caminho B — Claude Code (mais rápido)
-
-Um comando. A skill já carrega tokens, voz, regras e slash commands:
-
-```
-/plugin add umbler-ds
-```
-
-Depois fale em PT igual no caminho A. O plugin instala blocks sob demanda, audita hand-rolls a cada `.tsx` editado, e dispensa o UMBLER.md.
-
-[Detalhes do plugin →](/docs/plugin)
 
 ---
 
