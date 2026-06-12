@@ -52,7 +52,8 @@ const hasComponentChange = staged.some(
 const hasChangelog  = staged.includes('data/changelog.json');
 const hasTsxStaged  = staged.some((f) => f.endsWith('.tsx') || f.endsWith('.ts'));
 
-// UMBLER.md tem 6 fontes: SKILL + tokens + 4 mdx de marketing
+// UMBLER.md tem 7 fontes: SKILL + tokens + 4 mdx de marketing + o próprio
+// gerador (que carrega as seções editoriais: role, vibe, assinaturas, receitas)
 const UMBLER_MD_SOURCES = [
   '.claude-plugin/skills/umbler-ds/SKILL.md',
   'app/tokens.css',
@@ -60,6 +61,7 @@ const UMBLER_MD_SOURCES = [
   'content/docs/marketing/brand/anti-patterns.mdx',
   'content/docs/marketing/conversion/headlines.mdx',
   'content/docs/marketing/conversion/checklist.mdx',
+  'scripts/build-umbler-md.mjs',
 ];
 const hasUmblerMdSource = staged.some((f) => UMBLER_MD_SOURCES.includes(f));
 
