@@ -1,65 +1,71 @@
 ---
-title: Contexto para IAs (UMBLER.md)
-description: Um único arquivo com tokens, voz e regras do DS — cole no prompt do Cursor, Claude, Windsurf ou ChatGPT e a IA gera no padrão Umbler.
+title: Como usar com IA
+description: Três caminhos, um comando cada. Depois você pede em português e a IA monta no padrão Umbler.
 ---
 
-Inspirado no [designmd.co](https://www.designmd.co/), o **UMBLER.md** é um arquivo markdown único, sempre atualizado, que carrega o destilado do DS num formato que qualquer IA entende.
+Você não precisa decorar fluxos. Cada cenário é **um comando + falar com a IA em PT**.
 
-> **TL;DR**: cole `https://umbler-ds.vercel.app/UMBLER.md` no prompt da sua IA antes de pedir LP, e-mail, apresentação ou qualquer material no padrão Umbler.
+## Os três caminhos
 
-## Para que serve
+### 1. Criando uma LP nova
 
-Sem este arquivo, a IA gera "design genérico" — cores aleatórias, copy burocrática, hand-rolls de HTML. Com ele no contexto, ela tem:
-
-- **Tokens reais** (cores, tipografia, espaçamento, motion) prontos pra usar
-- **Voz e tom da marca** — mistura ideal, palavras de poder, regra de em-dash
-- **Anti-patterns** — o que nunca escrever ("solução completa", "saiba mais")
-- **Headlines de conversão** — frameworks Sugarman/Halbert/Hopkins aplicados
-- **Hierarquia componente → block → pattern** — quando combinar, quando criar
-- **URL do registry shadcn** — pra instalar componente real em vez de hand-rolled
-
-É o mesmo conteúdo da [skill do plugin Claude Code](/docs/plugin), mas como arquivo público — funciona em **qualquer IA**, sem instalação.
-
-## Como usar
-
-### Cursor / Claude Code / Windsurf
-
-No início do prompt:
-
-```
-Antes de gerar UI, leia o contexto da marca em https://umbler-ds.vercel.app/UMBLER.md.
-
-Quero uma landing page para [produto]...
+```bash
+npx shadcn@latest init
+npx shadcn@latest add https://umbler-ds.vercel.app/r/umbler-ui
 ```
 
-### ChatGPT / Gemini / outros
+Instala tokens + utilitário + **todos os componentes** de uma vez. Blocks (hero, pricing, FAQ, CTA…) você pede por nome quando precisar — a IA roda `shadcn add` da URL certa por baixo.
 
-Cole o conteúdo do arquivo no início do chat ou anexe-o, depois descreva o material que quer gerar.
+Depois, **cole no contexto da sua IA** (Cursor rule, Custom Instructions, system prompt):
+> `https://umbler-ds.vercel.app/UMBLER.md`
 
-### Em Custom GPTs / Agentes
+Pronto. Agora é só pedir: *"Cria uma LP de [produto] com hero, pricing e FAQ"*.
 
-Adicione a URL como **conhecimento permanente** (Knowledge / Custom Instructions). Assim qualquer prompt nesse agente já parte com o padrão Umbler.
+### 2. Projeto já existente
 
-## Como o arquivo é gerado
+Mesma coisa, sem o `init` (você já tem shadcn ou Tailwind v4):
 
-Gerado automaticamente por `scripts/build-umbler-md.mjs` a partir das fontes vivas do DS:
+```bash
+npx shadcn@latest add https://umbler-ds.vercel.app/r/umbler-ui
+```
 
-| Fonte | O que aporta |
+E o mesmo passo da IA: cole `https://umbler-ds.vercel.app/UMBLER.md` na regra/instruções permanentes.
+
+<Callout type="warn" title="Pré-requisito">
+Tailwind v4 e Next.js (App Router). Em v3 não funciona — os tokens usam `@theme` do v4.
+</Callout>
+
+### 3. Usando Claude Code
+
+Um comando, dispensa o UMBLER.md (o plugin já carrega a skill):
+
+```
+/plugin add umbler-ds
+```
+
+A partir daí, fale em PT. *"Cria uma LP com hero e FAQ"* — o Claude reconhece os blocks, roda `/umbler-add` pra cada um e compõe a página. Auditoria de hand-rolls roda como hook automático em cada arquivo editado.
+
+[Detalhes do plugin →](/docs/plugin)
+
+---
+
+## Por que isso funciona
+
+| Arquivo | O que carrega na IA |
 |---|---|
-| `.claude-plugin/skills/umbler-ds/SKILL.md` | Guia operacional, regras de cor/Badge/Tag |
-| `app/tokens.css` | Tokens `@theme` (cores, tipografia, spacing, motion) |
-| `content/docs/marketing/brand/voice.mdx` | Mistura de tom, palavras de poder |
-| `content/docs/marketing/brand/anti-patterns.mdx` | Reduções/erros a evitar |
-| `content/docs/marketing/conversion/headlines.mdx` | Frameworks de headline |
-| `content/docs/marketing/conversion/checklist.mdx` | Checklist final de copy |
+| [`/UMBLER.md`](https://umbler-ds.vercel.app/UMBLER.md) | Voz, tokens, regras, antipatterns — para qualquer IA fora do Claude Code |
+| [`/llms.txt`](https://umbler-ds.vercel.app/llms.txt) | Catálogo técnico de componentes com props — referência rápida pra gerar TSX |
+| [Plugin Claude Code](/docs/plugin) | Skill + slash commands + auto-audit — pra quem usa Claude Code |
 
-Nada é escrito à mão no UMBLER.md — toda mudança parte da fonte e o pre-commit garante que o output esteja em dia.
+UMBLER.md e llms.txt são públicos e estáticos. **Você nunca precisa atualizar nada** — o DS regenera ambos a cada build e os mantém em sincronia.
 
-## Sem confundir com llms.txt
+## E se eu não usar IA?
 
-| Arquivo | Pra quê |
-|---|---|
-| [`/llms.txt`](https://umbler-ds.vercel.app/llms.txt) | **Catálogo técnico**: lista de componentes do DS com props, exemplos de código. Pra IA gerar TSX já consumindo o registry. |
-| [`/UMBLER.md`](https://umbler-ds.vercel.app/UMBLER.md) | **Briefing de marca**: voz, tokens, regras, antipatterns. Pra IA entender "como soa Umbler" antes de escrever copy. |
+Funciona igual. `shadcn add` instala o componente, você importa e usa:
 
-Use os dois juntos: UMBLER.md pra alinhar marca e voz, llms.txt pra puxar componentes específicos.
+```tsx
+import { Button } from '@/components/ui/button';
+import { HeroBlock } from '@/components/blocks/hero-block';
+```
+
+A IA acelera, não é pré-requisito.
