@@ -53,3 +53,8 @@ dev.log
 # generated package artifacts (regenerados via build:package / prepack)
 /packages/ui/src/
 /packages/ui/tokens.css
+
+# generated artifacts (regenerados a cada build/dev via build:artifacts — edite as fontes, não o output)
+/registry/
+/public/llms.txt
+/public/UMBLER.md

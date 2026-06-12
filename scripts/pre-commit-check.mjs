@@ -1,17 +1,17 @@
 /**
- * pre-commit-check — guarda de sincronia no momento do commit.
+ * pre-commit-check — guarda mínima no momento do commit.
  *
- * Filosofia: bloquear apenas regressões CERTAS (arquivo gerado fora de
- * sincronia, erro de tipo). Gaps estruturais (componente sem mdx, sem
- * demo, etc.) viram WARNING — assim a esteira não trava por dívidas
- * pré-existentes, mas o autor é lembrado.
+ * Filosofia: bloquear apenas regressões CERTAS (erro de tipo, hand-roll
+ * novo). Arquivos gerados (registry/, llms.txt, UMBLER.md) NÃO são
+ * commitados — são regenerados a cada build/dev via `build:artifacts`,
+ * então dessincronia é impossível e não precisa de check aqui.
  *
  *   • BLOQUEIA
- *     - public/llms.txt desatualizado (build-llms --check)
  *     - tsc --noEmit falha
+ *     - audit-antipatterns detecta hand-roll novo em arquivo staged
  *
  *   • WARNING (amarelo, não bloqueia)
- *     - check-component-sync reportou gap
+ *     - check-component-sync reportou gap estrutural
  *     - componente alterado sem data/changelog.json staged
  *
  * Saída: exit 0 se OK, exit 1 se algo bloqueante falhar.
@@ -52,52 +52,16 @@ const hasComponentChange = staged.some(
 const hasChangelog  = staged.includes('data/changelog.json');
 const hasTsxStaged  = staged.some((f) => f.endsWith('.tsx') || f.endsWith('.ts'));
 
-// UMBLER.md tem 7 fontes: SKILL + tokens + 4 mdx de marketing + o próprio
-// gerador (que carrega as seções editoriais: role, vibe, assinaturas, receitas)
-const UMBLER_MD_SOURCES = [
-  '.claude-plugin/skills/umbler-ds/SKILL.md',
-  'app/tokens.css',
-  'content/docs/marketing/brand/voice.mdx',
-  'content/docs/marketing/brand/anti-patterns.mdx',
-  'content/docs/marketing/conversion/headlines.mdx',
-  'content/docs/marketing/conversion/checklist.mdx',
-  'scripts/build-umbler-md.mjs',
-];
-const hasUmblerMdSource = staged.some((f) => UMBLER_MD_SOURCES.includes(f));
-
 let blocked = false;
 
-// ── 2. Sync estrutural (sempre, se mexeu em componente) ────────────────────
+// ── 2. Sync estrutural (warning, se mexeu em componente) ───────────────────
 
 if (hasComponentChange) {
-  // sync estrutural — warning, NÃO bloqueia (dívida pré-existente é OK)
   console.log(c('cyan', '\n→ pre-commit: verificando sincronia de componentes'));
   try {
     execSync('node scripts/check-component-sync.mjs --no-strict', { stdio: 'inherit' });
   } catch {
     // --no-strict sempre exit 0, mas captura erros de runtime
-  }
-
-  // llms.txt desatualizado — BLOQUEIA (regressão clara de arquivo gerado)
-  try {
-    execSync('node scripts/build-llms.mjs --check', { stdio: 'pipe' });
-  } catch {
-    console.log(c('red', '\n✗ commit bloqueado: public/llms.txt desatualizado.'));
-    console.log(c('dim', '  rode `npm run build:llms`, stage o arquivo e tente de novo.'));
-    blocked = true;
-  }
-}
-
-// ── 2b. UMBLER.md (bloqueia se fonte mudou e output não foi regenerado) ────
-
-if (hasUmblerMdSource) {
-  console.log(c('cyan', '\n→ pre-commit: verificando public/UMBLER.md'));
-  try {
-    execSync('node scripts/build-umbler-md.mjs --check', { stdio: 'pipe' });
-  } catch {
-    console.log(c('red', '\n✗ commit bloqueado: public/UMBLER.md desatualizado.'));
-    console.log(c('dim', '  rode `npm run build:umbler-md`, stage o arquivo e tente de novo.'));
-    blocked = true;
   }
 }
 

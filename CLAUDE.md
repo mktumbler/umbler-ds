@@ -24,12 +24,17 @@ components/
 content/docs/
   foundations/        ← Colors, Typography, Spacing, Radius, Shadows, Motion
   components/         ← uma página MDX por componente
-registry/             ← JSONs shadcn GERADOS (não editar à mão; saída de build-registry)
+registry/             ← JSONs shadcn GERADOS (gitignored; saída de build:artifacts)
 scripts/
   registry.manifest.mjs ← fonte da verdade: lista itens + deps do registry
   build-registry.mjs  ← lê o manifest + os .tsx e gera registry/*.json
+  build-llms.mjs      ← gera public/llms.txt (catálogo técnico pra IAs)
+  build-umbler-md.mjs ← gera public/UMBLER.md (briefing de marca pra IAs)
   build-package.mjs   ← gera o pacote @umbler/ui
 ```
+
+## Processo de build — uma frase
+**Edite as fontes; o build gera os artefatos.** `registry/*.json`, `public/llms.txt` e `public/UMBLER.md` são gerados e **gitignored** — `npm run build:artifacts` roda automaticamente antes de `build` e `dev`, então dessincronia é impossível. O pre-commit (husky) só checa o que é regressão certa: `tsc --noEmit` + `audit-antipatterns` (bloqueiam); sync estrutural e changelog (warnings).
 
 ## Tokens — como funcionam (Tailwind v4)
 - `@theme { --color-brand-500: #1a5cff }` → gera utilitários `bg-brand-500`, `text-brand-500`
@@ -67,19 +72,19 @@ Blocks são instaláveis avulso via registry (`type: registry:block`, caem em `c
 2. Cria demo em `components/demos/<nome>-variants.tsx`
 3. Cria página MDX em `content/docs/components/<nome>.mdx`
 4. Adiciona slug em `content/docs/components/meta.json`
-5. Adiciona o item em `scripts/registry.manifest.mjs` (o `registry/<nome>.json` é gerado por `npm run build:registry`)
+5. Adiciona o item em `scripts/registry.manifest.mjs` (o `registry/<nome>.json` é gerado automaticamente no próximo `dev`/`build`)
 6. Importa/exporta os demos em `mdx-components.tsx`
 
 ## Deploy
 ```bash
 npx vercel --prod   # deploy manual para produção
-npm run build       # build local (também regenera o registry)
+npm run build       # build local (regenera artefatos + next build)
 ```
 
 ## Comandos úteis
 ```bash
-npm run dev         # servidor local em localhost:3000
-npx tsc --noEmit    # verificar tipos sem compilar
-npm run build:registry            # regenerar registry/*.json a partir do manifest
-npm run check:sync                # auditar sincronia componente↔doc↔demo↔registry
+npm run dev              # servidor local em localhost:3000 (predev regenera artefatos)
+npx tsc --noEmit         # verificar tipos sem compilar
+npm run build:artifacts  # regenerar registry/ + llms.txt + UMBLER.md à mão
+npm run check:sync       # auditar sincronia componente↔doc↔demo↔registry
 ```
