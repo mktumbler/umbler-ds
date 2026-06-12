@@ -1,38 +1,37 @@
 ---
-title: Início
-description: Comece aqui — a base de marca da Umbler para montar landing pages, e-mails e produtos no mesmo padrão.
+title: Comece aqui
+description: O Umbler DS foi feito pra ser usado com IA. Dois caminhos, um comando cada. Depois é só pedir em português.
 ---
 
-O Umbler DS é a base de marca da Umbler: **design tokens**, **componentes** e **blocks** prontos
-para montar **landing pages**, **e-mails** e **produtos** — todos no mesmo padrão visual, sem reinventar.
+O Umbler DS é a base de marca da Umbler: **design tokens**, **componentes** e **blocks** prontos para montar **landing pages**, **e-mails** e **produtos** — todos no mesmo padrão.
 
-Tudo é distribuído via registry `shadcn`: o código é **copiado** para o seu projeto, sem dependência de runtime e totalmente editável.
+Tudo é distribuído via registry `shadcn`: o código é **copiado** para o seu projeto, sem dependência de runtime e totalmente editável. **Funciona melhor com IA** — Cursor, ChatGPT, Claude, Windsurf, Gemini, Copilot. Você descreve em PT, a IA monta no padrão.
 
-<Callout title="Pré-requisito único">
-Projeto **Next.js (App Router)** com **Tailwind CSS v4** e **TypeScript**. Os tokens usam a diretiva `@theme` do Tailwind v4 — **não funciona no v3**.
+<Callout title="Pré-requisito">
+Projeto **Next.js (App Router)** com **Tailwind CSS v4** e **TypeScript**. Os tokens usam `@theme` do Tailwind v4 — **não funciona no v3**.
 </Callout>
 
-## Instalar
+## Dois caminhos
 
-**Projeto novo** (primeira vez com shadcn):
+### Caminho A — Qualquer IA (Cursor, ChatGPT, Windsurf, Gemini, Copilot…)
+
+**1. Instale o DS** (no terminal do projeto):
 
 ```bash
-npx shadcn@latest init
-npx shadcn@latest add https://umbler-ds.vercel.app/r/umbler-ui
+npx shadcn@latest init                                            # só se ainda não tem shadcn
+npx shadcn@latest add https://umbler-ds.vercel.app/r/umbler-ui    # todos os componentes
 ```
 
-**Já usa shadcn?** Pule o `init` — rode só o `add`.
+**2. Carregue o briefing da marca na sua IA.** Cole esta URL nas instruções permanentes (Cursor rule, Custom Instructions do ChatGPT, system prompt):
 
-Instala **tudo de uma vez**: tokens da marca (`app/tokens.css`), o utilitário `cn` e todos os componentes. Depois é só usar:
-
-```tsx
-import { Button } from '@/components/ui/button';
-
-<Button>Começar</Button>
+```
+https://umbler-ds.vercel.app/UMBLER.md
 ```
 
-<Callout type="warn" title="Um único ajuste depois do init">
-O `shadcn init` injeta um tema concorrente no CSS de entrada. Como o DS já traz o sistema de tokens completo, deixe o seu `app/globals.css` apenas com:
+**3. Peça em PT.** *"Cria uma LP do produto X com hero, pricing e FAQ no padrão Umbler"* — a IA reconhece os blocks, instala o que faltar e compõe.
+
+<Callout type="warn" title="Um único ajuste depois do shadcn init">
+O `init` injeta um tema concorrente. Como o DS já traz o sistema completo, deixe seu `app/globals.css` apenas com:
 
 ```css
 @import 'tailwindcss';
@@ -40,9 +39,23 @@ O `shadcn init` injeta um tema concorrente no CSS de entrada. Como o DS já traz
 ```
 </Callout>
 
-## Por onde começar
+### Caminho B — Claude Code (mais rápido)
 
-Escolha pelo que você quer fazer:
+Um comando. A skill já carrega tokens, voz, regras e slash commands:
+
+```
+/plugin add umbler-ds
+```
+
+Depois fale em PT igual no caminho A. O plugin instala blocks sob demanda, audita hand-rolls a cada `.tsx` editado, e dispensa o UMBLER.md.
+
+[Detalhes do plugin →](/docs/plugin)
+
+---
+
+## Por onde começar (depois de instalar)
+
+Escolha pelo que quer fazer:
 
 | Quero… | Vá para |
 | --- | --- |
@@ -53,10 +66,23 @@ Escolha pelo que você quer fazer:
 
 <FoundationsOverview />
 
-## Outros cenários
+## Recursos pra IA
 
-- **Usa Claude Code?** Instale o [plugin](/docs/plugin) — skill + comandos `/umbler-add` e `/umbler-audit`.
-- **Só um item avulso?** `npx shadcn@latest add https://umbler-ds.vercel.app/r/<nome>` — ex.: `button`, `hero-block`, `pricing-table`. Blocks caem em `components/blocks/` e puxam o que usam.
-- **Projeto que já existe?** Não instale por cima às cegas: rode o DS lado-a-lado, migre **uma tela piloto** primeiro e adote a regra "código novo usa DS, antigo migra quando tocado" — cada fase em um PR curto.
-- **Atualizar depois?** Rode o `add` de novo (sobrescreve o arquivo local — revise o diff numa branch).
-- **Catálogo para IA/agentes:** [`/llms.txt`](https://umbler-ds.vercel.app/llms.txt) lista componentes, blocks e tokens para um agente consumir.
+| Recurso | Pra quê |
+|---|---|
+| [`/UMBLER.md`](https://umbler-ds.vercel.app/UMBLER.md) | **Briefing de marca**: voz, tokens, regras, antipatterns. Cola na instrução de qualquer IA. |
+| [`/llms.txt`](https://umbler-ds.vercel.app/llms.txt) | **Catálogo técnico**: componentes com props e exemplos. Pra IA gerar TSX preciso. |
+| [Plugin Claude Code](/docs/plugin) | Skill + `/umbler-add` + auto-audit. Pra quem usa Claude Code. |
+
+Ambos os arquivos são **regenerados automaticamente** a cada build do DS — você nunca precisa atualizar nada do seu lado.
+
+## E se eu não usar IA?
+
+Funciona igual. `shadcn add` instala o componente, você importa e usa:
+
+```tsx
+import { Button } from '@/components/ui/button';
+import { HeroBlock } from '@/components/blocks/hero-block';
+```
+
+A IA acelera, não é pré-requisito.
