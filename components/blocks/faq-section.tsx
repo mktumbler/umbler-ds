@@ -17,6 +17,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion';
+import { SectionHeader } from '@/components/ui/section-header';
 import { cn } from '@/lib/utils';
 
 export interface FAQItem {
@@ -43,13 +44,8 @@ export function FAQSection({
       {...props}
     >
       <div className="mx-auto max-w-3xl">
-        {/* Cabeçalho */}
-        <div className="mb-12 text-center">
-          {eyebrow && <p className="eyebrow mb-4">{eyebrow}</p>}
-          <h2 className="font-heading text-display text-foreground text-balance">
-            {headline}
-          </h2>
-        </div>
+        <SectionHeader eyebrow={eyebrow} headline={headline} />
+
 
         {/* Accordion */}
         <Accordion

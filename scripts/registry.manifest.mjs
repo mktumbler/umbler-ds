@@ -90,6 +90,13 @@ export const items = [
     registryDependencies: ['utils'],
   },
   {
+    name: 'section-header',
+    description:
+      'Cabeçalho canônico de seção: eyebrow + h2 (text-display) + sub. Use quando compor uma seção fora dos blocks que já trazem header próprio (FAQ/Hero).',
+    files: ['components/ui/section-header.tsx'],
+    registryDependencies: ['utils', 'tokens'],
+  },
+  {
     name: 'kbd',
     description: 'Representação visual de teclas e atalhos. Inclui KbdSequence para combinações.',
     files: ['components/ui/kbd.tsx'],
@@ -328,7 +335,7 @@ export const items = [
     type: 'registry:block',
     description: 'Seção de perguntas frequentes em cima do Accordion, com título e copy de apoio.',
     files: [{ src: 'components/blocks/faq-section.tsx', target: 'components/blocks/faq-section.tsx', type: 'registry:component' }],
-    registryDependencies: ['utils', 'accordion'],
+    registryDependencies: ['utils', 'accordion', 'section-header'],
   },
   {
     name: 'stat-grid',

@@ -42,6 +42,11 @@
       "description": "Divisor horizontal/vertical com variantes de espessura e cor."
     },
     {
+      "name": "section-header",
+      "type": "registry:ui",
+      "description": "Cabeçalho canônico de seção: eyebrow + h2 (text-display) + sub. Use quando compor uma seção fora dos blocks que já trazem header próprio (FAQ/Hero)."
+    },
+    {
       "name": "kbd",
       "type": "registry:ui",
       "description": "Representação visual de teclas e atalhos. Inclui KbdSequence para combinações."
