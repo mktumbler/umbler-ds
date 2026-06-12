@@ -49,6 +49,7 @@ dev.log
 # claude local
 .claude/settings.local.json
 .claude/launch.json
+.claude/commands
 
 # generated package artifacts (regenerados via build:package / prepack)
 /packages/ui/src/

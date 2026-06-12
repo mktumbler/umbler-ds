@@ -3,7 +3,7 @@
   "version": "0.2.0",
   "private": true,
   "scripts": {
-    "build:artifacts": "node scripts/build-registry.mjs && node scripts/build-llms.mjs && node scripts/build-umbler-md.mjs",
+    "build:artifacts": "node scripts/build-registry.mjs && node scripts/build-llms.mjs && node scripts/build-umbler-md.mjs && node scripts/sync-commands.mjs",
     "build:package": "node scripts/build-package.mjs",
     "check:sync": "node scripts/check-component-sync.mjs",
     "check:antipatterns": "node scripts/audit-antipatterns.mjs",
