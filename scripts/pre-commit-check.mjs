@@ -52,6 +52,17 @@ const hasComponentChange = staged.some(
 const hasChangelog  = staged.includes('data/changelog.json');
 const hasTsxStaged  = staged.some((f) => f.endsWith('.tsx') || f.endsWith('.ts'));
 
+// UMBLER.md tem 6 fontes: SKILL + tokens + 4 mdx de marketing
+const UMBLER_MD_SOURCES = [
+  '.claude-plugin/skills/umbler-ds/SKILL.md',
+  'app/tokens.css',
+  'content/docs/marketing/brand/voice.mdx',
+  'content/docs/marketing/brand/anti-patterns.mdx',
+  'content/docs/marketing/conversion/headlines.mdx',
+  'content/docs/marketing/conversion/checklist.mdx',
+];
+const hasUmblerMdSource = staged.some((f) => UMBLER_MD_SOURCES.includes(f));
+
 let blocked = false;
 
 // ── 2. Sync estrutural (sempre, se mexeu em componente) ────────────────────
@@ -71,6 +82,19 @@ if (hasComponentChange) {
   } catch {
     console.log(c('red', '\n✗ commit bloqueado: public/llms.txt desatualizado.'));
     console.log(c('dim', '  rode `npm run build:llms`, stage o arquivo e tente de novo.'));
+    blocked = true;
+  }
+}
+
+// ── 2b. UMBLER.md (bloqueia se fonte mudou e output não foi regenerado) ────
+
+if (hasUmblerMdSource) {
+  console.log(c('cyan', '\n→ pre-commit: verificando public/UMBLER.md'));
+  try {
+    execSync('node scripts/build-umbler-md.mjs --check', { stdio: 'pipe' });
+  } catch {
+    console.log(c('red', '\n✗ commit bloqueado: public/UMBLER.md desatualizado.'));
+    console.log(c('dim', '  rode `npm run build:umbler-md`, stage o arquivo e tente de novo.'));
     blocked = true;
   }
 }

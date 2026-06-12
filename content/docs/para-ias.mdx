@@ -1,0 +1,65 @@
+---
+title: Contexto para IAs (UMBLER.md)
+description: Um único arquivo com tokens, voz e regras do DS — cole no prompt do Cursor, Claude, Windsurf ou ChatGPT e a IA gera no padrão Umbler.
+---
+
+Inspirado no [designmd.co](https://www.designmd.co/), o **UMBLER.md** é um arquivo markdown único, sempre atualizado, que carrega o destilado do DS num formato que qualquer IA entende.
+
+> **TL;DR**: cole `https://umbler-ds.vercel.app/UMBLER.md` no prompt da sua IA antes de pedir LP, e-mail, apresentação ou qualquer material no padrão Umbler.
+
+## Para que serve
+
+Sem este arquivo, a IA gera "design genérico" — cores aleatórias, copy burocrática, hand-rolls de HTML. Com ele no contexto, ela tem:
+
+- **Tokens reais** (cores, tipografia, espaçamento, motion) prontos pra usar
+- **Voz e tom da marca** — mistura ideal, palavras de poder, regra de em-dash
+- **Anti-patterns** — o que nunca escrever ("solução completa", "saiba mais")
+- **Headlines de conversão** — frameworks Sugarman/Halbert/Hopkins aplicados
+- **Hierarquia componente → block → pattern** — quando combinar, quando criar
+- **URL do registry shadcn** — pra instalar componente real em vez de hand-rolled
+
+É o mesmo conteúdo da [skill do plugin Claude Code](/docs/plugin), mas como arquivo público — funciona em **qualquer IA**, sem instalação.
+
+## Como usar
+
+### Cursor / Claude Code / Windsurf
+
+No início do prompt:
+
+```
+Antes de gerar UI, leia o contexto da marca em https://umbler-ds.vercel.app/UMBLER.md.
+
+Quero uma landing page para [produto]...
+```
+
+### ChatGPT / Gemini / outros
+
+Cole o conteúdo do arquivo no início do chat ou anexe-o, depois descreva o material que quer gerar.
+
+### Em Custom GPTs / Agentes
+
+Adicione a URL como **conhecimento permanente** (Knowledge / Custom Instructions). Assim qualquer prompt nesse agente já parte com o padrão Umbler.
+
+## Como o arquivo é gerado
+
+Gerado automaticamente por `scripts/build-umbler-md.mjs` a partir das fontes vivas do DS:
+
+| Fonte | O que aporta |
+|---|---|
+| `.claude-plugin/skills/umbler-ds/SKILL.md` | Guia operacional, regras de cor/Badge/Tag |
+| `app/tokens.css` | Tokens `@theme` (cores, tipografia, spacing, motion) |
+| `content/docs/marketing/brand/voice.mdx` | Mistura de tom, palavras de poder |
+| `content/docs/marketing/brand/anti-patterns.mdx` | Reduções/erros a evitar |
+| `content/docs/marketing/conversion/headlines.mdx` | Frameworks de headline |
+| `content/docs/marketing/conversion/checklist.mdx` | Checklist final de copy |
+
+Nada é escrito à mão no UMBLER.md — toda mudança parte da fonte e o pre-commit garante que o output esteja em dia.
+
+## Sem confundir com llms.txt
+
+| Arquivo | Pra quê |
+|---|---|
+| [`/llms.txt`](https://umbler-ds.vercel.app/llms.txt) | **Catálogo técnico**: lista de componentes do DS com props, exemplos de código. Pra IA gerar TSX já consumindo o registry. |
+| [`/UMBLER.md`](https://umbler-ds.vercel.app/UMBLER.md) | **Briefing de marca**: voz, tokens, regras, antipatterns. Pra IA entender "como soa Umbler" antes de escrever copy. |
+
+Use os dois juntos: UMBLER.md pra alinhar marca e voz, llms.txt pra puxar componentes específicos.
