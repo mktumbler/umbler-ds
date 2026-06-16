@@ -29,12 +29,19 @@ export interface FAQSectionProps extends React.HTMLAttributes<HTMLElement> {
   eyebrow?: string;
   headline: string;
   items: FAQItem[];
+  /**
+   * Índice do item que vem aberto por padrão. Evita o salto vertical
+   * grande quando o usuário expande o primeiro item — a altura inicial
+   * já contempla um item aberto. Passe `null` pra começar todos fechados.
+   */
+  defaultOpen?: number | null;
 }
 
 export function FAQSection({
   eyebrow,
   headline,
   items,
+  defaultOpen = 0,
   className,
   ...props
 }: FAQSectionProps) {
@@ -51,6 +58,7 @@ export function FAQSection({
         <Accordion
           type="single"
           collapsible
+          defaultValue={defaultOpen != null ? `faq-${defaultOpen}` : undefined}
           className="rounded-2xl border border-border bg-surface"
         >
           {items.map((item, i) => (
