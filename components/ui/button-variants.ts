@@ -20,13 +20,14 @@ export const buttonVariants = cva(
         danger:
           'bg-error-500 text-white shadow-xs hover:bg-error-600 active:bg-error-700 focus-visible:ring-error-400',
       },
-      // BREAKING (v0.x): radius pill por default em todos os sizes.
-      // Decisão do brand guide — "todos os botões em formato pill, border-radius arredondado completo".
+      // Radius padrao: rounded-xl (12px) — botoes de produto com canto medio,
+      // consistente com a UI das telas (Configuracoes, Convidar atendente).
+      // Substitui o pill default da v0.x.
       size: {
-        sm: 'h-8 px-3 text-body-sm rounded-full',
-        md: 'h-10 px-4 text-body rounded-full',
-        lg: 'h-12 px-6 text-body-lg rounded-full',
-        xl: 'h-14 px-8 text-body-lg rounded-full',
+        sm: 'h-8 px-3 text-body-sm rounded-lg',
+        md: 'h-10 px-4 text-body rounded-xl',
+        lg: 'h-12 px-6 text-body-lg rounded-xl',
+        xl: 'h-14 px-8 text-body-lg rounded-2xl',
       },
       iconOnly: {
         true: 'px-0',

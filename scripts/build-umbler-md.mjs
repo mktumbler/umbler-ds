@@ -151,7 +151,7 @@ Para um material "soar Umbler", estes elementos DEVEM aparecer:
 1. **Eyebrow** acima de títulos de seção — classe \`.eyebrow\` (uppercase, letter-spacing 0.2em, cor \`--gradient-brand\`: azul sólido no light, gradiente azul→salmão no dark). É a assinatura visual nº 1 do DS.
 2. **P22 Mackinac em H1–H3, e apenas neles** — weight 500, letter-spacing negativo. De H4 para baixo (e em qualquer body), Inter.
 3. **Azul é ação, verde é estado.** Todo CTA usa \`Button variant="primary"\` (azul \`brand-500\`). Verde \`success-*\` aparece só em Badge/Tag/status ("pago", "ativo", "conectado") — NUNCA em botão.
-4. **Botões são pill** (\`rounded-full\`) — decisão de marca, já embutida no \`Button\`. Não crie botão retangular.
+4. **Botões usam radius médio** (\`rounded-lg\` em sm, \`rounded-xl\` em md/lg, \`rounded-2xl\` em xl) — já embutido no \`Button\`. Não sobreescreva o radius; use os sizes existentes.
 5. **\`shadow-cta\` no CTA principal da página** — sombra azulada que destaca o botão primário do hero (um por página, não em todos os botões).
 6. **Radius generoso e consistente** — \`radius-md\` (10px) em controles, \`radius-lg\` (16px) em cards, \`radius-2xl\` (32px) em sections/hero.
 7. **Copy direta em pt-BR** — verbo no imperativo no CTA ("Crie", "Teste", "Comece"), benefício antes de feature, zero em-dash.`;
