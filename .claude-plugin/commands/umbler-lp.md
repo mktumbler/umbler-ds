@@ -31,7 +31,7 @@ Crie `app/(marketing)/$1/page.tsx` com a estrutura canônica do produto. Importe
 Regras inegociáveis de geração:
 
 - **DS-first:** use apenas blocks e componentes do DS. Nenhum HTML/CSS hand-rolled.
-- **Eyebrow em toda seção** via prop `eyebrow` do block (jamais escrito à mão como `uppercase tracking-wide`).
+- **Eyebrow em toda seção** via prop `eyebrow` do block (jamais escrito à mão como `uppercase tracking-wide`). Quando usar a classe `.eyebrow` diretamente em seções custom, o `text-center` deve ir no elemento **pai**, não na `<p>`: `<div className="text-center"><p className="eyebrow">...</p></div>` — a classe usa `display: inline-block` e não responde a `text-align` próprio.
 - **Azul é ação, verde é estado.** CTA usa `Button variant="primary"`. Verde só em Badge/Tag de status.
 - **`shadow-cta` uma única vez** — no botão principal do hero, nenhum outro.
 - **Tokens semânticos, zero hex.** `bg-surface`, `text-foreground-muted`, `rounded-2xl` — nunca `bg-[#1a5cff]`.
