@@ -301,8 +301,8 @@ export function PricingTable({
 
               {/* Feature list */}
               <ul className="mt-8 space-y-3 border-t border-border pt-6">
-                {plan.features.map((f) => (
-                  <li key={f.label} className="flex items-start gap-3">
+                {plan.features.map((f, i) => (
+                  <li key={i} className="flex items-start gap-3">
                     {f.included ? (
                       <Check size={18} weight="bold" className="mt-0.5 shrink-0 text-brand-500" />
                     ) : (

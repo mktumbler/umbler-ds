@@ -126,7 +126,7 @@ function DSCallout({
     <Alert
       variant={variant}
       title={typeof title === 'string' ? title : undefined}
-      className="not-prose my-6 [&_a]:underline [&_code]:rounded [&_code]:bg-black/10 [&_code]:px-1 [&_code]:py-0.5 [&_code]:font-mono [&_code]:text-[0.85em] dark:[&_code]:bg-white/10 [&_p]:my-2 [&_p:first-child]:mt-0 [&_p:last-child]:mb-0 [&_pre]:my-3 [&_pre]:overflow-x-auto [&_pre]:rounded-lg [&_pre]:bg-black/15 [&_pre]:p-3 dark:[&_pre]:bg-black/40"
+      className="not-prose my-6 [&_a]:underline [&_:not(pre)>code]:rounded [&_:not(pre)>code]:bg-black/10 [&_:not(pre)>code]:px-1 [&_:not(pre)>code]:py-0.5 [&_:not(pre)>code]:font-mono [&_:not(pre)>code]:text-[0.85em] dark:[&_:not(pre)>code]:bg-white/10 [&_p]:my-2 [&_p:first-child]:mt-0 [&_p:last-child]:mb-0 [&_figure]:my-3 [&_figure]:mb-0"
     >
       {title && typeof title !== 'string' ? (
         <span className="mb-0.5 block font-semibold leading-snug">{title}</span>
