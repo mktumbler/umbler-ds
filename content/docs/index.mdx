@@ -1,80 +1,60 @@
 ---
 title: Comece aqui
-description: O Umbler DS foi feito pra ser usado com IA. Dois caminhos, um comando cada. Depois é só pedir em português.
+description: Gere landing pages Umbler em segundos. Instale os blocks, descreva o produto, a IA monta.
 ---
 
-O Umbler DS é a base de marca da Umbler: **design tokens**, **componentes** e **blocks** prontos para montar **landing pages**, **e-mails** e **produtos** — todos no mesmo padrão.
+O Umbler DS é uma coleção de **tokens de marca**, **componentes** e **blocks de landing page** distribuída via registry shadcn. O código é copiado para o seu projeto — sem dependência de runtime, totalmente editável.
 
-Tudo é distribuído via registry `shadcn`: o código é **copiado** para o seu projeto, sem dependência de runtime e totalmente editável. **Funciona melhor com IA** — Cursor, ChatGPT, Claude, Windsurf, Gemini, Copilot. Você descreve em PT, a IA monta no padrão.
+O uso principal é gerar **landing pages Umbler completas** — hero, features, pricing, FAQ, CTA — no padrão correto de marca, copy e conversão.
 
 <Callout title="Pré-requisito">
-Projeto **Next.js (App Router)** com **Tailwind CSS v4** e **TypeScript**. Os tokens usam `@theme` do Tailwind v4 — **não funciona no v3**.
+Projeto **Next.js (App Router)** com **Tailwind CSS v4** e **TypeScript**. Os tokens usam `@theme` do Tailwind v4 — não funciona no v3.
 </Callout>
 
-## Dois caminhos
+## Passo 1 — Instale os blocks de LP
 
-### Caminho A — Claude Code (recomendado)
-
-Um comando. A skill já carrega tokens, voz, regras e slash commands:
-
-```
-/plugin add umbler-ds
-```
-
-Depois fale em PT: *"Cria uma LP do produto X com hero, pricing e FAQ no padrão Umbler"*. O plugin reconhece os blocks, instala sob demanda, audita hand-rolls a cada `.tsx` editado, e dispensa qualquer outro passo.
-
-[Detalhes do plugin →](/docs/plugin)
-
-### Caminho B — Qualquer outra IA (Cursor, ChatGPT, Windsurf, Gemini, Copilot…)
-
-**1. Instale o DS** (no terminal do projeto):
+Um comando instala todos os 10 blocks necessários para landing pages:
 
 ```bash
-npx shadcn@latest init                                            # só se ainda não tem shadcn
-npx shadcn@latest add https://umbler-ds.vercel.app/r/umbler-ui    # todos os componentes
+npx shadcn@latest add https://umbler-ds.vercel.app/r/lp-kit.json
 ```
 
-**2. Carregue o briefing da marca na sua IA.** Cole esta URL nas instruções permanentes (Cursor rule, Custom Instructions do ChatGPT, system prompt):
+Isso copia Hero, Pricing, FAQ, CTA Banner, Stat Grid, Feature Cards, Feature Split, Testimonial, Logo Cloud e Site Footer para `components/blocks/` do seu projeto.
+
+## Passo 2 — Gere a LP
+
+### Com Claude Code
+
+Copie a pasta `.claude-plugin/` do [repositório do DS](https://github.com/mktumbler/umbler-ds) para o seu projeto e use o comando:
+
+```
+/umbler-lp talk
+/umbler-lp mail
+/umbler-lp hosting
+```
+
+O comando lê o catálogo de produtos (persona, dor, pricing, FAQ de cada produto Umbler) e gera a página completa usando os blocks instalados no passo 1. Produto não está no catálogo? O comando faz 3 perguntas e gera assim mesmo.
+
+### Com qualquer outra IA (Cursor, ChatGPT, Gemini…)
+
+Carregue o briefing de marca no contexto permanente da IA:
 
 ```
 https://umbler-ds.vercel.app/UMBLER.md
 ```
 
-**3. Peça em PT.** *"Cria uma LP do produto X com hero, pricing e FAQ no padrão Umbler"* — a IA reconhece os blocks, instala o que faltar e compõe.
+Depois use este prompt:
 
-<Callout type="warn" title="Um único ajuste depois do shadcn init">
-O `init` injeta um tema concorrente. Como o DS já traz o sistema completo, deixe seu `app/globals.css` apenas com:
-
-```css
-@import 'tailwindcss';
-@import './tokens.css';
+```text
+Crie uma landing page para [produto] no padrão Umbler.
+Estrutura: hero + features + pricing (3 planos) + FAQ (5 perguntas) + CTA final.
+Persona: [quem é o cliente]. Dor principal: [problema que resolve]. CTA: [ação + URL].
+Os blocks estão em components/blocks/ — importe direto, sem reinstalar.
 ```
-</Callout>
 
 ---
 
-## Por onde começar (depois de instalar)
-
-Escolha pelo que quer fazer:
-
-| Quero… | Vá para |
-| --- | --- |
-| **Montar uma landing page** | [Marketing](/docs/marketing) (voz, sequência, tipos de página) + [Blocks](/docs/blocks) (hero, pricing, CTA, FAQ) |
-| **Criar um e-mail** | [Email](/docs/email) — templates react-email com os tokens da marca |
-| **Usar os tokens da marca** (produto, IA, materiais) | [Foundations](/docs/foundations/colors) — cor, tipografia, espaçamento, motion. Fora do código: [Tokens fora do código](/docs/foundations/materiais) |
-| **Pegar um componente** (Button, Card, Input…) | [Components](/docs/components/button) |
-
-### Prompts prontos para colar
-
-Copie, cole na IA e ajuste os colchetes. Funcionam tanto em Claude Code (plugin ativo) quanto em qualquer outra IA com o UMBLER.md no contexto.
-
-**Landing page completa:**
-
-```text
-Crie uma landing page para [produto/serviço] no padrão Umbler.
-Estrutura: hero + 3 features + pricing (3 planos) + FAQ (5 perguntas) + CTA final.
-Persona: [quem é o cliente]. Dor principal: [problema que resolve].
-```
+## Outros prompts prontos
 
 **E-mail transacional:**
 
@@ -83,41 +63,21 @@ Crie um e-mail de [boas-vindas | recuperação de senha | confirmação] no padr
 Umbler, usando os templates react-email do DS. Tom mentor, sem em-dash.
 ```
 
-**Tela de produto (lista + ação):**
-
-```text
-Monte uma tela de [contatos | conversas | domínios] no padrão Umbler:
-header com busca, tabela paginada com Tag colorido por status, e empty state
-quando vazia. Usa Block DataListPage.
-```
-
-**Aplicar identidade visual em material existente:**
+**Aplicar identidade em material existente:**
 
 ```text
 Tenho [apresentação | banner | documento] sobre [tema]. Reescreva a copy no
 tom Umbler (mentor, sem jargão, sem em-dash) e aplique os tokens de cor e
-tipografia. Liste os tokens que usou.
+tipografia da marca. Liste os tokens que usou.
 ```
 
 <FoundationsOverview />
 
-## Recursos pra IA
+## Recursos para IA
 
-| Recurso | Pra quê |
+| Recurso | Para quê |
 |---|---|
-| [`/UMBLER.md`](https://umbler-ds.vercel.app/UMBLER.md) | **Briefing de marca**: voz, tokens, regras, antipatterns. Cola na instrução de qualquer IA. |
-| [`/llms.txt`](https://umbler-ds.vercel.app/llms.txt) | **Catálogo técnico**: componentes com props e exemplos. Pra IA gerar TSX preciso. |
-| [Plugin Claude Code](/docs/plugin) | Skill + `/umbler-add` + auto-audit. Pra quem usa Claude Code. |
+| [`/UMBLER.md`](https://umbler-ds.vercel.app/UMBLER.md) | Briefing de marca: voz, tokens, regras, antipatterns. Cole na instrução permanente de qualquer IA. |
+| [`/llms.txt`](https://umbler-ds.vercel.app/llms.txt) | Catálogo técnico: todos os componentes com props e exemplos de uso. |
 
-Ambos os arquivos são **regenerados automaticamente** a cada build do DS — você nunca precisa atualizar nada do seu lado.
-
-## E se eu não usar IA?
-
-Funciona igual. `shadcn add` instala o componente, você importa e usa:
-
-```tsx
-import { Button } from '@/components/ui/button';
-import { HeroBlock } from '@/components/blocks/hero-block';
-```
-
-A IA acelera, não é pré-requisito.
+Ambos são regenerados automaticamente a cada build do DS — você nunca precisa atualizar nada do seu lado.
