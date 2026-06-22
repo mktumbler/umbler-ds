@@ -1,9 +1,10 @@
 # Umbler Design System — Briefing
 
 ## O que é
-Design system Umbler em Next.js 15 + Tailwind v4 + Fumadocs.
-Produção: https://umbler-ds.vercel.app
-Plugin Claude Code: `.claude-plugin/` (instalável via marketplace Umbler)
+Sistema de geração de landing pages da Umbler. Um projeto externo instala os blocks via shadcn registry e usa o comando `/umbler-lp` para gerar LPs completas no padrão Umbler — copy, tokens, marca e conversão corretos desde o primeiro gerado.
+
+Este repo é a **fonte dos blocks e tokens**, não o destino final. Produção: https://umbler-ds.vercel.app
+Plugin Claude Code: `.claude-plugin/` (skill + `/umbler-lp` + `/umbler-add` + `/umbler-audit`)
 
 ## Stack
 - Next.js 15 (App Router) + TypeScript
@@ -60,12 +61,30 @@ Específicos do repo:
 - ✅ Feedback/containers — Card, Alert, Toast, Progress, Skeleton
 - ✅ Overlays/nav — Dialog, Sheet, Popover, Dropdown, Tooltip, Tabs, Accordion, Breadcrumbs, Pagination
 - ✅ Dados — Table, List, Timeline
-- ✅ Blocks — Hero, CTABanner, PricingTable, FAQSection, StatGrid, Testimonial, DataListPage, UserRow, EmptyState, FormPanel, FeatureCardGrid
+- ✅ Blocks de LP — Hero, CTABanner, PricingTable, FAQSection, StatGrid, Testimonial, FeatureCardGrid, FeatureSplit, LogoCloud, SiteFooter
 - ✅ Marketing/Brand/Email — guidelines, page-types, email templates
-- 🔜 Faltando — Select Combobox, DatePicker, Slider, OTP, File Upload, Command Palette
-- 🔜 Específicos Umbler/Talk — Channel Badge, Conversation Item, Filter Bar, Kanban, Tree View, Notification Center
+- ✅ Catálogo de produtos — `.claude-plugin/knowledge/products.md` (Talk, Mail, Hosting)
+- ✅ lp-kit — `npx shadcn@latest add https://umbler-ds.vercel.app/r/lp-kit.json` instala todos os blocks de LP de uma vez
+
+Componentes de app (Combobox, DatePicker, Kanban, etc.) estão fora do escopo — o foco é LP.
 
 Blocks são instaláveis avulso via registry (`type: registry:block`, caem em `components/blocks/`), fora do agregador `umbler-ui`.
+
+## Como gerar uma LP em projeto externo
+
+Este é o fluxo principal. O projeto externo não precisa conhecer o repo do DS.
+
+```bash
+# 1. Instalar todos os blocks de LP de uma vez
+npx shadcn@latest add https://umbler-ds.vercel.app/r/lp-kit.json
+
+# 2. Gerar a LP (com o plugin instalado no projeto)
+/umbler-lp talk        # lê o catálogo, gera app/(marketing)/talk/page.tsx
+/umbler-lp mail
+/umbler-lp hosting
+```
+
+O comando `/umbler-lp` lê `.claude-plugin/knowledge/products.md` (catálogo de produtos com persona, dor, pricing e FAQ) e gera a página completa usando os blocks instalados. Se o produto não estiver no catálogo, o comando faz 3 perguntas e gera assim mesmo.
 
 ## Como construir um componente novo
 1. Cria `components/ui/<nome>.tsx` (React + Tailwind, usa tokens de `app/tokens.css`)
