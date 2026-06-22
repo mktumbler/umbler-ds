@@ -9,6 +9,7 @@ import {
 import { StatGrid } from '@/components/blocks/stat-grid';
 import { FeatureCardGrid, FeatureCard } from '@/components/blocks/feature-card-grid';
 import { FeatureSplit } from '@/components/blocks/feature-split';
+import { TestimonialBlock } from '@/components/blocks/testimonial-block';
 import { PricingTable, type Plan } from '@/components/blocks/pricing-table';
 import { FAQSection } from '@/components/blocks/faq-section';
 import {
@@ -24,144 +25,217 @@ import { Button } from '@/components/ui/button';
 import { buttonVariants } from '@/components/ui/button-variants';
 import { Badge } from '@/components/ui/badge';
 import {
-  GitBranch,
-  Lock,
+  ChatCircle,
+  Robot,
+  Megaphone,
+  ChartLineUp,
   Lightning,
   Globe,
-  ChartLine,
-  Terminal,
   ArrowRight,
-  ShieldCheck,
   Clock,
 } from '@phosphor-icons/react/dist/ssr';
 
-// ── Dados da página ────────────────────────────────────────────────────────────
+// ── Dados ──────────────────────────────────────────────────────────────────────
 
 const STATS = [
-  { n: '99,9%', label: 'uptime garantido em contrato' },
-  { n: '< 80 ms', label: 'tempo médio de resposta TTFB' },
-  { n: '+40 k', label: 'sites hospedados na plataforma' },
+  { n: '+15k', label: 'empresas usam o Talk hoje' },
+  { n: '-40%', label: 'redução no tempo médio de atendimento' },
+  { n: '4,9/5', label: 'avaliação média de satisfação' },
 ];
 
 const PLANS: Plan[] = [
   {
-    id: 'start',
-    name: 'Start',
-    pitch: '512 MB RAM · 1 GB SSD · 2 vCores',
-    priceMonthly: 15,
-    priceYearly: 13,
+    id: 'basic',
+    name: 'Basic',
+    pitch: '2 atendentes incluídos',
+    priceMonthly: 89,
+    priceYearly: 69,
     ctaLabel: 'Testar grátis',
     features: [
-      { label: 'SSL gratuito (Let\'s Encrypt)', included: true },
-      { label: 'Deploy via Git/GitHub',         included: true },
-      { label: 'Monitoramento em tempo real',   included: true },
-      { label: 'CDN CloudFlare',                included: false },
-      { label: 'Acesso SSH',                    included: false },
-      { label: 'WordPress pré-configurado',     included: false },
+      { label: 'Caixa unificada de WhatsApp',    included: true },
+      { label: 'Histórico completo por conversa', included: true },
+      { label: 'App mobile para atendentes',      included: true },
+      { label: 'Chatbot visual sem código',        included: false },
+      { label: 'Campanhas em massa',               included: false },
+      { label: 'Agentes IA',                       included: false },
     ],
   },
   {
-    id: 'growth',
-    name: 'Growth',
-    pitch: '1 GB RAM · 10 GB SSD · 2 vCores',
-    priceMonthly: 24,
-    priceYearly: 21,
+    id: 'professional',
+    name: 'Professional',
+    pitch: 'por atendente (mín. 2)',
+    priceMonthly: 99,
+    priceYearly: 79,
     popular: true,
     ctaLabel: 'Testar grátis',
     features: [
-      { label: 'SSL gratuito (Let\'s Encrypt)', included: true },
-      { label: 'Deploy via Git/GitHub',         included: true },
-      { label: 'Monitoramento em tempo real',   included: true },
-      { label: 'CDN CloudFlare',                included: true },
-      { label: 'Acesso SSH',                    included: true },
-      { label: 'WordPress pré-configurado',     included: true },
+      { label: 'Caixa unificada de WhatsApp',    included: true },
+      { label: 'Histórico completo por conversa', included: true },
+      { label: 'App mobile para atendentes',      included: true },
+      { label: 'Chatbot visual sem código',        included: true },
+      { label: 'Campanhas em massa',               included: true },
+      { label: 'Agentes IA',                       included: false },
     ],
   },
   {
-    id: 'scale',
-    name: 'Scale',
-    pitch: '2 GB RAM · 20 GB SSD · 3 vCores',
-    priceMonthly: 39,
-    priceYearly: 35,
-    ctaLabel: 'Testar grátis',
+    id: 'enterprise',
+    name: 'Enterprise',
+    pitch: 'por atendente (mín. 2)',
+    priceMonthly: null,
+    priceYearly: null,
+    ctaLabel: 'Falar com especialista',
     features: [
-      { label: 'SSL gratuito (Let\'s Encrypt)', included: true },
-      { label: 'Deploy via Git/GitHub',         included: true },
-      { label: 'Monitoramento em tempo real',   included: true },
-      { label: 'CDN CloudFlare',                included: true },
-      { label: 'Acesso SSH',                    included: true },
-      { label: 'WordPress pré-configurado',     included: true },
-    ],
-  },
-  {
-    id: 'pro',
-    name: 'Pro',
-    pitch: '6 GB RAM · 40 GB SSD · 4 vCores',
-    priceMonthly: 150,
-    priceYearly: 135,
-    ctaLabel: 'Testar grátis',
-    features: [
-      { label: 'SSL gratuito (Let\'s Encrypt)', included: true },
-      { label: 'Deploy via Git/GitHub',         included: true },
-      { label: 'Monitoramento em tempo real',   included: true },
-      { label: 'CDN CloudFlare',                included: true },
-      { label: 'Acesso SSH',                    included: true },
-      { label: 'WordPress pré-configurado',     included: true },
+      { label: 'Caixa unificada de WhatsApp',    included: true },
+      { label: 'Histórico completo por conversa', included: true },
+      { label: 'App mobile para atendentes',      included: true },
+      { label: 'Chatbot visual sem código',        included: true },
+      { label: 'Campanhas em massa',               included: true },
+      { label: 'Agentes IA',                       included: true },
     ],
   },
 ];
 
 const FAQS = [
   {
-    q: 'Posso hospedar WordPress?',
-    a: 'Sim, com instalação em 1 clique e ambiente pré-otimizado para WP (PHP, MySQL e cache já configurados). Sem precisar mexer em nenhum arquivo de servidor.',
+    q: 'Preciso de um número de WhatsApp novo?',
+    a: 'Não. Você conecta o número que já usa hoje via QR Code, em menos de 5 minutos. Nenhuma migração de contatos necessária.',
   },
   {
-    q: 'O que acontece se o meu site crescer e precisar de mais recursos?',
-    a: 'Você escala RAM e SSD direto no painel, com 1 clique, sem migrar de servidor. Os recursos sobem em segundos e o site continua no ar durante o processo.',
+    q: 'Quantos atendentes posso adicionar?',
+    a: 'O plano Basic inclui 2 atendentes. No Professional e Enterprise, você adiciona quantos precisar (mínimo 2) e paga por atendente ativo no mês.',
   },
   {
-    q: 'Tenho acesso SSH ao servidor?',
-    a: 'Sim, acesso SSH disponível nos planos Growth, Scale e Pro. Você também pode usar FTPS ou fazer deploy via Git sem precisar de SSH.',
+    q: 'Funciona com Instagram e outros canais?',
+    a: 'Sim. O Talk é omnichannel: WhatsApp, Instagram DM, Webchat e e-mail num único painel. Cada canal com seu histórico separado.',
   },
   {
-    q: 'Como funciona o deploy via Git?',
-    a: 'Conecte seu repositório GitHub (ou outro), configure o branch de produção e cada push atualiza o site automaticamente. Sem FTP, sem cópia manual de arquivo.',
+    q: 'O que acontece com as conversas se um atendente sair?',
+    a: 'Todo o histórico fica na conta da empresa, nunca no celular do atendente. Quando alguém sai, o acesso é revogado em segundos e as conversas continuam visíveis para o restante da equipe.',
   },
   {
-    q: 'Há período de teste sem cartão de crédito?',
-    a: 'Sim, 7 dias grátis em qualquer plano, sem precisar cadastrar cartão. Se não ficar satisfeito, cancele sem custo.',
+    q: 'Posso testar antes de pagar?',
+    a: 'Sim, 7 dias grátis com acesso completo ao plano Professional. Sem cartão de crédito, sem compromisso.',
   },
 ];
 
-// ── Visuais placeholder ────────────────────────────────────────────────────────
+// ── Visuais ────────────────────────────────────────────────────────────────────
 
-function PainelMock() {
+function ChatMock() {
+  const conversations = [
+    { name: 'Marcos Oliveira', msg: 'Quero saber mais sobre...', time: '14:32', unread: 2, active: true },
+    { name: 'Ana Ferreira',    msg: 'Boa tarde! Vi o anúncio',   time: '14:18', unread: 0, active: false },
+    { name: 'Thiago Costa',   msg: 'Quando consigo testar?',    time: '13:55', unread: 1, active: false },
+  ];
+
   return (
     <div className="w-full overflow-hidden rounded-2xl border border-border bg-surface shadow-lg">
       <div className="flex items-center gap-1.5 border-b border-border px-4 py-3">
         <span className="h-2.5 w-2.5 rounded-full bg-error-400" />
         <span className="h-2.5 w-2.5 rounded-full bg-warning-400" />
         <span className="h-2.5 w-2.5 rounded-full bg-success-400" />
-        <span className="ml-2 text-caption text-foreground-muted">painel.umbler.com</span>
+        <span className="ml-2 text-caption text-foreground-muted">Umbler Talk</span>
       </div>
-      <div className="flex h-48 items-center justify-center bg-surface-subtle text-caption text-foreground-subtle">
-        Screenshot do painel
+      <div className="flex h-56">
+        {/* Lista de conversas */}
+        <div className="w-44 shrink-0 space-y-0.5 border-r border-border bg-surface-subtle p-2">
+          {conversations.map((c) => (
+            <div
+              key={c.name}
+              className={`flex items-start gap-2 rounded-lg px-2 py-1.5 ${c.active ? 'bg-brand-500/10' : ''}`}
+            >
+              <div className="flex size-7 shrink-0 items-center justify-center rounded-full bg-brand-100 text-caption font-semibold text-brand-700">
+                {c.name[0]}
+              </div>
+              <div className="min-w-0 flex-1">
+                <div className="flex items-center justify-between gap-1">
+                  <span className="truncate text-caption font-medium text-foreground">{c.name}</span>
+                  <span className="shrink-0 text-caption text-foreground-subtle">{c.time}</span>
+                </div>
+                <p className="truncate text-caption text-foreground-muted">{c.msg}</p>
+              </div>
+              {c.unread > 0 && (
+                <span className="size-4 flex shrink-0 items-center justify-center rounded-full bg-brand-500 text-caption text-white">
+                  {c.unread}
+                </span>
+              )}
+            </div>
+          ))}
+        </div>
+        {/* Thread */}
+        <div className="flex flex-1 flex-col justify-between p-3">
+          <div className="space-y-2">
+            <div className="flex justify-start">
+              <div className="max-w-[80%] rounded-2xl rounded-bl-sm bg-surface-subtle px-3 py-2 text-caption text-foreground">
+                Quero saber mais sobre os planos
+              </div>
+            </div>
+            <div className="flex justify-end">
+              <div className="max-w-[80%] rounded-2xl rounded-br-sm bg-brand-500 px-3 py-2 text-caption text-white">
+                Claro! Qual o tamanho da sua equipe?
+              </div>
+            </div>
+            <div className="flex justify-start">
+              <div className="max-w-[80%] rounded-2xl rounded-bl-sm bg-surface-subtle px-3 py-2 text-caption text-foreground">
+                Somos 5 atendentes hoje
+              </div>
+            </div>
+          </div>
+          <div className="flex items-center gap-2 rounded-xl border border-border bg-surface px-3 py-2">
+            <span className="flex-1 text-caption text-foreground-muted">Digite uma mensagem...</span>
+          </div>
+        </div>
       </div>
     </div>
   );
 }
 
-function GitMock() {
+function MetricsMock() {
+  const kpis = [
+    { label: 'TMA',       value: '3m 42s', delta: '-28%', positive: true },
+    { label: 'Satisfação', value: '4,9/5',  delta: '+0,3', positive: true },
+    { label: 'Abertos',   value: '14',     delta: '-3',   positive: true },
+  ];
+  const bars = [40, 65, 50, 80, 55, 90, 70];
+  const days = ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'];
+
   return (
-    <div className="w-full overflow-hidden rounded-2xl border border-border bg-neutral-950 p-5 font-mono shadow-lg">
-      <div className="space-y-1 text-caption">
-        <p className="text-success-400">$ git push origin main</p>
-        <p className="text-foreground-muted">Enumerating objects: 5, done.</p>
-        <p className="text-foreground-muted">Writing objects: 100% (3/3), done.</p>
-        <p className="text-brand-300">remote: Deploy iniciado...</p>
-        <p className="text-brand-300">remote: Build concluído em 12s</p>
-        <p className="text-success-400">remote: Site no ar. ✓</p>
+    <div className="w-full overflow-hidden rounded-2xl border border-border bg-surface shadow-lg">
+      <div className="flex items-center gap-1.5 border-b border-border px-4 py-3">
+        <span className="h-2.5 w-2.5 rounded-full bg-error-400" />
+        <span className="h-2.5 w-2.5 rounded-full bg-warning-400" />
+        <span className="h-2.5 w-2.5 rounded-full bg-success-400" />
+        <span className="ml-2 text-caption text-foreground-muted">Talk: Relatórios</span>
+      </div>
+      <div className="space-y-3 p-4">
+        <div className="grid grid-cols-3 gap-2">
+          {kpis.map((s) => (
+            <div key={s.label} className="rounded-xl bg-surface-subtle p-2.5">
+              <p className="text-caption text-foreground-muted">{s.label}</p>
+              <p className="text-body font-semibold text-foreground">{s.value}</p>
+              <p className={`text-caption font-medium ${s.positive ? 'text-success-600' : 'text-error-500'}`}>
+                {s.delta}
+              </p>
+            </div>
+          ))}
+        </div>
+        <div>
+          <p className="mb-2 text-caption text-foreground-muted">Atendimentos por dia</p>
+          <div className="flex h-14 items-end gap-1.5">
+            {bars.map((h, i) => (
+              <div key={i} className="relative flex-1 rounded-sm bg-brand-500/15">
+                <div
+                  className="absolute inset-x-0 bottom-0 rounded-sm bg-brand-500"
+                  style={{ height: `${h}%` }}
+                />
+              </div>
+            ))}
+          </div>
+          <div className="mt-1 flex justify-between text-caption text-foreground-subtle">
+            {days.map((d) => (
+              <span key={d}>{d}</span>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );
@@ -178,28 +252,27 @@ export default function ShowcasePage() {
         <HeroContent>
           <HeroEyebrow>
             <Badge variant="brand" shape="pill">
-              <ShieldCheck size={12} weight="fill" />
               7 dias grátis, sem cartão
             </Badge>
           </HeroEyebrow>
           <HeroHeadline className="text-white">
-            Seu site no ar em segundos.{' '}
-            <span className="text-brand-300">Sem servidor pra configurar.</span>
+            Seu time perde vendas porque{' '}
+            <span className="text-brand-300">o WhatsApp virou bagunça</span>
           </HeroHeadline>
           <HeroSubtext className="text-neutral-400">
-            Hospedagem cloud com SSL automático, deploy via Git e recursos que escalam
-            junto com o seu projeto. Você cuida do código. A Umbler cuida da infraestrutura.
+            O Umbler Talk organiza o atendimento de toda a equipe num único painel.
+            Sem perder conversa, sem perder cliente.
           </HeroSubtext>
           <HeroCTAGroup>
             <a
-              href="https://account.umbler.com/SignUp?App=UmblerHosting"
+              href="https://a.umbler.com/talk"
               className={buttonVariants({ variant: 'primary', size: 'lg' }) + ' shadow-cta'}
             >
               Testar 7 dias grátis
               <ArrowRight size={18} weight="bold" />
             </a>
             <Button size="lg" variant="ghost" className="text-neutral-300 hover:text-white">
-              Ver planos
+              Ver demo
             </Button>
           </HeroCTAGroup>
         </HeroContent>
@@ -210,99 +283,114 @@ export default function ShowcasePage() {
         stats={STATS}
         columns={3}
         tone="brand"
-        className="bg-neutral-950 border-y border-white/5"
+        className="border-y border-white/5 bg-neutral-950"
       />
 
       {/* Features */}
-      <section className="px-6 py-24 bg-neutral-950">
+      <section className="bg-neutral-950 px-6 py-24">
         <div className="mx-auto max-w-[1100px]">
           <div className="mx-auto mb-12 max-w-2xl text-center">
-            <p className="eyebrow mb-3">Infraestrutura</p>
-            <h2 className="font-heading text-h2 text-white mb-4">
-              Tudo que um dev precisa, sem o que um dev odeia
+            <p className="eyebrow mb-3">Funcionalidades</p>
+            <h2 className="mb-4 font-heading text-h2 text-white">
+              Tudo que você precisa para atender bem, sem o caos
             </h2>
             <p className="text-body-lg text-neutral-400">
-              Painel simples, deploy automático e recursos que crescem com o projeto.
-              Sem cPanel, sem configuração de nginx, sem surpresa.
+              Do chatbot ao agente IA, do WhatsApp ao Instagram. Um painel só para toda a equipe.
             </p>
           </div>
           <FeatureCardGrid columns={3}>
             <FeatureCard
-              icon={<GitBranch size={24} className="text-brand-400" />}
-              title="Deploy via Git"
-              description="Push no branch, site atualiza. Conecte GitHub, GitLab ou Bitbucket em 2 minutos."
+              icon={<ChatCircle size={24} className="text-brand-400" />}
+              title="Caixa unificada"
+              description="Toda a equipe atende no mesmo painel. Cada conversa com histórico completo e atendente responsável."
             />
             <FeatureCard
-              icon={<Lock size={24} className="text-brand-400" />}
-              title="SSL automático"
-              description="Let's Encrypt configurado e renovado automaticamente. HTTPS ativo em todos os domínios."
+              icon={<Robot size={24} className="text-brand-400" />}
+              title="Chatbot sem código"
+              description="Monte fluxos de atendimento arrastando blocos. Qualifica lead e responde fora do horário automaticamente."
             />
             <FeatureCard
-              icon={<Globe size={24} className="text-brand-400" />}
-              title="CDN CloudFlare"
-              description="Ative o CloudFlare com 1 clique. Conteúdo entregue do servidor mais próximo do visitante."
+              icon={<Megaphone size={24} className="text-brand-400" />}
+              title="Campanhas em massa"
+              description="Envie mensagens personalizadas para listas segmentadas. Com nome, empresa e produto de cada contato."
             />
             <FeatureCard
-              icon={<ChartLine size={24} className="text-brand-400" />}
-              title="Monitoramento em tempo real"
-              description="Veja RAM, CPU e disco no painel. Saiba antes do cliente quando algo vai mal."
+              icon={<ChartLineUp size={24} className="text-brand-400" />}
+              title="Relatórios por atendente"
+              description="Tempo de resposta, volume e avaliação de cada atendente. Tome decisões com dados reais, sem planilha manual."
             />
             <FeatureCard
               icon={<Lightning size={24} className="text-brand-400" />}
-              title="WordPress pré-configurado"
-              description="Instale WP em 1 clique com PHP e MySQL otimizados. Sem configuração de servidor."
+              title="Agentes IA"
+              description="IA que resolve atendimentos simples sem intervenção humana. Transfere para pessoa quando necessário."
             />
             <FeatureCard
-              icon={<Terminal size={24} className="text-brand-400" />}
-              title="Acesso SSH e FTPS"
-              description="Acesso completo ao servidor quando você precisar. Para devs que gostam de terminal."
+              icon={<Globe size={24} className="text-brand-400" />}
+              title="Omnichannel"
+              description="WhatsApp, Instagram DM, Webchat e e-mail num único painel. Cada canal com histórico separado."
             />
           </FeatureCardGrid>
         </div>
       </section>
 
-      {/* Feature Split 1: Painel */}
+      {/* Feature Split 1: Caixa unificada */}
       <FeatureSplit
-        eyebrow="Painel"
-        title="Gerenciar 10 sites é tão simples quanto gerenciar 1"
-        body="Veja todos os seus projetos num único painel. Acesse logs, métricas, domínios e configurações sem abrir terminal."
+        eyebrow="Caixa unificada"
+        title="Toda a equipe atende, ninguém pisa no calo do outro"
+        body="Chega de dois atendentes respondendo o mesmo cliente com informações diferentes, ou mensagem sem resposta porque ninguém viu. O Talk distribui as conversas, mostra quem está atendendo e mantém o histórico completo para qualquer pessoa da equipe continuar."
         bullets={[
-          'Acesso compartilhado por projeto: dê acesso ao cliente sem expor os outros',
-          'Métricas de RAM, CPU e disco em tempo real',
-          'Gerenciador de domínios e DNS integrado',
+          'Atribuição de conversa por atendente ou automática por fila',
+          'Histórico completo: mesmo que o atendente saia, a conversa fica',
+          'Status de leitura e resposta em tempo real para gestores',
         ]}
-        cta={{ label: 'Ver o painel', href: 'https://account.umbler.com/SignUp?App=UmblerHosting' }}
-        visual={<PainelMock />}
+        cta={{ label: 'Testar grátis', href: 'https://a.umbler.com/talk' }}
+        visual={<ChatMock />}
         className="bg-surface px-6 py-24"
       />
 
-      {/* Feature Split 2: Deploy */}
+      {/* Feature Split 2: Relatórios */}
       <FeatureSplit
-        eyebrow="Deploy"
-        title="Atualize o site sem abrir FTP nunca mais"
-        body="Conecte seu repositório e configure o branch de produção. Cada push atualiza o site automaticamente em segundos."
+        eyebrow="Relatórios"
+        title="Saiba quem atende bem e quem precisa de ajuda"
+        body="Tempo médio de atendimento, volume por canal, avaliação de satisfação e desempenho por atendente. Tudo atualizado em tempo real, sem planilha manual nem exportação toda segunda-feira."
         bullets={[
-          'Suporte a GitHub, GitLab e Bitbucket',
-          'Deploy automático a cada push no branch configurado',
-          'Rollback com 1 clique se algo der errado',
+          'Métricas por atendente: TMA, volume e avaliação de satisfação',
+          'Alertas automáticos quando o tempo de resposta passa do limite',
+          'Exportação de relatórios para CSV ou integração via API',
         ]}
-        cta={{ label: 'Testar grátis', href: 'https://account.umbler.com/SignUp?App=UmblerHosting' }}
-        visual={<GitMock />}
+        cta={{ label: 'Testar grátis', href: 'https://a.umbler.com/talk' }}
+        visual={<MetricsMock />}
         reverse
         className="bg-neutral-950 px-6 py-24"
       />
 
-      {/* Pricing */}
+      {/* Testimonial */}
       <section className="bg-surface px-6 py-24">
+        <div className="mx-auto max-w-[800px]">
+          <TestimonialBlock
+            testimonial={{
+              quote: 'Antes a gente perdia venda porque dois atendentes respondiam o mesmo cliente com informações diferentes. Com o Talk, cada conversa tem um dono e o histórico nunca some. Em 30 dias o tempo de resposta caiu pela metade.',
+              author: 'Rodrigo Menezes',
+              role: 'Gerente Comercial',
+              company: 'Clínica Vida Plena',
+              avatarInitials: 'RM',
+            }}
+            stars={5}
+            variant="centered"
+          />
+        </div>
+      </section>
+
+      {/* Pricing */}
+      <section className="bg-neutral-950 px-6 py-24">
         <div className="mx-auto max-w-[1100px]">
           <div className="mx-auto mb-12 max-w-xl text-center">
             <p className="eyebrow mb-3">Planos</p>
-            <h2 className="font-heading text-h2 mb-3">
-              Comece pequeno. Escale sem migrar
+            <h2 className="mb-3 font-heading text-h2 text-white">
+              Comece com 2 atendentes, escale sem migrar
             </h2>
-            <p className="text-body-lg text-foreground-muted">
-              Recursos elásticos: suba RAM e SSD no painel conforme o projeto cresce,
-              sem precisar mudar de servidor.
+            <p className="text-body-lg text-neutral-400">
+              Todos os planos incluem 7 dias de teste grátis. Sem cartão de crédito.
             </p>
           </div>
           <PricingTable
@@ -310,7 +398,8 @@ export default function ShowcasePage() {
             defaultPeriod="yearly"
             footer={
               <p className="mt-6 text-center text-caption text-foreground-muted">
-                7 dias grátis em qualquer plano. Sem cartão de crédito. Cancele quando quiser.
+                Preços em reais. Planos Professional e Enterprise cobrados por atendente ativo.
+                Cancele quando quiser, sem multa.
               </p>
             }
           />
@@ -323,27 +412,27 @@ export default function ShowcasePage() {
         headline="Perguntas frequentes"
         items={FAQS}
         defaultOpen={0}
-        className="bg-neutral-950"
+        className="bg-surface"
       />
 
       {/* CTA Final */}
-      <CTABanner variant="premium">
+      <CTABanner variant="glow">
         <CTAEyebrow>
           <CTATrustPill icon={<Clock size={14} />}>
-            Pronto em segundos. Sem cartão de crédito.
+            Sem cartão de crédito. Cancele quando quiser.
           </CTATrustPill>
         </CTAEyebrow>
         <CTAHeadline>
-          Pare de brigar com servidor.
+          Seu time pode atender melhor.
           <br />
-          Comece a entregar.
+          Comece hoje.
         </CTAHeadline>
         <CTASubtext>
-          Teste 7 dias grátis em qualquer plano. Se não ficar satisfeito, cancele sem custo.
+          7 dias grátis com acesso completo. Configure em minutos, sem precisar de TI.
         </CTASubtext>
         <CTAActions>
           <a
-            href="https://account.umbler.com/SignUp?App=UmblerHosting"
+            href="https://a.umbler.com/talk"
             className={buttonVariants({ variant: 'primary', size: 'xl' })}
           >
             Testar 7 dias grátis
@@ -362,25 +451,25 @@ export default function ShowcasePage() {
           {
             title: 'Produtos',
             links: [
-              { label: 'Hospedagem', href: 'https://umbler.com/hospedagem' },
-              { label: 'Umbler Talk', href: 'https://umbler.com/talk' },
-              { label: 'Umbler Mail', href: 'https://umbler.com/mail' },
+              { label: 'Umbler Talk',  href: 'https://umbler.com/talk' },
+              { label: 'Umbler Mail',  href: 'https://umbler.com/mail' },
+              { label: 'Hospedagem',   href: 'https://umbler.com/hospedagem' },
             ],
           },
           {
             title: 'Recursos',
             links: [
               { label: 'Documentação', href: 'https://umbler-ds.vercel.app/docs' },
-              { label: 'Status', href: 'https://status.umbler.com' },
-              { label: 'Blog', href: 'https://umbler.com/blog' },
+              { label: 'Status',        href: 'https://status.umbler.com' },
+              { label: 'Blog',          href: 'https://umbler.com/blog' },
             ],
           },
           {
             title: 'Empresa',
             links: [
               { label: 'Sobre a Umbler', href: 'https://umbler.com/sobre' },
-              { label: 'Contato', href: 'https://umbler.com/contato' },
-              { label: 'Privacidade', href: 'https://umbler.com/privacidade' },
+              { label: 'Contato',         href: 'https://umbler.com/contato' },
+              { label: 'Privacidade',     href: 'https://umbler.com/privacidade' },
             ],
           },
         ]}
@@ -388,7 +477,7 @@ export default function ShowcasePage() {
         copyright="© 2026 Umbler. Todos os direitos reservados."
         legal={[
           { label: 'Termos de uso', href: 'https://umbler.com/termos' },
-          { label: 'Privacidade', href: 'https://umbler.com/privacidade' },
+          { label: 'Privacidade',    href: 'https://umbler.com/privacidade' },
         ]}
       />
     </main>
