@@ -216,14 +216,16 @@ export default function ShowcasePage() {
       {/* Features */}
       <section className="px-6 py-24 bg-neutral-950">
         <div className="mx-auto max-w-[1100px]">
-          <p className="eyebrow mb-3 text-center">Infraestrutura</p>
-          <h2 className="font-heading text-h2 text-center text-white mb-4">
-            Tudo que um dev precisa, sem o que um dev odeia
-          </h2>
-          <p className="text-body-lg text-neutral-400 text-center mb-12 max-w-2xl mx-auto">
-            Painel simples, deploy automático e recursos que crescem com o projeto.
-            Sem cPanel, sem configuração de nginx, sem surpresa.
-          </p>
+          <div className="mx-auto mb-12 max-w-2xl text-center">
+            <p className="eyebrow mb-3">Infraestrutura</p>
+            <h2 className="font-heading text-h2 text-white mb-4">
+              Tudo que um dev precisa, sem o que um dev odeia
+            </h2>
+            <p className="text-body-lg text-neutral-400">
+              Painel simples, deploy automático e recursos que crescem com o projeto.
+              Sem cPanel, sem configuração de nginx, sem surpresa.
+            </p>
+          </div>
           <FeatureCardGrid columns={3}>
             <FeatureCard
               icon={<GitBranch size={24} className="text-brand-400" />}
@@ -293,14 +295,16 @@ export default function ShowcasePage() {
       {/* Pricing */}
       <section className="bg-surface px-6 py-24">
         <div className="mx-auto max-w-[1100px]">
-          <p className="eyebrow mb-3 text-center">Planos</p>
-          <h2 className="font-heading text-h2 text-center mb-3">
-            Comece pequeno. Escale sem migrar
-          </h2>
-          <p className="text-body-lg text-foreground-muted text-center mb-12 max-w-xl mx-auto">
-            Recursos elásticos: suba RAM e SSD no painel conforme o projeto cresce,
-            sem precisar mudar de servidor.
-          </p>
+          <div className="mx-auto mb-12 max-w-xl text-center">
+            <p className="eyebrow mb-3">Planos</p>
+            <h2 className="font-heading text-h2 mb-3">
+              Comece pequeno. Escale sem migrar
+            </h2>
+            <p className="text-body-lg text-foreground-muted">
+              Recursos elásticos: suba RAM e SSD no painel conforme o projeto cresce,
+              sem precisar mudar de servidor.
+            </p>
+          </div>
           <PricingTable
             plans={PLANS}
             defaultPeriod="yearly"
