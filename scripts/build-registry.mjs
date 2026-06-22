@@ -14,7 +14,7 @@ import { readFile, writeFile, mkdir } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { items, AGGREGATOR, REGISTRY_BASE } from './registry.manifest.mjs';
+import { items, AGGREGATOR, LP_KIT, REGISTRY_BASE } from './registry.manifest.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const OUT_DIR = path.join(ROOT, 'registry');
@@ -100,6 +100,25 @@ async function buildAggregator() {
   return json;
 }
 
+async function buildLpKit() {
+  const json = {
+    $schema: SCHEMA,
+    name: LP_KIT.name,
+    type: LP_KIT.type,
+    description: LP_KIT.description,
+    dependencies: [],
+    registryDependencies: LP_KIT.blocks.map(resolveDep),
+    files: [],
+  };
+
+  await writeFile(
+    path.join(OUT_DIR, `${LP_KIT.name}.json`),
+    JSON.stringify(json, null, 2) + '\n',
+    'utf-8'
+  );
+  return json;
+}
+
 async function main() {
   if (!existsSync(OUT_DIR)) await mkdir(OUT_DIR, { recursive: true });
 
@@ -109,6 +128,7 @@ async function main() {
     count++;
   }
   await buildAggregator();
+  await buildLpKit();
 
   // índice navegável (opcional, útil para debug/listagem)
   const index = {
@@ -116,6 +136,7 @@ async function main() {
     items: [
       ...items.map((i) => ({ name: i.name, type: i.type ?? 'registry:ui', description: i.description })),
       { name: AGGREGATOR.name, type: AGGREGATOR.type, description: AGGREGATOR.description },
+      { name: LP_KIT.name, type: LP_KIT.type, description: LP_KIT.description },
     ],
   };
   await writeFile(
@@ -124,7 +145,7 @@ async function main() {
     'utf-8'
   );
 
-  console.log(`✓ registry gerado: ${count} itens + agregador "${AGGREGATOR.name}" + index.json`);
+  console.log(`✓ registry gerado: ${count} itens + agregador "${AGGREGATOR.name}" + lp-kit "${LP_KIT.name}" + index.json`);
 }
 
 main().catch((err) => {

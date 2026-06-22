@@ -412,3 +412,22 @@ export const AGGREGATOR = {
   type: 'registry:ui',
   description: 'Instala todo o Umbler DS de uma vez: componentes, utilitários e tokens. Use para bootstrapar um projeto novo.',
 };
+
+/** Blocks de landing page — instalados de uma vez via lp-kit. */
+export const LP_KIT = {
+  name: 'lp-kit',
+  type: 'registry:block',
+  description: 'Instala todos os blocks de landing page Umbler de uma vez: Hero, StatGrid, FeatureCardGrid, FeatureSplit, PricingTable, FAQSection, CTABanner, TestimonialBlock, LogoCloud e SiteFooter.',
+  blocks: [
+    'hero-block',
+    'stat-grid',
+    'feature-card-grid',
+    'feature-split',
+    'pricing-table',
+    'faq-section',
+    'cta-banner',
+    'testimonial-block',
+    'logo-cloud',
+    'site-footer',
+  ],
+};
