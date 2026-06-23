@@ -1,12 +1,4 @@
-import {
-  HeroContent,
-  HeroEyebrow,
-  HeroHeadline,
-  HeroSubtext,
-  HeroCTAGroup,
-} from '@/components/blocks/hero-block';
 import { HeroBackground } from '@/components/ui/hero-background';
-import { SocialProofPill } from '@/components/ui/social-proof-pill';
 import { StatGrid } from '@/components/blocks/stat-grid';
 import { FeatureSplit } from '@/components/blocks/feature-split';
 import { TestimonialGrid, type TestimonialItem } from '@/components/blocks/testimonial-grid';
@@ -24,7 +16,6 @@ import { SiteFooter } from '@/components/blocks/site-footer';
 import { CardAurora } from '@/components/ui/card-aurora';
 import { Button } from '@/components/ui/button';
 import { buttonVariants } from '@/components/ui/button-variants';
-import { Badge } from '@/components/ui/badge';
 import {
   ChatCircle,
   Robot,
@@ -35,6 +26,13 @@ import {
   ArrowRight,
   Clock,
 } from '@phosphor-icons/react/dist/ssr';
+import { ShowcaseHeroContent } from './hero-content';
+import {
+  FadeInSection,
+  ScaleIn,
+  StaggerContainer,
+  StaggerItem,
+} from './motion-wrappers';
 
 // ── Dados ──────────────────────────────────────────────────────────────────────
 
@@ -161,7 +159,6 @@ function ChatMock() {
         <span className="ml-2 text-caption text-foreground-muted">Umbler Talk</span>
       </div>
       <div className="flex h-56">
-        {/* Lista de conversas */}
         <div className="w-44 shrink-0 space-y-0.5 border-r border-border bg-surface-subtle p-2">
           {conversations.map((c) => (
             <div
@@ -186,7 +183,6 @@ function ChatMock() {
             </div>
           ))}
         </div>
-        {/* Thread */}
         <div className="flex flex-1 flex-col justify-between p-3">
           <div className="space-y-2">
             <div className="flex justify-start">
@@ -272,50 +268,26 @@ export default function ShowcasePage() {
   return (
     <main className="bg-neutral-950 text-foreground">
 
-      {/* Hero com background SVG blob */}
+      {/* Hero: background SVG blob + conteúdo animado */}
       <HeroBackground variant="arc" className="px-6 pb-20 pt-24">
-        <HeroContent>
-          <HeroEyebrow>
-            <Badge variant="brand" shape="pill">
-              7 dias grátis, sem cartão
-            </Badge>
-          </HeroEyebrow>
-          <HeroHeadline className="text-white">
-            Seu time perde vendas porque{' '}
-            <span className="text-brand-300">o WhatsApp virou bagunça</span>
-          </HeroHeadline>
-          <HeroSubtext className="text-neutral-400">
-            O Umbler Talk organiza o atendimento de toda a equipe num único painel.
-            Sem perder conversa, sem perder cliente.
-          </HeroSubtext>
-          <HeroCTAGroup>
-            <a
-              href="https://a.umbler.com/talk"
-              className={buttonVariants({ variant: 'primary', size: 'lg' }) + ' shadow-cta'}
-            >
-              Testar 7 dias grátis
-              <ArrowRight size={18} weight="bold" />
-            </a>
-            <Button size="lg" variant="ghost" className="text-neutral-300 hover:text-white">
-              Ver demo
-            </Button>
-          </HeroCTAGroup>
-          <SocialProofPill className="mt-4" />
-        </HeroContent>
+        <ShowcaseHeroContent />
       </HeroBackground>
 
       {/* Stats */}
-      <StatGrid
-        stats={STATS}
-        columns={3}
-        tone="brand"
-        className="border-y border-white/5 bg-neutral-950"
-      />
+      <FadeInSection>
+        <StatGrid
+          stats={STATS}
+          columns={3}
+          tone="brand"
+          className="border-y border-white/5 bg-neutral-950"
+        />
+      </FadeInSection>
 
       {/* Features: Bento grid com CardAurora */}
       <section className="bg-neutral-950 px-6 py-24">
         <div className="mx-auto max-w-[1100px]">
-          <div className="mx-auto mb-12 max-w-xl text-center">
+
+          <FadeInSection className="mx-auto mb-12 max-w-xl text-center">
             <p className="eyebrow mb-3">Funcionalidades</p>
             <h2 className="mb-4 font-heading text-h2 text-white">
               Construído para quem não pode perder nenhuma conversa
@@ -323,14 +295,14 @@ export default function ShowcasePage() {
             <p className="text-body-lg text-neutral-400">
               Caixa unificada, chatbot sem código e agentes IA num único painel para toda a equipe.
             </p>
-          </div>
+          </FadeInSection>
 
-          <div
+          {/* Bento principal 2x2 + 2 */}
+          <StaggerContainer
             className="grid grid-cols-1 md:grid-cols-3 gap-4"
             style={{ minHeight: '420px', gridTemplateRows: 'auto auto' }}
           >
-            {/* Card principal 2x2 */}
-            <div className="md:col-span-2 md:row-span-2">
+            <StaggerItem className="md:col-span-2 md:row-span-2">
               <CardAurora
                 icon={<ChatCircle size={22} weight="fill" />}
                 label="Caixa unificada"
@@ -340,104 +312,116 @@ export default function ShowcasePage() {
                 rotation="diagonal"
                 className="h-full min-h-[280px]"
               />
-            </div>
+            </StaggerItem>
+            <StaggerItem>
+              <CardAurora
+                icon={<Robot size={22} weight="fill" />}
+                label="Chatbot sem código"
+                title="Qualifique leads fora do horário, sem escrever uma linha"
+                blob="prism"
+                rotation="default"
+                className="h-full min-h-[140px]"
+              />
+            </StaggerItem>
+            <StaggerItem>
+              <CardAurora
+                icon={<Lightning size={22} weight="fill" />}
+                label="Agentes IA"
+                title="IA que resolve, transfere quando necessário"
+                blob="prism"
+                rotation="diagonal"
+                className="h-full min-h-[140px]"
+              />
+            </StaggerItem>
+          </StaggerContainer>
 
-            {/* Card pequeno 1 */}
-            <CardAurora
-              icon={<Robot size={22} weight="fill" />}
-              label="Chatbot sem código"
-              title="Qualifique leads fora do horário, sem escrever uma linha"
-              blob="prism"
-              rotation="default"
-              className="h-full min-h-[140px]"
-            />
-
-            {/* Card pequeno 2 */}
-            <CardAurora
-              icon={<Lightning size={22} weight="fill" />}
-              label="Agentes IA"
-              title="IA que resolve, transfere quando necessário"
-              blob="prism"
-              rotation="diagonal"
-              className="h-full min-h-[140px]"
-            />
-          </div>
-
-          {/* Segunda linha de cards menores */}
-          <div className="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <CardAurora
-              icon={<Megaphone size={22} weight="fill" />}
-              label="Campanhas em massa"
-              title="Mensagens personalizadas para listas segmentadas"
-              blob="prism"
-              rotation="default"
-              className="h-full min-h-[120px]"
-            />
-            <CardAurora
-              icon={<ChartLineUp size={22} weight="fill" />}
-              label="Relatórios"
-              title="TMA, volume e satisfação por atendente"
-              blob="prism"
-              rotation="diagonal"
-              className="h-full min-h-[120px]"
-            />
-            <CardAurora
-              icon={<Globe size={22} weight="fill" />}
-              label="Omnichannel"
-              title="WhatsApp, Instagram, Webchat e e-mail num só lugar"
-              blob="prism"
-              rotation="default"
-              className="h-full min-h-[120px]"
-            />
-          </div>
+          {/* Segunda linha de cards */}
+          <StaggerContainer className="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <StaggerItem>
+              <CardAurora
+                icon={<Megaphone size={22} weight="fill" />}
+                label="Campanhas em massa"
+                title="Mensagens personalizadas para listas segmentadas"
+                blob="prism"
+                rotation="default"
+                className="h-full min-h-[120px]"
+              />
+            </StaggerItem>
+            <StaggerItem>
+              <CardAurora
+                icon={<ChartLineUp size={22} weight="fill" />}
+                label="Relatórios"
+                title="TMA, volume e satisfação por atendente"
+                blob="prism"
+                rotation="diagonal"
+                className="h-full min-h-[120px]"
+              />
+            </StaggerItem>
+            <StaggerItem>
+              <CardAurora
+                icon={<Globe size={22} weight="fill" />}
+                label="Omnichannel"
+                title="WhatsApp, Instagram, Webchat e e-mail num só lugar"
+                blob="prism"
+                rotation="default"
+                className="h-full min-h-[120px]"
+              />
+            </StaggerItem>
+          </StaggerContainer>
         </div>
       </section>
 
-      {/* Feature Split 1: Caixa unificada */}
-      <FeatureSplit
-        eyebrow="Caixa unificada"
-        title="Toda a equipe atende, ninguém pisa no calo do outro"
-        body="Chega de dois atendentes respondendo o mesmo cliente com informações diferentes, ou mensagem sem resposta porque ninguém viu. O Talk distribui as conversas, mostra quem está atendendo e mantém o histórico completo para qualquer pessoa da equipe continuar."
-        bullets={[
-          'Atribuição de conversa por atendente ou automática por fila',
-          'Histórico completo: mesmo que o atendente saia, a conversa fica',
-          'Status de leitura e resposta em tempo real para gestores',
-        ]}
-        cta={{ label: 'Testar grátis', href: 'https://a.umbler.com/talk' }}
-        visual={<ChatMock />}
-        className="bg-surface px-6 py-24"
-      />
+      {/* Feature Split 1 */}
+      <FadeInSection>
+        <FeatureSplit
+          eyebrow="Caixa unificada"
+          title="Toda a equipe atende, ninguém pisa no calo do outro"
+          body="Chega de dois atendentes respondendo o mesmo cliente com informações diferentes, ou mensagem sem resposta porque ninguém viu. O Talk distribui as conversas, mostra quem está atendendo e mantém o histórico completo para qualquer pessoa da equipe continuar."
+          bullets={[
+            'Atribuição de conversa por atendente ou automática por fila',
+            'Histórico completo: mesmo que o atendente saia, a conversa fica',
+            'Status de leitura e resposta em tempo real para gestores',
+          ]}
+          cta={{ label: 'Testar grátis', href: 'https://a.umbler.com/talk' }}
+          visual={<ChatMock />}
+          className="bg-surface px-6 py-24"
+        />
+      </FadeInSection>
 
-      {/* Feature Split 2: Relatórios */}
-      <FeatureSplit
-        eyebrow="Relatórios"
-        title="Saiba quem atende bem e quem precisa de ajuda"
-        body="Tempo médio de atendimento, volume por canal, avaliação de satisfação e desempenho por atendente. Tudo atualizado em tempo real, sem planilha manual nem exportação toda segunda-feira."
-        bullets={[
-          'Métricas por atendente: TMA, volume e avaliação de satisfação',
-          'Alertas automáticos quando o tempo de resposta passa do limite',
-          'Exportação de relatórios para CSV ou integração via API',
-        ]}
-        cta={{ label: 'Testar grátis', href: 'https://a.umbler.com/talk' }}
-        visual={<MetricsMock />}
-        reverse
-        className="bg-neutral-950 px-6 py-24"
-      />
+      {/* Feature Split 2 */}
+      <FadeInSection>
+        <FeatureSplit
+          eyebrow="Relatórios"
+          title="Saiba quem atende bem e quem precisa de ajuda"
+          body="Tempo médio de atendimento, volume por canal, avaliação de satisfação e desempenho por atendente. Tudo atualizado em tempo real, sem planilha manual nem exportação toda segunda-feira."
+          bullets={[
+            'Métricas por atendente: TMA, volume e avaliação de satisfação',
+            'Alertas automáticos quando o tempo de resposta passa do limite',
+            'Exportação de relatórios para CSV ou integração via API',
+          ]}
+          cta={{ label: 'Testar grátis', href: 'https://a.umbler.com/talk' }}
+          visual={<MetricsMock />}
+          reverse
+          className="bg-neutral-950 px-6 py-24"
+        />
+      </FadeInSection>
 
       {/* Depoimentos */}
-      <TestimonialGrid
-        eyebrow="Depoimentos"
-        headline="Quem usa, recomenda"
-        subheadline="Mais de 15 mil empresas organizam o atendimento com o Umbler Talk."
-        testimonials={TESTIMONIALS}
-        variant="wall"
-        className="bg-surface"
-      />
+      <FadeInSection>
+        <TestimonialGrid
+          eyebrow="Depoimentos"
+          headline="Quem usa, recomenda"
+          subheadline="Mais de 15 mil empresas organizam o atendimento com o Umbler Talk."
+          testimonials={TESTIMONIALS}
+          variant="wall"
+          className="bg-surface"
+        />
+      </FadeInSection>
 
       {/* Pricing */}
       <section className="bg-neutral-950 px-6 py-24">
         <div className="mx-auto max-w-[1100px]">
-          <div className="mx-auto mb-12 max-w-xl text-center">
+          <FadeInSection className="mx-auto mb-12 max-w-xl text-center">
             <p className="eyebrow mb-3">Planos</p>
             <h2 className="mb-3 font-heading text-h2 text-white">
               Comece com 2 atendentes, escale sem migrar
@@ -445,57 +429,63 @@ export default function ShowcasePage() {
             <p className="text-body-lg text-neutral-400">
               Todos os planos incluem 7 dias de teste grátis. Sem cartão de crédito.
             </p>
-          </div>
-          <PricingTable
-            plans={PLANS}
-            defaultPeriod="yearly"
-            footer={
-              <p className="mt-6 text-center text-caption text-foreground-muted">
-                Preços em reais. Planos Professional e Enterprise cobrados por atendente ativo.
-                Cancele quando quiser, sem multa.
-              </p>
-            }
-          />
+          </FadeInSection>
+          <FadeInSection>
+            <PricingTable
+              plans={PLANS}
+              defaultPeriod="yearly"
+              footer={
+                <p className="mt-6 text-center text-caption text-foreground-muted">
+                  Preços em reais. Planos Professional e Enterprise cobrados por atendente ativo.
+                  Cancele quando quiser, sem multa.
+                </p>
+              }
+            />
+          </FadeInSection>
         </div>
       </section>
 
       {/* FAQ */}
-      <FAQSection
-        eyebrow="Dúvidas"
-        headline="Perguntas frequentes"
-        items={FAQS}
-        defaultOpen={0}
-        className="bg-surface"
-      />
+      <FadeInSection>
+        <FAQSection
+          eyebrow="Dúvidas"
+          headline="Perguntas frequentes"
+          items={FAQS}
+          defaultOpen={0}
+          className="bg-surface"
+        />
+      </FadeInSection>
 
       {/* CTA Final */}
-      <CTABanner variant="glow">
-        <CTAEyebrow>
-          <CTATrustPill icon={<Clock size={14} />}>
-            Sem cartão de crédito. Cancele quando quiser.
-          </CTATrustPill>
-        </CTAEyebrow>
-        <CTAHeadline>
-          Seu time pode atender melhor.
-          <br />
-          Comece hoje.
-        </CTAHeadline>
-        <CTASubtext>
-          7 dias grátis com acesso completo. Configure em minutos, sem precisar de TI.
-        </CTASubtext>
-        <CTAActions>
-          <a
-            href="https://a.umbler.com/talk"
-            className={buttonVariants({ variant: 'primary', size: 'xl' })}
-          >
-            Testar 7 dias grátis
-            <ArrowRight size={20} weight="bold" />
-          </a>
-          <Button size="xl" variant="ghost" className="text-white/70 hover:text-white">
-            Falar com especialista
-          </Button>
-        </CTAActions>
-      </CTABanner>
+      <ScaleIn>
+        <CTABanner variant="glow">
+          <CTAEyebrow>
+            <CTATrustPill icon={<Clock size={14} />}>
+              Sem cartão de crédito. Cancele quando quiser.
+            </CTATrustPill>
+          </CTAEyebrow>
+          <CTAHeadline>
+            Seu time pode atender melhor.
+            <br />
+            Comece hoje.
+          </CTAHeadline>
+          <CTASubtext>
+            7 dias grátis com acesso completo. Configure em minutos, sem precisar de TI.
+          </CTASubtext>
+          <CTAActions>
+            <a
+              href="https://a.umbler.com/talk"
+              className={buttonVariants({ variant: 'primary', size: 'xl' })}
+            >
+              Testar 7 dias grátis
+              <ArrowRight size={20} weight="bold" />
+            </a>
+            <Button size="xl" variant="ghost" className="text-white/70 hover:text-white">
+              Falar com especialista
+            </Button>
+          </CTAActions>
+        </CTABanner>
+      </ScaleIn>
 
       {/* Footer */}
       <SiteFooter
