@@ -11,6 +11,7 @@ export default function Layout({ children }: { children: ReactNode }) {
       tree={source.pageTree}
       {...baseOptions}
       sidebar={{
+        tabs: false,
         footer: <SidebarMetaLinks />,
       }}
       themeSwitch={{
