@@ -594,6 +594,26 @@ import { HeroBackground } from '@/components/ui/hero-background';
 - Fundo escuro fixo \`rgb(3,6,20)\` com glow SVG azul (blur + mix-blend-mode)
 - Coloque conteúdo em \`relative z-10\` para ficar sobre o blob`,
 
+  'social-proof-pill': `\`\`\`tsx
+import { SocialProofPill } from '@/components/ui/social-proof-pill';
+
+// Padrão: +15k, avatares do pravatar.cc
+<SocialProofPill />
+
+// Customizado
+<SocialProofPill count="+50k" label="clientes satisfeitos" className="mt-4" />
+
+// Com avatares próprios
+<SocialProofPill
+  count="+15k"
+  avatars={['https://...foto1', 'https://...foto2', 'https://...foto3', 'https://...foto4']}
+/>
+\`\`\`
+- count: string — número em destaque (padrão: "+15k")
+- label: string — texto após o número (padrão: "empresas usam hoje")
+- avatars: string[] — URLs de imagem dos avatares (padrão: 4 fotos do pravatar.cc)
+- Server component, sem deps de cliente — seguro em qualquer layout`,
+
   // ── Blocks — organismos compostos (instale avulso; caem em components/blocks/) ──
 
   'hero-block': `Abertura de landing. Instale: \`npx shadcn add https://umbler-ds.vercel.app/r/hero-block\`

@@ -34,7 +34,6 @@ import {
   Globe,
   ArrowRight,
   Clock,
-  Sparkle,
 } from '@phosphor-icons/react/dist/ssr';
 
 // ── Dados ──────────────────────────────────────────────────────────────────────

@@ -298,6 +298,12 @@ export const items = [
     files: ['components/ui/hero-background.tsx'],
     registryDependencies: ['utils'],
   },
+  {
+    name: 'social-proof-pill',
+    description: 'Pill de prova social: avatar stack + contagem de usuários. Ideal para heróis e CTAs.',
+    files: ['components/ui/social-proof-pill.tsx'],
+    registryDependencies: ['utils'],
+  },
 
   // --- Blocks — organismos compostos (instaláveis avulso; fora do agregador umbler-ui) ---
   // Cada bloco cai em components/blocks/<nome>.tsx e puxa os componentes do DS que usa.
