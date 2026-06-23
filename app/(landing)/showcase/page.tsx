@@ -29,6 +29,7 @@ import {
 import { LogoCloud } from '@/components/blocks/logo-cloud';
 import { ShowcaseHeroContent } from './hero-content';
 import { ShowcaseNav } from './showcase-nav';
+import { IntegrationsSection } from './integrations-section';
 import {
   FadeInSection,
   ScaleIn,
@@ -429,6 +430,9 @@ export default function ShowcasePage() {
           className="bg-neutral-950 px-6 py-24"
         />
       </FadeInSection>
+
+      {/* Integrações */}
+      <IntegrationsSection />
 
       {/* Depoimentos */}
       <section id="testimonials">

@@ -30,8 +30,8 @@ export function ShowcaseNav() {
       )}
     >
       <div className="mx-auto flex max-w-[1100px] items-center justify-between px-6 py-4">
-        <a href="/showcase" className="font-heading text-xl font-semibold text-white">
-          umbler
+        <a href="/showcase" className="flex items-center">
+          <img src="/brand/umbler-wordmark-light.svg" alt="Umbler" className="h-7 w-auto" />
         </a>
 
         <nav className="hidden items-center gap-8 md:flex">
