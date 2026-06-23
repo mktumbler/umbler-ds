@@ -5,12 +5,6 @@ import { cn } from '@/lib/utils';
 import { buttonVariants } from '@/components/ui/button-variants';
 import { ArrowRight } from '@phosphor-icons/react/dist/ssr';
 
-const NAV_LINKS = [
-  { label: 'Funcionalidades', href: '#features' },
-  { label: 'Depoimentos', href: '#testimonials' },
-  { label: 'Planos', href: '#pricing' },
-];
-
 export function ShowcaseNav() {
   const [scrolled, setScrolled] = useState(false);
 
@@ -33,18 +27,6 @@ export function ShowcaseNav() {
         <a href="/showcase" className="flex items-center">
           <img src="/brand/umbler-wordmark-light.svg" alt="Umbler" className="h-7 w-auto" />
         </a>
-
-        <nav className="hidden items-center gap-8 md:flex">
-          {NAV_LINKS.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="text-body-sm text-white/60 transition-colors hover:text-white"
-            >
-              {link.label}
-            </a>
-          ))}
-        </nav>
 
         <a
           href="https://a.umbler.com/talk"
