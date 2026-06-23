@@ -8,7 +8,6 @@ import {
   HeroSubtext,
   HeroCTAGroup,
 } from '@/components/blocks/hero-block';
-import { Badge } from '@/components/ui/badge';
 import { buttonVariants } from '@/components/ui/button-variants';
 import { ArrowRight } from '@phosphor-icons/react/dist/ssr';
 
@@ -27,9 +26,7 @@ export function ShowcaseHeroContent() {
     <HeroContent>
       <motion.div {...fadeUp(0)}>
         <HeroEyebrow>
-          <Badge variant="brand" shape="pill">
-            7 dias grátis, sem cartão
-          </Badge>
+          <p className="eyebrow">7 dias grátis, sem cartão</p>
         </HeroEyebrow>
       </motion.div>
 
