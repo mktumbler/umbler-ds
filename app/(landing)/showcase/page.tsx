@@ -447,10 +447,10 @@ export default function ShowcasePage() {
       {/* Pricing */}
       <section id="pricing" className="bg-neutral-950 px-6 py-24">
         <div className="mx-auto max-w-[1100px]">
-          <FadeInSection className="mx-auto mb-12 max-w-xl text-center">
+          <FadeInSection className="mx-auto mb-12 max-w-2xl text-center">
             <p className="eyebrow mb-3">Planos</p>
-            <h2 className="mb-3 font-heading text-display text-white">
-              Comece com 2 atendentes,<br />escale sem migrar
+            <h2 className="mb-3 font-heading text-display text-balance text-white">
+              Comece com 2 atendentes, escale sem migrar
             </h2>
             <p className="text-body-lg text-neutral-400">
               Todos os planos incluem 7 dias de teste grátis. Sem cartão de crédito.
@@ -491,9 +491,7 @@ export default function ShowcasePage() {
             </CTATrustPill>
           </CTAEyebrow>
           <CTAHeadline>
-            Seu time pode atender melhor.
-            <br />
-            Comece hoje.
+            Seu time pode atender melhor. Comece hoje.
           </CTAHeadline>
           <CTASubtext>
             7 dias grátis com acesso completo. Configure em minutos, sem precisar de TI.

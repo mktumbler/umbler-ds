@@ -9,7 +9,6 @@ import {
   HeroCTAGroup,
 } from '@/components/blocks/hero-block';
 import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
 import { buttonVariants } from '@/components/ui/button-variants';
 import { SocialProofPill } from '@/components/ui/social-proof-pill';
 import { ArrowRight } from '@phosphor-icons/react/dist/ssr';
@@ -38,7 +37,12 @@ export function ShowcaseHeroContent() {
       <motion.div {...fadeUp(0.1)}>
         <HeroHeadline className="text-white">
           Seu time perde vendas porque{' '}
-          <span className="text-brand-300">o WhatsApp virou bagunça</span>
+          <span
+            className="bg-clip-text text-transparent"
+            style={{ backgroundImage: 'var(--gradient-brand)' }}
+          >
+            o WhatsApp virou bagunça
+          </span>
         </HeroHeadline>
       </motion.div>
 
@@ -58,14 +62,11 @@ export function ShowcaseHeroContent() {
             Testar 7 dias grátis
             <ArrowRight size={18} weight="bold" />
           </a>
-          <Button size="lg" variant="ghost" className="text-neutral-300 hover:text-white">
-            Ver demo
-          </Button>
         </HeroCTAGroup>
       </motion.div>
 
       <motion.div {...fadeUp(0.4)}>
-        <SocialProofPill className="mt-2" />
+        <SocialProofPill className="mt-2" avatars={[]} />
       </motion.div>
     </HeroContent>
   );
