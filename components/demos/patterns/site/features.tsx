@@ -57,8 +57,7 @@ export function FeatureGridSection() {
       <div className="mx-auto max-w-2xl text-center mb-16">
         <p className="eyebrow">Plataforma</p>
         <h2
-          className="font-heading text-h2 text-neutral-900 dark:text-neutral-50 mb-4"
-          style={{ letterSpacing: '-0.05rem' }}
+          className="font-heading text-display text-neutral-900 dark:text-neutral-50 mb-4"
         >
           Tudo que sua operação precisa, num só lugar
         </h2>
@@ -110,7 +109,7 @@ export function FeatureSplitSection() {
         <div>
           <p className="eyebrow">CRM</p>
           <h2
-            className="font-heading text-h2 text-neutral-900 dark:text-neutral-50 mb-5"
+            className="font-heading text-display text-neutral-900 dark:text-neutral-50 mb-5"
             style={{ letterSpacing: '-0.05rem' }}
           >
             Cada cliente no lugar certo. Na hora certa.
@@ -188,7 +187,7 @@ export function FeatureBentoSection() {
       <div className="mx-auto max-w-xl text-center mb-12">
         <p className="eyebrow">Diferenciais</p>
         <h2
-          className="font-heading text-h2 text-neutral-50 mb-4"
+          className="font-heading text-display text-neutral-50 mb-4"
           style={{ letterSpacing: '-0.05rem' }}
         >
           Construído para quem não pode parar

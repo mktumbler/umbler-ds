@@ -142,15 +142,17 @@ text-body-sm      /*  14px  lh 1.50 */
 text-caption      /*  12px  lh 1.40 */
 ```
 
-## Display vs. Heading — quando usar cada escala
+## Elemento vs. classe — regra de ouro
 
-| Contexto | Token correto | Exemplo |
-|---|---|---|
-| Headline de seção em LP | `text-display` (56 px) | "Construído para quem não pode perder nenhuma conversa" |
-| Título de card, painel, modal | `text-h2` (36 px) | "Configurações da conta" |
-| Hero principal | `text-display-lg` (72 px) | Headline do HeroBlock |
-| Splash / impacto máximo | `text-display-xl` / `text-display-2xl` | Números grandes em StatGrid |
+**O elemento `<h2>` sempre recebe `text-display` (56 px).** Sem exceções.
 
-**Regra prática:** se o `<h2>` está dentro de um block de LP (`FeatureSplit`, `TestimonialGrid`, `SectionHeader`…), use `text-display`. Se está dentro de um componente de UI de produto (card, drawer, painel), use `text-h2`.
+A classe `text-h2` (36 px) existe para elementos que *visualmente lembram* um heading mas não são `<h2>` — stats em cards, títulos de painel de app, labels compostos. Nunca coloque `text-h2` num elemento `<h2>`.
 
-O componente `SectionHeader` aplica `text-display` automaticamente — prefira-o a escrever o `<h2>` à mão.
+| Elemento / contexto | Token correto |
+|---|---|
+| `<h2>` (qualquer contexto) | `text-display` (56 px) |
+| `<h1>` hero principal | `text-display-lg` (72 px) |
+| `<h1>` splash | `text-display-xl` / `text-display-2xl` |
+| Stat, label de card, painel de app | `text-h2` (36 px) num `<p>` ou `<span>` |
+
+O componente `SectionHeader` aplica `font-heading text-display text-foreground text-balance` automaticamente — prefira-o a escrever o `<h2>` à mão.

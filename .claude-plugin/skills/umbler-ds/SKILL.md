@@ -80,7 +80,7 @@ Blocos só viram parte do DS quando passam pelo critério objetivo: o padrão ap
 - **P22 Mackinac** (display) é usado **apenas em H1, H2, H3** — H4 e menores em Inter (Sans). Não force Mackinac em texto pequeno: leitura ruim.
 - **Eyebrows** (micro-labels acima de títulos): use classe `.eyebrow` (gradient da marca clipado no texto, line-height 1, padrão único no DS). Não escreva `uppercase tracking-wide text-brand-500` à mão.
 - **Letter-spacing**: já vem nos tokens (`text-h2--letter-spacing`, etc.). Não passe `style={{letterSpacing: '...'}}` à mão a menos que esteja override pontual.
-- **`<h2>` em seção de LP usa `text-display` (56 px), não `text-h2` (36 px).** `text-h2` é para headings de componentes de UI (cards, painéis, data-list). Em landing pages, qualquer `<h2>` de seção recebe `font-heading text-display text-foreground text-balance`. Use `SectionHeader` para garantir isso automaticamente.
+- **Todo `<h2>` recebe `text-display` (56 px).** `text-h2` (36 px) existe para elementos que visualmente lembram um heading mas não são `<h2>` — stats, labels de card, títulos de painel de app. Nunca coloque `text-h2` num elemento `<h2>`. Use `SectionHeader` para garantir isso automaticamente.
 
 ## Regras de cor — cheat sheet
 
