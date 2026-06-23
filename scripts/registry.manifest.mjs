@@ -353,6 +353,14 @@ export const items = [
     registryDependencies: ['utils'],
   },
   {
+    name: 'testimonial-grid',
+    type: 'registry:block',
+    description: 'Grade de depoimentos: wall of love (3 colunas) ou layout featured (1 destaque + menores).',
+    files: [{ src: 'components/blocks/testimonial-grid.tsx', target: 'components/blocks/testimonial-grid.tsx', type: 'registry:component' }],
+    dependencies: [PHOSPHOR],
+    registryDependencies: ['utils', 'card', 'avatar'],
+  },
+  {
     name: 'feature-card-grid',
     type: 'registry:block',
     description: 'Grade de cards de feature (ícone + título + descrição) em cima do Card. Variantes de coluna e ênfase.',
@@ -417,7 +425,7 @@ export const AGGREGATOR = {
 export const LP_KIT = {
   name: 'lp-kit',
   type: 'registry:block',
-  description: 'Instala todos os blocks de landing page Umbler de uma vez: Hero, StatGrid, FeatureCardGrid, FeatureSplit, PricingTable, FAQSection, CTABanner, TestimonialBlock, LogoCloud e SiteFooter.',
+  description: 'Instala todos os blocks de landing page Umbler de uma vez: Hero, StatGrid, FeatureCardGrid, FeatureSplit, PricingTable, FAQSection, CTABanner, TestimonialGrid, LogoCloud e SiteFooter.',
   blocks: [
     'hero-block',
     'stat-grid',
@@ -426,7 +434,7 @@ export const LP_KIT = {
     'pricing-table',
     'faq-section',
     'cta-banner',
-    'testimonial-block',
+    'testimonial-grid',
     'logo-cloud',
     'site-footer',
   ],

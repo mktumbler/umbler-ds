@@ -1,0 +1,80 @@
+---
+title: TestimonialGrid
+description: Grade de depoimentos de clientes em colunas (wall of love) ou layout destaque. Social proof para landings.
+---
+
+import { TestimonialGridWallDemo, TestimonialGridFeaturedDemo } from '@/components/demos/blocks/testimonial-grid-variants';
+import { VariantGrid, VariantCard } from '@/components/docs/variant-grid';
+
+Dois layouts para exibir múltiplos depoimentos: `wall` empilha cards em 3 colunas, `featured` destaca um depoimento longo ao lado de menores.
+
+---
+
+## Wall of Love
+
+3 colunas de cards sem borda. Para 3 a 12 depoimentos — distribui automaticamente entre as colunas.
+
+<VariantGrid columns={1}>
+  <VariantCard label="wall (padrão)" hint="Cards em 3 colunas com bg-surface-subtle, sem borda" minHeight={480}>
+    <TestimonialGridWallDemo />
+  </VariantCard>
+</VariantGrid>
+
+## Featured
+
+Um depoimento longo em destaque à esquerda (col-span-2, row-span-2) com até 3 cards menores à direita.
+
+<VariantGrid columns={1}>
+  <VariantCard label="featured" hint="1 card destaque + 3 menores em grid assimétrico" minHeight={480}>
+    <TestimonialGridFeaturedDemo />
+  </VariantCard>
+</VariantGrid>
+
+## API
+
+```tsx
+import { TestimonialGrid, type TestimonialItem } from '@/components/blocks/testimonial-grid';
+
+const testimonials: TestimonialItem[] = [
+  {
+    quote: 'Em 30 dias o tempo de resposta caiu pela metade.',
+    author: 'Rodrigo Menezes',
+    role: 'Gerente Comercial',
+    company: 'Clínica Vida Plena',
+    avatarSrc: '/images/rodrigo.jpg', // opcional — mostra iniciais se omitido
+    stars: 5,
+  },
+  // ...
+];
+
+<TestimonialGrid
+  eyebrow="Depoimentos"
+  headline="Quem usa, recomenda"
+  subheadline="Mais de 15 mil empresas usam o Umbler Talk."
+  testimonials={testimonials}
+  variant="wall"    // 'wall' | 'featured'
+  className="bg-surface"
+/>
+```
+
+### TestimonialItem
+
+| Prop | Tipo | Descrição |
+|---|---|---|
+| `quote` | `string` | Texto do depoimento |
+| `author` | `string` | Nome do autor |
+| `role` | `string` | Cargo |
+| `company` | `string?` | Empresa (exibida após `·`) |
+| `avatarSrc` | `string?` | URL da foto — usa iniciais se omitido |
+| `stars` | `1–5?` | Estrelas (omitido = sem estrelas) |
+
+### TestimonialGrid props
+
+| Prop | Tipo | Padrão |
+|---|---|---|
+| `testimonials` | `TestimonialItem[]` | obrigatório |
+| `variant` | `'wall' \| 'featured'` | `'wall'` |
+| `eyebrow` | `string?` | — |
+| `headline` | `string?` | — |
+| `subheadline` | `string?` | — |
+| `className` | `string?` | — |

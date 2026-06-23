@@ -97,6 +97,7 @@ import { LogoCloudGridDemo, LogoCloudMarqueeDemo } from '@/components/demos/bloc
 import { FeatureSplitDefaultDemo, FeatureSplitReverseDemo, FeatureSplitMinimalDemo } from '@/components/demos/blocks/feature-split-variants';
 import { SiteFooterDarkDemo, SiteFooterLightDemo } from '@/components/demos/blocks/site-footer-variants';
 import { FAQSectionProdutoDemo, FAQSectionPricingDemo, StatGrid4UpDemo, StatGrid3UpDemo, TestimonialCenteredDemo, TestimonialCardDemo } from '@/components/demos/blocks/section-blocks-variants';
+import { TestimonialGridWallDemo, TestimonialGridFeaturedDemo } from '@/components/demos/blocks/testimonial-grid-variants';
 import { HeroBgGridDemo, HeroBgSweepDemo } from '@/components/demos/patterns/site/backgrounds';
 import { EmailPreview } from '@/components/docs/email-preview';
 import { DSStack } from '@/components/docs/ds-stack';
@@ -324,6 +325,8 @@ export function getMDXComponents(components?: MDXComponents): MDXComponents {
     StatGrid3UpDemo,
     TestimonialCenteredDemo,
     TestimonialCardDemo,
+    TestimonialGridWallDemo,
+    TestimonialGridFeaturedDemo,
     HeroBgGridDemo,
     HeroBgSweepDemo,
     EmailPreview,

@@ -9,7 +9,7 @@ import {
 import { StatGrid } from '@/components/blocks/stat-grid';
 import { FeatureCardGrid, FeatureCard } from '@/components/blocks/feature-card-grid';
 import { FeatureSplit } from '@/components/blocks/feature-split';
-import { TestimonialBlock } from '@/components/blocks/testimonial-block';
+import { TestimonialGrid, type TestimonialItem } from '@/components/blocks/testimonial-grid';
 import { PricingTable, type Plan } from '@/components/blocks/pricing-table';
 import { FAQSection } from '@/components/blocks/faq-section';
 import {
@@ -92,6 +92,30 @@ const PLANS: Plan[] = [
       { label: 'Campanhas em massa',               included: true },
       { label: 'Agentes IA',                       included: true },
     ],
+  },
+];
+
+const TESTIMONIALS: TestimonialItem[] = [
+  {
+    quote: 'Antes a gente perdia venda porque dois atendentes respondiam o mesmo cliente com informações diferentes. Com o Talk, cada conversa tem um dono e o histórico nunca some.',
+    author: 'Rodrigo Menezes',
+    role: 'Gerente Comercial',
+    company: 'Clínica Vida Plena',
+    stars: 5,
+  },
+  {
+    quote: 'Configurei o chatbot em uma tarde, sem escrever uma linha de código. Agora ele qualifica os leads fora do horário e o time chega de manhã com uma fila de contatos prontos.',
+    author: 'Beatriz Carvalho',
+    role: 'Proprietária',
+    company: 'Studio Bê Estética',
+    stars: 5,
+  },
+  {
+    quote: 'O relatório por atendente mudou como eu gestiono o time. Consigo ver quem demora mais pra responder e agir antes que o cliente desista.',
+    author: 'Felipe Drummond',
+    role: 'Head of Customer Success',
+    company: 'Construtora Ativa',
+    stars: 5,
   },
 ];
 
@@ -364,22 +388,15 @@ export default function ShowcasePage() {
         className="bg-neutral-950 px-6 py-24"
       />
 
-      {/* Testimonial */}
-      <section className="bg-surface px-6 py-24">
-        <div className="mx-auto max-w-[800px]">
-          <TestimonialBlock
-            testimonial={{
-              quote: 'Antes a gente perdia venda porque dois atendentes respondiam o mesmo cliente com informações diferentes. Com o Talk, cada conversa tem um dono e o histórico nunca some. Em 30 dias o tempo de resposta caiu pela metade.',
-              author: 'Rodrigo Menezes',
-              role: 'Gerente Comercial',
-              company: 'Clínica Vida Plena',
-              avatarInitials: 'RM',
-            }}
-            stars={5}
-            variant="centered"
-          />
-        </div>
-      </section>
+      {/* Depoimentos */}
+      <TestimonialGrid
+        eyebrow="Depoimentos"
+        headline="Quem usa, recomenda"
+        subheadline="Mais de 15 mil empresas organizam o atendimento com o Umbler Talk."
+        testimonials={TESTIMONIALS}
+        variant="wall"
+        className="bg-surface"
+      />
 
       {/* Pricing */}
       <section className="bg-neutral-950 px-6 py-24">

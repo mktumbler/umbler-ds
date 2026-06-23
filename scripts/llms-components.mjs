@@ -679,6 +679,22 @@ import { TestimonialBlock } from '@/components/blocks/testimonial-block';
 - testimonial: \`{ quote, author, role, company?, avatarInitials? }\`
 - variant: \`centered\` | \`card\` — padrão: centered · stars?: 1–5`,
 
+  'testimonial-grid': `Grade de depoimentos (wall of love ou featured). Instale: \`npx shadcn add https://umbler-ds.vercel.app/r/testimonial-grid\`
+\`\`\`tsx
+import { TestimonialGrid, type TestimonialItem } from '@/components/blocks/testimonial-grid';
+
+const testimonials: TestimonialItem[] = [
+  { quote: 'Em 30 dias o tempo de resposta caiu pela metade.', author: 'Rodrigo Menezes', role: 'Gerente Comercial', company: 'Clínica Vida Plena', stars: 5 },
+  { quote: 'Configurei o chatbot em uma tarde, sem código.', author: 'Beatriz Carvalho', role: 'Proprietária', company: 'Studio Bê', stars: 5 },
+  { quote: 'Consigo ver quem demora mais pra responder.', author: 'Felipe Drummond', role: 'Head of CS', company: 'Construtora Ativa', stars: 5 },
+];
+
+<TestimonialGrid eyebrow="Depoimentos" headline="Quem usa, recomenda" testimonials={testimonials} variant="wall" />
+\`\`\`
+- testimonials: \`TestimonialItem[]\` — \`{ quote, author, role, company?, avatarSrc?, stars? }\`
+- variant: \`wall\` (3 colunas empilhadas) | \`featured\` (1 destaque + menores) — padrão: wall
+- eyebrow, headline, subheadline: opcionais`,
+
   'feature-card-grid': `Grade de cards de feature. Instale: \`npx shadcn add https://umbler-ds.vercel.app/r/feature-card-grid\`
 \`\`\`tsx
 import { FeatureCardGrid, FeatureCard } from '@/components/blocks/feature-card-grid';
