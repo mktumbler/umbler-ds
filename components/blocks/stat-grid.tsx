@@ -65,7 +65,7 @@ export function StatGrid({
             <div key={s.label}>
               <p
                 className={cn(
-                  'font-heading text-display md:text-display-lg tabular-nums',
+                  'font-heading text-h1 md:text-display tabular-nums',
                   nClass,
                 )}
               >
