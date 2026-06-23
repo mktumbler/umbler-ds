@@ -3,6 +3,8 @@ title: Showcase
 description: Landing real construída com o Umbler DS — prova viva do que o sistema entrega em produção.
 ---
 
+import { buttonVariants } from '@/components/ui/button-variants';
+
 A página `/showcase` é uma **landing demonstrativa** montada com componentes, patterns, tokens e guidelines do Umbler DS. Não é mockup nem maquete — é código real, rodando em produção, com layout dark fixo, sem cromo de doc, exatamente como uma landing Umbler ficaria num projeto consumer.
 
 <Callout type="info">
@@ -14,7 +16,7 @@ A landing vive em **tela cheia** (rota separada da doc). Clique no botão abaixo
     href="/showcase"
     target="_blank"
     rel="noopener"
-    className="inline-flex h-14 items-center gap-2 rounded-full bg-brand-500 px-8 text-body-lg font-medium text-white shadow-cta no-underline transition-colors duration-[var(--duration-fast)] hover:bg-brand-600"
+    className={buttonVariants({ variant: 'primary', size: 'xl' }) + ' shadow-cta no-underline'}
   >
     Abrir landing em tela cheia →
   </a>

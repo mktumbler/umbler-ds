@@ -3,6 +3,9 @@ title: Pricing
 description: Apresentar planos, facilitar decisão, converter — a página onde a dúvida residual vira ação.
 ---
 
+import { buttonVariants } from '@/components/ui/button-variants';
+
+
 Pricing é onde **a decisão acontece**. A página tem um trabalho só: **tirar a fricção residual** e levar ao clique.
 
 <Metodologia title="Por que Pricing é a página da decisão">
@@ -16,7 +19,7 @@ Quem chega aqui está perto de comprar, ou desistir. Tudo na página existe pra 
     href="/showcase/pricing"
     target="_blank"
     rel="noopener"
-    className="inline-flex h-14 items-center gap-2 rounded-full bg-brand-500 px-8 text-body-lg font-medium text-white shadow-cta no-underline transition-colors duration-[var(--duration-fast)] hover:bg-brand-600"
+    className={buttonVariants({ variant: 'primary', size: 'xl' }) + ' shadow-cta no-underline'}
   >
     Ver exemplo em tela cheia →
   </a>

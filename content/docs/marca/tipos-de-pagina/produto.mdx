@@ -3,6 +3,9 @@ title: Produto
 description: Convencer que o produto resolve a dor, levar a trial/demo. O tipo mais comum e mais comprometido com conversão.
 ---
 
+import { buttonVariants } from '@/components/ui/button-variants';
+
+
 LP de Produto é o **carro-chefe** de conversão. Tem persona específica, dor específica, mecanismo específico — e CTA único que tira ambiguidade.
 
 <div className="not-prose my-8 flex justify-center">
@@ -10,7 +13,7 @@ LP de Produto é o **carro-chefe** de conversão. Tem persona específica, dor e
     href="/showcase/produto"
     target="_blank"
     rel="noopener"
-    className="inline-flex h-14 items-center gap-2 rounded-full bg-brand-500 px-8 text-body-lg font-medium text-white shadow-cta no-underline transition-colors duration-[var(--duration-fast)] hover:bg-brand-600"
+    className={buttonVariants({ variant: 'primary', size: 'xl' }) + ' shadow-cta no-underline'}
   >
     Ver exemplo em tela cheia →
   </a>

@@ -3,6 +3,9 @@ title: Solução (por segmento)
 description: Mostrar como o produto resolve a dor de um setor específico — Saúde, Educação, E-commerce, etc.
 ---
 
+import { buttonVariants } from '@/components/ui/button-variants';
+
+
 LP de Solução / Segmento é onde o visitante **encontra seu setor** e se sente atendido.
 
 <Metodologia title="Por que a LP de segmento traduz, não repete">
@@ -18,7 +21,7 @@ LP de Solução / Segmento é onde o visitante **encontra seu setor** e se sente
     href="/showcase/solucao"
     target="_blank"
     rel="noopener"
-    className="inline-flex h-14 items-center gap-2 rounded-full bg-brand-500 px-8 text-body-lg font-medium text-white shadow-cta no-underline transition-colors duration-[var(--duration-fast)] hover:bg-brand-600"
+    className={buttonVariants({ variant: 'primary', size: 'xl' }) + ' shadow-cta no-underline'}
   >
     Ver exemplo em tela cheia →
   </a>
