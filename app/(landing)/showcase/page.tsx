@@ -9,7 +9,6 @@ import {
   CTAHeadline,
   CTASubtext,
   CTAActions,
-  CTATrustPill,
   CTAEyebrow,
 } from '@/components/blocks/cta-banner';
 import { SiteFooter } from '@/components/blocks/site-footer';
@@ -24,7 +23,6 @@ import {
   Lightning,
   Globe,
   ArrowRight,
-  Clock,
 } from '@phosphor-icons/react/dist/ssr';
 import { LogoCloud } from '@/components/blocks/logo-cloud';
 import { ShowcaseHeroContent } from './hero-content';
@@ -496,9 +494,7 @@ export default function ShowcasePage() {
       <ScaleIn>
         <CTABanner variant="glow">
           <CTAEyebrow>
-            <CTATrustPill icon={<Clock size={14} />}>
-              Sem cartão de crédito. Cancele quando quiser.
-            </CTATrustPill>
+            <p className="eyebrow">Sem cartão, cancele quando quiser</p>
           </CTAEyebrow>
           <CTAHeadline>
             Seu time pode atender melhor. Comece hoje.
