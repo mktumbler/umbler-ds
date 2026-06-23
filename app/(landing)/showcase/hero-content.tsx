@@ -10,7 +10,6 @@ import {
 } from '@/components/blocks/hero-block';
 import { Badge } from '@/components/ui/badge';
 import { buttonVariants } from '@/components/ui/button-variants';
-import { SocialProofPill } from '@/components/ui/social-proof-pill';
 import { ArrowRight } from '@phosphor-icons/react/dist/ssr';
 
 const ease = [0.25, 0.46, 0.45, 0.94] as const;
@@ -65,9 +64,6 @@ export function ShowcaseHeroContent() {
         </HeroCTAGroup>
       </motion.div>
 
-      <motion.div {...fadeUp(0.4)}>
-        <SocialProofPill className="mt-2" avatars={[]} />
-      </motion.div>
     </HeroContent>
   );
 }
