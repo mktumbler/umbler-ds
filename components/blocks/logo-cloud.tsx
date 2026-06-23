@@ -64,7 +64,7 @@ export function LogoCloud({
       alt={logo.alt}
       style={{ maxHeight: logo.maxHeight ?? 32 }}
       className={cn(
-        'w-auto max-w-[140px] object-contain grayscale transition-all duration-[var(--duration-normal)] hover:grayscale-0',
+        'w-auto max-w-[180px] object-contain grayscale transition-all duration-[var(--duration-normal)] hover:grayscale-0',
         logoOpacity,
         'hover:opacity-100',
       )}
