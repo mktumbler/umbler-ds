@@ -38,12 +38,15 @@ import {
 } from './motion-wrappers';
 
 const LOGOS = [
-  { src: '/showcase/logos/unimed.svg',  alt: 'Unimed',  maxHeight: 28 },
-  { src: '/showcase/logos/triider.svg', alt: 'Triider', maxHeight: 28 },
-  { src: '/showcase/logos/cora.svg',    alt: 'Cora',    maxHeight: 24 },
-  { src: '/showcase/logos/cna.svg',     alt: 'CNA',     maxHeight: 28 },
-  { src: '/showcase/logos/anima.svg',   alt: 'Anima',   maxHeight: 28 },
-  { src: '/showcase/logos/linker.svg',  alt: 'Linker',  maxHeight: 24 },
+  { src: '/showcase/logos/logo-unimed.png',     alt: 'Unimed',     maxHeight: 30 },
+  { src: '/showcase/logos/logo-triider.png',    alt: 'Triider',    maxHeight: 28 },
+  { src: '/showcase/logos/logo-cora.png',       alt: 'Cora',       maxHeight: 26 },
+  { src: '/showcase/logos/logo-cna.png',        alt: 'CNA',        maxHeight: 30 },
+  { src: '/showcase/logos/logo-anima.webp',     alt: 'Ânima',      maxHeight: 28 },
+  { src: '/showcase/logos/logo-linker.png',     alt: 'Linker',     maxHeight: 26 },
+  { src: '/showcase/logos/logo-carol.png',      alt: 'Carol',      maxHeight: 28 },
+  { src: '/showcase/logos/logo-uniasselvi.webp', alt: 'Uniasselvi', maxHeight: 28 },
+  { src: '/showcase/logos/logo-unipar.png',     alt: 'Unipar',     maxHeight: 28 },
 ];
 
 // ── Dados ──────────────────────────────────────────────────────────────────────
