@@ -32,8 +32,46 @@ Quem usa Claude Code instala o DS como [plugin](/docs/para-ia/plugin) e ganha as
 
 ## Fluxo recomendado
 
-1. Carregue o `UMBLER.md` no contexto permanente da IA.
-2. Instale os blocks com o `lp-kit.json`.
-3. Peça a LP descrevendo produto, persona, dor e CTA. A IA monta usando os blocks.
+### 1. Carregue o briefing de marca no contexto permanente
+
+Baixe o `UMBLER.md` e cole no contexto que a IA sempre enxerga:
+
+- **Cursor:** crie um arquivo em `.cursor/rules/umbler.md` com o conteúdo de [`/UMBLER.md`](https://umbler-ds.vercel.app/UMBLER.md).
+- **Claude Code:** adicione ao `CLAUDE.md` do projeto, ou instale o [plugin](/docs/para-ia/plugin) (já traz o briefing e os comandos).
+- **System prompt / API:** cole o conteúdo do `UMBLER.md` no system prompt.
+
+```bash
+curl -s https://umbler-ds.vercel.app/UMBLER.md -o .cursor/rules/umbler.md
+```
+
+### 2. Instale os blocks no projeto
+
+No projeto Next.js + Tailwind v4 onde a LP vai morar:
+
+```bash
+# todos os blocks de LP de uma vez (Hero, Pricing, FAQ, CTA, etc.)
+npx shadcn@latest add https://umbler-ds.vercel.app/r/lp-kit.json
+```
+
+Se ainda não tiver os tokens e o agregador de UI instalados:
+
+```bash
+npx shadcn@latest add https://umbler-ds.vercel.app/r/tokens.json
+npx shadcn@latest add https://umbler-ds.vercel.app/r/umbler-ui.json
+```
+
+### 3. Antes de gerar, leia o catálogo técnico
+
+Faça `WebFetch` em [`/llms.txt`](https://umbler-ds.vercel.app/llms.txt) para a IA saber quais blocks e props existem, em vez de inventar.
+
+### 4. Peça a LP
+
+Descreva **produto, persona, dor e CTA**. A IA monta a página usando só os blocks instalados. Quem usa o plugin do Claude Code tem o atalho:
+
+```
+/umbler-lp talk
+```
+
+que lê o catálogo de produtos e gera a página inteira sozinho.
 
 Conteúdo de marca para humanos (assets, diretrizes, copy) fica na [Central de Marca](/docs/marca).

@@ -1,5 +1,5 @@
 {
   "title": "Central de Marca",
   "root": true,
-  "pages": ["index", "assets", "voz", "copy", "tipos-de-pagina", "emails", "showcase"]
+  "pages": ["index", "assets", "voz", "copy", "emails", "showcase"]
 }
