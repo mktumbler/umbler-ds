@@ -26,13 +26,24 @@ import {
   ArrowRight,
   Clock,
 } from '@phosphor-icons/react/dist/ssr';
+import { LogoCloud } from '@/components/blocks/logo-cloud';
 import { ShowcaseHeroContent } from './hero-content';
+import { ShowcaseNav } from './showcase-nav';
 import {
   FadeInSection,
   ScaleIn,
   StaggerContainer,
   StaggerItem,
 } from './motion-wrappers';
+
+const LOGOS = [
+  { src: '/showcase/logos/unimed.svg',  alt: 'Unimed',  maxHeight: 28 },
+  { src: '/showcase/logos/triider.svg', alt: 'Triider', maxHeight: 28 },
+  { src: '/showcase/logos/cora.svg',    alt: 'Cora',    maxHeight: 24 },
+  { src: '/showcase/logos/cna.svg',     alt: 'CNA',     maxHeight: 28 },
+  { src: '/showcase/logos/anima.svg',   alt: 'Anima',   maxHeight: 28 },
+  { src: '/showcase/logos/linker.svg',  alt: 'Linker',  maxHeight: 24 },
+];
 
 // ── Dados ──────────────────────────────────────────────────────────────────────
 
@@ -268,10 +279,23 @@ export default function ShowcasePage() {
   return (
     <main className="bg-neutral-950 text-foreground">
 
+      <ShowcaseNav />
+
       {/* Hero: background SVG blob + conteúdo animado */}
-      <HeroBackground variant="arc" className="px-6 pb-20 pt-24">
+      <HeroBackground variant="arc" className="px-6 pb-20 pt-32">
         <ShowcaseHeroContent />
       </HeroBackground>
+
+      {/* LogoCloud */}
+      <FadeInSection>
+        <LogoCloud
+          variant="marquee"
+          tone="dark"
+          label="+15 mil empresas já usam"
+          logos={LOGOS}
+          className="border-y border-white/5 bg-neutral-950 py-10"
+        />
+      </FadeInSection>
 
       {/* Stats */}
       <FadeInSection>
@@ -284,7 +308,7 @@ export default function ShowcasePage() {
       </FadeInSection>
 
       {/* Features: Bento grid com CardAurora */}
-      <section className="bg-neutral-950 px-6 py-24">
+      <section id="features" className="bg-neutral-950 px-6 py-24">
         <div className="mx-auto max-w-[1100px]">
 
           <FadeInSection className="mx-auto mb-12 max-w-xl text-center">
@@ -407,6 +431,7 @@ export default function ShowcasePage() {
       </FadeInSection>
 
       {/* Depoimentos */}
+      <section id="testimonials">
       <FadeInSection>
         <TestimonialGrid
           eyebrow="Depoimentos"
@@ -417,9 +442,10 @@ export default function ShowcasePage() {
           className="bg-surface"
         />
       </FadeInSection>
+      </section>
 
       {/* Pricing */}
-      <section className="bg-neutral-950 px-6 py-24">
+      <section id="pricing" className="bg-neutral-950 px-6 py-24">
         <div className="mx-auto max-w-[1100px]">
           <FadeInSection className="mx-auto mb-12 max-w-xl text-center">
             <p className="eyebrow mb-3">Planos</p>
