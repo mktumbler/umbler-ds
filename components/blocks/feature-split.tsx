@@ -70,7 +70,7 @@ export function FeatureSplit({
       >
         <div className={cn(reverse && 'lg:order-2')}>
           {eyebrow && <p className="eyebrow">{eyebrow}</p>}
-          <h2 className="font-heading text-h2 text-foreground mb-5 [letter-spacing:-0.04em]">
+          <h2 className="font-heading text-display text-foreground mb-5">
             {title}
           </h2>
           {body && (

@@ -151,7 +151,7 @@ export function TestimonialGrid({
           <div className="text-center">
             {eyebrow && <p className="eyebrow mb-3">{eyebrow}</p>}
             {headline && (
-              <h2 className="font-heading text-h2 text-foreground">{headline}</h2>
+              <h2 className="font-heading text-display text-foreground">{headline}</h2>
             )}
             {subheadline && (
               <p className="mt-4 text-body-lg text-foreground-muted">{subheadline}</p>
