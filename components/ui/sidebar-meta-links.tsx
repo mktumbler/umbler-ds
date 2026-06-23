@@ -17,8 +17,8 @@ import { Sparkle, DownloadSimple } from '@phosphor-icons/react/dist/ssr';
  * hierarquia mais alta que os outros dois links secundários.
  */
 const links = [
-  { href: '/docs/brand',     label: 'A Marca Umbler', icon: Sparkle },
-  { href: '/docs/downloads', label: 'Downloads',      icon: DownloadSimple },
+  { href: '/docs/marca',     label: 'Central de Marca', icon: Sparkle },
+  { href: '/docs/marca/assets', label: 'Assets',        icon: DownloadSimple },
 ] as const;
 
 export function SidebarMetaLinks() {

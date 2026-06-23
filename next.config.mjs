@@ -12,6 +12,20 @@ const config = {
         destination: '/docs/components/button',
         permanent: false,
       },
+      // ── Reorg de IA: conteúdo de marca migrou para /docs/marca ──
+      { source: '/docs/brand', destination: '/docs/marca', permanent: true },
+      { source: '/docs/downloads', destination: '/docs/marca/assets', permanent: true },
+      { source: '/docs/marketing', destination: '/docs/marca', permanent: true },
+      { source: '/docs/marketing/brand/:path*', destination: '/docs/marca/voz/:path*', permanent: true },
+      { source: '/docs/marketing/conversion/:path*', destination: '/docs/marca/copy/:path*', permanent: true },
+      { source: '/docs/marketing/page-types/:path*', destination: '/docs/marca/tipos-de-pagina/:path*', permanent: true },
+      { source: '/docs/marketing/showcase', destination: '/docs/marca/showcase', permanent: true },
+      { source: '/docs/email', destination: '/docs/marca/emails', permanent: true },
+      { source: '/docs/email/:path*', destination: '/docs/marca/emails/:path*', permanent: true },
+      { source: '/docs/plugin', destination: '/docs/para-ia/plugin', permanent: true },
+      // Atalhos amigáveis para os públicos
+      { source: '/marca', destination: '/docs/marca', permanent: false },
+      { source: '/para-ia', destination: '/docs/para-ia', permanent: false },
     ];
   },
 };

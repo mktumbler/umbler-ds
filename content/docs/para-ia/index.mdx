@@ -1,0 +1,39 @@
+---
+title: Para IAs e devs
+description: Como uma IA ou um projeto externo consome o Umbler DS — briefing de marca, catálogo técnico, registry e plugin.
+---
+
+Se você é uma IA (ou está configurando uma) para gerar landing pages, e-mails ou qualquer material no padrão Umbler, comece por aqui. Tudo é gerado automaticamente a cada build do DS, então nunca desatualiza.
+
+## Os dois arquivos de contexto
+
+| Recurso | Para quê | Como usar |
+|---|---|---|
+| [`/UMBLER.md`](https://umbler-ds.vercel.app/UMBLER.md) | Briefing de marca: voz, tokens, regras, anti-patterns. | Cole na instrução permanente da IA (Cursor rules, Claude Code, system prompt). |
+| [`/llms.txt`](https://umbler-ds.vercel.app/llms.txt) | Catálogo técnico: todos os componentes e blocks com props e exemplos. | Faça `WebFetch` antes de gerar UI para saber o que existe. |
+
+## Registry — instalar componentes
+
+O DS é distribuído via **registry shadcn**. Qualquer projeto Next.js + Tailwind v4 consome direto:
+
+```bash
+# todos os blocks de LP de uma vez
+npx shadcn@latest add https://umbler-ds.vercel.app/r/lp-kit.json
+
+# ou um componente avulso
+npx shadcn@latest add https://umbler-ds.vercel.app/r/button.json
+```
+
+O código é copiado para `components/` do projeto, sem dependência de runtime.
+
+## Plugin do Claude Code
+
+Quem usa Claude Code instala o DS como [plugin](/docs/para-ia/plugin) e ganha as convenções, os slash commands (`/umbler-lp`, `/umbler-add`, `/umbler-audit`) e o auto-audit de hand-rolls.
+
+## Fluxo recomendado
+
+1. Carregue o `UMBLER.md` no contexto permanente da IA.
+2. Instale os blocks com o `lp-kit.json`.
+3. Peça a LP descrevendo produto, persona, dor e CTA. A IA monta usando os blocks.
+
+Conteúdo de marca para humanos (assets, diretrizes, copy) fica na [Central de Marca](/docs/marca).

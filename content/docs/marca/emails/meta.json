@@ -1,4 +1,4 @@
 {
-  "title": "Email",
+  "title": "E-mails",
   "pages": ["index", "tokens-inline", "welcome", "confirmation", "password-reset", "notification", "campaign"]
 }

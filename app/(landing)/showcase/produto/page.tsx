@@ -533,7 +533,7 @@ export default function ProdutoLanding() {
           <p>© Umbler · LP de Produto demonstrativa construída com o Umbler Design System</p>
           <div className="flex gap-6">
             <a href="/showcase" className="hover:text-white/70">← Home showcase</a>
-            <a href="/docs/marketing/page-types/produto" className="hover:text-white/70">
+            <a href="/docs/marca/tipos-de-pagina/produto" className="hover:text-white/70">
               Ver spec na doc
             </a>
           </div>

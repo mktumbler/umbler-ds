@@ -485,7 +485,7 @@ export default function SolucaoLanding() {
           <p>© Umbler · LP de Solução demonstrativa. Segmento Imobiliário</p>
           <div className="flex gap-6">
             <a href="/showcase" className="hover:text-white/70">← Home showcase</a>
-            <a href="/docs/marketing/page-types/solucao" className="hover:text-white/70">
+            <a href="/docs/marca/tipos-de-pagina/solucao" className="hover:text-white/70">
               Ver spec na doc
             </a>
           </div>

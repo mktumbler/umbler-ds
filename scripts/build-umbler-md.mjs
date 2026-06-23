@@ -11,10 +11,10 @@
  * Fontes (single source of truth, sem duplicação):
  *   • .claude-plugin/skills/umbler-ds/SKILL.md  — guia operacional
  *   • app/tokens.css                              — tokens @theme
- *   • content/docs/marketing/brand/voice.mdx     — tom e voz
- *   • content/docs/marketing/brand/anti-patterns.mdx  — o que evitar
- *   • content/docs/marketing/conversion/headlines.mdx
- *   • content/docs/marketing/conversion/checklist.mdx
+ *   • content/docs/marca/voz/voice.mdx           — tom e voz
+ *   • content/docs/marca/voz/anti-patterns.mdx   — o que evitar
+ *   • content/docs/marca/copy/headlines.mdx
+ *   • content/docs/marca/copy/checklist.mdx
  *   • este script — seções editoriais (role, vibe, assinaturas, receitas)
  *
  * Saída: public/UMBLER.md (servido em umbler-ds.vercel.app/UMBLER.md)
@@ -34,10 +34,10 @@ const OUT = path.join(ROOT, 'public', 'UMBLER.md');
 const SOURCES = {
   skill: '.claude-plugin/skills/umbler-ds/SKILL.md',
   tokens: 'app/tokens.css',
-  voice: 'content/docs/marketing/brand/voice.mdx',
-  antiPatterns: 'content/docs/marketing/brand/anti-patterns.mdx',
-  headlines: 'content/docs/marketing/conversion/headlines.mdx',
-  checklist: 'content/docs/marketing/conversion/checklist.mdx',
+  voice: 'content/docs/marca/voz/voice.mdx',
+  antiPatterns: 'content/docs/marca/voz/anti-patterns.mdx',
+  headlines: 'content/docs/marca/copy/headlines.mdx',
+  checklist: 'content/docs/marca/copy/checklist.mdx',
 };
 
 const LIVE_URL = 'https://umbler-ds.vercel.app';

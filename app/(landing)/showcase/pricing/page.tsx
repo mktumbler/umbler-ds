@@ -173,7 +173,7 @@ export default function PricingLanding() {
           <p>© Umbler · LP de Pricing demonstrativa construída com o Umbler Design System</p>
           <div className="flex gap-6">
             <a href="/showcase" className="hover:text-white/70">← Home showcase</a>
-            <a href="/docs/marketing/page-types/pricing" className="hover:text-white/70">
+            <a href="/docs/marca/tipos-de-pagina/pricing" className="hover:text-white/70">
               Ver spec na doc
             </a>
           </div>

@@ -13,7 +13,7 @@
  *
  * Regras de copy (escopo restrito):
  *   - em-dash-copy → "—" em copy de landing pt-BR (brand guide § 10)
- *                    Escopo: app/(landing)/**, app/(home)/**, content/docs/marketing/showcase/**
+ *                    Escopo: app/(landing)/**, app/(home)/**
  *
  * Fora de escopo (whitelist):
  *   - components/ui/**           — o próprio DS
@@ -104,8 +104,8 @@ const RULES = [
     label: 'em-dash (—) em copy pt-BR — use vírgula, ponto ou parênteses (brand guide § Voz)',
     // Em-dash literal (U+2014). Hífen comum (-) e en-dash (–) não disparam.
     pattern: /—/g,
-    // Escopo: rotas de landing reais + showcase. /docs (doc técnica) fica livre.
-    scope: /(?:^|\/)(?:app\/\(landing\)\/|app\/\(home\)\/|content\/docs\/marketing\/showcase\/)/,
+    // Escopo: rotas de landing reais. /docs (doc técnica e marca) fica livre.
+    scope: /(?:^|\/)(?:app\/\(landing\)\/|app\/\(home\)\/)/,
   },
   {
     id: 'heading-period',
