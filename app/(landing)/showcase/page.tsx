@@ -283,7 +283,10 @@ export default function ShowcasePage() {
       <ShowcaseNav />
 
       {/* Hero: background SVG blob + conteúdo animado */}
-      <HeroBackground variant="sweep-invert" className="px-6 pb-20 pt-32">
+      <HeroBackground
+        variant="sweep-invert"
+        className="px-6 pb-20 pt-32 [--hero-blur:clamp(8px,5cqw,40px)]"
+      >
         <ShowcaseHeroContent />
       </HeroBackground>
 
