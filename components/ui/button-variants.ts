@@ -20,15 +20,14 @@ export const buttonVariants = cva(
         danger:
           'bg-error-500 text-white shadow-xs hover:bg-error-600 active:bg-error-700 focus-visible:ring-error-400',
       },
-      // Radius medio (atencao: tokens do DS sao maiores que Tailwind padrao —
-      // rounded-md = 10px, rounded-lg = 16px, rounded-xl = 24px).
-      // Botoes de produto usam radius ~10-16px, consistente com a UI
-      // (Configuracoes, Convidar atendente). Substitui o pill default da v0.x.
+      // Radius unico em todos os tamanhos (rounded-md ~10px no DS) para
+      // consistencia: um botao pequeno e um xl tem o mesmo arredondamento.
+      // Tokens do DS sao maiores que Tailwind padrao. Substitui o pill da v0.x.
       size: {
-        sm: 'h-8 px-3 text-body-sm rounded-sm',
+        sm: 'h-8 px-3 text-body-sm rounded-md',
         md: 'h-10 px-4 text-body rounded-md',
         lg: 'h-12 px-6 text-body-lg rounded-md',
-        xl: 'h-14 px-8 text-body-lg rounded-lg',
+        xl: 'h-14 px-8 text-body-lg rounded-md',
       },
       iconOnly: {
         true: 'px-0',
