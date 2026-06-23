@@ -13,13 +13,6 @@ export type HeroBgVariant =
 
 export interface HeroBackgroundProps extends HTMLAttributes<HTMLDivElement> {
   variant?: HeroBgVariant;
-  /**
-   * Presença do glow no fundo.
-   *  - 'default' — blur alto, brilho discreto (uso padrão).
-   *  - 'strong'  — blur menor + brightness/saturate maiores: o sweep
-   *                lê nítido em heros largos (ex.: /showcase).
-   */
-  intensity?: 'default' | 'strong';
 }
 
 /* ── Blob wrapper ────────────────────────────────────────────────────────── */
@@ -39,8 +32,8 @@ function Blob({ width, height, children }: BlobProps) {
       className={cn(
         'absolute top-1/2 left-1/2 w-[200%]',
         '-translate-x-1/2 -translate-y-1/2',
-        // blur + brilho controlados por vars setadas no wrapper (intensity)
-        '[filter:blur(var(--hero-blur,clamp(10px,7cqw,80px)))_brightness(var(--hero-bright,1))_saturate(var(--hero-sat,1))]',
+        // blur responsivo via cqw (requer container-type no pai)
+        '[filter:blur(clamp(10px,7cqw,80px))]',
         'will-change-transform pointer-events-none',
       )}
     >
@@ -210,25 +203,13 @@ const BLOB_MAP: Record<HeroBgVariant, React.ReactNode> = {
 
 export function HeroBackground({
   variant = 'sweep',
-  intensity = 'default',
   children,
   className,
-  style,
   ...props
 }: HeroBackgroundProps) {
-  const intensityVars =
-    intensity === 'strong'
-      ? ({
-          '--hero-blur': 'clamp(6px,4cqw,44px)',
-          '--hero-bright': '1.45',
-          '--hero-sat': '1.25',
-        } as React.CSSProperties)
-      : undefined;
-
   return (
     <div
       className={cn('relative overflow-hidden bg-[rgb(3,6,20)] [container-type:inline-size]', className)}
-      style={{ ...intensityVars, ...style }}
       {...props}
     >
       {BLOB_MAP[variant]}
