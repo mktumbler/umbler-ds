@@ -449,8 +449,8 @@ export default function ShowcasePage() {
         <div className="mx-auto max-w-[1100px]">
           <FadeInSection className="mx-auto mb-12 max-w-xl text-center">
             <p className="eyebrow mb-3">Planos</p>
-            <h2 className="mb-3 font-heading text-display text-white text-balance">
-              Comece com 2 atendentes, escale sem migrar
+            <h2 className="mb-3 font-heading text-display text-white">
+              Comece com 2 atendentes,<br />escale sem migrar
             </h2>
             <p className="text-body-lg text-neutral-400">
               Todos os planos incluem 7 dias de teste grátis. Sem cartão de crédito.
