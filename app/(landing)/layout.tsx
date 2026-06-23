@@ -1,17 +1,5 @@
 import type { Metadata } from 'next';
-
-/**
- * Layout do route group (landing). Forca modo dark fixo, sem cromo de doc.
- *
- * Tudo que entra em /app/(landing)/* herda esta configuração:
- *   • <html className="dark"> aplicado via wrapper
- *   • Sem ThemeToggle
- *   • Sem sidebar Fumadocs
- *   • Background dark direto no body
- *
- * Decisao de design: landings Umbler sao dark-premium por identidade
- * (brand guide § 6). Produto e doc continuam light-first com toggle.
- */
+import { LenisProvider } from './lenis-provider';
 
 export const metadata: Metadata = {
   title: 'Umbler Showcase',
@@ -21,7 +9,9 @@ export const metadata: Metadata = {
 export default function LandingLayout({ children }: { children: React.ReactNode }) {
   return (
     <div className="dark min-h-screen bg-surface text-foreground">
-      {children}
+      <LenisProvider>
+        {children}
+      </LenisProvider>
     </div>
   );
 }

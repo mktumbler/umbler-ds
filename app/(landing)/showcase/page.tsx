@@ -1,13 +1,13 @@
 import {
-  HeroBlock,
   HeroContent,
   HeroEyebrow,
   HeroHeadline,
   HeroSubtext,
   HeroCTAGroup,
 } from '@/components/blocks/hero-block';
+import { HeroBackground } from '@/components/ui/hero-background';
+import { SocialProofPill } from '@/components/ui/social-proof-pill';
 import { StatGrid } from '@/components/blocks/stat-grid';
-import { FeatureCardGrid, FeatureCard } from '@/components/blocks/feature-card-grid';
 import { FeatureSplit } from '@/components/blocks/feature-split';
 import { TestimonialGrid, type TestimonialItem } from '@/components/blocks/testimonial-grid';
 import { PricingTable, type Plan } from '@/components/blocks/pricing-table';
@@ -21,6 +21,7 @@ import {
   CTAEyebrow,
 } from '@/components/blocks/cta-banner';
 import { SiteFooter } from '@/components/blocks/site-footer';
+import { CardAurora } from '@/components/ui/card-aurora';
 import { Button } from '@/components/ui/button';
 import { buttonVariants } from '@/components/ui/button-variants';
 import { Badge } from '@/components/ui/badge';
@@ -33,6 +34,7 @@ import {
   Globe,
   ArrowRight,
   Clock,
+  Sparkle,
 } from '@phosphor-icons/react/dist/ssr';
 
 // ── Dados ──────────────────────────────────────────────────────────────────────
@@ -271,8 +273,8 @@ export default function ShowcasePage() {
   return (
     <main className="bg-neutral-950 text-foreground">
 
-      {/* Hero */}
-      <HeroBlock background="sweep" className="px-6 pb-16 pt-24">
+      {/* Hero com background SVG blob */}
+      <HeroBackground variant="arc" className="px-6 pb-20 pt-24">
         <HeroContent>
           <HeroEyebrow>
             <Badge variant="brand" shape="pill">
@@ -299,8 +301,9 @@ export default function ShowcasePage() {
               Ver demo
             </Button>
           </HeroCTAGroup>
+          <SocialProofPill className="mt-4" />
         </HeroContent>
-      </HeroBlock>
+      </HeroBackground>
 
       {/* Stats */}
       <StatGrid
@@ -310,50 +313,84 @@ export default function ShowcasePage() {
         className="border-y border-white/5 bg-neutral-950"
       />
 
-      {/* Features */}
+      {/* Features: Bento grid com CardAurora */}
       <section className="bg-neutral-950 px-6 py-24">
         <div className="mx-auto max-w-[1100px]">
-          <div className="mx-auto mb-12 max-w-2xl text-center">
+          <div className="mx-auto mb-12 max-w-xl text-center">
             <p className="eyebrow mb-3">Funcionalidades</p>
             <h2 className="mb-4 font-heading text-h2 text-white">
-              Tudo que você precisa para atender bem, sem o caos
+              Construído para quem não pode perder nenhuma conversa
             </h2>
             <p className="text-body-lg text-neutral-400">
-              Do chatbot ao agente IA, do WhatsApp ao Instagram. Um painel só para toda a equipe.
+              Caixa unificada, chatbot sem código e agentes IA num único painel para toda a equipe.
             </p>
           </div>
-          <FeatureCardGrid columns={3}>
-            <FeatureCard
-              icon={<ChatCircle size={24} className="text-brand-400" />}
-              title="Caixa unificada"
-              description="Toda a equipe atende no mesmo painel. Cada conversa com histórico completo e atendente responsável."
+
+          <div
+            className="grid grid-cols-1 md:grid-cols-3 gap-4"
+            style={{ minHeight: '420px', gridTemplateRows: 'auto auto' }}
+          >
+            {/* Card principal 2x2 */}
+            <div className="md:col-span-2 md:row-span-2">
+              <CardAurora
+                icon={<ChatCircle size={22} weight="fill" />}
+                label="Caixa unificada"
+                title="Toda a equipe num único painel. Nunca mais conversa perdida."
+                description="Distribua conversas por atendente, veja status em tempo real e mantenha o histórico completo mesmo quando alguém sai da equipe."
+                blob="sweep"
+                rotation="diagonal"
+                className="h-full min-h-[280px]"
+              />
+            </div>
+
+            {/* Card pequeno 1 */}
+            <CardAurora
+              icon={<Robot size={22} weight="fill" />}
+              label="Chatbot sem código"
+              title="Qualifique leads fora do horário, sem escrever uma linha"
+              blob="prism"
+              rotation="default"
+              className="h-full min-h-[140px]"
             />
-            <FeatureCard
-              icon={<Robot size={24} className="text-brand-400" />}
-              title="Chatbot sem código"
-              description="Monte fluxos de atendimento arrastando blocos. Qualifica lead e responde fora do horário automaticamente."
+
+            {/* Card pequeno 2 */}
+            <CardAurora
+              icon={<Lightning size={22} weight="fill" />}
+              label="Agentes IA"
+              title="IA que resolve, transfere quando necessário"
+              blob="prism"
+              rotation="diagonal"
+              className="h-full min-h-[140px]"
             />
-            <FeatureCard
-              icon={<Megaphone size={24} className="text-brand-400" />}
-              title="Campanhas em massa"
-              description="Envie mensagens personalizadas para listas segmentadas. Com nome, empresa e produto de cada contato."
+          </div>
+
+          {/* Segunda linha de cards menores */}
+          <div className="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <CardAurora
+              icon={<Megaphone size={22} weight="fill" />}
+              label="Campanhas em massa"
+              title="Mensagens personalizadas para listas segmentadas"
+              blob="prism"
+              rotation="default"
+              className="h-full min-h-[120px]"
             />
-            <FeatureCard
-              icon={<ChartLineUp size={24} className="text-brand-400" />}
-              title="Relatórios por atendente"
-              description="Tempo de resposta, volume e avaliação de cada atendente. Tome decisões com dados reais, sem planilha manual."
+            <CardAurora
+              icon={<ChartLineUp size={22} weight="fill" />}
+              label="Relatórios"
+              title="TMA, volume e satisfação por atendente"
+              blob="prism"
+              rotation="diagonal"
+              className="h-full min-h-[120px]"
             />
-            <FeatureCard
-              icon={<Lightning size={24} className="text-brand-400" />}
-              title="Agentes IA"
-              description="IA que resolve atendimentos simples sem intervenção humana. Transfere para pessoa quando necessário."
+            <CardAurora
+              icon={<Globe size={22} weight="fill" />}
+              label="Omnichannel"
+              title="WhatsApp, Instagram, Webchat e e-mail num só lugar"
+              blob="prism"
+              rotation="default"
+              className="h-full min-h-[120px]"
             />
-            <FeatureCard
-              icon={<Globe size={24} className="text-brand-400" />}
-              title="Omnichannel"
-              description="WhatsApp, Instagram DM, Webchat e e-mail num único painel. Cada canal com histórico separado."
-            />
-          </FeatureCardGrid>
+          </div>
         </div>
       </section>
 
