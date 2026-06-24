@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { HeroBackground } from '@/components/ui/hero-background';
 import { StatGrid } from '@/components/blocks/stat-grid';
 import { FeatureSplit } from '@/components/blocks/feature-split';
@@ -290,6 +291,35 @@ export default function ShowcasePage() {
       >
         <ShowcaseHeroContent />
       </HeroBackground>
+
+      {/* Product mockup: screenshot real do painel do Talk */}
+      <FadeInSection className="bg-neutral-950 px-6 pb-24 pt-0">
+        <div className="relative mx-auto -mt-12 max-w-[1100px]">
+          {/* glow de marca atrás do mockup */}
+          <div
+            aria-hidden
+            className="absolute -inset-x-12 -top-8 bottom-12 -z-0 rounded-[3rem] opacity-60 blur-[80px]"
+            style={{ background: 'var(--gradient-glow)' }}
+          />
+          <div className="relative z-10 overflow-hidden rounded-2xl border border-white/10 bg-neutral-900 shadow-2xl">
+            <div className="flex items-center gap-1.5 border-b border-white/10 px-4 py-3">
+              <span className="h-2.5 w-2.5 rounded-full bg-error-400" />
+              <span className="h-2.5 w-2.5 rounded-full bg-warning-400" />
+              <span className="h-2.5 w-2.5 rounded-full bg-success-400" />
+              <span className="ml-2 text-caption text-neutral-400">Umbler Talk</span>
+            </div>
+            <Image
+              src="/showcase/app.png"
+              alt="Painel do Umbler Talk: caixa de entrada unificada, conversa em andamento e detalhes do contato"
+              width={5160}
+              height={2760}
+              sizes="(max-width: 1100px) 100vw, 1100px"
+              className="h-auto w-full"
+              priority
+            />
+          </div>
+        </div>
+      </FadeInSection>
 
       {/* LogoCloud */}
       <FadeInSection>
