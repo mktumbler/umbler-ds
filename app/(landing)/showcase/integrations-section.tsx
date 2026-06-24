@@ -88,7 +88,7 @@ export function IntegrationsSection() {
               Conectado a tudo que sua equipe já usa
             </h2>
             <p className="text-body-lg text-neutral-400 mb-8">
-              O Talk se integra aos canais e ferramentas que você já usa.
+              CRM, e-commerce, ERP e os canais do dia a dia conversam com o Talk.
               Sem migração, sem planilha de dados. Uma central que recebe tudo.
             </p>
 

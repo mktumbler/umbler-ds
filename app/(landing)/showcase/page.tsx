@@ -51,7 +51,7 @@ const LOGOS = [
 
 const STATS = [
   { n: '+15k', label: 'empresas usam o Talk hoje' },
-  { n: '-40%', label: 'redução no tempo médio de atendimento' },
+  { n: '-40%', label: 'no tempo médio de atendimento' },
   { n: '4,9/5', label: 'avaliação média de satisfação' },
 ];
 
@@ -296,7 +296,7 @@ export default function ShowcasePage() {
         <LogoCloud
           variant="marquee"
           tone="dark"
-          label="+15 mil empresas já usam"
+          label="+15 mil empresas usam o Talk"
           logos={LOGOS}
           className="border-y border-white/5 bg-neutral-950 py-10"
         />
@@ -356,7 +356,7 @@ export default function ShowcasePage() {
               <CardAurora
                 icon={<Lightning size={22} weight="fill" />}
                 label="Agentes IA"
-                title="IA que resolve, transfere quando necessário"
+                title="IA que resolve sozinha e passa pra equipe quando precisa"
                 blob="prism"
                 rotation="diagonal"
                 className="h-full min-h-[140px]"
@@ -497,7 +497,7 @@ export default function ShowcasePage() {
             <p className="eyebrow">Sem cartão, cancele quando quiser</p>
           </CTAEyebrow>
           <CTAHeadline>
-            Seu time pode atender melhor. Comece hoje.
+            Pare de perder venda no WhatsApp. Comece hoje.
           </CTAHeadline>
           <CTASubtext>
             7 dias grátis com acesso completo. Configure em minutos, sem precisar de TI.
