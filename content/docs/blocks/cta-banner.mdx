@@ -59,7 +59,6 @@ Fundo `surface-subtle` com borda topo. Adapta-se a light e dark. Para CTAs inser
 import {
   CTABanner,
   CTAEyebrow,
-  CTATrustPill,
   CTAHeadline,
   CTAHeadlineMuted,
   CTASubtext,
@@ -67,14 +66,11 @@ import {
   CTAActions,
 } from '@/components/blocks/cta-banner';
 import { Button } from '@/components/ui/button';
-import { ShieldCheck } from '@phosphor-icons/react/dist/ssr';
 
 // Variante premium (fechamento de LP)
 <CTABanner variant="premium" className="px-6 py-32">
   <CTAEyebrow>
-    <CTATrustPill icon={<ShieldCheck size={14} weight="fill" />}>
-      7 dias grátis, sem cartão
-    </CTATrustPill>
+    <p className="eyebrow">7 dias grátis, sem cartão</p>
   </CTAEyebrow>
   <CTAHeadline>
     Coloque um agente atendendo<br />ainda esta semana
@@ -101,8 +97,7 @@ import { ShieldCheck } from '@phosphor-icons/react/dist/ssr';
 | Componente          | Uso                                                                  |
 | ------------------- | -------------------------------------------------------------------- |
 | `CTABanner`         | Wrapper `<section>` — `variant?: 'premium' \| 'glow' \| 'simple' \| 'brand'` |
-| `CTAEyebrow`        | Flex row centralizado para pill ou badge                             |
-| `CTATrustPill`      | Pill glass (border-white/10 + bg-white/5) com ícone e texto         |
+| `CTAEyebrow`        | Flex row centralizado para o `.eyebrow` ou um `Badge` de status      |
 | `CTAHeadline`       | `<h2>` branco, `text-display-lg` — variantes premium/glow/brand     |
 | `CTAHeadlineMuted`  | `<h2>` semântico (`text-foreground`) — para variant="simple"        |
 | `CTASubtext`        | `<p>` branco/70 — variantes escuras                                 |

@@ -9,7 +9,7 @@
  *
  * Composição:
  *   <CTABanner variant="premium">
- *     <CTAEyebrow> ... </CTAEyebrow>   (opcional — pill de trust / feature)
+ *     <CTAEyebrow><p className="eyebrow">...</p></CTAEyebrow>  (opcional)
  *     <CTAHeadline> ... </CTAHeadline>
  *     <CTASubtext> ... </CTASubtext>   (opcional)
  *     <CTAActions> ... </CTAActions>   (botões)
@@ -78,7 +78,7 @@ export function CTABanner({
   );
 }
 
-// ── Eyebrow (pill de trust / badge de feature) ────────────────────────────────
+// ── Eyebrow (micro-rótulo .eyebrow ou Badge de status) ─────────────────────────
 
 export function CTAEyebrow({
   className,
@@ -87,27 +87,6 @@ export function CTAEyebrow({
 }: React.HTMLAttributes<HTMLDivElement>) {
   return (
     <div className={cn('mb-6 flex justify-center', className)} {...props}>
-      {children}
-    </div>
-  );
-}
-
-/** Pill pré-montado no estilo das LPs Umbler (glass, icon + texto). */
-export function CTATrustPill({
-  icon,
-  children,
-  className,
-  ...props
-}: React.HTMLAttributes<HTMLDivElement> & { icon?: React.ReactNode }) {
-  return (
-    <div
-      className={cn(
-        'inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-caption text-white/70 backdrop-blur',
-        className,
-      )}
-      {...props}
-    >
-      {icon}
       {children}
     </div>
   );

@@ -16,7 +16,6 @@ import {
   CTAHeadline,
   CTASubtext,
   CTAActions,
-  CTATrustPill,
   CTAEyebrow,
 } from '@/components/blocks/cta-banner';
 import { SiteFooter } from '@/components/blocks/site-footer';
@@ -32,7 +31,6 @@ import {
   Terminal,
   ArrowRight,
   ShieldCheck,
-  Clock,
 } from '@phosphor-icons/react/dist/ssr';
 
 // ── Dados da página ────────────────────────────────────────────────────────────
@@ -329,9 +327,7 @@ export default function HostingPage() {
       {/* CTA Final */}
       <CTABanner variant="premium">
         <CTAEyebrow>
-          <CTATrustPill icon={<Clock size={14} />}>
-            Pronto em segundos. Sem cartão de crédito.
-          </CTATrustPill>
+          <p className="eyebrow">Pronto em segundos, sem cartão</p>
         </CTAEyebrow>
         <CTAHeadline>
           Pare de brigar com servidor.

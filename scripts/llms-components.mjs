@@ -646,7 +646,7 @@ import { Button } from '@/components/ui/button';
 </CTABanner>
 \`\`\`
 - variant: \`premium\` | \`glow\` | \`simple\` | \`brand\` — padrão: \`premium\`
-- Compound: CTAEyebrow, CTATrustPill, CTAHeadline, CTAHeadlineMuted, CTASubtext, CTAActions`,
+- Compound: CTAEyebrow (use \`.eyebrow\` ou Badge dentro), CTAHeadline, CTAHeadlineMuted, CTASubtext, CTAActions`,
 
   'logo-cloud': `Logos de clientes (social proof) pra landings. Instale: \`npx shadcn add https://umbler-ds.vercel.app/r/logo-cloud\`
 \`\`\`tsx

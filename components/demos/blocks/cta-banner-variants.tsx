@@ -1,17 +1,14 @@
 import {
   ArrowRight,
-  ShieldCheck,
   Lightning,
   ChatCircleDots,
   Sparkle,
-  Robot,
 } from '@phosphor-icons/react/dist/ssr';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import {
   CTABanner,
   CTAEyebrow,
-  CTATrustPill,
   CTAHeadline,
   CTAHeadlineMuted,
   CTASubtext,
@@ -20,7 +17,7 @@ import {
 } from '@/components/blocks/cta-banner';
 
 /* ──────────────────────────────────────────────────────────────────────────
-   1. PREMIUM — gradient-premium + glow + pill de trust + dual CTA
+   1. PREMIUM — gradient-premium + glow + eyebrow + dual CTA
    Padrão de fechamento das LPs /showcase/produto e /showcase/solucao.
    Máximo impacto, posição final da página.
    ────────────────────────────────────────────────────────────────────────── */
@@ -28,9 +25,7 @@ export function CTABannerPremium() {
   return (
     <CTABanner variant="premium" className="w-full py-16">
       <CTAEyebrow>
-        <CTATrustPill icon={<ShieldCheck size={14} weight="fill" />}>
-          7 dias grátis, sem cartão, sem multa
-        </CTATrustPill>
+        <p className="eyebrow">7 dias grátis, sem cartão, sem multa</p>
       </CTAEyebrow>
       <CTAHeadline>
         Coloque um agente atendendo<br />ainda esta semana
@@ -110,14 +105,6 @@ export function CTABannerSimple() {
 export function CTABannerBrand() {
   return (
     <CTABanner variant="brand" className="w-full py-14">
-      <CTAEyebrow>
-        <CTATrustPill
-          icon={<Robot size={14} weight="fill" />}
-          className="border-white/20 bg-white/10 text-white/80"
-        >
-          Agente IA disponível em todos os planos
-        </CTATrustPill>
-      </CTAEyebrow>
       <CTAHeadline>
         Automatize hoje,<br />pague só quando crescer
       </CTAHeadline>
