@@ -15,6 +15,39 @@ description: Grid n-up de feature cards — ícone + título + descrição. Bloc
   <FeatureCardGrid2UpDemo />
 </ComponentPreview>
 
+## Seção completa (header + grid)
+
+O `FeatureCardGrid` é só o grid. Para uma seção de LP inteira (eyebrow + título + descrição + cards), componha com o `SectionHeader` canônico (`@/components/blocks/section-header`). É o padrão usado na showcase e equivale, ponta a ponta, a um bloco "tudo em um" recebendo dados por props:
+
+```tsx
+import { SectionHeader } from '@/components/blocks/section-header';
+import { FeatureCardGrid, FeatureCard } from '@/components/blocks/feature-card-grid';
+import { Lightning, Code, Palette } from '@phosphor-icons/react/dist/ssr';
+
+const features = [
+  { icon: <Lightning size={24} weight="duotone" />, title: 'Performance', description: 'Otimizado para velocidade, sem abrir mão de recursos.' },
+  { icon: <Code size={24} weight="duotone" />,      title: 'Para devs',    description: 'Código limpo e reutilizável, fácil de integrar.' },
+  { icon: <Palette size={24} weight="duotone" />,   title: 'Temável',      description: 'Construído com tokens, adapta à sua marca.' },
+];
+
+<section className="px-6 py-24">
+  <div className="mx-auto max-w-[1100px]">
+    <SectionHeader
+      eyebrow="Funcionalidades"
+      headline="Tudo que você precisa para construir UIs"
+      sub="Componentes compostos, acessíveis e bonitos por padrão."
+    />
+    <FeatureCardGrid columns={3}>
+      {features.map((f) => (
+        <FeatureCard key={f.title} {...f} />
+      ))}
+    </FeatureCardGrid>
+  </div>
+</section>
+```
+
+Por que separado e não um único `<FeatureGridSection>`? O `SectionHeader` é o mesmo cabeçalho de **toda** seção de LP (Pricing, Stats, Features), garantindo eyebrow e escala tipográfica idênticos. Mantê-lo como peça avulsa evita header divergente por bloco e deixa o grid reutilizável fora de contexto de marketing (dashboard, app).
+
 ## Como link clicável
 
 Quando o card é uma ação (e não só descrição), use `asChild` envolvendo com `<a>` ou `<Link>`. O elemento filho vira o wrapper externo do card, herdando estilo + focus-visible + hover destacando a borda.
