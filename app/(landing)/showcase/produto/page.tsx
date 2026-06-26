@@ -188,7 +188,7 @@ export default function ProdutoLanding() {
       <section className="bg-surface px-6 py-24">
         <div className="mx-auto max-w-[1200px]">
           <div className="mx-auto mb-16 max-w-2xl text-center">
-            <p className="eyebrow mb-4">Por que Agente IA Umbler</p>
+            <p className="eyebrow">Por que Agente IA Umbler</p>
             <h2 className="font-heading text-display text-foreground text-balance">
               Três coisas que chatbot tradicional não faz
             </h2>
@@ -220,7 +220,7 @@ export default function ProdutoLanding() {
           {/* Feature 1: texto esquerda, visual direita */}
           <div className="grid items-center gap-12 md:grid-cols-2">
             <div>
-              <p className="eyebrow mb-4">Conhecimento</p>
+              <p className="eyebrow">Conhecimento</p>
               <h3 className="mb-6 font-heading text-display text-foreground text-balance">
                 Aprende com o que sua empresa já tem
               </h3>
@@ -316,7 +316,7 @@ export default function ProdutoLanding() {
               </div>
             </div>
             <div className="order-1 md:order-2">
-              <p className="eyebrow mb-4">Handoff inteligente</p>
+              <p className="eyebrow">Handoff inteligente</p>
               <h3 className="mb-6 font-heading text-display text-foreground text-balance">
                 Sabe quando passar pra humano
               </h3>
@@ -349,7 +349,7 @@ export default function ProdutoLanding() {
       <section className="bg-surface px-6 py-24">
         <div className="mx-auto max-w-[1200px]">
           <div className="mx-auto mb-16 max-w-2xl text-center">
-            <p className="eyebrow mb-4">Como começa</p>
+            <p className="eyebrow">Como começa</p>
             <h2 className="font-heading text-display text-foreground text-balance">
               Do upload ao primeiro atendimento, em uma tarde
             </h2>
@@ -376,7 +376,7 @@ export default function ProdutoLanding() {
       <section className="bg-surface-subtle px-6 py-24">
         <div className="mx-auto max-w-[1100px]">
           <div className="mx-auto mb-12 max-w-2xl text-center">
-            <p className="eyebrow mb-4">Agente IA vs. Chatbot tradicional</p>
+            <p className="eyebrow">Agente IA vs. Chatbot tradicional</p>
             <h2 className="font-heading text-display text-foreground text-balance">
               Mesma caixa de mensagem, resultado diferente
             </h2>
@@ -474,7 +474,7 @@ export default function ProdutoLanding() {
       <section className="bg-surface-subtle px-6 py-24">
         <div className="mx-auto max-w-3xl">
           <div className="mb-12 text-center">
-            <p className="eyebrow mb-4">Dúvidas honestas</p>
+            <p className="eyebrow">Dúvidas honestas</p>
             <h2 className="font-heading text-display text-foreground text-balance">
               O que perguntam antes de assinar
             </h2>

@@ -41,7 +41,7 @@ export function SectionHeader({
       )}
       {...props}
     >
-      {eyebrow && <p className="eyebrow mb-4">{eyebrow}</p>}
+      {eyebrow && <p className="eyebrow">{eyebrow}</p>}
       <h2 className="font-heading text-display text-foreground text-balance">
         {headline}
       </h2>

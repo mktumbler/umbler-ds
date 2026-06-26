@@ -83,7 +83,7 @@ export function IntegrationsSection() {
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.6, ease }}
           >
-            <p className="eyebrow mb-4">Integrações</p>
+            <p className="eyebrow">Integrações</p>
             <h2 className="mb-4 font-heading text-display text-balance text-white">
               Conectado a tudo que sua equipe já usa
             </h2>

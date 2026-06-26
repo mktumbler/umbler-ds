@@ -53,7 +53,7 @@ export default function PricingLanding() {
       {/* ── Hero curto ──────────────────────────────────────── */}
       <section className="border-b border-white/5 bg-[var(--color-neutral-950)] px-6 pt-32 pb-16 text-center">
         <div className="mx-auto max-w-3xl">
-          <p className="eyebrow mb-6">Planos Umbler</p>
+          <p className="eyebrow">Planos Umbler</p>
           <h1 className="font-heading text-display-lg text-white text-balance md:text-display-xl">
             Preço previsível,<br />sem surpresa no boleto
           </h1>
@@ -109,7 +109,7 @@ export default function PricingLanding() {
       <section className="bg-surface-subtle px-6 py-24">
         <div className="mx-auto max-w-3xl">
           <div className="mb-12 text-center">
-            <p className="eyebrow mb-4">Dúvidas honestas sobre cobrança</p>
+            <p className="eyebrow">Dúvidas honestas sobre cobrança</p>
             <h2 className="font-heading text-display text-foreground text-balance">
               O que perguntam antes de assinar
             </h2>

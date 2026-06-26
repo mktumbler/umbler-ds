@@ -218,7 +218,7 @@ export default function HostingPage() {
       {/* Features */}
       <section className="px-6 py-24 bg-neutral-950">
         <div className="mx-auto max-w-[1100px]">
-          <p className="eyebrow mb-3 text-center">Infraestrutura</p>
+          <p className="eyebrow text-center">Infraestrutura</p>
           <h2 className="font-heading text-display text-center text-white mb-4 text-balance">
             Tudo que um dev precisa, sem o que um dev odeia
           </h2>
@@ -295,7 +295,7 @@ export default function HostingPage() {
       {/* Pricing */}
       <section className="bg-surface px-6 py-24">
         <div className="mx-auto max-w-[1100px]">
-          <p className="eyebrow mb-3 text-center">Planos</p>
+          <p className="eyebrow text-center">Planos</p>
           <h2 className="font-heading text-display text-center mb-3 text-balance">
             Comece pequeno. Escale sem migrar.
           </h2>

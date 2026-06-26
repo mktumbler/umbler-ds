@@ -156,7 +156,7 @@ export function CardAurora({
         {children ?? (
           <div className={cn(icon ? 'mt-6' : '')}>
             {label && (
-              <p className="eyebrow mb-1.5">
+              <p className="eyebrow">
                 {label}
               </p>
             )}

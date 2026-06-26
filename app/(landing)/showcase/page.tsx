@@ -347,7 +347,7 @@ export default function ShowcasePage() {
         <div className="mx-auto max-w-[1100px]">
 
           <FadeInSection className="mx-auto mb-12 max-w-xl text-center">
-            <p className="eyebrow mb-3">Funcionalidades</p>
+            <p className="eyebrow">Funcionalidades</p>
             <h2 className="mb-4 font-heading text-display text-white text-balance">
               Construído para quem não pode perder nenhuma conversa
             </h2>
@@ -486,7 +486,7 @@ export default function ShowcasePage() {
       <section id="pricing" className="bg-neutral-950 px-6 py-24">
         <div className="mx-auto max-w-[1100px]">
           <FadeInSection className="mx-auto mb-12 max-w-2xl text-center">
-            <p className="eyebrow mb-3">Planos</p>
+            <p className="eyebrow">Planos</p>
             <h2 className="mb-3 font-heading text-display text-balance text-white">
               Comece com 2 atendentes, escale sem migrar
             </h2>

@@ -257,7 +257,7 @@ export default function SolucaoLanding() {
       <section className="bg-surface px-6 py-24">
         <div className="mx-auto max-w-[1100px]">
           <div className="mb-16 text-center">
-            <p className="eyebrow mb-4">O problema que você vive todo dia</p>
+            <p className="eyebrow">O problema que você vive todo dia</p>
             <h2 className="font-heading text-display text-foreground text-balance">
               A maioria dos leads de portal some em menos de 5 minutos
             </h2>
@@ -309,7 +309,7 @@ export default function SolucaoLanding() {
           <div className="mx-auto grid max-w-[1100px] items-center gap-12 lg:grid-cols-2">
             {/* Texto: par/ímpar alterna lado */}
             <div className={i % 2 === 1 ? 'lg:order-2' : ''}>
-              <p className="eyebrow mb-4">{feat.eyebrow}</p>
+              <p className="eyebrow">{feat.eyebrow}</p>
               <h2 className="font-heading text-display text-foreground text-balance">
                 {feat.title}
               </h2>
@@ -377,7 +377,7 @@ export default function SolucaoLanding() {
       <section className="bg-surface-subtle px-6 py-24">
         <div className="mx-auto max-w-[800px]">
           <div className="mb-12 text-center">
-            <p className="eyebrow mb-4">Comparação direta</p>
+            <p className="eyebrow">Comparação direta</p>
             <h2 className="font-heading text-display text-foreground text-balance">
               Umbler vs CRM imobiliário tradicional
             </h2>
@@ -425,7 +425,7 @@ export default function SolucaoLanding() {
       <section className="bg-surface px-6 py-24">
         <div className="mx-auto max-w-3xl">
           <div className="mb-12 text-center">
-            <p className="eyebrow mb-4">Dúvidas do setor</p>
+            <p className="eyebrow">Dúvidas do setor</p>
             <h2 className="font-heading text-display text-foreground text-balance">
               Perguntas que toda imobiliária faz
             </h2>
